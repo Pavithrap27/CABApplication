@@ -31,7 +31,6 @@ public class Cab  {
 	}
 	@Override
 	public String toString() {
-		System.out.println("String message");
 		return "Cab [cabId=" + cabId + ", carType=" + carType + ", perKmRate=" + perKmRate + "]";
 	}
 	
