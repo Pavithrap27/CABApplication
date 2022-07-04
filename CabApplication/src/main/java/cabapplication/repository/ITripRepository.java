@@ -6,7 +6,7 @@ import cabapplication.entity.TripBooking;
 
 public interface ITripRepository extends JpaRepository<TripBooking,Integer> {
 	
-	
-	public TripBooking calculateBill(int customerId);
+
+	//public TripBooking calculateBill(int customerId);
 
 }

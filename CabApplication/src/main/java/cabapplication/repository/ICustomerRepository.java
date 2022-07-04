@@ -7,6 +7,6 @@ import cabapplication.entity.Customer;
 public interface ICustomerRepository extends JpaRepository<Customer,Integer> {
 	
 	
-	public Customer validateCustomer(String username,String password);
+	//public Customer validateCustomer(String username,String password);
 
 }

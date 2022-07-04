@@ -11,13 +11,7 @@ import cabapplication.entity.Customer;
 import cabapplication.entity.TripBooking;
 
 public interface IAdminRepository extends JpaRepository<Admin,Integer> {
-	
-	public List<TripBooking> getTripsCabwise();
-	
-	public List<TripBooking> getTripsCustomerwise();
-	
-	public List<TripBooking> getTripsDatewise();
-	@Query("Select trips from TripBooking trips where customerId=? AND fromDate=? AND toDate=?")
+	@Query("Select trips from TripBooking trips where customerId=?1 AND fromDateTime=?2 AND toDateTime=?3")
 	public List<TripBooking> getAllTripsForDays(int customerId,LocalDateTime fromDate,LocalDateTime toDate);
 	
 
