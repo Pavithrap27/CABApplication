@@ -31,7 +31,7 @@ public class ICustomerService {
 		Customer c=customerrepo.findById(customerId).orElseThrow();
 		customerrepo.deleteById(customerId);
 		return "Deleted";
-		
 	}
+	
 	
 }
