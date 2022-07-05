@@ -1,7 +1,7 @@
 package cabapplication.exception;
 
 public class CustomerNotFoundException extends Exception {
-	CustomerNotFoundException(String msg) {
+	public CustomerNotFoundException(String msg) {
 		super(msg);
 	}
 }

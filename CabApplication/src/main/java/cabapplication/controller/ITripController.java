@@ -3,6 +3,8 @@ package cabapplication.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,44 +25,53 @@ public class ITripController {
 	ITripService tripservice;
 
 	@GetMapping("viewAllTrips")
-	public List<TripBooking> viewAllTrips() {
-		return tripservice.viewAllTrips();
+	public ResponseEntity<List<TripBooking>> viewAllTrips() throws Throwable {
+		List<TripBooking> trips = tripservice.viewAllTrips();
+		ResponseEntity<List<TripBooking>> response = new ResponseEntity<List<TripBooking>>(trips, HttpStatus.OK);
+		return response;
 	}
 
 	@GetMapping("viewAllBookings/{tripBookingId}")
-	public TripBooking viewTripBooking(@PathVariable int tripBookingId) {
-		return tripservice.viewTripBooking(tripBookingId);
+	public ResponseEntity<TripBooking> viewTripBooking(@PathVariable int tripBookingId) throws Throwable {
+		ResponseEntity<TripBooking> response = new ResponseEntity<TripBooking>(
+				tripservice.viewTripBooking(tripBookingId), HttpStatus.OK);
+		return response;
 	}
 
 	@PostMapping("insertTripBooking")
-	public TripBooking insertTripBooking(@RequestBody TripBooking tripBooking) {
-		tripservice.insertTripBooking(tripBooking);
-		return tripBooking;
+	public ResponseEntity<TripBooking> insertTripBooking(@RequestBody TripBooking tripBooking) throws Throwable {
+		ResponseEntity<TripBooking> response = new ResponseEntity<TripBooking>(
+				tripservice.insertTripBooking(tripBooking), HttpStatus.OK);
+		return response;
 	}
 
 	@PutMapping("updateTripBooking")
-	public TripBooking updateTripBooking(@RequestBody TripBooking tripBooking) {
+	public ResponseEntity<TripBooking> updateTripBooking(@RequestBody TripBooking tripBooking) throws Throwable {
 		TripBooking tripBookingupdated = tripservice.updateTripBooking(tripBooking);
-		return tripBookingupdated;
+		ResponseEntity<TripBooking> response = new ResponseEntity<TripBooking>(tripBookingupdated, HttpStatus.OK);
+		return response;
 	}
 
 	@DeleteMapping("deleteTripBooking/{tripBookingId}")
-	public String deleteTripBooking(@PathVariable int tripBookingId) {
+	public ResponseEntity<String> deleteTripBooking(@PathVariable int tripBookingId) throws Throwable {
 		tripservice.deleteTripBooking(tripBookingId);
-		return "Deleted";
+		ResponseEntity<String> response = new ResponseEntity<String>("Deleted", HttpStatus.OK);
+		return response;
 	}
 
 	@GetMapping("viewAllTrips/{customerId}")
-	public List<TripBooking> viewAllTrips(@PathVariable int customerId) {
+	public ResponseEntity<List<TripBooking>> viewAllTrips(@PathVariable int customerId) throws Throwable {
 		List<TripBooking> trips = tripservice.viewAllTrips(customerId);
-		return trips;
+		ResponseEntity<List<TripBooking>> response = new ResponseEntity<List<TripBooking>>(trips, HttpStatus.OK);
+		return response;
 
 	}
 
 	@GetMapping("calculateBill/{customerId}")
-	public float calculateBill(@PathVariable int customerId) {
+	public ResponseEntity<Float> calculateBill(@PathVariable int customerId) throws Throwable {
 		float bill = tripservice.calculateBill(customerId);
-		return bill;
+		ResponseEntity<Float> response = new ResponseEntity<Float>(bill, HttpStatus.OK);
+		return response;
 	}
 
 }
