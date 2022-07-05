@@ -42,6 +42,6 @@ public class ICabService {
 
 	public Cab countCabsOfType(int cabId) {
 
-		return null;
+		return cabrepo.findById(cabId).orElseThrow();
 	}	
 }
