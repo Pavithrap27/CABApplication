@@ -26,7 +26,7 @@ public class ICabController {
 	{
 		return cabservice.getCab();
 	}
-	@PostMapping(path="insertCab")
+	@PostMapping(path="insertcab")
 	public Cab insertCab(@RequestBody Cab cab)
 	{
 		return cabservice.insertCab(cab);
