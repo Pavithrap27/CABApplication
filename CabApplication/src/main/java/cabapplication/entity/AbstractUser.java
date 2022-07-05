@@ -1,6 +1,7 @@
 package cabapplication.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
 
 
 public abstract class AbstractUser {
