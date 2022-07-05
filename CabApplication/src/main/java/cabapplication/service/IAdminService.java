@@ -14,6 +14,7 @@ public class IAdminService {
 	
 	@Autowired
 	IAdminRepository adminrepo;
+	ITripService tripservice;
 	
 	public Admin insertAdmin(Admin admin)
 	{
@@ -38,10 +39,12 @@ public class IAdminService {
 		return admin;
 		
 	}
-	//public List<TripBooking> getAllTrips(int customerId)
+	public List<TripBooking> getAllTrips(int customerId)
 	{
-		
+		List<TripBooking> trips=tripservice.viewAllTrips(customerId);
+		return trips;
 	}
+	
 	
 	
 

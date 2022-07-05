@@ -13,6 +13,12 @@ public class ITripService {
 	@Autowired
 	 ITripRepository triprepo;
 	
+	public List<TripBooking> viewAllTrips() {
+		return triprepo.findAll();
+	}
+	public TripBooking viewTripBooking(int tripBookingId) {
+		return triprepo.findById(tripBookingId).get();
+	}
 	public TripBooking insertTripBooking(TripBooking tripBooking)
 	{
 		triprepo.save(tripBooking);
@@ -61,10 +67,4 @@ public class ITripService {
 		triprepo.save(trip);
 		return trip;
 	}
-	
-	
-	
-	
-	
-
 }
