@@ -14,6 +14,10 @@ public interface ICabRepository extends JpaRepository<Cab,Integer> {
 	public List<Cab> viewCabsOfType(String carType);
 	@Query("select count(*),car_type from Cab cabs group by car_type")
 	 public int countCabsOfType(int cabId);
+	
+	@Query("select COUNT(cab) from Cab cab where carType=?1 ")
+	public int countCabsOfType(String carType);
+
 
 	
 }

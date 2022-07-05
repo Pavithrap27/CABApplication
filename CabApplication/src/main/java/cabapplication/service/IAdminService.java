@@ -35,17 +35,21 @@ public class IAdminService {
 		return admin;
 	}
 	
-	public Admin deleteAdmin(Admin admin)
+	public String deleteAdmin(Admin admin)
 	{ 
 		adminrepo.delete(admin);
-		return admin;
+		return "Deleted";
 		
 	}
+
+	//public List<TripBooking> getAllTrips(int customerId)
+	
 	
 	public Admin viewAdmin(int adminId) 
 	{
 		return adminrepo.findById(adminId).get();
 	}
+
 	
 	public List<TripBooking> getAllTrips(int customerId)
 	{
