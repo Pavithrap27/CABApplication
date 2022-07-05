@@ -21,36 +21,35 @@ public class ICustomerController {
 
 	@Autowired
 	ICustomerService customerservice;
-	
-	@PostMapping(path="/insertcustomer")
-	public Customer insertCustomer(@RequestBody Customer customer)
-	{
+
+	@PostMapping(path = "/insertcustomer")
+	public Customer insertCustomer(@RequestBody Customer customer) {
 		return customerservice.insertCustomer(customer);
 	}
-	@PutMapping(path="/updatecustomer")
-	public Customer updateCustomer(@RequestBody Customer customer)
-	{
+
+	@PutMapping(path = "/updatecustomer")
+	public Customer updateCustomer(@RequestBody Customer customer) {
 		return customerservice.updateCustomer(customer);
 	}
-	@DeleteMapping(path="/customerid")
-	public String deleteCustomer(@PathVariable int customerId)
-	{
+
+	@DeleteMapping(path = "/customerid")
+	public String deleteCustomer(@PathVariable int customerId) {
 		return customerservice.deleteCustomer(customerId);
 	}
-	@GetMapping(path="/viewcustomers")
-	public List<Customer> viewCustomers()
-	{
+
+	@GetMapping(path = "/viewcustomers")
+	public List<Customer> viewCustomers() {
 		return customerservice.viewCustomers();
 	}
-	@GetMapping(path="/viewcustomer{customerid}")
-	public Customer viewCustomer(@PathVariable int customerId)
-	{
+
+	@GetMapping(path = "/viewcustomer{customerid}")
+	public Customer viewCustomer(@PathVariable int customerId) {
 		return customerservice.viewCustomer(customerId);
 	}
-	@GetMapping(path="/validatecustomer")
-	public Customer validateCustomer(@PathVariable String username,@PathVariable String password)
-	{
+
+	@GetMapping(path = "/validatecustomer")
+	public Customer validateCustomer(@PathVariable String username, @PathVariable String password) {
 		return customerservice.validateCustomer(username, password);
 	}
-	
+
 }

@@ -10,19 +10,17 @@ import cabapplication.repository.ICustomerRepository;
 
 
 @Service
-public class ICustomerService 
-{
+public class ICustomerService {
 	@Autowired
 	ICustomerRepository customerrepo;
 
-	public Customer insertCustomer(Customer customer)
-	{
+	public Customer insertCustomer(Customer customer) {
 		return customerrepo.save(customer);
 	}
-	public Customer updateCustomer(Customer customer)
-	{
-		int id=customer.getCustomerId();
-		Customer c=customerrepo.findById(id).orElseThrow();
+
+	public Customer updateCustomer(Customer customer) {
+		int id = customer.getCustomerId();
+		Customer c = customerrepo.findById(id).orElseThrow();
 		c.setCustomerId(c.getCustomerId());
 		c.setEmail(customer.getEmail());
 		c.setAddress(customer.getAddress());
@@ -32,25 +30,25 @@ public class ICustomerService
 		customerrepo.save(c);
 		return c;
 	}
-	public String deleteCustomer(int customerId)
-	{
-		Customer c=customerrepo.findById(customerId).orElseThrow();
+
+	public String deleteCustomer(int customerId) {
+		Customer c = customerrepo.findById(customerId).orElseThrow();
 		customerrepo.deleteById(customerId);
 		return "Deleted";
 	}
-	public List<Customer> viewCustomers()
-	{
-		List<Customer> lc=customerrepo.findAll();
+
+	public List<Customer> viewCustomers() {
+		List<Customer> lc = customerrepo.findAll();
 		return lc;
 	}
-	public Customer viewCustomer(int customerId)
-	{
+
+	public Customer viewCustomer(int customerId) {
 		return customerrepo.findById(customerId).orElseThrow();
 	}
-	public Customer validateCustomer(String username, String password)
-	{
-		  Customer customer=customerrepo.validateCustomer(username, password);
-		 
+
+	public Customer validateCustomer(String username, String password) {
+		Customer customer = customerrepo.validateCustomer(username, password);
+
 		return customer;
 	}
 }

@@ -12,22 +12,21 @@ import cabapplication.repository.IDriverRepository;
 
 @Service
 public class IDriverService {
-	
+
 	@Autowired
 	IDriverRepository driverrepo;
-	
-	public List<Driver> getDriver()
-	{
+
+	public List<Driver> getDriver() {
 		return driverrepo.findAll();
 	}
-	public Driver insertDriver(Driver driver)
-	{
-		return  driverrepo.save(driver);
+
+	public Driver insertDriver(Driver driver) {
+		return driverrepo.save(driver);
 	}
-	public Driver updateDriver(Driver driver)
-	{
-		int id=driver.getDriverId();
-		Driver d= driverrepo.findById(id).orElseThrow();
+
+	public Driver updateDriver(Driver driver) {
+		int id = driver.getDriverId();
+		Driver d = driverrepo.findById(id).orElseThrow();
 		d.setUsername(driver.getUsername());
 		d.setPassword(driver.getPassword());
 		d.setMobileNumber(driver.getMobileNumber());
@@ -39,20 +38,20 @@ public class IDriverService {
 		driverrepo.save(d);
 		return d;
 	}
-	public String deleteDriver(int driverId)
-	{
-		Driver d=driverrepo.findById(driverId).orElseThrow();
+
+	public String deleteDriver(int driverId) {
+		Driver d = driverrepo.findById(driverId).orElseThrow();
 		driverrepo.deleteById(driverId);
-		return "Deleted";	
+		return "Deleted";
 	}
-	public List<Driver> viewBestDrivers()
-	{ 
-		List<Driver> lc=driverrepo.viewBestDrivers();
+
+	public List<Driver> viewBestDrivers() {
+		List<Driver> lc = driverrepo.viewBestDrivers();
 		return lc;
-		
+
 	}
-	public Driver viewDriver(int driverid)
-	{
+
+	public Driver viewDriver(int driverid) {
 		return driverrepo.findById(driverid).orElseThrow();
 	}
 
