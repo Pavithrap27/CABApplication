@@ -19,8 +19,5 @@ public interface IAdminRepository extends JpaRepository<Admin,Integer> {
 	public List<TripBooking> getTripCustomerwise();
 	@Query("Select trips from TripBooking trips ORDER BY fromDateTime ")
 	public List<TripBooking> getTripsDatewise();
-	
-	
-	
 
 }

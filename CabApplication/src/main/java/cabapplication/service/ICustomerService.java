@@ -6,13 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cabapplication.entity.Customer;
-import cabapplication.entity.Driver;
 import cabapplication.repository.ICustomerRepository;
 
 
 @Service
-public class ICustomerService {
-	
+public class ICustomerService 
+{
 	@Autowired
 	ICustomerRepository customerrepo;
 
@@ -45,7 +44,10 @@ public class ICustomerService {
 	}
 	public Customer validateCustomer(String username, String password)
 	{
-		return null;
-			
+		/*
+		 * Customer customer=customerrepo.getByName(username);
+		 * if(customer.getPassword().equals(password)) { return customer; }
+		 */
+		return null;			
 	}
 }

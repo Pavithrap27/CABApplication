@@ -39,9 +39,7 @@ public class IAdminService {
 		
 	}
 	//public List<TripBooking> getAllTrips(int customerId)
-	{
-		
-	}
+	
 	
 	
 
