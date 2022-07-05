@@ -17,7 +17,6 @@ public class TripBooking {
 	@Id
 	@GeneratedValue
 	private int tripBookingId;
-	
 	private int customerId;
 	private String fromLocation;
 	private String toLocation;
