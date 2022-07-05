@@ -11,6 +11,7 @@ public class Cab  {
 	private int cabId;
 	private String carType;
 	private float perKmRate;
+	
 	public int getCabId() {
 		return cabId;
 	}
