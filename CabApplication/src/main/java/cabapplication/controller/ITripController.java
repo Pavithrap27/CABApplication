@@ -3,6 +3,12 @@ package cabapplication.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,45 +17,53 @@ import cabapplication.repository.ITripRepository;
 import cabapplication.service.ITripService;
 
 @RestController
-@RequestMapping("/tripbooking")
+@RequestMapping("tripbooking")
 public class ITripController {
 	@Autowired
 	 ITripService tripservice;
 	
+	
+	@GetMapping("viewAllTrips")
 	public List<TripBooking> viewAllTrips() {
 		return tripservice.viewAllTrips();
 	}
 	
-	public TripBooking viewTripBooking(int tripBookingId) {
+	@GetMapping("viewAllBookings/{tripBookingId}")
+	public TripBooking viewTripBooking(@PathVariable int tripBookingId) {
 		return tripservice.viewTripBooking(tripBookingId);
 	}
 	
-	public TripBooking insertTripBooking(TripBooking tripBooking)
+	@PostMapping("insertTripBooking")
+	public TripBooking insertTripBooking(@RequestBody TripBooking tripBooking)
 	{
 		tripservice.insertTripBooking(tripBooking);
 		return tripBooking;
 	}
 	
-	public TripBooking updateTripBooking(TripBooking tripBooking)
+	@PutMapping("updateTripBooking")
+	public TripBooking updateTripBooking(@RequestBody TripBooking tripBooking)
 	{
 	    TripBooking tripBookingupdated=tripservice.updateTripBooking(tripBooking);
 	    return tripBookingupdated;		
 	}
 	
-	public String deleteTripBooking(int tripBookingId)
+	@DeleteMapping("deleteTripBooking/{tripBookingId}")
+	public String deleteTripBooking(@PathVariable int tripBookingId)
 	{
 		tripservice.deleteTripBooking(tripBookingId);
 		return "Deleted";
 	}
 	
-	public List<TripBooking> viewAllTrips(int customerId)
+	@GetMapping("viewAllBookings/{customerId}")
+	public List<TripBooking> viewAllTrips(@PathVariable int customerId)
 	{
 		List<TripBooking> trips = tripservice.viewAllTrips(customerId);
 		return trips;
 		
 	}
 	
-	public TripBooking calculateBill(int customerId)
+	@GetMapping("calculateBill/{customerId}")
+	public TripBooking calculateBill(@PathVariable int customerId)
 	{
 		TripBooking trip=tripservice.calculateBill(customerId);
 		return trip;
