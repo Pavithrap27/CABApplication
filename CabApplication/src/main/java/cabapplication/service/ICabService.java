@@ -34,14 +34,14 @@ public class ICabService {
 	return "Deleted";
 	}
 	
-	public List<Cab> viewCabsOfType(String carType) 
+	public List<Cab> viewCabsOfType(int cabId) 
 	{
-    List<Cab> Ic=cabrepo.findAll();
-    return Ic;	
+    List<Cab> lc=cabrepo.findAll();
+    return lc;	
 	}
 
-	public int countCabsOfType(String carType) 
-	{
-		return cabrepo.countCabsOfType(carType);
-	}
+	public Cab countCabsOfType(int cabId) {
+
+		return null;
+	}	
 }
