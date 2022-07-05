@@ -20,52 +20,46 @@ import cabapplication.service.ITripService;
 @RequestMapping("tripbooking")
 public class ITripController {
 	@Autowired
-	 ITripService tripservice;
-	
-	
+	ITripService tripservice;
+
 	@GetMapping("viewAllTrips")
 	public List<TripBooking> viewAllTrips() {
 		return tripservice.viewAllTrips();
 	}
-	
+
 	@GetMapping("viewAllBookings/{tripBookingId}")
 	public TripBooking viewTripBooking(@PathVariable int tripBookingId) {
 		return tripservice.viewTripBooking(tripBookingId);
 	}
-	
+
 	@PostMapping("insertTripBooking")
-	public TripBooking insertTripBooking(@RequestBody TripBooking tripBooking)
-	{
+	public TripBooking insertTripBooking(@RequestBody TripBooking tripBooking) {
 		tripservice.insertTripBooking(tripBooking);
 		return tripBooking;
 	}
-	
+
 	@PutMapping("updateTripBooking")
-	public TripBooking updateTripBooking(@RequestBody TripBooking tripBooking)
-	{
-	    TripBooking tripBookingupdated=tripservice.updateTripBooking(tripBooking);
-	    return tripBookingupdated;		
+	public TripBooking updateTripBooking(@RequestBody TripBooking tripBooking) {
+		TripBooking tripBookingupdated = tripservice.updateTripBooking(tripBooking);
+		return tripBookingupdated;
 	}
-	
+
 	@DeleteMapping("deleteTripBooking/{tripBookingId}")
-	public String deleteTripBooking(@PathVariable int tripBookingId)
-	{
+	public String deleteTripBooking(@PathVariable int tripBookingId) {
 		tripservice.deleteTripBooking(tripBookingId);
 		return "Deleted";
 	}
-	
+
 	@GetMapping("viewAllTrips/{customerId}")
-	public List<TripBooking> viewAllTrips(@PathVariable int customerId)
-	{
+	public List<TripBooking> viewAllTrips(@PathVariable int customerId) {
 		List<TripBooking> trips = tripservice.viewAllTrips(customerId);
 		return trips;
-		
+
 	}
-	
+
 	@GetMapping("calculateBill/{customerId}")
-	public float calculateBill(@PathVariable int customerId)
-	{
-		float bill=tripservice.calculateBill(customerId);
+	public float calculateBill(@PathVariable int customerId) {
+		float bill = tripservice.calculateBill(customerId);
 		return bill;
 	}
 

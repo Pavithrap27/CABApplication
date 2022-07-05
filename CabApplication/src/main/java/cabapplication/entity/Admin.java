@@ -5,17 +5,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Admin extends AbstractUser{
-  @Id
-  @GeneratedValue
-   private int adminId;
+public class Admin extends AbstractUser {
+	@Id
+	@GeneratedValue
+	private int adminId;
 
-public int getAdminId() {
-	return adminId;
-}
+	public int getAdminId() {
+		return adminId;
+	}
 
-public void setAdminId(int adminId) {
-	this.adminId = adminId;
-}
-  
+	public void setAdminId(int adminId) {
+		this.adminId = adminId;
+	}
+
 }
