@@ -40,7 +40,8 @@ public class ICabService {
     return lc;	
 	}
 
-	public Cab countCabsOfType(int cabId) {
+	public Cab countCabsOfType(int cabId) 
+	{
 
 		return cabrepo.findById(cabId).orElseThrow();
 	}	
