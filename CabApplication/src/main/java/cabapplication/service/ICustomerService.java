@@ -1,5 +1,7 @@
 package cabapplication.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +34,21 @@ public class ICustomerService {
 		customerrepo.deleteById(customerId);
 		return "Deleted";
 	}
+	public List<Customer> viewCustomers()
+	{
+		List<Customer> lc=customerrepo.findAll();
+		return lc;
+	}
+	public Customer viewCustomer(int customerId)
+	{
+		return customerrepo.findById(customerId).orElseThrow();
+	}
+	public Customer validateCustomer(String username, String password)
+	{
+		return null;
+		
+	}
+	
 	
 	
 }
