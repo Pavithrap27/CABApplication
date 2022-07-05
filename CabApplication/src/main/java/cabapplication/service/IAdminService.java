@@ -17,6 +17,10 @@ public class IAdminService {
 	IAdminRepository adminrepo;
 	ITripService tripservice;
 	
+	public List<Admin> getAdmin()
+	{
+		return adminrepo.findAll();
+	}
 	public Admin insertAdmin(Admin admin)
 	{
 		adminrepo.save(admin);
@@ -31,6 +35,7 @@ public class IAdminService {
 	    adminupdated.setMobileNumber(admin.getMobileNumber());
 	    adminupdated.setPassword(admin.getPassword());
 	    adminupdated.setUsername(admin.getUsername());
+	    adminupdated.setAddress(admin.getAddress());
 		adminrepo.save(adminupdated);
 		return admin;
 	}
@@ -40,11 +45,7 @@ public class IAdminService {
 		adminrepo.delete(admin);
 		return "Deleted";
 		
-	}
-
-	//public List<TripBooking> getAllTrips(int customerId)
-	
-	
+	}	
 	public Admin viewAdmin(int adminId) 
 	{
 		return adminrepo.findById(adminId).get();

@@ -54,7 +54,7 @@ public class ITripController {
 		return "Deleted";
 	}
 	
-	@GetMapping("viewAllBookings/{customerId}")
+	@GetMapping("viewAllTrips/{customerId}")
 	public List<TripBooking> viewAllTrips(@PathVariable int customerId)
 	{
 		List<TripBooking> trips = tripservice.viewAllTrips(customerId);
@@ -63,10 +63,10 @@ public class ITripController {
 	}
 	
 	@GetMapping("calculateBill/{customerId}")
-	public TripBooking calculateBill(@PathVariable int customerId)
+	public float calculateBill(@PathVariable int customerId)
 	{
-		TripBooking trip=tripservice.calculateBill(customerId);
-		return trip;
+		float bill=tripservice.calculateBill(customerId);
+		return bill;
 	}
 
 }
