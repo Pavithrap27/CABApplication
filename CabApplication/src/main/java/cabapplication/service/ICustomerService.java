@@ -45,11 +45,7 @@ public class ICustomerService {
 	}
 	public Customer validateCustomer(String username, String password)
 	{
-		
 		return null;
-		
+			
 	}
-	
-	
-	
 }
