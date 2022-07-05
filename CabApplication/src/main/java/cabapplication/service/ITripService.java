@@ -13,11 +13,22 @@ public class ITripService {
 	@Autowired
 	 ITripRepository triprepo;
 	
+	public List<TripBooking> viewAllTrips() 
+	{
+		return triprepo.findAll();
+	}
+	
+	public TripBooking viewTripBooking(int tripBookingId)
+	{
+		return triprepo.findById(tripBookingId).get();
+	}
+	
 	public TripBooking insertTripBooking(TripBooking tripBooking)
 	{
 		triprepo.save(tripBooking);
 		return tripBooking;
 	}
+	
 	public TripBooking updateTripBooking(TripBooking tripBooking)
 	{
 		int id=tripBooking.getTripBookingId();
@@ -33,17 +44,20 @@ public class ITripService {
 	    triprepo.save(tripBookingupdated);
 	    return tripBookingupdated;		
 	}
+	
 	public String deleteTripBooking(int tripBookingId)
 	{
 		triprepo.deleteById(tripBookingId);
 		return "Deleted";
 	}
+	
 	public List<TripBooking> viewAllTrips(int customerId)
 	{
 		List<TripBooking> trips = triprepo.viewAllTrips(customerId);
 		return trips;
 		
 	}
+	
 	public TripBooking calculateBill(int customerId)
 	{
 		int km=30;
@@ -61,10 +75,4 @@ public class ITripService {
 		triprepo.save(trip);
 		return trip;
 	}
-	
-	
-	
-	
-	
-
 }
