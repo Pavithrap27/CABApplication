@@ -7,10 +7,10 @@ import org.springframework.data.jpa.repository.Query;
 
 import cabapplication.entity.TripBooking;
 
-public interface ITripRepository extends JpaRepository<TripBooking,Integer> {
-	@Query("Select trips from TripBooking trips where customerId=?1")
-	public List<TripBooking> viewAllTrips(int customerId);
+public interface ITripRepository extends JpaRepository<TripBooking, Integer> {
 
-	//public TripBooking calculateBill(int customerId);
+	public List<TripBooking> getByCustomerId(int customerId);
+
+	public TripBooking findByCustomerId(int customerId);
 
 }

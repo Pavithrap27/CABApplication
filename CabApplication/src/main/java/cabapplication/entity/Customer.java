@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Customer extends AbstractUser{
+public class Customer extends AbstractUser {
 	@Id
 	@GeneratedValue
 	private int customerId;
@@ -22,6 +22,5 @@ public class Customer extends AbstractUser{
 	public String toString() {
 		return "Customer [customerId=" + customerId + "]";
 	}
-	
 
 }
