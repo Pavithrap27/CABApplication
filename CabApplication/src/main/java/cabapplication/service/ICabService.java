@@ -1,7 +1,6 @@
 package cabapplication.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,57 +12,36 @@ import cabapplication.repository.ICabRepository;
 public class ICabService {
 
 	@Autowired
-	ICabRepository ICabrepo;
-
+	ICabRepository cabrepo;
+	
+	public Cab insertCab(Cab cab)
+	{
+		 return cabrepo.save(cab);
+	}
+	
+	public Cab updateCab(Cab cab)
+	{
+		int id=cab.getCabId();
+		Cab c=cabrepo.findById(id).orElseThrow();
+		cabrepo.save(c);
+		return c;
+	}
+	
+	public String deleteCab(int cabId)
+	{
+	Cab c=cabrepo.findById(cabId).orElseThrow();
+	cabrepo.deleteById(cabId);
+	return "Deleted";
+	}
+	
 	public List<Cab> viewCabsOfType(String carType) 
 	{
-	    List<Cab> IC=ICabrepo.findAll();
-	    return IC;	
+    List<Cab> Ic=cabrepo.findAll();
+    return Ic;	
 	}
 
-	public <S extends Cab> S save(S entity) {
-		return ICabrepo.save(entity);
+	public int countCabsOfType(String carType) 
+	{
+		return cabrepo.countCabsOfType(carType);
 	}
-
-	public List<Cab> findAll() {
-		return ICabrepo.findAll();
-	}
-
-	public Optional<Cab> findById(Integer id) {
-		return ICabrepo.findById(id);
-	}
-
-	public <S extends Cab> List<S> saveAll(Iterable<S> entities) {
-		return ICabrepo.saveAll(entities);
-	}
-
-	public long count() {
-		return ICabrepo.count();
-	}
-
-	public void deleteById(Integer id) {
-		ICabrepo.deleteById(id);
-	}
-
-	public void deleteAll() {
-		ICabrepo.deleteAll();
-	}
-	
-	
-
-//	public List<Cab> viewCabsOfType(String carType) {
-//		return ICabrepo.viewCabsOfType(carType);
-//	}
-//
-//	public void deleteById(Integer id) {
-//		ICabrepo.deleteById(id);
-//	}
-//
-//	public void delete(Cab entity) {
-//		ICabrepo.delete(entity);
-//	}
-//
-//	
-	
-	
 }
