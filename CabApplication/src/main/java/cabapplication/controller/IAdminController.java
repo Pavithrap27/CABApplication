@@ -24,6 +24,12 @@ public class IAdminController {
 	@Autowired
 	IAdminService adminservice;
 	
+	@GetMapping("getAdmin")
+	public List<Admin> getAdmin()
+	{
+		return adminservice.getAdmin();
+	}
+	
 	@PostMapping("insertAdmin")
 	public Admin insertAdmin(@RequestBody Admin admin)
 	{
@@ -39,10 +45,10 @@ public class IAdminController {
 	}
 	
 	@DeleteMapping("deleteAdmin")
-	public Admin deleteAdmin(@RequestBody Admin admin)
+	public String deleteAdmin(@RequestBody Admin admin)
 	{ 
 		adminservice.deleteAdmin(admin);
-		return admin;
+		return "Deleted";
 	}
 	
 	@GetMapping("viewAdmin/{adminId}")

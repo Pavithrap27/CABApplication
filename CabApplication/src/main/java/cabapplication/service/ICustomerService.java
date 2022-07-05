@@ -24,6 +24,11 @@ public class ICustomerService
 		int id=customer.getCustomerId();
 		Customer c=customerrepo.findById(id).orElseThrow();
 		c.setCustomerId(c.getCustomerId());
+		c.setEmail(customer.getEmail());
+		c.setAddress(customer.getAddress());
+		c.setMobileNumber(customer.getMobileNumber());
+		c.setPassword(customer.getPassword());
+		c.setUsername(customer.getUsername());
 		customerrepo.save(c);
 		return c;
 	}
@@ -44,10 +49,8 @@ public class ICustomerService
 	}
 	public Customer validateCustomer(String username, String password)
 	{
-		/*
-		 * Customer customer=customerrepo.getByName(username);
-		 * if(customer.getPassword().equals(password)) { return customer; }
-		 */
-		return null;			
+		  Customer customer=customerrepo.validateCustomer(username, password);
+		 
+		return customer;
 	}
 }

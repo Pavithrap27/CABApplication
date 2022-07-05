@@ -16,6 +16,10 @@ public class IDriverService {
 	@Autowired
 	IDriverRepository driverrepo;
 	
+	public List<Driver> getDriver()
+	{
+		return driverrepo.findAll();
+	}
 	public Driver insertDriver(Driver driver)
 	{
 		return  driverrepo.save(driver);
@@ -24,9 +28,14 @@ public class IDriverService {
 	{
 		int id=driver.getDriverId();
 		Driver d= driverrepo.findById(id).orElseThrow();
+		d.setUsername(driver.getUsername());
+		d.setPassword(driver.getPassword());
+		d.setMobileNumber(driver.getMobileNumber());
+		d.setEmail(driver.getEmail());
 		d.setLicenceNo(driver.getLicenceNo());
 		d.setCab(driver.getCab());
 		d.setRating(driver.getRating());
+		d.setAddress(driver.getAddress());
 		driverrepo.save(d);
 		return d;
 	}
@@ -46,4 +55,5 @@ public class IDriverService {
 	{
 		return driverrepo.findById(driverid).orElseThrow();
 	}
+
 }

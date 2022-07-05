@@ -12,7 +12,7 @@ import cabapplication.repository.ITripRepository;
 public class ITripService {
 	@Autowired
 	 ITripRepository triprepo;
-	
+	 
 	public List<TripBooking> viewAllTrips() 
 	{
 		return triprepo.findAll();
@@ -53,16 +53,16 @@ public class ITripService {
 	
 	public List<TripBooking> viewAllTrips(int customerId)
 	{
-		List<TripBooking> trips = triprepo.viewAllTrips(customerId);
+		List<TripBooking> trips = triprepo.getByCustomerId(customerId);
 		return trips;
 		
 	}
 	
-	public TripBooking calculateBill(int customerId)
+	public float calculateBill(int customerId)
 	{
 		int km=30;
 		float bill=0.0f;
-		TripBooking trip=triprepo.findById(customerId).orElseThrow();
+		TripBooking trip=triprepo.findByCustomerId(customerId);
 		if(trip.getDistanceInKm()>2)
 		{
 		    bill =(trip.getDistanceInKm()*30);
@@ -73,6 +73,6 @@ public class ITripService {
 		}
 		trip.setBill(bill);
 		triprepo.save(trip);
-		return trip;
+		return trip.getBill();
 	}
 }
