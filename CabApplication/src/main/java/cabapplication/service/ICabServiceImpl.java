@@ -11,13 +11,11 @@ import cabapplication.repository.ICabRepository;
 @Service
 public class ICabServiceImpl implements ICabService
 {
-
 	@Autowired
 	ICabRepository cabrepo;
 
 	public List<Cab> getCab() {
 		return cabrepo.findAll();
-
 	}
 
 	public Cab insertCab(Cab cab) {
