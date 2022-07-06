@@ -21,35 +21,34 @@ public class IDriverController {
 
 	@Autowired
 	IDriverService driverservice;
-	
+
 	@GetMapping("/getdriver")
-	public List<Driver> getDriver()
-	{
+	public List<Driver> getDriver() {
 		return driverservice.getDriver();
 	}
-	@PostMapping(path="/insertdriver")
-	public Driver insertDriver(@RequestBody Driver driver)
-	{
+
+	@PostMapping(path = "/insertdriver")
+	public Driver insertDriver(@RequestBody Driver driver) {
 		return driverservice.insertDriver(driver);
 	}
-	@PutMapping(path="/updatedriver")
-	public Driver updateDriver(@RequestBody Driver driver)
-	{
+
+	@PutMapping(path = "/updatedriver")
+	public Driver updateDriver(@RequestBody Driver driver) {
 		return driverservice.updateDriver(driver);
 	}
-	@DeleteMapping(path="/deletedriver/{driverId}")
-	public String deleteDriver(@PathVariable int driverId)
-	{
+
+	@DeleteMapping(path = "/deletedriver/{driverId}")
+	public String deleteDriver(@PathVariable int driverId) {
 		return driverservice.deleteDriver(driverId);
 	}
-	@GetMapping(path="/viewbestdrivers")
-	public List<Driver> viewBestDrivers()
-	{
+
+	@GetMapping(path = "/viewbestdrivers")
+	public List<Driver> viewBestDrivers() {
 		return driverservice.viewBestDrivers();
 	}
-	@GetMapping(path="/viewdriver/{driverid}")
-	public Driver viewDriver(@PathVariable int driverid)
-	{
+
+	@GetMapping(path = "/viewdriver/{driverid}")
+	public Driver viewDriver(@PathVariable int driverid) {
 		return driverservice.viewDriver(driverid);
 	}
 }
