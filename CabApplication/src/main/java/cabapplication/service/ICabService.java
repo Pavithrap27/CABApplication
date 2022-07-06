@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import cabapplication.entity.Cab;
 import cabapplication.repository.ICabRepository;
@@ -39,13 +40,12 @@ public class ICabService {
 		return "Deleted";
 	}
 
-	public List<Cab> viewCabsOfType(int cabId) {
-		List<Cab> lc = cabrepo.findAll();
-		return lc;
+	public List<Cab> viewCabsOfType(String carType) {
+		 return cabrepo.viewCabsOfType(carType);
 	}
 
-	public Cab countCabsOfType(int cabId) {
-		return cabrepo.findById(cabId).orElseThrow();
+	public int countCabsOfType(String carType) {
+		return cabrepo.countCabsOfType(carType);
 
 	}
 }
