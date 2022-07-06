@@ -4,17 +4,22 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import cabapplication.entity.TripBooking;
-
+import cabapplication.dto.TripBookingDTO;
+import cabapplication.exception.CustomerNotFoundException;
+import cabapplication.exception.TripNotFoundException;
 
 @Service
 public interface ITripService {
-	
-	public List<TripBooking> viewAllTrips();
-	public TripBooking viewTripBooking(int tripBookingId);
-	public TripBooking updateTripBooking(TripBooking tripBooking);
-	public String deleteTripBooking(int tripBookingId);
-	public List<TripBooking> viewAllTrips(int customerId);
-	public double calculateBill(int customerId);
 
+	public List<TripBookingDTO> getAll() throws TripNotFoundException;
+
+	public TripBookingDTO getById(int tripBookingId) throws TripNotFoundException;
+
+	public TripBookingDTO update(TripBookingDTO tripBookingDto) throws TripNotFoundException;
+
+	public String delete(int tripBookingId) throws TripNotFoundException;
+
+	public List<TripBookingDTO> getByCustomerId(int customerId) throws CustomerNotFoundException;
+
+	public double calculateBill(int customerId) throws CustomerNotFoundException;
 }

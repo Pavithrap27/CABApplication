@@ -15,84 +15,84 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cabapplication.entity.Admin;
-import cabapplication.entity.TripBooking;
+import cabapplication.dto.AdminDTO;
+import cabapplication.dto.TripBookingDTO;
 import cabapplication.exception.AdminNotFoundException;
+import cabapplication.exception.CabNotFoundException;
+import cabapplication.exception.CustomerNotFoundException;
+import cabapplication.exception.TripNotFoundException;
 import cabapplication.service.IAdminServiceImpl;
-import cabapplication.service.ITripServiceImpl;
 
 @RestController
 @RequestMapping("admin")
-public class IAdminController 
-{	
-	
+
+public class IAdminController {
+	@Autowired
 	IAdminServiceImpl adminservice;
+
 	@GetMapping("getAdmin")
-	public ResponseEntity<List<Admin>> getAdmin() throws Throwable {
-		List<Admin> admin = (List<Admin>) adminservice.getAdmin();
-		ResponseEntity<List<Admin>> response = new ResponseEntity<List<Admin>>(admin, HttpStatus.OK);
-		return response;
+	public ResponseEntity<List<AdminDTO>> getAll() throws AdminNotFoundException {
+		List<AdminDTO> admin = adminservice.getAll();
+		return new ResponseEntity<>(admin, HttpStatus.OK);
 	}
 
 	@PostMapping("insertAdmin")
-	public ResponseEntity<Admin> insertAdmin(@RequestBody Admin admin) throws Throwable {
-		ResponseEntity<Admin> response = new ResponseEntity<Admin>(adminservice.insertAdmin(admin), HttpStatus.OK);
-		return response;
+	public ResponseEntity<AdminDTO> save(@RequestBody AdminDTO admin) throws AdminNotFoundException {
+		return new ResponseEntity<>(adminservice.save(admin), HttpStatus.OK);
 	}
 
 	@PutMapping("updateAdmin")
-	public ResponseEntity<Admin> updateAdmin(@RequestBody Admin admin) throws Throwable {
-		ResponseEntity<Admin> response = new ResponseEntity<Admin>(adminservice.updateAdmin(admin), HttpStatus.OK);
-		return response;
+	public ResponseEntity<AdminDTO> update(@RequestBody AdminDTO adminDto) throws AdminNotFoundException {
+		return new ResponseEntity<>(adminservice.updateAdmin(adminDto), HttpStatus.OK);
+
 	}
 
 	@DeleteMapping("deleteAdmin")
-	public ResponseEntity<String> deleteAdmin(@RequestBody Admin admin) throws Throwable {
-		adminservice.deleteAdmin(admin);
-		ResponseEntity<String> response = new ResponseEntity<String>("Deleted", HttpStatus.OK);
-		return response;
+	public ResponseEntity<String> delete(@RequestBody AdminDTO adminDto) throws AdminNotFoundException {
+		adminservice.delete(adminDto);
+		return new ResponseEntity<>("Deleted", HttpStatus.OK);
+
 	}
 
 	@GetMapping("viewAdmin/{adminId}")
-	public ResponseEntity<Admin> viewAdmin(@PathVariable int adminId) throws Throwable {
-		ResponseEntity<Admin> response = new ResponseEntity<Admin>(adminservice.viewAdmin(adminId), HttpStatus.OK);
-		return response;
+	public ResponseEntity<AdminDTO> getById(@PathVariable int adminId) throws AdminNotFoundException {
+		return new ResponseEntity<>(adminservice.getById(adminId), HttpStatus.OK);
+
 	}
 
 	@GetMapping("getAllTrips/{customerId}")
-	public ResponseEntity<List<TripBooking>> getAllTrips(@PathVariable int customerId) throws Throwable {
-		List<TripBooking> trips = adminservice.getAllTrips(customerId);
-		ResponseEntity<List<TripBooking>> response = new ResponseEntity<List<TripBooking>>(trips, HttpStatus.OK);
-		return response;
+	public ResponseEntity<List<TripBookingDTO>> getByCustomer(@PathVariable int customerId)
+			throws CustomerNotFoundException {
+		List<TripBookingDTO> trips = adminservice.getAllTrips(customerId);
+		return new ResponseEntity<>(trips, HttpStatus.OK);
 
 	}
 
 	@GetMapping("getTripsCabwise")
-	public ResponseEntity<List<TripBooking>> getTripsCabwise() throws Throwable {
-		List<TripBooking> trips = adminservice.getTripsCabwise();
-		ResponseEntity<List<TripBooking>> response = new ResponseEntity<List<TripBooking>>(trips, HttpStatus.OK);
-		return response;
+	public ResponseEntity<List<TripBookingDTO>> getTripsCabwise() throws CabNotFoundException {
+		List<TripBookingDTO> trips = adminservice.getTripsCabwise();
+		return new ResponseEntity<>(trips, HttpStatus.OK);
+
 	}
 
 	@GetMapping("getTripsDatewise")
-	public ResponseEntity<List<TripBooking>> getTripsDatewise() throws Throwable {
-		List<TripBooking> trips = adminservice.getTripsDatewise();
-		ResponseEntity<List<TripBooking>> response = new ResponseEntity<List<TripBooking>>(trips, HttpStatus.OK);
-		return response;
+	public ResponseEntity<List<TripBookingDTO>> getTripsDatewise() throws TripNotFoundException {
+		List<TripBookingDTO> trips = adminservice.getTripsDatewise();
+		return new ResponseEntity<>(trips, HttpStatus.OK);
 	}
 
 	@GetMapping("getTripsCustomerwise")
-	public ResponseEntity<List<TripBooking>> getTripsCustomerwise() throws Throwable {
-		List<TripBooking> trips = adminservice.getTripsCustomerwise();
-		ResponseEntity<List<TripBooking>> response = new ResponseEntity<List<TripBooking>>(trips, HttpStatus.OK);
-		return response;
+	public ResponseEntity<List<TripBookingDTO>> getTripsCustomerwise() throws CustomerNotFoundException {
+		List<TripBookingDTO> trips = adminservice.getTripsCustomerwise();
+		return new ResponseEntity<>(trips, HttpStatus.OK);
+
 	}
 
 	@GetMapping("getAllTripsForDays")
-	public ResponseEntity<List<TripBooking>> getAllTripsForDays(@PathVariable int customerId,
-			@PathVariable LocalDateTime fromDate, @PathVariable LocalDateTime ToDate) throws Throwable {
-		List<TripBooking> trips = adminservice.getAllTripsForDays(customerId, fromDate, ToDate);
-		ResponseEntity<List<TripBooking>> response = new ResponseEntity<List<TripBooking>>(trips, HttpStatus.OK);
-		return response;
+	public ResponseEntity<List<TripBookingDTO>> getAllTripsForDays(@PathVariable int customerId,
+			@PathVariable LocalDateTime fromDate, @PathVariable LocalDateTime toDate) throws CustomerNotFoundException {
+		List<TripBookingDTO> trips = adminservice.getAllTripsForDays(customerId, fromDate, toDate);
+		return new ResponseEntity<>(trips, HttpStatus.OK);
+
 	}
 }

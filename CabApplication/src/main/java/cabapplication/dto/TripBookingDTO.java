@@ -1,21 +1,24 @@
-package cabapplication.entity;
+package cabapplication.dto;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import org.springframework.stereotype.Component;
 
-@Entity
-@Table(name = "tripbooking")
-public class TripBooking {
-	@Id
-	@GeneratedValue
+import cabapplication.entity.Driver;
+
+@Component
+public class TripBookingDTO extends AbstractUserDTO {
+
+	public TripBookingDTO() {
+		super();
+
+	}
+
+	public TripBookingDTO(String username, String password, String mobileNumber, String email, String address) {
+		super(username, password, mobileNumber, email, address);
+
+	}
+
 	private int tripBookingId;
 	private int customerId;
 	private String fromLocation;
@@ -25,28 +28,7 @@ public class TripBooking {
 	private boolean status;
 	private double distanceInKm;
 	private double bill;
-
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "customer")
-	@JoinColumn(name = "id")
-	public int getCustomerId() {
-		return customerId;
-	}
-
-	public void setCustomerId(int customerId) {
-		this.customerId = customerId;
-	}
-
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn
 	private Driver driver;
-
-	public Driver getDriver() {
-		return driver;
-	}
-
-	public void setDriver(Driver driver) {
-		this.driver = driver;
-	}
 
 	public int getTripBookingId() {
 		return tripBookingId;
@@ -54,6 +36,14 @@ public class TripBooking {
 
 	public void setTripBookingId(int tripBookingId) {
 		this.tripBookingId = tripBookingId;
+	}
+
+	public int getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
 	}
 
 	public String getFromLocation() {
@@ -112,11 +102,12 @@ public class TripBooking {
 		this.bill = bill;
 	}
 
-	@Override
-	public String toString() {
-		return "TripBooking [tripBookingId=" + tripBookingId + ", driver=" + driver + ", fromLocation=" + fromLocation
-				+ ", toLocation=" + toLocation + ", fromDateTime=" + fromDateTime + ", toDateTime=" + toDateTime
-				+ ", status=" + status + ", distanceInKm=" + distanceInKm + ", bill=" + bill + "]";
+	public Driver getDriver() {
+		return driver;
+	}
+
+	public void setDriver(Driver driver) {
+		this.driver = driver;
 	}
 
 }
