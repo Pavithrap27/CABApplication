@@ -17,15 +17,6 @@ public class Driver extends AbstractUser {
 	@JoinColumn
 	private Cab cab;
 	private float rating;
-
-	public Driver() {
-		super();
-		this.driverId=driverId;
-		this.licenceNo=licenceNo;
-		this.cab=cab;
-		this.rating=rating;
-	}
-
 	
 	public int getDriverId() {
 		return driverId;

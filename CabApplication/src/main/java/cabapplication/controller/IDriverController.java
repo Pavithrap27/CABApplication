@@ -22,7 +22,7 @@ import cabapplication.service.IDriverServiceImpl;
 @RequestMapping("driver")
 public class IDriverController {
 
-	
+	@Autowired
 	IDriverServiceImpl driverservice;
 
 	@GetMapping("/getdriver")
