@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import cabapplication.entity.Customer;
+
 @Service
 public interface ICustomerService 
 {
@@ -15,5 +16,6 @@ public interface ICustomerService
 	public List<Customer> viewCustomers();
 	public Customer viewCustomer(int customerId);
 	public Customer validateCustomer(String username, String password);
-	
+
+
 }

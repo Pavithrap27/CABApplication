@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import cabapplication.entity.TripBooking;
+
+
 @Service
 public interface ITripService {
 	
