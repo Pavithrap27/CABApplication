@@ -2,15 +2,12 @@ package cabapplication.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cabapplication.entity.Customer;
-import cabapplication.exception.CustomerNotFoundException;
-import cabapplication.repository.ICustomerRepository;
-
 
 @Service
+<<<<<<< HEAD
 public class ICustomerService {
 	@Autowired
 	ICustomerRepository customerrepo;
@@ -24,7 +21,11 @@ public class ICustomerService {
 			return customer;
 		}
 	}
+=======
+public interface ICustomerService {
+>>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 
+<<<<<<< HEAD
 	public Customer insertCustomer(Customer customer) throws CustomerNotFoundException
 	{
 		if (customer == null) {
@@ -34,7 +35,11 @@ public class ICustomerService {
 			return customer;
 		}
 	}
+=======
+	public Customer insertCustomer(Customer customer);
+>>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 
+<<<<<<< HEAD
 	public Customer updateCustomer(Customer customer) throws CustomerNotFoundException
 	{
 		if(customer == null) {
@@ -54,22 +59,24 @@ public class ICustomerService {
 			return c;
 		}
 	}
+=======
+	public Customer updateCustomer(Customer customer);
+>>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 
+<<<<<<< HEAD
 	public String deleteCustomer(int customerId) throws CustomerNotFoundException
 	{
 		Customer customer = customerrepo.findById(customerId).orElseThrow();
 		if(customer == null)
 		{
 			throw new CustomerNotFoundException("No Customer found");
+=======
+	public String deleteCustomer(int customerId);
+>>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 
-		}
-		else {
-		customerrepo.deleteById(customerId);
-		return "Deleted";
-		}
-	}
-	
+	public List<Customer> viewCustomers();
 
+<<<<<<< HEAD
 	public List<Customer> viewCustomers() throws CustomerNotFoundException {
 		List<Customer> customersList = customerrepo.findAll();
 		if(customersList.isEmpty())
@@ -78,7 +85,11 @@ public class ICustomerService {
 		}
 		return customersList;
 	}
+=======
+	public Customer viewCustomer(int customerId);
+>>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 
+<<<<<<< HEAD
 	public Customer viewCustomer(int customerId) throws CustomerNotFoundException 
 	{
 		Customer customer = customerrepo.findById(customerId).orElseThrow();
@@ -98,4 +109,7 @@ public class ICustomerService {
 		}
 		return customer;
 	}
+=======
+	public Customer validateCustomer(String username, String password);
+>>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 }

@@ -1,18 +1,24 @@
-package cabapplication.entity;
+package cabapplication.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import org.springframework.stereotype.Component;
 
-@Entity
-public class Cab {
-	@Id
-	@GeneratedValue
+@Component
+public class CabDTO extends AbstractUserDTO {
+
+	public CabDTO() {
+		super();
+
+	}
+
+	public CabDTO(String username, String password, String mobileNumber, String email, String address) {
+		super(username, password, mobileNumber, email, address);
+
+	}
+
 	private int cabId;
 	private String carType;
 	private float perKmRate;
-   
-	
+
 	public int getCabId() {
 		return cabId;
 	}
@@ -35,11 +41,6 @@ public class Cab {
 
 	public void setPerKmRate(float perKmRate) {
 		this.perKmRate = perKmRate;
-	}
-
-	@Override
-	public String toString() {
-		return "Cab [cabId=" + cabId + ", carType=" + carType + ", perKmRate=" + perKmRate + "]";
 	}
 
 }

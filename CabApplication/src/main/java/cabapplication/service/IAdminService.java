@@ -3,26 +3,28 @@ package cabapplication.service;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
+import cabapplication.dto.AdminDTO;
+import cabapplication.dto.TripBookingDTO;
 import cabapplication.entity.Admin;
 import cabapplication.entity.TripBooking;
 import cabapplication.exception.AdminNotFoundException;
 import cabapplication.exception.CabNotFoundException;
 import cabapplication.exception.CustomerNotFoundException;
 import cabapplication.exception.TripNotFoundException;
-import cabapplication.repository.IAdminRepository;
 
-@Service
-public class IAdminService {
+public interface IAdminService {
 
+<<<<<<< HEAD
 	@Autowired
 	IAdminRepository adminrepo;
 	ITripService tripservice;
 	
 	String message = "Admin not found";
+=======
+	public List<AdminDTO> getAll() throws AdminNotFoundException;
+>>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 
+<<<<<<< HEAD
 	public List<Admin> getAdmin() throws AdminNotFoundException {
 		List<Admin> admin = adminrepo.findAll();
 		if (admin.isEmpty()) {
@@ -31,7 +33,11 @@ public class IAdminService {
 			return admin;
 		}
 	}
+=======
+	public AdminDTO save(Admin admin) throws AdminNotFoundException;
+>>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 
+<<<<<<< HEAD
 	public Admin insertAdmin(Admin admin) throws AdminNotFoundException {
 		if (admin == null) {
 			throw new AdminNotFoundException(message);
@@ -39,9 +45,13 @@ public class IAdminService {
 			adminrepo.save(admin);
 			return admin;
 		}
+=======
+	public AdminDTO update(Admin admin) throws AdminNotFoundException;
+>>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 
-	}
+	public String delete(Admin admin) throws AdminNotFoundException;
 
+<<<<<<< HEAD
 	public Admin updateAdmin(Admin admin) throws AdminNotFoundException {
 		if (admin == null) {
 			throw new AdminNotFoundException(message);
@@ -57,7 +67,11 @@ public class IAdminService {
 			return adminupdated;
 		}
 	}
+=======
+	public AdminDTO getById(int adminId) throws AdminNotFoundException;
+>>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 
+<<<<<<< HEAD
 	public String deleteAdmin(Admin admin) throws AdminNotFoundException {
 		if (admin == null) {
 			throw new AdminNotFoundException(message);
@@ -65,11 +79,15 @@ public class IAdminService {
 			adminrepo.delete(admin);
 			return "Deleted";
 		}
+=======
+	public List<TripBookingDTO> getByCustomerId(int customerId) throws CustomerNotFoundException;
+>>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 
-	}
+	public List<TripBookingDTO> getTripsCabwise() throws CabNotFoundException;
 
-	public Admin viewAdmin(int adminId) throws AdminNotFoundException {
+	public List<TripBookingDTO> getTripsDatewise() throws TripNotFoundException;
 
+<<<<<<< HEAD
 		Admin admin = adminrepo.findById(adminId).orElseThrow();
 		if (admin == null) {
 			throw new AdminNotFoundException(message);
@@ -77,51 +95,12 @@ public class IAdminService {
 			return admin;
 		}
 	}
+=======
+	public List<TripBookingDTO> getTripsCustomerwise() throws CustomerNotFoundException;
+>>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 
-	public List<TripBooking> getAllTrips(int customerId) throws CustomerNotFoundException {
-		List<TripBooking> trips = tripservice.viewAllTrips(customerId);
-		if (trips.isEmpty()) {
-			throw new CustomerNotFoundException("Customer not found");
-		} else {
-			return trips;
-		}
-	}
+	public List<TripBooking> getAllTripsForDays() throws TripNotFoundException;
 
-	public List<TripBooking> getTripsCabwise() throws CabNotFoundException {
-		List<TripBooking> trips = adminrepo.getTripsCabwise();
-		if (trips.isEmpty()) {
-			throw new CabNotFoundException("Cab not found");
-		} else {
-			return trips;
-		}
-	}
-
-	public List<TripBooking> getTripsDatewise() throws TripNotFoundException {
-		List<TripBooking> trips = adminrepo.getTripsDatewise();
-		if (trips.isEmpty()) {
-			throw new TripNotFoundException("Trip not found");
-		} else {
-			return trips;
-		}
-
-	}
-
-	public List<TripBooking> getTripsCustomerwise() throws CustomerNotFoundException {
-		List<TripBooking> trips = adminrepo.getTripCustomerwise();
-		if (trips.isEmpty()) {
-			throw new CustomerNotFoundException("Customer not found");
-		} else {
-			return trips;
-		}
-	}
-
-	public List<TripBooking> getAllTripsForDays(int customerId, LocalDateTime fromDate, LocalDateTime ToDate)
-			throws CustomerNotFoundException {
-		List<TripBooking> trips = adminrepo.getAllTripsForDays(customerId, fromDate, ToDate);
-		if (trips.isEmpty()) {
-			throw new CustomerNotFoundException("Customer not found");
-		} else {
-			return trips;
-		}
-	}
+	public List<TripBookingDTO> getAllTripsForDays(int customerId, LocalDateTime fromDate, LocalDateTime ToDate)
+			throws CustomerNotFoundException;
 }

@@ -6,3 +6,4 @@ public class CabNotFoundException extends Exception {
 	}
 
 }
+

@@ -13,49 +13,50 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import cabapplication.entity.Cab;
-import cabapplication.service.ICabService;
+import cabapplication.service.ICabServiceImpl;
 
 @RestController
 @RequestMapping("/cab")
 
 public class ICabController {
 	@Autowired
-	ICabService cabservice;
+	ICabServiceImpl cabservice;
 
-	@GetMapping("getCabs")
+	@GetMapping("/getcabs")
 	public List<Cab> getCab() {
 		return cabservice.getCab();
 	}
 
-	@PostMapping(path="insertcab")
-	public Cab insertCab(@RequestBody Cab cab)
-	{
+
+	@PostMapping(path="/insertcab")
+	public Cab insertCab(@RequestBody Cab cab) {
 
 		return cabservice.insertCab(cab);
 	}
 
 	@PutMapping(path = "/updatecab")
 	public Cab updateCab(@RequestBody Cab cab) {
-		Cab cabupdated = cabservice.updateCab(cab);
-		return cabupdated;
+		return cabservice.updateCab(cab);
 	}
 
 	@DeleteMapping(path = "/deletecab")
-	public String deleteCab(int cabId) {
+	public String deleteCab(@PathVariable int cabId) {
 		cabservice.deleteCab(cabId);
 		return "Deleted";
 	}
 
-	@GetMapping(path = "/viewcabsoftype/{cabId}")
-	public List<Cab> viewCabsOfType(@PathVariable int cabId) {
-		List<Cab> cabs = cabservice.viewCabsOfType(cabId);
-		return cabs;
+	@GetMapping(path = "/viewcabsoftype/{carType}")
+	public List<Cab> viewCabsOfType(@PathVariable String carType) {
+		return cabservice.viewCabsOfType(carType);
+
+
 	}
 
-	@GetMapping(path = "/countofcabstype/{cabId}")
-	public Cab countCabsOfType(@PathVariable int cabId) {
-		Cab cabs = cabservice.countCabsOfType(cabId);
-		return cabs;
+	@GetMapping(path = "/countofcabstype/{carType}")
+	public int countCabsOfType(@PathVariable String carType) {
+
+		return cabservice.countCabsOfType(carType);
+
 	}
 
 }
