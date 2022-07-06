@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import cabapplication.entity.Admin;
 import cabapplication.entity.TripBooking;
 import cabapplication.exception.AdminNotFoundException;
+import cabapplication.exception.CabNotFoundException;
+import cabapplication.exception.CustomerNotFoundException;
+import cabapplication.exception.TripNotFoundException;
 import cabapplication.repository.IAdminRepository;
 
 @Service
@@ -65,7 +68,7 @@ public class IAdminService {
 
 	public Admin viewAdmin(int adminId) throws AdminNotFoundException {
 
-		Admin admin = adminrepo.findById(adminId).get();
+		Admin admin = adminrepo.findById(adminId).orElseThrow();
 		if (admin == null) {
 			throw new AdminNotFoundException("Admin not found");
 		} else {
@@ -73,48 +76,48 @@ public class IAdminService {
 		}
 	}
 
-	public List<TripBooking> getAllTrips(int customerId) throws AdminNotFoundException {
+	public List<TripBooking> getAllTrips(int customerId) throws CustomerNotFoundException {
 		List<TripBooking> trips = tripservice.viewAllTrips(customerId);
 		if (trips.isEmpty()) {
-			throw new AdminNotFoundException("Admin not found");
+			throw new CustomerNotFoundException("Customer not found");
 		} else {
 			return trips;
 		}
 	}
 
-	public List<TripBooking> getTripsCabwise() throws AdminNotFoundException {
+	public List<TripBooking> getTripsCabwise() throws CabNotFoundException {
 		List<TripBooking> trips = adminrepo.getTripsCabwise();
 		if (trips.isEmpty()) {
-			throw new AdminNotFoundException("Admin not found");
+			throw new CabNotFoundException("Cab not found");
 		} else {
 			return trips;
 		}
 	}
 
-	public List<TripBooking> getTripsDatewise() throws AdminNotFoundException {
+	public List<TripBooking> getTripsDatewise() throws TripNotFoundException {
 		List<TripBooking> trips = adminrepo.getTripsDatewise();
 		if (trips.isEmpty()) {
-			throw new AdminNotFoundException("Admin not found");
+			throw new TripNotFoundException("Trip not found");
 		} else {
 			return trips;
 		}
 
 	}
 
-	public List<TripBooking> getTripsCustomerwise() throws AdminNotFoundException {
+	public List<TripBooking> getTripsCustomerwise() throws CustomerNotFoundException {
 		List<TripBooking> trips = adminrepo.getTripCustomerwise();
 		if (trips.isEmpty()) {
-			throw new AdminNotFoundException("Admin not found");
+			throw new CustomerNotFoundException("Customer not found");
 		} else {
 			return trips;
 		}
 	}
 
 	public List<TripBooking> getAllTripsForDays(int customerId, LocalDateTime fromDate, LocalDateTime ToDate)
-			throws AdminNotFoundException {
+			throws CustomerNotFoundException {
 		List<TripBooking> trips = adminrepo.getAllTripsForDays(customerId, fromDate, ToDate);
 		if (trips.isEmpty()) {
-			throw new AdminNotFoundException("Admin not found");
+			throw new CustomerNotFoundException("Customer not found");
 		} else {
 			return trips;
 		}
