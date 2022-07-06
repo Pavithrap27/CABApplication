@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cabapplication.entity.TripBooking;
 import cabapplication.repository.ITripRepository;
-import cabapplication.service.ITripService;
+import cabapplication.service.ITripServiceImpl;
 
 @RestController
 @RequestMapping("tripbooking")
 public class ITripController {
-	@Autowired
-	ITripService tripservice;
+	
+	ITripServiceImpl tripservice;
 
 	@GetMapping("viewAllTrips")
 	public ResponseEntity<List<TripBooking>> viewAllTrips() throws Throwable {
@@ -68,9 +68,9 @@ public class ITripController {
 	}
 
 	@GetMapping("calculateBill/{customerId}")
-	public ResponseEntity<Float> calculateBill(@PathVariable int customerId) throws Throwable {
-		float bill = tripservice.calculateBill(customerId);
-		ResponseEntity<Float> response = new ResponseEntity<Float>(bill, HttpStatus.OK);
+	public ResponseEntity<Double> calculateBill(@PathVariable int customerId) throws Throwable {
+		double bill = tripservice.calculateBill(customerId);
+		ResponseEntity<Double> response = new ResponseEntity<>(bill, HttpStatus.OK);
 		return response;
 	}
 

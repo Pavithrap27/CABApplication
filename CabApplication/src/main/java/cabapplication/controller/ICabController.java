@@ -13,22 +13,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import cabapplication.entity.Cab;
-import cabapplication.service.ICabService;
+import cabapplication.service.ICabServiceImpl;
 
 @RestController
 @RequestMapping("/cab")
 
 public class ICabController {
 	@Autowired
-	ICabService cabservice;
+	ICabServiceImpl cabservice;
 
 	@GetMapping("/getcabs")
 	public List<Cab> getCab() {
 		return cabservice.getCab();
 	}
 
+
 	@PostMapping(path="/insertcab")
 	public Cab insertCab(@RequestBody Cab cab) {
+
 		return cabservice.insertCab(cab);
 	}
 
@@ -38,7 +40,7 @@ public class ICabController {
 	}
 
 	@DeleteMapping(path = "/deletecab")
-	public String deleteCab(int cabId) {
+	public String deleteCab(@PathVariable int cabId) {
 		cabservice.deleteCab(cabId);
 		return "Deleted";
 	}
@@ -46,11 +48,15 @@ public class ICabController {
 	@GetMapping(path = "/viewcabsoftype/{carType}")
 	public List<Cab> viewCabsOfType(@PathVariable String carType) {
 		return cabservice.viewCabsOfType(carType);
+
+
 	}
 
 	@GetMapping(path = "/countofcabstype/{carType}")
 	public int countCabsOfType(@PathVariable String carType) {
+
 		return cabservice.countCabsOfType(carType);
+
 	}
 
 }

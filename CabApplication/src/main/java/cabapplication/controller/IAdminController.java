@@ -18,26 +18,25 @@ import org.springframework.web.bind.annotation.RestController;
 import cabapplication.entity.Admin;
 import cabapplication.entity.TripBooking;
 import cabapplication.exception.AdminNotFoundException;
-import cabapplication.service.IAdminService;
+import cabapplication.service.IAdminServiceImpl;
+import cabapplication.service.ITripServiceImpl;
 
 @RestController
 @RequestMapping("admin")
-public class IAdminController {
-
-	private static final HttpStatus HttpSatus = null;
-	@Autowired
-	IAdminService adminservice;
-
+public class IAdminController 
+{	
+	
+	IAdminServiceImpl adminservice;
 	@GetMapping("getAdmin")
 	public ResponseEntity<List<Admin>> getAdmin() throws Throwable {
-		List<Admin> admin = adminservice.getAdmin();
+		List<Admin> admin = (List<Admin>) adminservice.getAdmin();
 		ResponseEntity<List<Admin>> response = new ResponseEntity<List<Admin>>(admin, HttpStatus.OK);
 		return response;
 	}
 
 	@PostMapping("insertAdmin")
 	public ResponseEntity<Admin> insertAdmin(@RequestBody Admin admin) throws Throwable {
-		ResponseEntity<Admin> response = new ResponseEntity<Admin>(adminservice.insertAdmin(admin), HttpSatus.OK);
+		ResponseEntity<Admin> response = new ResponseEntity<Admin>(adminservice.insertAdmin(admin), HttpStatus.OK);
 		return response;
 	}
 
