@@ -20,11 +20,13 @@ public class IAdminService {
 	@Autowired
 	IAdminRepository adminrepo;
 	ITripService tripservice;
+	
+	String message = "Admin not found";
 
 	public List<Admin> getAdmin() throws AdminNotFoundException {
 		List<Admin> admin = adminrepo.findAll();
 		if (admin.isEmpty()) {
-			throw new AdminNotFoundException("Admin not found");
+			throw new AdminNotFoundException(message);
 		} else {
 			return admin;
 		}
@@ -32,7 +34,7 @@ public class IAdminService {
 
 	public Admin insertAdmin(Admin admin) throws AdminNotFoundException {
 		if (admin == null) {
-			throw new AdminNotFoundException("Admin not found");
+			throw new AdminNotFoundException(message);
 		} else {
 			adminrepo.save(admin);
 			return admin;
@@ -42,7 +44,7 @@ public class IAdminService {
 
 	public Admin updateAdmin(Admin admin) throws AdminNotFoundException {
 		if (admin == null) {
-			throw new AdminNotFoundException("Admin not found");
+			throw new AdminNotFoundException(message);
 		} else {
 			int index = admin.getAdminId();
 			Admin adminupdated = adminrepo.findById(index).orElseThrow();
@@ -58,7 +60,7 @@ public class IAdminService {
 
 	public String deleteAdmin(Admin admin) throws AdminNotFoundException {
 		if (admin == null) {
-			throw new AdminNotFoundException("Admin not found");
+			throw new AdminNotFoundException(message);
 		} else {
 			adminrepo.delete(admin);
 			return "Deleted";
@@ -70,7 +72,7 @@ public class IAdminService {
 
 		Admin admin = adminrepo.findById(adminId).orElseThrow();
 		if (admin == null) {
-			throw new AdminNotFoundException("Admin not found");
+			throw new AdminNotFoundException(message);
 		} else {
 			return admin;
 		}

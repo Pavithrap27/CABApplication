@@ -19,7 +19,7 @@ public class ICustomerService {
 	{
 		List<Customer> customer = customerrepo.findAll();
 		if(customer.isEmpty()) {
-			throw new CustomerNotFoundException("Customer not found");
+			throw new CustomerNotFoundException("No Customer found");
 		} else {
 			return customer;
 		}
@@ -28,7 +28,7 @@ public class ICustomerService {
 	public Customer insertCustomer(Customer customer) throws CustomerNotFoundException
 	{
 		if (customer == null) {
-			throw new CustomerNotFoundException("Customer not found");
+			throw new CustomerNotFoundException("No Customer found");
 		} else {
 			customerrepo.save(customer);
 			return customer;
@@ -38,7 +38,7 @@ public class ICustomerService {
 	public Customer updateCustomer(Customer customer) throws CustomerNotFoundException
 	{
 		if(customer == null) {
-			throw new CustomerNotFoundException("Customer not found");
+			throw new CustomerNotFoundException("No Customer found");
 		}
 		else
 		{
@@ -60,7 +60,7 @@ public class ICustomerService {
 		Customer customer = customerrepo.findById(customerId).orElseThrow();
 		if(customer == null)
 		{
-			throw new CustomerNotFoundException("Customer not found");
+			throw new CustomerNotFoundException("No Customer found");
 
 		}
 		else {
@@ -74,7 +74,7 @@ public class ICustomerService {
 		List<Customer> customersList = customerrepo.findAll();
 		if(customersList.isEmpty())
 		{
-			throw new CustomerNotFoundException("Customer not found");
+			throw new CustomerNotFoundException("No Customer found");
 		}
 		return customersList;
 	}
@@ -84,7 +84,7 @@ public class ICustomerService {
 		Customer customer = customerrepo.findById(customerId).orElseThrow();
 		if(customer == null)
 		{
-			throw new CustomerNotFoundException("Customer not found");
+			throw new CustomerNotFoundException("No Customer found");
 		}
 		return customer;
 	}
@@ -94,7 +94,7 @@ public class ICustomerService {
 		Customer customer = customerrepo.validateCustomer(username, password);
 		if(customer == null)
 		{
-			throw new CustomerNotFoundException("Customer not found");
+			throw new CustomerNotFoundException("No Customer found");
 		}
 		return customer;
 	}
