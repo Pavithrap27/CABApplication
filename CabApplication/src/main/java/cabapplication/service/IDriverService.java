@@ -4,16 +4,18 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import cabapplication.dto.DriverDTO;
 import cabapplication.entity.Driver;
 import cabapplication.exception.DriverNotFoundException;
-@Service
+
 public interface IDriverService {
 	
-	public List<Driver> getDriver() throws DriverNotFoundException;
-	public Driver insertDriver(Driver driver)throws DriverNotFoundException;
-	public Driver updateDriver(Driver driver)throws DriverNotFoundException;
-	public String deleteDriver(int driverId)throws DriverNotFoundException;
-	public List<Driver> viewBestDrivers()throws DriverNotFoundException;
-	public Driver viewDriver(int driverid)throws DriverNotFoundException;
+	public List<DriverDTO> getAll() throws DriverNotFoundException;
+	public DriverDTO save(DriverDTO driverDto)throws DriverNotFoundException;
+	public DriverDTO update(DriverDTO driver)throws DriverNotFoundException;
+	public String delete(int driverId)throws DriverNotFoundException;
+	public List<DriverDTO> viewBestDrivers()throws DriverNotFoundException;
+	public DriverDTO viewDriver(int driverid)throws DriverNotFoundException;
+	
 
 }

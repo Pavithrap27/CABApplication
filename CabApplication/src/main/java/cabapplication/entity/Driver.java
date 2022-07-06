@@ -9,6 +9,16 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class Driver extends AbstractUser {
+
+	public Driver() {
+		super();
+
+	}
+
+	public Driver(String username, String password, String mobileNumber, String email, String address) {
+		super(username, password, mobileNumber, email, address);
+	}
+
 	@Id
 	@GeneratedValue
 	private int driverId;
@@ -16,17 +26,8 @@ public class Driver extends AbstractUser {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn
 	private Cab cab;
-	private float rating;
+	private double rating;
 
-	public Driver() {
-		super();
-		this.driverId=driverId;
-		this.licenceNo=licenceNo;
-		this.cab=cab;
-		this.rating=rating;
-	}
-
-	
 	public int getDriverId() {
 		return driverId;
 	}
@@ -51,11 +52,11 @@ public class Driver extends AbstractUser {
 		this.cab = cab;
 	}
 
-	public float getRating() {
+	public double getRating() {
 		return rating;
 	}
 
-	public void setRating(float rating) {
+	public void setRating(double rating) {
 		this.rating = rating;
 	}
 

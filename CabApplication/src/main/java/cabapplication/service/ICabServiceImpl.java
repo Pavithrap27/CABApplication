@@ -12,7 +12,9 @@ import cabapplication.repository.ICabRepository;
 @Service
 public abstract class ICabServiceImpl implements ICabService
 {
+
 	@Autowired
+
 	ICabRepository cabrepo;
 	String message="Cab not found";
 	private Object cabs;
