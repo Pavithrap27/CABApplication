@@ -17,18 +17,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cabapplication.dto.AdminDTO;
 import cabapplication.dto.TripBookingDTO;
-import cabapplication.entity.Admin;
 import cabapplication.exception.AdminNotFoundException;
 import cabapplication.exception.CabNotFoundException;
 import cabapplication.exception.CustomerNotFoundException;
 import cabapplication.exception.TripNotFoundException;
-import cabapplication.service.IAdminService;
+import cabapplication.service.IAdminServiceImpl;
 
 @RestController
 @RequestMapping("admin")
+
 public class IAdminController {
-    @Autowired
-	IAdminService adminservice;
+	@Autowired
+	IAdminServiceImpl adminservice;
 
 	@GetMapping("getAdmin")
 	public ResponseEntity<List<AdminDTO>> getAll() throws AdminNotFoundException {
@@ -39,13 +39,12 @@ public class IAdminController {
 	@PostMapping("insertAdmin")
 	public ResponseEntity<AdminDTO> save(@RequestBody AdminDTO admin) throws AdminNotFoundException {
 		return new ResponseEntity<>(adminservice.save(admin), HttpStatus.OK);
-		
 	}
 
 	@PutMapping("updateAdmin")
-	public ResponseEntity<AdminDTO> update(@RequestBody AdminDTO adminDto) throws AdminNotFoundException{
-		 return new ResponseEntity<>(adminservice.updateAdmin(adminDto), HttpStatus.OK);
-		
+	public ResponseEntity<AdminDTO> update(@RequestBody AdminDTO adminDto) throws AdminNotFoundException {
+		return new ResponseEntity<>(adminservice.updateAdmin(adminDto), HttpStatus.OK);
+
 	}
 
 	@DeleteMapping("deleteAdmin")
@@ -58,13 +57,14 @@ public class IAdminController {
 	@GetMapping("viewAdmin/{adminId}")
 	public ResponseEntity<AdminDTO> getById(@PathVariable int adminId) throws AdminNotFoundException {
 		return new ResponseEntity<>(adminservice.getById(adminId), HttpStatus.OK);
-		
+
 	}
 
 	@GetMapping("getAllTrips/{customerId}")
-	public ResponseEntity<List<TripBookingDTO>> getByCustomer(@PathVariable int customerId) throws CustomerNotFoundException {
+	public ResponseEntity<List<TripBookingDTO>> getByCustomer(@PathVariable int customerId)
+			throws CustomerNotFoundException {
 		List<TripBookingDTO> trips = adminservice.getAllTrips(customerId);
-		return  new ResponseEntity<>(trips, HttpStatus.OK);
+		return new ResponseEntity<>(trips, HttpStatus.OK);
 
 	}
 
@@ -72,7 +72,7 @@ public class IAdminController {
 	public ResponseEntity<List<TripBookingDTO>> getTripsCabwise() throws CabNotFoundException {
 		List<TripBookingDTO> trips = adminservice.getTripsCabwise();
 		return new ResponseEntity<>(trips, HttpStatus.OK);
-		
+
 	}
 
 	@GetMapping("getTripsDatewise")
@@ -82,17 +82,17 @@ public class IAdminController {
 	}
 
 	@GetMapping("getTripsCustomerwise")
-	public ResponseEntity<List<TripBookingDTO>> getTripsCustomerwise() throws  CustomerNotFoundException {
+	public ResponseEntity<List<TripBookingDTO>> getTripsCustomerwise() throws CustomerNotFoundException {
 		List<TripBookingDTO> trips = adminservice.getTripsCustomerwise();
 		return new ResponseEntity<>(trips, HttpStatus.OK);
-		
+
 	}
 
 	@GetMapping("getAllTripsForDays")
 	public ResponseEntity<List<TripBookingDTO>> getAllTripsForDays(@PathVariable int customerId,
-			@PathVariable LocalDateTime fromDate, @PathVariable LocalDateTime ToDate) throws CustomerNotFoundException{
-		List<TripBookingDTO> trips = adminservice.getAllTripsForDays(customerId, fromDate, ToDate);
+			@PathVariable LocalDateTime fromDate, @PathVariable LocalDateTime toDate) throws CustomerNotFoundException {
+		List<TripBookingDTO> trips = adminservice.getAllTripsForDays(customerId, fromDate, toDate);
 		return new ResponseEntity<>(trips, HttpStatus.OK);
-		
+
 	}
 }

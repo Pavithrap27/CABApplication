@@ -15,17 +15,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import cabapplication.dto.TripBookingDTO;
-import cabapplication.entity.TripBooking;
 import cabapplication.exception.CustomerNotFoundException;
 import cabapplication.exception.TripNotFoundException;
-import cabapplication.repository.ITripRepository;
-import cabapplication.service.ITripService;
+import cabapplication.service.ITripServiceImpl;
 
 @RestController
 @RequestMapping("tripbooking")
 public class ITripController {
+	
 	@Autowired
-	ITripService tripservice;
+	ITripServiceImpl tripservice;
 
 	@GetMapping("viewAllTrips")
 	public ResponseEntity<List<TripBookingDTO>> getAll() throws TripNotFoundException{
@@ -65,10 +64,8 @@ public class ITripController {
 	}
 
 	@GetMapping("calculateBill/{customerId}")
-	public ResponseEntity<Double> calculateBill(@PathVariable int customerId) throws CustomerNotFoundException{
-		double bill = tripservice.calculateBill(customerId);
-		return new ResponseEntity<>(bill, HttpStatus.OK);
-		
+	public ResponseEntity<Double> calculateBill(int customerId) throws CustomerNotFoundException
+	{
+		return new ResponseEntity<>(tripservice.calculateBill(customerId), HttpStatus.OK);
 	}
-
 }

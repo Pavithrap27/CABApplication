@@ -2,52 +2,22 @@ package cabapplication.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cabapplication.entity.Customer;
-import cabapplication.repository.ICustomerRepository;
-
 
 @Service
-public class ICustomerService {
-	@Autowired
-	ICustomerRepository customerrepo;
+public interface ICustomerService {
 
-	public Customer insertCustomer(Customer customer) {
-		return customerrepo.save(customer);
-	}
+	public Customer insertCustomer(Customer customer);
 
-	public Customer updateCustomer(Customer customer) {
-		int id=customer.getCustomerId();
-		Customer c=customerrepo.findById(id).orElseThrow();
-		c.setAddress(customer.getAddress());
-		c.setEmail(customer.getEmail());
-		c.setMobileNumber(customer.getMobileNumber());
-		c.setPassword(customer.getPassword());
-		c.setUsername(customer.getUsername());
-		customerrepo.save(c);
-		return c;
-	}
+	public Customer updateCustomer(Customer customer);
 
-	public String deleteCustomer(int customerId) {
-		Customer c = customerrepo.findById(customerId).orElseThrow();
-		customerrepo.deleteById(customerId);
-		return "Deleted";
-	}
+	public String deleteCustomer(int customerId);
 
-	public List<Customer> getCustomers() {
-		List<Customer> lc =customerrepo.findAll();
-		return lc;
-	}
+	public List<Customer> viewCustomers();
 
-	public Customer viewCustomer(int customerId) {
-		return customerrepo.findById(customerId).orElseThrow();
-	}
+	public Customer viewCustomer(int customerId);
 
-	public Customer validateCustomer(String username, String password) {
-		Customer customer = customerrepo.validateCustomer(username, password);
-
-		return customer;
-	}
+	public Customer validateCustomer(String username, String password);
 }
