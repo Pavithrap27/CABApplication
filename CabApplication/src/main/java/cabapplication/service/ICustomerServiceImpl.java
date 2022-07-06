@@ -5,8 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cabapplication.dto.CustomerDTO;
 import cabapplication.entity.Customer;
+import cabapplication.exception.AdminNotFoundException;
+import cabapplication.exception.CustomerNotFoundException;
 import cabapplication.repository.ICustomerRepository;
+import cabapplication.utils.Converter;
 
 
 @Service
@@ -14,41 +18,65 @@ public class ICustomerServiceImpl implements ICustomerService
 {
 	@Autowired
 	ICustomerRepository customerrepo;
-
-	public Customer insertCustomer(Customer customer) {
-		return customerrepo.save(customer);
+	@Autowired
+	Converter converter;
+	
+	@Override
+	public List<CustomerDTO> getAll() throws CustomerNotFoundException {
+		List<CustomerDTO> customerDto = converter.convertCustomersToDTO(customerrepo.findAll());
+		if (customerDto.isEmpty()) {
+			throw new CustomerNotFoundException("No Customer available");
+		} else {
+			return customerDto;
+		}
 	}
+	public CustomerDTO save(CustomerDTO customerDto) throws CustomerNotFoundException {
+		if (customerDto == null) {
+			throw new CustomerNotFoundException("Customer Does not exist");
+		} else {
+			customerrepo.save(converter.convertCustomerToEntity(customerDto));
+			return customerDto;
+		}
 
-	public Customer updateCustomer(Customer customer) {
+	}
+	
+	public CustomerDTO updateCustomer(CustomerDTO customerDto)throws CustomerNotFoundException {
+		if (customerDto == null) {
+			throw new CustomerNotFoundException("No Customer found");
+		} else {
+			Customer customer = converter.convertCustomerToEntity(customerDto);
 		int id = customer.getCustomerId();
-		Customer c = customerrepo.findById(id).orElseThrow();
-		c.setCustomerId(c.getCustomerId());
-		c.setEmail(customer.getEmail());
-		c.setAddress(customer.getAddress());
-		c.setMobileNumber(customer.getMobileNumber());
-		c.setPassword(customer.getPassword());
-		c.setUsername(customer.getUsername());
-		customerrepo.save(c);
-		return c;
+		Customer customerUpdated = customerrepo.findById(id).orElseThrow();
+		customerUpdated.setCustomerId(customerUpdated.getCustomerId());
+		customerUpdated.setEmail(customer.getEmail());
+		customerUpdated.setAddress(customer.getAddress());
+		customerUpdated.setMobileNumber(customer.getMobileNumber());
+		customerUpdated.setPassword(customer.getPassword());
+		customerUpdated.setUsername(customer.getUsername());
+		customerrepo.save(customerUpdated);
+		return converter.convertCustomerToDto(customerUpdated);
+		}
 	}
 
-	public String deleteCustomer(int customerId) {
-		Customer customer = customerrepo.findById(customerId).orElseThrow();
-		customerrepo.deleteById(customerId);
-		return "Deleted";
+	public String delete(CustomerDTO customerDto)throws CustomerNotFoundException{
+		if (customerDto == null) {
+			throw new CustomerNotFoundException("Customer not found");
+		} else {
+			customerrepo.delete(converter.convertCustomerToEntity(customerDto));
+			return "Deleted";
+		}
 	}
-
-	public List<Customer> viewCustomers() {
-		return customerrepo.findAll();
-	}
-
-	public Customer viewCustomer(int customerId) {
+	public CustomerDTO viewCustomer(CustomerDTO customerDto)throws CustomerNotFoundException {
+		if (customerDto == null) {
+			throw new CustomerNotFoundException("Customer not found");
+		} else {
 		return customerrepo.findById(customerId).orElseThrow();
 	}
-
-	public Customer validateCustomer(String username, String password) {
-		Customer customer = customerrepo.validateCustomer(username, password);
+	}
+	public CustomerDTO validate(String username, String password) {
+		CustomerDTO customer = customerrepo.validate(username, password);
 
 		return customer;
 	}
+	
 }

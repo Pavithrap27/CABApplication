@@ -6,8 +6,10 @@ import java.util.List;
 import org.springframework.beans.BeanUtils;
 
 import cabapplication.dto.AdminDTO;
+import cabapplication.dto.CustomerDTO;
 import cabapplication.dto.TripBookingDTO;
 import cabapplication.entity.Admin;
+import cabapplication.entity.Customer;
 import cabapplication.entity.TripBooking;
 
 public class Converter {
@@ -80,6 +82,41 @@ public class Converter {
 			
 		}
 		return trip;
+	}
+	
+	public CustomerDTO convertCustomerToDto(Customer customer)
+	{
+		CustomerDTO customerto=new CustomerDTO();
+		BeanUtils.copyProperties(customer, customerto);
+		return customerto;
+		
+	}
+	public List<CustomerDTO> convertCustomersToDTO(List<Customer> customers)
+	{
+		List<CustomerDTO> listDto =new ArrayList<>();
+		for(Customer customer:customers)
+		{
+			listDto.add((CustomerDTO) convertCustomersToDTO(customers));
+		}
+		return listDto;
+	}
+	public Customer convertCustomerToEntity(CustomerDTO customerDto)
+	{
+		Customer customer=new Customer();
+		BeanUtils.copyProperties(customerDto, customer);
+		return customer;
+	}
+	
+	public List<Customer> converCustomerstToEntity(List<CustomerDTO> listDto)
+	{
+
+		List<Customer> list =new ArrayList<>();
+		for(CustomerDTO customerDto:listDto)
+		{
+			list.add(convertCustomerToEntity(customerDto));
+			
+		}
+		return list;
 	}
 
 }
