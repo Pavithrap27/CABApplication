@@ -19,12 +19,14 @@ public class IDriverServiceImpl implements IDriverService
 
 	@Autowired
 	IDriverRepository driverrepo;
+	
+	String message="Driver not found";
 
 	public List<Driver> getDriver() throws DriverNotFoundException
 	{
 		List<Driver> driver = driverrepo.findAll();
 		if (driver.isEmpty()) {
-			throw new DriverNotFoundException("Driver not found");
+			throw new DriverNotFoundException(message);
 		} else {
 			return driver;
 		}
@@ -33,7 +35,7 @@ public class IDriverServiceImpl implements IDriverService
 	public Driver insertDriver(Driver driver)throws DriverNotFoundException
 	{
 		if (driver == null) {
-			throw new DriverNotFoundException("Driver not found");
+			throw new DriverNotFoundException(message);
 		} else {
 			driverrepo.save(driver);
 			return driver;
@@ -43,7 +45,7 @@ public class IDriverServiceImpl implements IDriverService
 	public Driver updateDriver(Driver driver) throws DriverNotFoundException
 	{
 		if (driver == null) {
-			throw new DriverNotFoundException("Driver not found");
+			throw new DriverNotFoundException(message);
 		} 
 		else 
 		{
@@ -67,7 +69,7 @@ public class IDriverServiceImpl implements IDriverService
 		Driver driver = driverrepo.findById(driverId).orElseThrow();
 		if(driver==null)
 		{
-			throw new DriverNotFoundException("Driver not found");
+			throw new DriverNotFoundException(message);
 		}
 		else {
 			driverrepo.deleteById(driverId);
@@ -82,7 +84,7 @@ public class IDriverServiceImpl implements IDriverService
 		List<Driver> driverList = driverrepo.viewBestDrivers();
 		if(driverList.isEmpty()) 
 		{
-			throw new DriverNotFoundException("Driver not found");
+			throw new DriverNotFoundException(message);
 		}
 		else {
 			return driverList;
@@ -95,7 +97,7 @@ public class IDriverServiceImpl implements IDriverService
 		Driver driver=driverrepo.findById(driverid).orElseThrow();
 		if(driver==null) 
 		{
-			throw new DriverNotFoundException("Driver not found");
+			throw new DriverNotFoundException(message);
 		}
 		else {
 			return driver;
