@@ -23,7 +23,6 @@ import cabapplication.service.ITripServiceImpl;
 @RequestMapping("tripbooking")
 public class ITripController {
 	
-	@Autowired
 	ITripServiceImpl tripservice;
 
 	@GetMapping("viewAllTrips")

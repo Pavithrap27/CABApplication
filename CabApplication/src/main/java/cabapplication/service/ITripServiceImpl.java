@@ -13,7 +13,7 @@ import cabapplication.repository.ITripRepository;
 import cabapplication.utils.Converter;
 
 @Service
-public abstract class ITripServiceImpl implements ITripService {
+public  class ITripServiceImpl implements ITripService {
     @Autowired
 	ITripRepository triprepo;
 	Converter converter;

@@ -6,8 +6,10 @@ import java.util.List;
 import org.springframework.beans.BeanUtils;
 
 import cabapplication.dto.AdminDTO;
+import cabapplication.dto.DriverDTO;
 import cabapplication.dto.TripBookingDTO;
 import cabapplication.entity.Admin;
+import cabapplication.entity.Driver;
 import cabapplication.entity.TripBooking;
 
 public class Converter {
@@ -80,6 +82,36 @@ public class Converter {
 			
 		}
 		return trip;
+	}
+	
+	
+	public static DriverDTO convertDriverToDTO(Driver driver)
+	{
+		DriverDTO driverd=new DriverDTO();
+		driverd.setUsername(driver.getUsername());
+		driverd.setPassword(driver.getPassword());
+		driverd.setAddress(driver.getAddress());
+		driverd.setCab(driver.getCab());
+		driverd.setDriverId(driver.getDriverId());
+		driverd.setEmail(driver.getEmail());
+		driverd.setMobileNumber(driver.getMobileNumber());
+		driverd.setLicenceNo(driver.getLicenceNo());
+		driverd.setRating(driver.getRating());
+		return driverd;
+	}
+	public static Driver convertDriverToEntity(DriverDTO driverDto)
+	{
+		Driver driverd=new Driver();
+		driverd.setUsername(driverDto.getUsername());
+		driverd.setPassword(driverDto.getPassword());
+		driverd.setAddress(driverDto.getAddress());
+		driverd.setCab(driverDto.getCab());
+		driverd.setDriverId(driverDto.getDriverId());
+		driverd.setEmail(driverDto.getEmail());
+		driverd.setMobileNumber(driverDto.getMobileNumber());
+		driverd.setLicenceNo(driverDto.getLicenceNo());
+		driverd.setRating(driverDto.getRating());
+		return driverd;
 	}
 
 }

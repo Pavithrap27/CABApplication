@@ -27,7 +27,7 @@ import cabapplication.service.IAdminServiceImpl;
 @RequestMapping("admin")
 
 public class IAdminController {
-	@Autowired
+	
 	IAdminServiceImpl adminservice;
 
 	@GetMapping("getAdmin")

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import cabapplication.dto.DriverDTO;
 import cabapplication.entity.Driver;
 import cabapplication.exception.DriverNotFoundException;
 import cabapplication.service.IDriverServiceImpl;
@@ -25,42 +26,43 @@ public class IDriverController {
 	@Autowired
 	IDriverServiceImpl driverservice;
 
-	@GetMapping("/getdriver")
-	public ResponseEntity<List<Driver>> getDriver() throws DriverNotFoundException 
+	@GetMapping("/getDrivers")
+	public ResponseEntity<List<DriverDTO>> getAll() throws DriverNotFoundException 
 	{
-		return new ResponseEntity<>(driverservice.getDriver(),HttpStatus.OK);
+		List<DriverDTO> driver=driverservice.getAll();
+		return new ResponseEntity<>(driver,HttpStatus.OK);
 	}
 
-	@PostMapping(path = "/insertdriver")
-	public ResponseEntity<Driver> insertDriver(@RequestBody Driver driver) throws DriverNotFoundException 
+	@PostMapping(path = "/insertDriver")
+	public ResponseEntity<DriverDTO> save(@RequestBody DriverDTO driver) throws DriverNotFoundException 
 	{
-		return new ResponseEntity<>(driverservice.insertDriver(driver),HttpStatus.OK);
+		return new ResponseEntity<>(driverservice.save(driver),HttpStatus.OK);
 		
 	}
 
-	@PutMapping(path = "/updatedriver")
-	public ResponseEntity<Driver> updateDriver(@RequestBody Driver driver) throws DriverNotFoundException 
+	@PutMapping(path = "/updateDriver")
+	public ResponseEntity<DriverDTO> update(@RequestBody DriverDTO driver) throws DriverNotFoundException 
 	{
-		return new ResponseEntity<>(driverservice.updateDriver(driver),HttpStatus.OK);
+		return new ResponseEntity<>(driverservice.update(driver),HttpStatus.OK);
 		
 	}
 
-	@DeleteMapping(path = "/deletedriver/{driverId}")
-	public ResponseEntity<String> deleteDriver(@PathVariable int driverId) throws DriverNotFoundException  
+	@DeleteMapping(path = "/deleteDriver/{driverId}")
+	public ResponseEntity<String> delete(@PathVariable int driverId) throws DriverNotFoundException  
 	{
-		return new ResponseEntity<>(driverservice.deleteDriver(driverId),HttpStatus.OK);
+		return new ResponseEntity<>(driverservice.delete(driverId),HttpStatus.OK);
 		
 	}
 
-	@GetMapping(path = "/viewbestdrivers")
-	public ResponseEntity<List<Driver>> viewBestDrivers() throws DriverNotFoundException 
+	@GetMapping(path = "/viewBestDrivers")
+	public ResponseEntity<List<DriverDTO>> viewBestDrivers() throws DriverNotFoundException 
 	{
 		return new ResponseEntity<>( driverservice.viewBestDrivers(),HttpStatus.OK);
 		
 	}
 
-	@GetMapping(path = "/viewdriver/{driverid}")
-	public ResponseEntity<Driver> viewDriver(@PathVariable int driverid) throws DriverNotFoundException 
+	@GetMapping(path = "/viewDriver/{driverid}")
+	public ResponseEntity<DriverDTO> viewDriver(@PathVariable int driverid) throws DriverNotFoundException 
 	{
 		return new ResponseEntity<>(driverservice.viewDriver(driverid),HttpStatus.OK);
 	}
