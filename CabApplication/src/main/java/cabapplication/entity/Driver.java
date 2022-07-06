@@ -17,7 +17,12 @@ public class Driver extends AbstractUser {
 	@JoinColumn
 	private Cab cab;
 	private float rating;
-	
+
+	public Driver() {
+		super();
+		
+	}
+
 	public int getDriverId() {
 		return driverId;
 	}

@@ -53,9 +53,9 @@ public class IDriverController {
 	}
 
 	@GetMapping(path = "/viewbestdrivers")
-	public ResponseEntity<Driver> viewBestDrivers() throws DriverNotFoundException 
+	public ResponseEntity<List<Driver>> viewBestDrivers() throws DriverNotFoundException 
 	{
-		return new ResponseEntity<>((Driver) driverservice.viewBestDrivers(),HttpStatus.OK);
+		return new ResponseEntity<>( driverservice.viewBestDrivers(),HttpStatus.OK);
 		
 	}
 
