@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import cabapplication.dto.TripBookingDTO;
 import cabapplication.entity.TripBooking;
+import cabapplication.exception.CustomerNotFoundException;
+import cabapplication.exception.TripNotFoundException;
 import cabapplication.repository.ITripRepository;
 import cabapplication.service.ITripService;
 
@@ -25,53 +28,47 @@ public class ITripController {
 	ITripService tripservice;
 
 	@GetMapping("viewAllTrips")
-	public ResponseEntity<List<TripBooking>> viewAllTrips() throws Throwable {
-		List<TripBooking> trips = tripservice.viewAllTrips();
-		ResponseEntity<List<TripBooking>> response = new ResponseEntity<List<TripBooking>>(trips, HttpStatus.OK);
-		return response;
+	public ResponseEntity<List<TripBookingDTO>> getAll() throws TripNotFoundException{
+		List<TripBookingDTO> trips = tripservice.getAll();
+		return new ResponseEntity<>(trips, HttpStatus.OK);
 	}
 
 	@GetMapping("viewAllBookings/{tripBookingId}")
-	public ResponseEntity<TripBooking> viewTripBooking(@PathVariable int tripBookingId) throws Throwable {
-		ResponseEntity<TripBooking> response = new ResponseEntity<TripBooking>(
-				tripservice.viewTripBooking(tripBookingId), HttpStatus.OK);
-		return response;
+	public ResponseEntity<TripBookingDTO> getById(@PathVariable int tripBookingId) throws TripNotFoundException {
+		return new ResponseEntity<>(tripservice.getById(tripBookingId), HttpStatus.OK);
 	}
 
 	@PostMapping("insertTripBooking")
-	public ResponseEntity<TripBooking> insertTripBooking(@RequestBody TripBooking tripBooking) throws Throwable {
-		ResponseEntity<TripBooking> response = new ResponseEntity<TripBooking>(
-				tripservice.insertTripBooking(tripBooking), HttpStatus.OK);
-		return response;
+	public ResponseEntity<TripBookingDTO> save(@RequestBody TripBookingDTO tripBookingDto) throws TripNotFoundException {
+		return new ResponseEntity<>(tripservice.save(tripBookingDto), HttpStatus.OK);
+		
 	}
 
 	@PutMapping("updateTripBooking")
-	public ResponseEntity<TripBooking> updateTripBooking(@RequestBody TripBooking tripBooking) throws Throwable {
-		TripBooking tripBookingupdated = tripservice.updateTripBooking(tripBooking);
-		ResponseEntity<TripBooking> response = new ResponseEntity<TripBooking>(tripBookingupdated, HttpStatus.OK);
-		return response;
+	public ResponseEntity<TripBookingDTO> update(@RequestBody TripBookingDTO tripDto) throws TripNotFoundException {
+		 return new ResponseEntity<>(tripservice.update(tripDto), HttpStatus.OK);
 	}
 
 	@DeleteMapping("deleteTripBooking/{tripBookingId}")
-	public ResponseEntity<String> deleteTripBooking(@PathVariable int tripBookingId) throws Throwable {
-		tripservice.deleteTripBooking(tripBookingId);
-		ResponseEntity<String> response = new ResponseEntity<String>("Deleted", HttpStatus.OK);
-		return response;
+	public ResponseEntity<String> delete(@PathVariable int tripBookingId) throws TripNotFoundException {
+		tripservice.delete(tripBookingId);
+		return  new ResponseEntity<>("Deleted", HttpStatus.OK);
+		
 	}
 
 	@GetMapping("viewAllTrips/{customerId}")
-	public ResponseEntity<List<TripBooking>> viewAllTrips(@PathVariable int customerId) throws Throwable {
-		List<TripBooking> trips = tripservice.viewAllTrips(customerId);
-		ResponseEntity<List<TripBooking>> response = new ResponseEntity<List<TripBooking>>(trips, HttpStatus.OK);
-		return response;
+	public ResponseEntity<List<TripBookingDTO>> getByCustomerId(@PathVariable int customerId) throws CustomerNotFoundException {
+		List<TripBookingDTO> trips = tripservice.getByCustomerId(customerId);
+       return new ResponseEntity<>(trips, HttpStatus.OK);
+		
 
 	}
 
 	@GetMapping("calculateBill/{customerId}")
-	public ResponseEntity<Float> calculateBill(@PathVariable int customerId) throws Throwable {
-		float bill = tripservice.calculateBill(customerId);
-		ResponseEntity<Float> response = new ResponseEntity<Float>(bill, HttpStatus.OK);
-		return response;
+	public ResponseEntity<Double> calculateBill(@PathVariable int customerId) throws CustomerNotFoundException{
+		double bill = tripservice.calculateBill(customerId);
+		return new ResponseEntity<>(bill, HttpStatus.OK);
+		
 	}
 
 }

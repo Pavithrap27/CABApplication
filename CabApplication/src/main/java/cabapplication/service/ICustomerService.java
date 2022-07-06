@@ -19,11 +19,10 @@ public class ICustomerService {
 	}
 
 	public Customer updateCustomer(Customer customer) {
-		int id = customer.getCustomerId();
-		Customer c = customerrepo.findById(id).orElseThrow();
-		c.setCustomerId(c.getCustomerId());
-		c.setEmail(customer.getEmail());
+		int id=customer.getCustomerId();
+		Customer c=customerrepo.findById(id).orElseThrow();
 		c.setAddress(customer.getAddress());
+		c.setEmail(customer.getEmail());
 		c.setMobileNumber(customer.getMobileNumber());
 		c.setPassword(customer.getPassword());
 		c.setUsername(customer.getUsername());
@@ -37,8 +36,8 @@ public class ICustomerService {
 		return "Deleted";
 	}
 
-	public List<Customer> viewCustomers() {
-		List<Customer> lc = customerrepo.findAll();
+	public List<Customer> getCustomers() {
+		List<Customer> lc =customerrepo.findAll();
 		return lc;
 	}
 

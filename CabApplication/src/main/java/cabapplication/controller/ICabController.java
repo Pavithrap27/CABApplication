@@ -38,21 +38,21 @@ public class ICabController {
 		return cabupdated;
 	}
 
-	@DeleteMapping(path = "/deletecab")
-	public String deleteCab(int cabId) {
+	@DeleteMapping(path = "/deletecab/{cabId}")
+	public String deleteCab(@PathVariable int cabId) {
 		cabservice.deleteCab(cabId);
 		return "Deleted";
 	}
 
-	@GetMapping(path = "/viewcabsoftype/{cabId}")
-	public List<Cab> viewCabsOfType(@PathVariable int cabId) {
-		List<Cab> cabs = cabservice.viewCabsOfType(cabId);
+	@GetMapping(path = "/viewcabsoftype/{carType}")
+	public List<Cab> viewCabsOfType(@PathVariable String carType) {
+		List<Cab> cabs = cabservice.viewCabsOfType(carType);
 		return cabs;
 	}
 
-	@GetMapping(path = "/countofcabstype/{cabId}")
-	public Cab countCabsOfType(@PathVariable int cabId) {
-		Cab cabs = cabservice.countCabsOfType(cabId);
+	@GetMapping(path = "/countofcabstype/{carType}")
+	public int countCabsOfType(@PathVariable String carType) {
+		int cabs = cabservice.countCabsOfType(carType);
 		return cabs;
 	}
 

@@ -22,6 +22,10 @@ public class ICustomerController {
 	@Autowired
 	ICustomerService customerservice;
 
+	@GetMapping(path = "/getcustomers")
+	public List<Customer> getcustomers() {
+		return customerservice.getCustomers();
+	}
 	@PostMapping(path = "/insertcustomer")
 	public Customer insertCustomer(@RequestBody Customer customer) {
 		return customerservice.insertCustomer(customer);
@@ -37,10 +41,6 @@ public class ICustomerController {
 		return customerservice.deleteCustomer(customerId);
 	}
 
-	@GetMapping(path = "/viewcustomers")
-	public List<Customer> viewCustomers() {
-		return customerservice.viewCustomers();
-	}
 
 	@GetMapping(path = "/viewcustomer{customerid}")
 	public Customer viewCustomer(@PathVariable int customerId) {
