@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import cabapplication.entity.Customer;
+import cabapplication.exception.CustomerNotFoundException;
 import cabapplication.service.ICustomerService;
 
 @RestController
@@ -23,32 +24,32 @@ public class ICustomerController {
 	ICustomerService customerservice;
 
 	@PostMapping(path = "/insertcustomer")
-	public Customer insertCustomer(@RequestBody Customer customer) {
+	public Customer insertCustomer(@RequestBody Customer customer) throws CustomerNotFoundException {
 		return customerservice.insertCustomer(customer);
 	}
 
 	@PutMapping(path = "/updatecustomer")
-	public Customer updateCustomer(@RequestBody Customer customer) {
+	public Customer updateCustomer(@RequestBody Customer customer) throws CustomerNotFoundException {
 		return customerservice.updateCustomer(customer);
 	}
 
 	@DeleteMapping(path = "/customerid")
-	public String deleteCustomer(@PathVariable int customerId) {
+	public String deleteCustomer(@PathVariable int customerId) throws CustomerNotFoundException {
 		return customerservice.deleteCustomer(customerId);
 	}
 
 	@GetMapping(path = "/viewcustomers")
-	public List<Customer> viewCustomers() {
+	public List<Customer> viewCustomers() throws CustomerNotFoundException {
 		return customerservice.viewCustomers();
 	}
 
 	@GetMapping(path = "/viewcustomer{customerid}")
-	public Customer viewCustomer(@PathVariable int customerId) {
+	public Customer viewCustomer(@PathVariable int customerId) throws CustomerNotFoundException {
 		return customerservice.viewCustomer(customerId);
 	}
 
 	@GetMapping(path = "/validatecustomer")
-	public Customer validateCustomer(@PathVariable String username, @PathVariable String password) {
+	public Customer validateCustomer(@PathVariable String username, @PathVariable String password) throws CustomerNotFoundException {
 		return customerservice.validateCustomer(username, password);
 	}
 
