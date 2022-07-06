@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cabapplication.entity.TripBooking;
 import cabapplication.repository.ITripRepository;
-import cabapplication.service.ITripService;
+import cabapplication.service.ITripServiceImpl;
 
 @RestController
 @RequestMapping("tripbooking")
 public class ITripController {
-	@Autowired
-	ITripService tripservice;
+	
+	ITripServiceImpl tripservice;
 
 	@GetMapping("viewAllTrips")
 	public List<TripBooking> viewAllTrips() {
@@ -58,8 +58,8 @@ public class ITripController {
 	}
 
 	@GetMapping("calculateBill/{customerId}")
-	public float calculateBill(@PathVariable int customerId) {
-		float bill = tripservice.calculateBill(customerId);
+	public double calculateBill(@PathVariable int customerId) {
+		double bill = tripservice.calculateBill(customerId);
 		return bill;
 	}
 
