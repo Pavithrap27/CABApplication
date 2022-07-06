@@ -33,7 +33,7 @@ public class ICustomerServiceImpl implements ICustomerService
 	}
 
 	public String deleteCustomer(int customerId) {
-		Customer c = customerrepo.findById(customerId).orElseThrow();
+		Customer customer = customerrepo.findById(customerId).orElseThrow();
 		customerrepo.deleteById(customerId);
 		return "Deleted";
 	}

@@ -22,24 +22,24 @@ public class ICabController {
 	@Autowired
 	ICabServiceImpl cabservice;
 
-	@GetMapping("getCabs")
+	@GetMapping("/getcabs")
 	public List<Cab> getCab() {
 		return cabservice.getCab();
 	}
 
-	@PostMapping(path="insertcab")
-	public Cab insertCab(@RequestBody Cab cab)
-	{
+
+	@PostMapping(path="/insertcab")
+	public Cab insertCab(@RequestBody Cab cab) {
+
 		return cabservice.insertCab(cab);
 	}
 
 	@PutMapping(path = "/updatecab")
 	public Cab updateCab(@RequestBody Cab cab) {
-		Cab cabupdated = cabservice.updateCab(cab);
-		return cabupdated;
+		return cabservice.updateCab(cab);
 	}
 
-	@DeleteMapping(path = "/deletecab/{cabId}")
+	@DeleteMapping(path = "/deletecab")
 	public String deleteCab(@PathVariable int cabId) {
 		cabservice.deleteCab(cabId);
 		return "Deleted";
@@ -47,14 +47,16 @@ public class ICabController {
 
 	@GetMapping(path = "/viewcabsoftype/{carType}")
 	public List<Cab> viewCabsOfType(@PathVariable String carType) {
-		List<Cab> cabs = cabservice.viewCabsOfType(carType);
-		return cabs;
+		return cabservice.viewCabsOfType(carType);
+
+
 	}
 
 	@GetMapping(path = "/countofcabstype/{carType}")
 	public int countCabsOfType(@PathVariable String carType) {
-		int cabs = cabservice.countCabsOfType(carType);
-		return cabs;
+
+		return cabservice.countCabsOfType(carType);
+
 	}
 
 }

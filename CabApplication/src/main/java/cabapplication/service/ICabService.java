@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import cabapplication.entity.Cab;
+
 @Service
 public interface ICabService {
 	
