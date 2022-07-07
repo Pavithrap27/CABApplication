@@ -53,7 +53,7 @@ public  class ITripServiceImpl implements ITripService {
 			tripBookingupdated.setDistanceInKm(trip.getDistanceInKm());
 			tripBookingupdated.setCustomerId(trip.getCustomerId());
 			tripBookingupdated.setBill(trip.getBill());
-			tripBookingupdated.setDriver(trip.getDriver());
+			//tripBookingupdated.setDriver(trip.getDriver());
 			tripBookingupdated.setFromDateTime(trip.getFromDateTime());
 			tripBookingupdated.setFromLocation(trip.getFromLocation());
 			tripBookingupdated.setToLocation(trip.getToLocation());

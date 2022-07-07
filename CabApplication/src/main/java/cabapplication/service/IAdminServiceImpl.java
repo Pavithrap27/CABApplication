@@ -2,6 +2,7 @@ package cabapplication.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,19 +10,18 @@ import org.springframework.stereotype.Service;
 import cabapplication.dto.AdminDTO;
 import cabapplication.dto.TripBookingDTO;
 import cabapplication.entity.Admin;
+import cabapplication.entity.Driver;
+import cabapplication.entity.TripBooking;
 import cabapplication.exception.AdminNotFoundException;
 import cabapplication.exception.CabNotFoundException;
 import cabapplication.exception.CustomerNotFoundException;
 import cabapplication.exception.TripNotFoundException;
 import cabapplication.repository.IAdminRepository;
-import cabapplication.repository.ICabRepository;
-import cabapplication.repository.ICustomerRepository;
 import cabapplication.repository.IDriverRepository;
 import cabapplication.repository.ITripRepository;
 import cabapplication.utils.Converter;
 
-
-@Service	
+@Service
 public class IAdminServiceImpl implements IAdminService {
 
 	@Autowired
@@ -30,8 +30,7 @@ public class IAdminServiceImpl implements IAdminService {
 	ITripRepository repo;
 	@Autowired
 	IDriverRepository driverRepo;
-	
-	
+
 	@Override
 	public List<AdminDTO> getAll() throws AdminNotFoundException {
 		List<AdminDTO> adminDto = Converter.convertToDTO(adminrepo.findAll());
@@ -64,8 +63,8 @@ public class IAdminServiceImpl implements IAdminService {
 	}
 
 	@Override
-	public List<TripBookingDTO> getTripsCabwise() throws CabNotFoundException {
-		List<TripBookingDTO> trips = Converter.convertTripToDto(driverRepo.getTripsCabwise());
+	public List<TripBookingDTO> getTripsCabwise(String carType) throws CabNotFoundException {
+		List<TripBookingDTO> trips = Converter.convertTripToDto(driverRepo.getTripBookingBycarType(carType));
 		if (trips.isEmpty()) {
 			throw new CabNotFoundException("Cab not found");
 		} else {
@@ -134,8 +133,7 @@ public class IAdminServiceImpl implements IAdminService {
 
 	@Override
 	public List<TripBookingDTO> getAllTripsForDays(int customerId, LocalDateTime fromDate, LocalDateTime ToDate)
-			throws CustomerNotFoundException 
-	{
+			throws CustomerNotFoundException {
 		List<TripBookingDTO> trips = Converter.convertTripToDto(repo.getAllTripsForDays(customerId, fromDate, ToDate));
 		if (trips.isEmpty()) {
 			throw new CustomerNotFoundException("Trip not found");

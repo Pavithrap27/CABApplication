@@ -2,13 +2,19 @@ package cabapplication.entity;
 
 
 import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @MappedSuperclass
 public abstract class AbstractUser {
-
+    @NotNull
 	private String username;
 	private String password;
+	@Min(10)
 	private String mobileNumber;
+	@NotNull
+	@Email
 	private String email;
 	private String address;
 
