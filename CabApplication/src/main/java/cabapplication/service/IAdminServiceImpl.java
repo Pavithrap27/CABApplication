@@ -21,11 +21,9 @@ import cabapplication.repository.ITripRepository;
 import cabapplication.utils.Converter;
 
 @Service
-
-public abstract class IAdminServiceImpl implements IAdminService {
+public class IAdminServiceImpl implements IAdminService 
+{
 	
-
-public class IAdminServiceImpl implements IAdminService {
 	@Autowired
 	IAdminRepository adminrepo;
 	@Autowired
@@ -36,8 +34,6 @@ public class IAdminServiceImpl implements IAdminService {
 	ICustomerRepository customerRepo;
 	@Autowired
 	IDriverRepository driverrepo;
-	
-	
 	
     @Override
 	public List<AdminDTO> getAll() throws AdminNotFoundException {
@@ -136,7 +132,8 @@ public class IAdminServiceImpl implements IAdminService {
 	}
 	@Override
 	public List<TripBookingDTO> getAllTripsForDays(int customerId, LocalDateTime fromDate, LocalDateTime ToDate)
-			throws CustomerNotFoundException {
+			throws CustomerNotFoundException 
+	{
 		List<TripBookingDTO> trips = Converter.convertTripToDto(repo.getAllTripsForDays(customerId, fromDate, ToDate));
 		if (trips.isEmpty()) {
 			throw new CustomerNotFoundException("Trip not found");
@@ -144,5 +141,6 @@ public class IAdminServiceImpl implements IAdminService {
 			return trips;
 		}
 	}
-
+	
+	
 }
