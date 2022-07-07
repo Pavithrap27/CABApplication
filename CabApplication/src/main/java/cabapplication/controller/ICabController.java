@@ -57,11 +57,9 @@ public class ICabController {
 	{
 		return new ResponseEntity<>(cabservice.viewCabsOfType(carType),HttpStatus.OK);
 	}
+	@GetMapping(path = "/countofcabstype/{carType}")
+	public ResponseEntity<CabDTO> countofcabstype(@PathVariable int cabid) throws CabNotFoundException 
+	{
+	return new ResponseEntity<>(cabservice.countCabsOfType(carType),HttpStatus.OK);
+	}
 }
-	
-//	@GetMapping(path = "/countofcabstype/{carType}")
-//	public ResponseEntity<CabDTO> countofcabstype(@PathVariable int cabid) throws CabNotFoundException 
-//	{
-//		return new ResponseEntity<>(cabservice.countCabsOfType(carType),HttpStatus.OK);
-//	}
-//}

@@ -89,17 +89,16 @@ public class ICabServiceImpl implements ICabService
 				return cabDtoList;
 			}
 		}
-}
-//		@Override
-//		public int countCabsOfType(String carType) throws CabNotFoundException {
-//			CabDTO cabDto=Converter.convertCabToDTO(cabrepo.countCabsOfType(carType).orElseThrow());
-//			if(cabDto==null)
-//			{
-//				throw new CabNotFoundException(message);
-//			}
-//			else {
-//				return cabDto;
-//			}
-//		}
-//}
-	
+
+	@Override
+	public int countCabsOfType(String carType) throws CabNotFoundException {
+		CabDTO cabDto=Converter.convertCabToDTO(cabrepo.countCabsOfType(carType).orElseThrow());
+		if(cabDto==null)
+		{
+			throw new CabNotFoundException(message);
+			}
+		else {
+			return cabDto;
+		}
+	}
+	}
