@@ -3,6 +3,8 @@ package cabapplication.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,51 +14,46 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cabapplication.entity.Cab;
+import cabapplication.dto.CabDTO;
+import cabapplication.exception.CabNotFoundException;
 import cabapplication.service.ICabServiceImpl;
 
 @RestController
 @RequestMapping("/cab")
 
 public class ICabController {
+
 	@Autowired
 	ICabServiceImpl cabservice;
 
-	@GetMapping("/getCabs")
-	public List<Cab> getCab() {
-		return cabservice.getCab();
+	@GetMapping("/getAll")
+	public ResponseEntity<List<CabDTO>> getAll() throws CabNotFoundException {
+
+		return new ResponseEntity<>(cabservice.getAll(), HttpStatus.OK);
 	}
 
-
-	@PostMapping(path="/insertCab")
-	public Cab insertCab(@RequestBody Cab cab) {
-
-		return cabservice.insertCab(cab);
+	@PostMapping(path = "/save")
+	public ResponseEntity<CabDTO> save(@RequestBody CabDTO cab) throws Throwable {
+		return new ResponseEntity<>(cabservice.save(cab), HttpStatus.OK);
 	}
 
-	@PutMapping(path = "/updateCab")
-	public Cab updateCab(@RequestBody Cab cab) {
-		return cabservice.updateCab(cab);
+	@PutMapping(path = "/update")
+	public ResponseEntity<CabDTO> update(@RequestBody CabDTO cab) throws Throwable {
+		return new ResponseEntity<>(cabservice.update(cab), HttpStatus.OK);
 	}
 
-	@DeleteMapping(path = "/deleteCab")
-	public String deleteCab(@PathVariable int cabId) {
-		cabservice.deleteCab(cabId);
-		return "Deleted";
+	@DeleteMapping(path = "/deleteById/{cabId}")
+	public ResponseEntity<String> delete(@PathVariable int cabId) throws Throwable {
+		return new ResponseEntity<>(cabservice.delete(cabId), HttpStatus.OK);
 	}
 
 	@GetMapping(path = "/viewCabsOfType/{carType}")
-	public List<Cab> viewCabsOfType(@PathVariable String carType) {
-		return cabservice.viewCabsOfType(carType);
-
-
+	public ResponseEntity<List<CabDTO>> viewCabsOfType(@PathVariable String carType) throws CabNotFoundException {
+		return new ResponseEntity<>(cabservice.viewCabsOfType(carType), HttpStatus.OK);
 	}
 
-	@GetMapping(path = "/countOfCabsType/{carType}")
-	public int countCabsOfType(@PathVariable String carType) {
-
-		return cabservice.countCabsOfType(carType);
-
+	@GetMapping(path = "/countCabsOfType/{carType}")
+	public ResponseEntity<Integer> countCabsOfType(@PathVariable String carType) throws CabNotFoundException {
+		return new ResponseEntity<>(cabservice.countCabsOfType(carType), HttpStatus.OK);
 	}
-
 }

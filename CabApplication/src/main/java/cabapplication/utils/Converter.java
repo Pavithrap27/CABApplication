@@ -4,18 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
-
 import cabapplication.dto.AdminDTO;
-
+import cabapplication.dto.CabDTO;
 import cabapplication.dto.CustomerDTO;
-
 import cabapplication.dto.DriverDTO;
-
 import cabapplication.dto.TripBookingDTO;
 import cabapplication.entity.Admin;
+import cabapplication.entity.Cab;
+
 
 import cabapplication.entity.Customer;
-
 import cabapplication.entity.Driver;
 
 import cabapplication.entity.TripBooking;
@@ -162,6 +160,42 @@ public class Converter {
 			
 		}
 		return list;
+	}
+	public static CabDTO convertCabToDTO(Cab cab)
+	{
+		CabDTO cabdto=new CabDTO();
+		BeanUtils.copyProperties(cab, cabdto);
+		return cabdto;
+		
+	}
+	public static List<CabDTO> convertCabToDTO(List<Cab> list)
+	{
+		List<CabDTO> listDto =new ArrayList<>();
+		for(Cab cab:list)
+		{
+			listDto.add(convertCabToDTO(cab));
+			
+		}
+		return listDto;
+	}
+
+	public static Cab convertCabDtoToEntity(CabDTO cabDto)
+	{
+		Cab cab=new Cab();
+		BeanUtils.copyProperties(cabDto, cab);
+		return cab;
+	}
+	public static List<Cab> convertCabDtoToEntity(List<CabDTO> listDto)
+	{
+
+		List<Cab> list =new ArrayList<>();
+		for(CabDTO cabDto:listDto)
+		{
+			list.add(convertCabDtoToEntity(cabDto));
+			
+		}
+		return list;
 		
 	}
 }
+   
