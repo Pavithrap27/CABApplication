@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import cabapplication.dto.DriverDTO;
 import cabapplication.entity.Driver;
+import cabapplication.exception.CustomerNotFoundException;
 import cabapplication.exception.DriverNotFoundException;
 import cabapplication.repository.IDriverRepository;
 import cabapplication.utils.Converter;
@@ -54,21 +55,21 @@ public class IDriverServiceImpl implements IDriverService
 	public DriverDTO update(DriverDTO driverDto) throws Throwable
 	{
 		Driver driver=Converter.convertDriverDtoToEntity(driverDto);
-		int id = driver.getDriverId();
-		Supplier s1=()->new DriverNotFoundException("Driver not found");
-			Driver driverupdated = driverrepo.findById(id).orElseThrow(s1);
-			driverupdated.setUsername(driver.getUsername());
-			driverupdated.setPassword(driver.getPassword());
-			driverupdated.setMobileNumber(driver.getMobileNumber());
-			driverupdated.setEmail(driver.getEmail());
-			driverupdated.setLicenceNo(driver.getLicenceNo());
-			driverupdated.setCab(driver.getCab());
-			driverupdated.setRating(driver.getRating());
-			driverupdated.setAddress(driver.getAddress());
-			driverrepo.save(driverupdated);
-			return Converter.convertDriverToDTO(driverupdated);
-		
-	}
+        int id = driver.getDriverId();
+        Supplier s1=()->new DriverNotFoundException("Driver not found");
+
+        Driver driverupdated = driverrepo.findById(id).orElseThrow(s1);
+        driverupdated.setUsername(driver.getUsername());
+        driverupdated.setPassword(driver.getPassword());
+        driverupdated.setMobileNumber(driver.getMobileNumber());
+        driverupdated.setEmail(driver.getEmail());
+        driverupdated.setLicenceNo(driver.getLicenceNo());
+        driverupdated.setCab(driver.getCab());
+        driverupdated.setRating(driver.getRating());
+        driverupdated.setAddress(driver.getAddress());
+        driverrepo.save(driverupdated);
+        return Converter.convertDriverToDTO(driverupdated);
+		}
 	@Override
 	public String delete(int driverId) throws Throwable
 	{

@@ -90,7 +90,7 @@ public class IAdminController {
 
 	}
 
-	@GetMapping("getAllTripsForDays")
+	@GetMapping("getAllTripsForDays/{customerId}/{fromDate}/{toDate}")
 	public ResponseEntity<List<TripBookingDTO>> getAllTripsForDays(@PathVariable int customerId,
 			@PathVariable LocalDateTime fromDate, @PathVariable LocalDateTime toDate) throws CustomerNotFoundException {
 		List<TripBookingDTO> trips = adminservice.getAllTripsForDays(customerId, fromDate, toDate);
