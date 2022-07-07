@@ -20,11 +20,7 @@ import cabapplication.repository.IDriverRepository;
 import cabapplication.repository.ITripRepository;
 import cabapplication.utils.Converter;
 
-@Service
-
-public abstract class IAdminServiceImpl implements IAdminService {
-	
-
+@Service	
 public class IAdminServiceImpl implements IAdminService {
 	@Autowired
 	IAdminRepository adminrepo;
@@ -147,5 +143,4 @@ public class IAdminServiceImpl implements IAdminService {
 			return trips;
 		}
 	}
-
 }
