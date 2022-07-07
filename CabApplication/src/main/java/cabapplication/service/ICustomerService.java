@@ -2,22 +2,21 @@ package cabapplication.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
+import cabapplication.dto.CustomerDTO;
 import cabapplication.entity.Customer;
+import cabapplication.exception.CustomerNotFoundException;
 
-@Service
 public interface ICustomerService {
 
-	public Customer insertCustomer(Customer customer);
+	public CustomerDTO save(CustomerDTO customer) throws CustomerNotFoundException;
+		
+	public CustomerDTO update(CustomerDTO customer) throws CustomerNotFoundException;
 
-	public Customer updateCustomer(Customer customer);
+	public String delete(int customerId) throws CustomerNotFoundException;
 
-	public String deleteCustomer(int customerId);
+	public List<CustomerDTO> getAll() throws CustomerNotFoundException;
 
-	public List<Customer> viewCustomers();
+	public CustomerDTO getById(int customerId)throws CustomerNotFoundException;
 
-	public Customer viewCustomer(int customerId);
-
-	public Customer validateCustomer(String username, String password);
+	public CustomerDTO validate(String username, String password)throws CustomerNotFoundException;
 }

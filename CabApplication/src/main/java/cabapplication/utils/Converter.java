@@ -6,10 +6,18 @@ import java.util.List;
 import org.springframework.beans.BeanUtils;
 
 import cabapplication.dto.AdminDTO;
+
+import cabapplication.dto.CustomerDTO;
+
 import cabapplication.dto.DriverDTO;
+
 import cabapplication.dto.TripBookingDTO;
 import cabapplication.entity.Admin;
+
+import cabapplication.entity.Customer;
+
 import cabapplication.entity.Driver;
+
 import cabapplication.entity.TripBooking;
 
 public class Converter {
@@ -85,6 +93,42 @@ public class Converter {
 		return trip;
 	}
 	
+
+	public static CustomerDTO convertCustomerToDto(Customer customer)
+	{
+		CustomerDTO customerto=new CustomerDTO();
+		BeanUtils.copyProperties(customer, customerto);
+		return customerto;
+		
+	}
+	public static List<CustomerDTO> convertCustomersToDTO(List<Customer> customers)
+	{
+		List<CustomerDTO> listDto =new ArrayList<>();
+		for(Customer customer:customers)
+		{
+			listDto.add((CustomerDTO) convertCustomersToDTO(customers));
+		}
+		return listDto;
+	}
+	public static Customer convertCustomerToEntity(CustomerDTO customerDto)
+	{
+		Customer customer=new Customer();
+		BeanUtils.copyProperties(customerDto, customer);
+		return customer;
+	}
+	
+	public static List<Customer> convertCustomerstToEntity(List<CustomerDTO> listDto)
+	{
+
+		List<Customer> list =new ArrayList<>();
+		for(CustomerDTO customerDto:listDto)
+		{
+			list.add(convertCustomerToEntity(customerDto));
+			
+		}
+		return list;
+	}
+
 	public static DriverDTO convertDriverToDTO(Driver driver)
 	{
 		DriverDTO driverdto=new DriverDTO();
@@ -120,7 +164,4 @@ public class Converter {
 		return list;
 		
 	}
-
-	
-
 }

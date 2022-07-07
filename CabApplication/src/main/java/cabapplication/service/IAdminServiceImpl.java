@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import cabapplication.dto.AdminDTO;
 import cabapplication.dto.TripBookingDTO;
 import cabapplication.entity.Admin;
-import cabapplication.entity.TripBooking;
 import cabapplication.exception.AdminNotFoundException;
 import cabapplication.exception.CabNotFoundException;
 import cabapplication.exception.CustomerNotFoundException;
@@ -22,6 +21,10 @@ import cabapplication.repository.ITripRepository;
 import cabapplication.utils.Converter;
 
 @Service
+
+public abstract class IAdminServiceImpl implements IAdminService {
+	
+
 public class IAdminServiceImpl implements IAdminService {
 	@Autowired
 	IAdminRepository adminrepo;
