@@ -1,93 +1,110 @@
 package cabapplication.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import cabapplication.dto.CabDTO;
 import cabapplication.entity.Cab;
 import cabapplication.exception.CabNotFoundException;
 import cabapplication.repository.ICabRepository;
+import cabapplication.utils.Converter;
 
 @Service
-public abstract class ICabServiceImpl implements ICabService
+@Transactional
+public class ICabServiceImpl implements ICabService
 {
 
+	private static final String cabDtoList = null;
+
+	private static final Cab[] cabs = null;
+
+	private static final String String = null;
+
 	@Autowired
-
 	ICabRepository cabrepo;
+	
 	String message="Cab not found";
-	private Object cabs;
-
-	public List<Cab> getCabs()throws CabNotFoundException {
-		 List<Cab> cab = cabrepo.findAll();
-		 if (cab.isEmpty()) {
-				throw new CabNotFoundException(message);
-		} else {
-			return cab;
-		}
-	}
-
-	public Cab insertCab(Cab cab) throws CabNotFoundException {
-		if (cab == null) {
-			throw new CabNotFoundException(message);
-		} else {
-			cabrepo.save(cab);
-			return cab;
-			}
-}
-
-	public Cab updateCab(Cab cab) throws CabNotFoundException {
-		if (cab == null) {
+	@Override
+	public List<CabDTO> getAll() throws CabNotFoundException {
+		List<CabDTO> cabDtoList=new ArrayList<>();
+		Iterable<Cab> cabs = cabrepo.findAll();
+		if (cabs== null) {
 			throw new CabNotFoundException(message);
 		} 
-		else 
-		{
-		
-		int id = cab.getCabId();
-		Cab c = cabrepo.findById(id).orElseThrow();
-		c.setCabId(cab.getCabId());
-		c.setCarType(cab.getCarType());
-		c.setPerKmRate(cab.getPerKmRate());
-		cabrepo.save(c);
-		return c;
-	}
-	}
-
-	public String deleteCab(int cabId) throws CabNotFoundException {
-		Cab cab = cabrepo.findById(cabId).orElseThrow();
-		if (cab == null)
-		{
-			throw new CabNotFoundException(message);
+		 else {
+			 for(Cab cab:cabs) {
+					cabDtoList.add(Converter.convertCabToDTO(cab));
+				}
+				return cabDtoList;
+			}
 		}
-     	else
-     	{
-		cabrepo.deleteById(cabId); 
-		return "Deleted";
-	}
-	}
-	
-	public List<Cab> viewCabsOfType(String carType) throws CabNotFoundException {
-		List<Cab> lc = cabrepo.viewCabsOfType(carType);
-		if(lc.isEmpty()) 
+
+		@Override
+		public CabDTO save(CabDTO cabDto) throws CabNotFoundException 
+		{
+			if (cabDto == null) {
+				throw new CabNotFoundException(message);
+			} else {
+				cabrepo.save(Converter.convertCabDtoToEntity(cabDto));
+				return cabDto;
+				}
+			}
+		@Override
+		public CabDTO update(CabDTO cabDto) throws CabNotFoundException
+		{
+			if (cabDto == null) {
+				throw new CabNotFoundException(message);
+			} 
+			else 
+			{
+				Cab cab=Converter.convertCabDtoToEntity(cabDto);
+				int id = cab.getCabId();
+				Cab cabupdated = cabrepo.findById(id).orElseThrow();
+				cabupdated.setCabId(cab.getCabId());
+				cabupdated.setCarType(cab.getCarType());
+				cabupdated.setPerKmRate(cab.getPerKmRate());
+				cabrepo.save(cabupdated);
+				return Converter.convertCabToDTO(cabupdated);
+			}
+		}
+		
+		@Override
+		public String delete(int cabId) throws CabNotFoundException
+		{
+			CabDTO cab = Converter.convertCabToDTO(cabrepo.findById(cabId).orElseThrow());
+			if(cab==null)
 			{
 				throw new CabNotFoundException(message);
 			}
-			else 
-			{	
-		return lc;
-	}
-	}
+			else {
+				cabrepo.deleteById(cabId);
+				return "Deleted";
+			}
+		}
 
-	public int countCabsOfType(String carType) throws CabNotFoundException {
-	int cab =cabrepo.countCabsOfType(carType);
-		if(cabs==null)
-		{
-			throw new CabNotFoundException(message);
+		@Override
+		public List<CabDTO> viewCabsOfType(String carType) throws CabNotFoundException {
+			List<CabDTO> cabDtoList=new ArrayList<>();
+			List<Cab> cabs=cabrepo.viewCabsOfType(String);
+			if(cabs.isEmpty()) {
+				throw new CabNotFoundException(message);	
+			}
+			else {
+				for(Cab cab:cabs) {
+					cabDtoList.add(Converter.convertCabToDTO(cab));
+				}
+				return cabDtoList;
+			}
 		}
-		else 
-		{
-			return cab;
+
+		@Override
+		public int countCabsOfType(java.lang.String carType) throws CabNotFoundException {
+			return 0;
 		}
-	}
-}		
+
+}
+	

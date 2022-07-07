@@ -16,11 +16,11 @@ import cabapplication.utils.Converter;
 public  class ITripServiceImpl implements ITripService {
     @Autowired
 	ITripRepository triprepo;
-	Converter converter;
+	
 
 	public List<TripBookingDTO> getAll() throws TripNotFoundException {
 
-		List<TripBookingDTO> trips = converter.convertTripToDto(triprepo.findAll());
+		List<TripBookingDTO> trips = Converter.convertTripToDto(triprepo.findAll());
 		if (trips.isEmpty()) {
 			throw new TripNotFoundException("Trip does not exist");
 		} else {
@@ -29,7 +29,7 @@ public  class ITripServiceImpl implements ITripService {
 	}
 
 	public TripBookingDTO getById(int tripBookingId) throws TripNotFoundException {
-		TripBookingDTO trip = converter.convertTripToDto(triprepo.findById(tripBookingId).orElseThrow());
+		TripBookingDTO trip = Converter.convertTripToDto(triprepo.findById(tripBookingId).orElseThrow());
 		if (trip == null) {
 			throw new TripNotFoundException("No trip found");
 		} else {
@@ -38,8 +38,8 @@ public  class ITripServiceImpl implements ITripService {
 	}
 
 	public TripBookingDTO save(TripBookingDTO tripBookingDto) throws TripNotFoundException {
-		TripBookingDTO tripDto = converter
-				.convertTripToDto(triprepo.save(converter.convertTripToEntity(tripBookingDto)));
+		TripBookingDTO tripDto = Converter
+				.convertTripToDto(triprepo.save(Converter.convertTripToEntity(tripBookingDto)));
 		if (tripDto != null) {
 			return tripDto;
 		}
@@ -51,7 +51,7 @@ public  class ITripServiceImpl implements ITripService {
 		if (tripBookingDto == null) {
 			throw new TripNotFoundException("Trip not found");
 		} else {
-			TripBooking trip = converter.convertTripToEntity(tripBookingDto);
+			TripBooking trip = Converter.convertTripToEntity(tripBookingDto);
 			int id = trip.getTripBookingId();
 			TripBooking tripBookingupdated = triprepo.findById(id).orElseThrow();
 			tripBookingupdated.setDistanceInKm(trip.getDistanceInKm());
@@ -62,7 +62,7 @@ public  class ITripServiceImpl implements ITripService {
 			tripBookingupdated.setFromLocation(trip.getFromLocation());
 			tripBookingupdated.setToLocation(trip.getToLocation());
 			tripBookingupdated.setToDateTime(trip.getToDateTime());
-			return converter.convertTripToDto(triprepo.save(tripBookingupdated));
+			return Converter.convertTripToDto(triprepo.save(tripBookingupdated));
 
 		}
 	}
@@ -77,7 +77,7 @@ public  class ITripServiceImpl implements ITripService {
 	}
 
 	public List<TripBookingDTO> getByCustomerId(int customerId) throws CustomerNotFoundException {
-		List<TripBookingDTO> trips = converter.convertTripToDto(triprepo.getByCustomerId(customerId));
+		List<TripBookingDTO> trips = Converter.convertTripToDto(triprepo.getByCustomerId(customerId));
 		if (trips == null) {
 			throw new CustomerNotFoundException("Customer id not found");
 

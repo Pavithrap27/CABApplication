@@ -24,7 +24,6 @@ public class IDriverServiceImpl implements IDriverService
 
 	@Autowired
 	IDriverRepository driverrepo;
-	Converter converter;
 	
 	String message="Driver not found";
 	@Override
@@ -45,11 +44,12 @@ public class IDriverServiceImpl implements IDriverService
 	}
 	
 	@Override
-	public DriverDTO save(DriverDTO driverDto) throws DriverNotFoundException {
+	public DriverDTO save(DriverDTO driverDto) throws DriverNotFoundException 
+	{
 		if (driverDto == null) {
 			throw new DriverNotFoundException(message);
 		} else {
-			driverrepo.save(Converter.convertDriverToEntity(driverDto));
+			driverrepo.save(Converter.convertDriverDtoToEntity(driverDto));
 			return driverDto;
 		}
 	}
@@ -61,7 +61,7 @@ public class IDriverServiceImpl implements IDriverService
 		} 
 		else 
 		{
-			Driver driver=converter.convertDriverToEntity(driverDto);
+			Driver driver=Converter.convertDriverDtoToEntity(driverDto);
 			int id = driver.getDriverId();
 			Driver driverupdated = driverrepo.findById(id).orElseThrow();
 			driverupdated.setUsername(driver.getUsername());
@@ -73,13 +73,13 @@ public class IDriverServiceImpl implements IDriverService
 			driverupdated.setRating(driver.getRating());
 			driverupdated.setAddress(driver.getAddress());
 			driverrepo.save(driverupdated);
-			return converter.convertDriverToDTO(driverupdated);
+			return Converter.convertDriverToDTO(driverupdated);
 		}
 	}
 	@Override
 	public String delete(int driverId) throws DriverNotFoundException
 	{
-		Driver driver = driverrepo.findById(driverId).orElseThrow();
+		DriverDTO driver = Converter.convertDriverToDTO(driverrepo.findById(driverId).orElseThrow());
 		if(driver==null)
 		{
 			throw new DriverNotFoundException(message);
@@ -109,7 +109,7 @@ public class IDriverServiceImpl implements IDriverService
 	}
 	
 	@Override
-	public DriverDTO viewDriver(int driverid) throws DriverNotFoundException 
+	public DriverDTO getById(int driverid) throws DriverNotFoundException 
 	{
 		DriverDTO driverDto=Converter.convertDriverToDTO(driverrepo.findById(driverid).orElseThrow());
 		if(driverDto==null) 

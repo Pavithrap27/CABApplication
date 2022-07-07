@@ -26,28 +26,28 @@ public class IDriverController {
 	@Autowired
 	IDriverServiceImpl driverservice;
 
-	@GetMapping("/getDrivers")
+	@GetMapping("/getAll")
 	public ResponseEntity<List<DriverDTO>> getAll() throws DriverNotFoundException 
 	{
 		List<DriverDTO> driver=driverservice.getAll();
 		return new ResponseEntity<>(driver,HttpStatus.OK);
 	}
 
-	@PostMapping(path = "/insertDriver")
+	@PostMapping(path = "/save")
 	public ResponseEntity<DriverDTO> save(@RequestBody DriverDTO driver) throws DriverNotFoundException 
 	{
 		return new ResponseEntity<>(driverservice.save(driver),HttpStatus.OK);
 		
 	}
 
-	@PutMapping(path = "/updateDriver")
+	@PutMapping(path = "/update")
 	public ResponseEntity<DriverDTO> update(@RequestBody DriverDTO driver) throws DriverNotFoundException 
 	{
 		return new ResponseEntity<>(driverservice.update(driver),HttpStatus.OK);
 		
 	}
 
-	@DeleteMapping(path = "/deleteDriver/{driverId}")
+	@DeleteMapping(path = "/deleteById/{driverId}")
 	public ResponseEntity<String> delete(@PathVariable int driverId) throws DriverNotFoundException  
 	{
 		return new ResponseEntity<>(driverservice.delete(driverId),HttpStatus.OK);
@@ -61,9 +61,9 @@ public class IDriverController {
 		
 	}
 
-	@GetMapping(path = "/viewDriver/{driverid}")
-	public ResponseEntity<DriverDTO> viewDriver(@PathVariable int driverid) throws DriverNotFoundException 
+	@GetMapping(path = "/getById/{driverid}")
+	public ResponseEntity<DriverDTO> getById(@PathVariable int driverid) throws DriverNotFoundException 
 	{
-		return new ResponseEntity<>(driverservice.viewDriver(driverid),HttpStatus.OK);
+		return new ResponseEntity<>(driverservice.getById(driverid),HttpStatus.OK);
 	}
 }
