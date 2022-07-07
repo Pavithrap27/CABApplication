@@ -5,8 +5,6 @@ import java.util.List;
 
 import cabapplication.dto.AdminDTO;
 import cabapplication.dto.TripBookingDTO;
-import cabapplication.entity.Admin;
-import cabapplication.entity.TripBooking;
 import cabapplication.exception.AdminNotFoundException;
 import cabapplication.exception.CabNotFoundException;
 import cabapplication.exception.CustomerNotFoundException;
@@ -22,10 +20,8 @@ public interface IAdminService {
 
 	public String delete(AdminDTO adminDto) throws AdminNotFoundException;
 
-	
 	public AdminDTO getById(int adminId) throws AdminNotFoundException;
 
-	
 	public List<TripBookingDTO> getByCustomerId(int customerId) throws CustomerNotFoundException;
 
 	public List<TripBookingDTO> getTripsCabwise() throws CabNotFoundException;
