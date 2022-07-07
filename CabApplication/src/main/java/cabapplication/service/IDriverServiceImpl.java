@@ -2,17 +2,11 @@ package cabapplication.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Supplier;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import cabapplication.dto.DriverDTO;
-import cabapplication.entity.Admin;
 import cabapplication.entity.Driver;
-import cabapplication.exception.AdminNotFoundException;
 import cabapplication.exception.DriverNotFoundException;
 import cabapplication.repository.IDriverRepository;
 import cabapplication.utils.Converter;
