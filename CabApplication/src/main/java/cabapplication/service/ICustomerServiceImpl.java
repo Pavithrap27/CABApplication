@@ -5,8 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cabapplication.dto.CustomerDTO;
 import cabapplication.entity.Customer;
+import cabapplication.exception.AdminNotFoundException;
+import cabapplication.exception.CustomerNotFoundException;
 import cabapplication.repository.ICustomerRepository;
+import cabapplication.utils.Converter;
 
 
 @Service
@@ -14,41 +18,75 @@ public class ICustomerServiceImpl implements ICustomerService
 {
 	@Autowired
 	ICustomerRepository customerrepo;
-
-	public Customer insertCustomer(Customer customer) {
-		return customerrepo.save(customer);
+	
+	@Override
+	public List<CustomerDTO> getAll() throws CustomerNotFoundException {
+		List<CustomerDTO> customerDto = Converter.convertCustomersToDTO(customerrepo.findAll());
+		if (customerDto.isEmpty()) {
+			throw new CustomerNotFoundException("No Customer available");
+		} else {
+			return customerDto;
+		}
 	}
+	
+	@Override
+	public CustomerDTO save(CustomerDTO customerDto) throws CustomerNotFoundException {
+		if (customerDto == null) {
+			throw new CustomerNotFoundException("Customer Does not exist");
+		} else {
+			customerrepo.save(Converter.convertCustomerToEntity(customerDto));
+			return customerDto;
+		}
 
-	public Customer updateCustomer(Customer customer) {
+	}
+	
+	@Override
+	public CustomerDTO update(CustomerDTO customerDto)throws CustomerNotFoundException {
+		if (customerDto == null) {
+			throw new CustomerNotFoundException("No Customer found");
+		} else {
+			Customer customer = Converter.convertCustomerToEntity(customerDto);
 		int id = customer.getCustomerId();
-		Customer c = customerrepo.findById(id).orElseThrow();
-		c.setCustomerId(c.getCustomerId());
-		c.setEmail(customer.getEmail());
-		c.setAddress(customer.getAddress());
-		c.setMobileNumber(customer.getMobileNumber());
-		c.setPassword(customer.getPassword());
-		c.setUsername(customer.getUsername());
-		customerrepo.save(c);
-		return c;
+		Customer customerUpdated = customerrepo.findById(id).orElseThrow();
+		customerUpdated.setCustomerId(customerUpdated.getCustomerId());
+		customerUpdated.setEmail(customer.getEmail());
+		customerUpdated.setAddress(customer.getAddress());
+		customerUpdated.setMobileNumber(customer.getMobileNumber());
+		customerUpdated.setPassword(customer.getPassword());
+		customerUpdated.setUsername(customer.getUsername());
+		customerrepo.save(customerUpdated);
+		return Converter.convertCustomerToDto(customerUpdated);
+		}
 	}
 
-	public String deleteCustomer(int customerId) {
-		Customer customer = customerrepo.findById(customerId).orElseThrow();
-		customerrepo.deleteById(customerId);
-		return "Deleted";
+	@Override
+	public String delete(int customerId)throws CustomerNotFoundException{
+		CustomerDTO customerDto = Converter.convertCustomerToDto(customerrepo.findById(customerId).orElseThrow());
+		if (customerDto == null) {
+			throw new CustomerNotFoundException("No Customer found");
+		} else {
+			customerrepo.delete(Converter.convertCustomerToEntity(customerDto));
+			return "Deleted";
+		}
 	}
-
-	public List<Customer> viewCustomers() {
-		return customerrepo.findAll();
+	
+	@Override
+	public CustomerDTO  getById(int customerId)throws CustomerNotFoundException {
+		CustomerDTO customerDto = Converter.convertCustomerToDto(customerrepo.findById(customerId).orElseThrow());
+		if (customerDto == null) {
+			throw new CustomerNotFoundException("Customer not found");
+		} else {
+		return customerDto;
+		}
 	}
-
-	public Customer viewCustomer(int customerId) {
-		return customerrepo.findById(customerId).orElseThrow();
-	}
-
-	public Customer validateCustomer(String username, String password) {
-		Customer customer = customerrepo.validateCustomer(username, password);
-
-		return customer;
+	
+	@Override
+	public CustomerDTO validate(String username, String password)throws CustomerNotFoundException {
+		CustomerDTO customerDto =Converter.convertCustomerToDto(customerrepo.getByUserNameAndPassword(username, password));
+		if (customerDto == null) {
+			throw new CustomerNotFoundException("Customer not found");
+		} else {
+		return customerDto;
+		}
 	}
 }
