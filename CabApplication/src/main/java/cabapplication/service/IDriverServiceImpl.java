@@ -2,17 +2,13 @@ package cabapplication.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Supplier;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import cabapplication.dto.DriverDTO;
-import cabapplication.entity.Admin;
 import cabapplication.entity.Driver;
-import cabapplication.exception.AdminNotFoundException;
 import cabapplication.exception.DriverNotFoundException;
 import cabapplication.repository.IDriverRepository;
 import cabapplication.utils.Converter;
@@ -44,25 +40,24 @@ public class IDriverServiceImpl implements IDriverService
 	}
 	
 	@Override
-	public DriverDTO save(DriverDTO driverDto) throws DriverNotFoundException 
+	public DriverDTO save(DriverDTO driverDto) throws Throwable 
 	{
-		if (driverDto == null) {
-			throw new DriverNotFoundException(message);
-		} else {
-			driverrepo.save(Converter.convertDriverDtoToEntity(driverDto));
-			return driverDto;
-		}
+		Supplier s1=()->new DriverNotFoundException("Driver not available");
+		int driverId=driverDto.getDriverId();
+		DriverDTO driver=Converter.convertDriverToDTO(driverrepo.findById(driverId).orElseThrow(s1));
+		
+		driverrepo.save(Converter.convertDriverDtoToEntity(driverDto));
+		return driverDto;
+		
 	}
 	@Override
-	public DriverDTO update(DriverDTO driverDto) throws DriverNotFoundException
+	public DriverDTO update(DriverDTO driverDto) throws Throwable
 	{
-		if (driverDto == null) {
-			throw new DriverNotFoundException(message);
-		} 
-		else 
-		{
-			Driver driver=Converter.convertDriverDtoToEntity(driverDto);
-			int id = driver.getDriverId();
+		Driver driver=Converter.convertDriverDtoToEntity(driverDto);
+		int id = driver.getDriverId();
+		Supplier s1=()->new DriverNotFoundException("Driver not found");
+			
+			
 			Driver driverupdated = driverrepo.findById(id).orElseThrow();
 			driverupdated.setUsername(driver.getUsername());
 			driverupdated.setPassword(driver.getPassword());
@@ -74,20 +69,19 @@ public class IDriverServiceImpl implements IDriverService
 			driverupdated.setAddress(driver.getAddress());
 			driverrepo.save(driverupdated);
 			return Converter.convertDriverToDTO(driverupdated);
-		}
+		
 	}
+	@SuppressWarnings({ "unchecked", "unchecked" })
 	@Override
-	public String delete(int driverId) throws DriverNotFoundException
+	public String delete(int driverId) throws Throwable
 	{
-		DriverDTO driver = Converter.convertDriverToDTO(driverrepo.findById(driverId).orElseThrow());
-		if(driver==null)
-		{
-			throw new DriverNotFoundException(message);
-		}
-		else {
-			driverrepo.deleteById(driverId);
-			return "Deleted";
-		}
+		Supplier s1=()->new DriverNotFoundException("Driver not found");
+		
+		 Converter.convertDriverToDTO(driverrepo.findById(driverId).orElseThrow(s1));
+		
+		driverrepo.deleteById(driverId);
+		return "Deleted";
+		
 		
 	}
 	

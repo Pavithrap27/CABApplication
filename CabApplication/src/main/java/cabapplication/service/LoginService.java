@@ -2,26 +2,44 @@ package cabapplication.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
-import cabapplication.dto.AdminDTO;
+import cabapplication.exception.AdminNotFoundException;
+import cabapplication.exception.CustomerNotFoundException;
+import cabapplication.exception.DriverNotFoundException;
+import cabapplication.repository.IAdminRepository;
+import cabapplication.repository.ICustomerRepository;
+import cabapplication.repository.IDriverRepository;
 
 @Service
 public class LoginService {
 	@Autowired
-	IAdminService adminService;
+	IAdminRepository adminRepo;
 	@Autowired
-	ICustomerServiceImpl customerService;
+	ICustomerRepository customerRepo;
 	@Autowired
-	IDriverServiceImpl driverService;
-	
-	//public String getCredentials(@PathVariable String role, @PathVariable String username, @PathVariable String password) {
-		//if(role.equalsIgnoreCase("admin"))
-		//{
-			//return "login";
-		//}
-	//}
-	
+	IDriverRepository driverRepo;
 
+	public String getCredentials(String role, String username, String password) throws Exception {
+		if (role.equalsIgnoreCase("admin")) {
+			if (adminRepo.getByUsernameAndPassword(username, password) != null) {
+				return "Login";
+			}
+			throw new AdminNotFoundException("Admin not found");
+		} else if (role.equalsIgnoreCase("Driver")) {
+			if (driverRepo.getByUsernameAndPassword(username, password) != null) {
+				return " login";
+
+			}
+			throw new DriverNotFoundException("Driver Not Found");
+
+		} else if (role.equalsIgnoreCase("customer")) {
+			if (customerRepo.getByUsernameAndPassword(username, password) != null) {
+				return "Login";
+			}
+			throw new CustomerNotFoundException("Customer Not Found");
+		}
+
+		return "invalid session";
+
+	}
 }

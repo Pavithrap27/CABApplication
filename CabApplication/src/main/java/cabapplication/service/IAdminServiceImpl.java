@@ -20,19 +20,15 @@ import cabapplication.repository.IDriverRepository;
 import cabapplication.repository.ITripRepository;
 import cabapplication.utils.Converter;
 
+
 @Service	
 public class IAdminServiceImpl implements IAdminService {
+
 	@Autowired
 	IAdminRepository adminrepo;
 	@Autowired
 	ITripRepository repo;
-	@Autowired
-	ICabRepository cabrepo;
-	@Autowired
-	ICustomerRepository customerRepo;
-	@Autowired
-	IDriverRepository driverrepo;
-
+	
 	@Override
 	public List<AdminDTO> getAll() throws AdminNotFoundException {
 		List<AdminDTO> adminDto = Converter.convertToDTO(adminrepo.findAll());
@@ -125,7 +121,7 @@ public class IAdminServiceImpl implements IAdminService {
 
 	@Override
 	public List<TripBookingDTO> getTripsCustomerwise() throws CustomerNotFoundException {
-		List<TripBookingDTO> trips = Converter.convertTripToDto(customerRepo.getTripCustomerwise());
+		List<TripBookingDTO> trips = Converter.convertTripToDto(repo.getTripCustomerwise());
 		if (trips.isEmpty()) {
 			throw new CustomerNotFoundException("Customer not found");
 		} else {
@@ -135,7 +131,8 @@ public class IAdminServiceImpl implements IAdminService {
 
 	@Override
 	public List<TripBookingDTO> getAllTripsForDays(int customerId, LocalDateTime fromDate, LocalDateTime ToDate)
-			throws CustomerNotFoundException {
+			throws CustomerNotFoundException 
+	{
 		List<TripBookingDTO> trips = Converter.convertTripToDto(repo.getAllTripsForDays(customerId, fromDate, ToDate));
 		if (trips.isEmpty()) {
 			throw new CustomerNotFoundException("Trip not found");
@@ -143,4 +140,5 @@ public class IAdminServiceImpl implements IAdminService {
 			return trips;
 		}
 	}
+
 }

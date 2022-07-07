@@ -16,7 +16,10 @@ public interface IAdminService {
 
 	public AdminDTO save(AdminDTO adminDto) throws AdminNotFoundException;
 
+
 	public AdminDTO update(AdminDTO adminDto) throws AdminNotFoundException;
+
+	
 
 	public String delete(AdminDTO adminDto) throws AdminNotFoundException;
 

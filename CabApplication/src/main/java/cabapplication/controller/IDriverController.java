@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import cabapplication.dto.DriverDTO;
-import cabapplication.entity.Driver;
 import cabapplication.exception.DriverNotFoundException;
 import cabapplication.service.IDriverServiceImpl;
 
@@ -34,21 +32,21 @@ public class IDriverController {
 	}
 
 	@PostMapping(path = "/save")
-	public ResponseEntity<DriverDTO> save(@RequestBody DriverDTO driver) throws DriverNotFoundException 
+	public ResponseEntity<DriverDTO> save(@RequestBody DriverDTO driver) throws Throwable  
 	{
 		return new ResponseEntity<>(driverservice.save(driver),HttpStatus.OK);
 		
 	}
 
 	@PutMapping(path = "/update")
-	public ResponseEntity<DriverDTO> update(@RequestBody DriverDTO driver) throws DriverNotFoundException 
+	public ResponseEntity<DriverDTO> update(@RequestBody DriverDTO driver) throws Throwable  
 	{
 		return new ResponseEntity<>(driverservice.update(driver),HttpStatus.OK);
 		
 	}
 
 	@DeleteMapping(path = "/deleteById/{driverId}")
-	public ResponseEntity<String> delete(@PathVariable int driverId) throws DriverNotFoundException  
+	public ResponseEntity<String> delete(@PathVariable int driverId) throws Throwable 
 	{
 		return new ResponseEntity<>(driverservice.delete(driverId),HttpStatus.OK);
 		
