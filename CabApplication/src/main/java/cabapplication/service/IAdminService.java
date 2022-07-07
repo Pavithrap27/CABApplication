@@ -22,10 +22,8 @@ public interface IAdminService {
 
 	public String delete(AdminDTO adminDto) throws Throwable;
 
-	
 	public AdminDTO getById(int adminId) throws AdminNotFoundException;
 
-	
 	public List<TripBookingDTO> getByCustomerId(int customerId) throws CustomerNotFoundException;
 
 	public List<TripBookingDTO> getTripsCabwise() throws CabNotFoundException;
