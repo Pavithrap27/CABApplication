@@ -36,31 +36,31 @@ public class IAdminController {
 		return new ResponseEntity<>(admin, HttpStatus.OK);
 	}
 
-	@PostMapping("insertAdmin")
+	@PostMapping("save")
 	public ResponseEntity<AdminDTO> save(@RequestBody AdminDTO admin) throws AdminNotFoundException {
 		return new ResponseEntity<>(adminservice.save(admin), HttpStatus.OK);
 	}
 
-	@PutMapping("updateAdmin")
+	@PutMapping("update")
 	public ResponseEntity<AdminDTO> update(@RequestBody AdminDTO adminDto) throws AdminNotFoundException {
 		return new ResponseEntity<>(adminservice.update(adminDto), HttpStatus.OK);
 
 	}
 
-	@DeleteMapping("deleteAdmin")
+	@DeleteMapping("delete")
 	public ResponseEntity<String> delete(@RequestBody AdminDTO adminDto) throws AdminNotFoundException {
 		adminservice.delete(adminDto);
 		return new ResponseEntity<>("Deleted", HttpStatus.OK);
 
 	}
 
-	@GetMapping("viewAdmin/{adminId}")
+	@GetMapping("getById/{adminId}")
 	public ResponseEntity<AdminDTO> getById(@PathVariable int adminId) throws AdminNotFoundException {
 		return new ResponseEntity<>(adminservice.getById(adminId), HttpStatus.OK);
 
 	}
 
-	@GetMapping("getAllTrips/{customerId}")
+	@GetMapping("getByCustomerId/{customerId}")
 	public ResponseEntity<List<TripBookingDTO>> getByCustomerId(@PathVariable int customerId)
 			throws CustomerNotFoundException {
 		List<TripBookingDTO> trips = adminservice.getByCustomerId(customerId);
