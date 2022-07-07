@@ -44,7 +44,8 @@ public class IDriverServiceImpl implements IDriverService
 	}
 	
 	@Override
-	public DriverDTO save(DriverDTO driverDto) throws DriverNotFoundException {
+	public DriverDTO save(DriverDTO driverDto) throws DriverNotFoundException 
+	{
 		if (driverDto == null) {
 			throw new DriverNotFoundException(message);
 		} else {
@@ -78,7 +79,7 @@ public class IDriverServiceImpl implements IDriverService
 	@Override
 	public String delete(int driverId) throws DriverNotFoundException
 	{
-		Driver driver = driverrepo.findById(driverId).orElseThrow();
+		DriverDTO driver = Converter.convertDriverToDTO(driverrepo.findById(driverId).orElseThrow());
 		if(driver==null)
 		{
 			throw new DriverNotFoundException(message);
