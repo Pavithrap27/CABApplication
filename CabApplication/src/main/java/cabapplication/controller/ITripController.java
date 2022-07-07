@@ -23,39 +23,38 @@ import cabapplication.service.ITripServiceImpl;
 @RequestMapping("tripbooking")
 public class ITripController {
 	
-	@Autowired
 	ITripServiceImpl tripservice;
 
-	@GetMapping("viewAllTrips")
+	@GetMapping("getAll")
 	public ResponseEntity<List<TripBookingDTO>> getAll() throws TripNotFoundException{
 		List<TripBookingDTO> trips = tripservice.getAll();
 		return new ResponseEntity<>(trips, HttpStatus.OK);
 	}
 
-	@GetMapping("viewAllBookings/{tripBookingId}")
+	@GetMapping("getById/{tripBookingId}")
 	public ResponseEntity<TripBookingDTO> getById(@PathVariable int tripBookingId) throws TripNotFoundException {
 		return new ResponseEntity<>(tripservice.getById(tripBookingId), HttpStatus.OK);
 	}
 
-	@PostMapping("insertTripBooking")
+	@PostMapping("save")
 	public ResponseEntity<TripBookingDTO> save(@RequestBody TripBookingDTO tripBookingDto) throws TripNotFoundException {
 		return new ResponseEntity<>(tripservice.save(tripBookingDto), HttpStatus.OK);
 		
 	}
 
-	@PutMapping("updateTripBooking")
+	@PutMapping("update")
 	public ResponseEntity<TripBookingDTO> update(@RequestBody TripBookingDTO tripDto) throws TripNotFoundException {
 		 return new ResponseEntity<>(tripservice.update(tripDto), HttpStatus.OK);
 	}
 
-	@DeleteMapping("deleteTripBooking/{tripBookingId}")
+	@DeleteMapping("deleteById/{tripBookingId}")
 	public ResponseEntity<String> delete(@PathVariable int tripBookingId) throws TripNotFoundException {
 		tripservice.delete(tripBookingId);
 		return  new ResponseEntity<>("Deleted", HttpStatus.OK);
 		
 	}
 
-	@GetMapping("viewAllTrips/{customerId}")
+	@GetMapping("getByCustomerId/{customerId}")
 	public ResponseEntity<List<TripBookingDTO>> getByCustomerId(@PathVariable int customerId) throws CustomerNotFoundException {
 		List<TripBookingDTO> trips = tripservice.getByCustomerId(customerId);
        return new ResponseEntity<>(trips, HttpStatus.OK);

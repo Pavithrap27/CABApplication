@@ -1,73 +1,88 @@
 package cabapplication.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import cabapplication.dto.DriverDTO;
 import cabapplication.entity.Admin;
 import cabapplication.entity.Driver;
 import cabapplication.exception.AdminNotFoundException;
 import cabapplication.exception.DriverNotFoundException;
 import cabapplication.repository.IDriverRepository;
+import cabapplication.utils.Converter;
 
 @Service
+@Transactional
 public class IDriverServiceImpl implements IDriverService
 {
 
 	@Autowired
 	IDriverRepository driverrepo;
-
-	public List<Driver> getDriver() throws DriverNotFoundException
+	
+	String message="Driver not found";
+	@Override
+	public List<DriverDTO> getAll() throws DriverNotFoundException
 	{
-		List<Driver> driver = driverrepo.findAll();
-		if (driver.isEmpty()) {
-			throw new DriverNotFoundException("Driver not found");
+		List<DriverDTO> driverDtoList=new ArrayList<>();
+		Iterable<Driver> drivers=driverrepo.findAll();
+		if (drivers==null) {
+			throw new DriverNotFoundException(message);
+		} 
+		else {
+			for(Driver driver:drivers) {
+				driverDtoList.add(Converter.convertDriverToDTO(driver));
+			}
+			return driverDtoList;
+		}
+		
+	}
+	
+	@Override
+	public DriverDTO save(DriverDTO driverDto) throws DriverNotFoundException 
+	{
+		if (driverDto == null) {
+			throw new DriverNotFoundException(message);
 		} else {
-			return driver;
+			driverrepo.save(Converter.convertDriverDtoToEntity(driverDto));
+			return driverDto;
 		}
 	}
-
-	public Driver insertDriver(Driver driver)throws DriverNotFoundException
+	@Override
+	public DriverDTO update(DriverDTO driverDto) throws DriverNotFoundException
 	{
-		if (driver == null) {
-			throw new DriverNotFoundException("Driver not found");
-		} else {
-			driverrepo.save(driver);
-			return driver;
-		}
-	}
-
-	public Driver updateDriver(Driver driver) throws DriverNotFoundException
-	{
-		if (driver == null) {
-			throw new DriverNotFoundException("Driver not found");
+		if (driverDto == null) {
+			throw new DriverNotFoundException(message);
 		} 
 		else 
 		{
+			Driver driver=Converter.convertDriverDtoToEntity(driverDto);
 			int id = driver.getDriverId();
-			Driver d = driverrepo.findById(id).orElseThrow();
-			d.setUsername(driver.getUsername());
-			d.setPassword(driver.getPassword());
-			d.setMobileNumber(driver.getMobileNumber());
-			d.setEmail(driver.getEmail());
-			d.setLicenceNo(driver.getLicenceNo());
-			d.setCab(driver.getCab());
-			d.setRating(driver.getRating());
-			d.setAddress(driver.getAddress());
-			driverrepo.save(d);
-			return d;
+			Driver driverupdated = driverrepo.findById(id).orElseThrow();
+			driverupdated.setUsername(driver.getUsername());
+			driverupdated.setPassword(driver.getPassword());
+			driverupdated.setMobileNumber(driver.getMobileNumber());
+			driverupdated.setEmail(driver.getEmail());
+			driverupdated.setLicenceNo(driver.getLicenceNo());
+			driverupdated.setCab(driver.getCab());
+			driverupdated.setRating(driver.getRating());
+			driverupdated.setAddress(driver.getAddress());
+			driverrepo.save(driverupdated);
+			return Converter.convertDriverToDTO(driverupdated);
 		}
 	}
-
-	public String deleteDriver(int driverId) throws DriverNotFoundException
+	@Override
+	public String delete(int driverId) throws DriverNotFoundException
 	{
-		Driver driver = driverrepo.findById(driverId).orElseThrow();
+		DriverDTO driver = Converter.convertDriverToDTO(driverrepo.findById(driverId).orElseThrow());
 		if(driver==null)
 		{
-			throw new DriverNotFoundException("Driver not found");
+			throw new DriverNotFoundException(message);
 		}
 		else {
 			driverrepo.deleteById(driverId);
@@ -76,31 +91,36 @@ public class IDriverServiceImpl implements IDriverService
 		
 	}
 	
-
-	public List<Driver> viewBestDrivers()  throws DriverNotFoundException
+	@Override
+	public List<DriverDTO> viewBestDrivers()  throws DriverNotFoundException
 	{
-		List<Driver> driverList = driverrepo.viewBestDrivers();
-		if(driverList.isEmpty()) 
-		{
-			throw new DriverNotFoundException("Driver not found");
-		}
+		List<DriverDTO> driverDtoList=new ArrayList<>();
+		List<Driver> drivers=driverrepo.viewBestDrivers();
+		if (drivers.isEmpty()) {
+			throw new DriverNotFoundException(message);
+		} 
 		else {
-			return driverList;
+			for(Driver driver:drivers) {
+				driverDtoList.add(Converter.convertDriverToDTO(driver));
+			}
+			return driverDtoList;
 		}
+		
 	}
 	
-	
-	public Driver viewDriver(int driverid) throws DriverNotFoundException 
+	@Override
+	public DriverDTO getById(int driverid) throws DriverNotFoundException 
 	{
-		Driver driver=driverrepo.findById(driverid).orElseThrow();
-		if(driver==null) 
+		DriverDTO driverDto=Converter.convertDriverToDTO(driverrepo.findById(driverid).orElseThrow());
+		if(driverDto==null) 
 		{
-			throw new DriverNotFoundException("Driver not found");
+			throw new DriverNotFoundException(message);
 		}
 		else {
-			return driver;
+			return driverDto;
 		}
 		
 	}
 
+	
 }

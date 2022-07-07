@@ -3,10 +3,9 @@ package cabapplication.dto;
 import org.springframework.stereotype.Component;
 
 import cabapplication.entity.Cab;
-
 @Component
 public class DriverDTO extends AbstractUserDTO {
-
+	
 	public DriverDTO() {
 		super();
 
