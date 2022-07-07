@@ -18,12 +18,10 @@ public interface IAdminService {
 
 	public AdminDTO save(AdminDTO adminDto) throws AdminNotFoundException;
 
-<<<<<<< HEAD
 	
 	public AdminDTO update(Admin admin) throws AdminNotFoundException;
-=======
+
 	public AdminDTO update(AdminDTO adminDto) throws AdminNotFoundException;
->>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 
 	public String delete(AdminDTO adminDto) throws AdminNotFoundException;
 

@@ -21,12 +21,11 @@ import cabapplication.repository.ITripRepository;
 import cabapplication.utils.Converter;
 
 @Service
-<<<<<<< HEAD
+
 public abstract class IAdminServiceImpl implements IAdminService {
 	
-=======
+
 public class IAdminServiceImpl implements IAdminService {
->>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 	@Autowired
 	IAdminRepository adminrepo;
 	@Autowired

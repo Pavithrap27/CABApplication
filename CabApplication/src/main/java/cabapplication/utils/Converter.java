@@ -6,18 +6,18 @@ import java.util.List;
 import org.springframework.beans.BeanUtils;
 
 import cabapplication.dto.AdminDTO;
-<<<<<<< HEAD
+
 import cabapplication.dto.CustomerDTO;
-=======
+
 import cabapplication.dto.DriverDTO;
->>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
+
 import cabapplication.dto.TripBookingDTO;
 import cabapplication.entity.Admin;
-<<<<<<< HEAD
+
 import cabapplication.entity.Customer;
-=======
+
 import cabapplication.entity.Driver;
->>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
+
 import cabapplication.entity.TripBooking;
 
 public class Converter {
@@ -93,7 +93,7 @@ public class Converter {
 		return trip;
 	}
 	
-<<<<<<< HEAD
+
 	public static CustomerDTO convertCustomerToDto(Customer customer)
 	{
 		CustomerDTO customerto=new CustomerDTO();
@@ -128,7 +128,7 @@ public class Converter {
 		}
 		return list;
 	}
-=======
+
 	public static DriverDTO convertDriverToDTO(Driver driver)
 	{
 		DriverDTO driverdto=new DriverDTO();
@@ -164,8 +164,4 @@ public class Converter {
 		return list;
 		
 	}
-
-	
->>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
-
 }
