@@ -4,16 +4,16 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import cabapplication.entity.Cab;
+import cabapplication.dto.CabDTO;
+import cabapplication.exception.CabNotFoundException;
 
 @Service
 public interface ICabService {
 	
-	public List<Cab> getCab();
-	public Cab updateCab(Cab cab);
-	public String deleteCab(int cabId);
-	public List<Cab> viewCabsOfType(String carType);
-	public int countCabsOfType(String carType);
-	
+	public List<CabDTO> getAll() throws CabNotFoundException;
+	public CabDTO save(CabDTO cabDto) throws  Throwable;
+	public CabDTO update(CabDTO cab) throws  Throwable;
+	public String delete(int cabId) throws  Throwable;
+	public List<CabDTO> viewCabsOfType(String carType) throws CabNotFoundException;
+	public int countCabsOfType(String carType) throws CabNotFoundException;
 }
-

@@ -2,6 +2,11 @@ package cabapplication.controller;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 import cabapplication.dto.AdminDTO;
 import cabapplication.dto.TripBookingDTO;
 import cabapplication.exception.AdminNotFoundException;
-import cabapplication.exception.CabNotFoundException;
 import cabapplication.exception.CustomerNotFoundException;
 import cabapplication.exception.TripNotFoundException;
 import cabapplication.service.IAdminServiceImpl;
@@ -25,6 +29,7 @@ import cabapplication.service.IAdminServiceImpl;
 @RequestMapping("admin")
 
 public class IAdminController {
+	Log logger=LogFactory.getLog(IAdminController.class);
 	@Autowired
 	IAdminServiceImpl adminservice;
 

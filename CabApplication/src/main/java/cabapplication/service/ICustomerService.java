@@ -14,7 +14,7 @@ public interface ICustomerService {
 
 	public List<CustomerDTO> getAll() throws CustomerNotFoundException;
 
-	public CustomerDTO getById(int customerId)throws CustomerNotFoundException;
+	public CustomerDTO getById(int customerId)throws Throwable;
 
-	public CustomerDTO validate(String username, String password)throws CustomerNotFoundException;
+	public CustomerDTO validate(String username, String password)throws Throwable;
 }

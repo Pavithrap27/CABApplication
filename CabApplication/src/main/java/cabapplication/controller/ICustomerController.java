@@ -34,7 +34,7 @@ public class ICustomerController {
 		return new ResponseEntity<>(customerservice.update(customerDto), HttpStatus.OK);
 	}
 
-	@DeleteMapping(path = "/deleteById")
+	@DeleteMapping(path = "/delete/{customerId}")
 
 	public ResponseEntity<String> deleteCustomer(@PathVariable int customerId)throws Throwable {
 		return new ResponseEntity<>(customerservice.delete(customerId), HttpStatus.OK);
@@ -47,14 +47,14 @@ public class ICustomerController {
 	}
 
 	@GetMapping(path = "/getById/{customerId}")
-	public ResponseEntity<CustomerDTO> getById(@PathVariable int customerId)throws CustomerNotFoundException 
+	public ResponseEntity<CustomerDTO> getById(@PathVariable int customerId)throws Throwable 
 	{
 		return new ResponseEntity<>(customerservice.getById(customerId), HttpStatus.OK);
 
 	}
 
 	@GetMapping(path = "/validate/{username}/{password}")
-	public ResponseEntity<CustomerDTO> validate(@PathVariable String username, @PathVariable String password)throws CustomerNotFoundException {
+	public ResponseEntity<CustomerDTO> validate(@PathVariable String username, @PathVariable String password)throws Throwable {
 		return new ResponseEntity<>(customerservice.validate(username, password), HttpStatus.OK);
 	}
 }

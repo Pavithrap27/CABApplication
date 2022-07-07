@@ -4,18 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
-
 import cabapplication.dto.AdminDTO;
-
+import cabapplication.dto.CabDTO;
 import cabapplication.dto.CustomerDTO;
-
 import cabapplication.dto.DriverDTO;
-
 import cabapplication.dto.TripBookingDTO;
 import cabapplication.entity.Admin;
+import cabapplication.entity.Cab;
+
 
 import cabapplication.entity.Customer;
-
 import cabapplication.entity.Driver;
 
 import cabapplication.entity.TripBooking;
@@ -96,12 +94,12 @@ public class Converter {
 
 	public static CustomerDTO convertCustomerToDto(Customer customer)
 	{
-		CustomerDTO customerto=new CustomerDTO();
-		BeanUtils.copyProperties(customer, customerto);
-		return customerto;
+		CustomerDTO customerdto=new CustomerDTO();
+		BeanUtils.copyProperties(customer, customerdto);
+		return customerdto;
 		
 	}
-	public static List<CustomerDTO> convertCustomersToDTO(List<Customer> customers)
+	public static List<CustomerDTO> convertCustomerToDto(List<Customer> customers)
 	{
 		List<CustomerDTO> listDto =new ArrayList<>();
 		for(Customer customer:customers)
@@ -110,23 +108,22 @@ public class Converter {
 		}
 		return listDto;
 	}
-	public static Customer convertCustomerToEntity(CustomerDTO customerDto)
+	public static Customer convertCustomerDtoToEntity(CustomerDTO customerDto)
 	{
 		Customer customer=new Customer();
 		BeanUtils.copyProperties(customerDto, customer);
 		return customer;
 	}
 	
-	public static List<Customer> convertCustomerstToEntity(List<CustomerDTO> listDto)
+	public static List<Customer> convertCustomerDtoToEntity(List<CustomerDTO> customerDto)
 	{
 
-		List<Customer> list =new ArrayList<>();
-		for(CustomerDTO customerDto:listDto)
+		List<Customer> customer =new ArrayList<>();
+		for(CustomerDTO dto:customerDto)
 		{
-			list.add(convertCustomerToEntity(customerDto));
-			
+			customer.add((Customer) convertCustomerDtoToEntity(customerDto));
 		}
-		return list;
+		return customer;
 	}
 
 	public static DriverDTO convertDriverToDTO(Driver driver)
@@ -162,6 +159,42 @@ public class Converter {
 			
 		}
 		return list;
+	}
+	public static CabDTO convertCabToDTO(Cab cab)
+	{
+		CabDTO cabdto=new CabDTO();
+		BeanUtils.copyProperties(cab, cabdto);
+		return cabdto;
+		
+	}
+	public static List<CabDTO> convertCabToDTO(List<Cab> list)
+	{
+		List<CabDTO> listDto =new ArrayList<>();
+		for(Cab cab:list)
+		{
+			listDto.add(convertCabToDTO(cab));
+			
+		}
+		return listDto;
+	}
+
+	public static Cab convertCabDtoToEntity(CabDTO cabDto)
+	{
+		Cab cab=new Cab();
+		BeanUtils.copyProperties(cabDto, cab);
+		return cab;
+	}
+	public static List<Cab> convertCabDtoToEntity(List<CabDTO> listDto)
+	{
+
+		List<Cab> list =new ArrayList<>();
+		for(CabDTO cabDto:listDto)
+		{
+			list.add(convertCabDtoToEntity(cabDto));
+			
+		}
+		return list;
 		
 	}
 }
+   

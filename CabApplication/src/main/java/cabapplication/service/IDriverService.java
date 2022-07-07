@@ -11,7 +11,7 @@ public interface IDriverService {
 	public DriverDTO update(DriverDTO driver)throws Throwable;
 	public String delete(int driverId)throws Throwable;
 	public List<DriverDTO> viewBestDrivers()throws DriverNotFoundException;
-	public DriverDTO getById(int driverid)throws DriverNotFoundException;
+	public DriverDTO getById(int driverid)throws Throwable;
 	
 
 }
