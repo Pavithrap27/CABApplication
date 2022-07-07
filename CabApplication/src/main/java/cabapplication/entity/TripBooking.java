@@ -35,19 +35,6 @@ public class TripBooking {
 	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
 	}
-
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn
-	private Driver driver;
-
-	public Driver getDriver() {
-		return driver;
-	}
-
-	public void setDriver(Driver driver) {
-		this.driver = driver;
-	}
-
 	public int getTripBookingId() {
 		return tripBookingId;
 	}
@@ -114,9 +101,11 @@ public class TripBooking {
 
 	@Override
 	public String toString() {
-		return "TripBooking [tripBookingId=" + tripBookingId + ", driver=" + driver + ", fromLocation=" + fromLocation
-				+ ", toLocation=" + toLocation + ", fromDateTime=" + fromDateTime + ", toDateTime=" + toDateTime
-				+ ", status=" + status + ", distanceInKm=" + distanceInKm + ", bill=" + bill + "]";
+		return "TripBooking [tripBookingId=" + tripBookingId + ", customerId=" + customerId + ", fromLocation="
+				+ fromLocation + ", toLocation=" + toLocation + ", fromDateTime=" + fromDateTime + ", toDateTime="
+				+ toDateTime + ", status=" + status + ", distanceInKm=" + distanceInKm + ", bill=" + bill + "]";
 	}
+
+	
 
 }

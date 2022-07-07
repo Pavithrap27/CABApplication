@@ -3,8 +3,10 @@ package cabapplication.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="customer")
 public class Customer extends AbstractUser {
 	public Customer() {
 		super();

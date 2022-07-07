@@ -27,7 +27,7 @@ public interface IAdminService {
 
 	public List<TripBookingDTO> getByCustomerId(int customerId) throws CustomerNotFoundException;
 
-	public List<TripBookingDTO> getTripsCabwise() throws CabNotFoundException;
+	public List<TripBookingDTO> getTripsCabwise(String carType) throws CabNotFoundException;
 
 	public List<TripBookingDTO> getTripsDatewise() throws TripNotFoundException;
 
