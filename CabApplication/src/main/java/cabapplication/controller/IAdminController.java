@@ -2,7 +2,6 @@ package cabapplication.controller;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import cabapplication.dto.AdminDTO;
 import cabapplication.dto.TripBookingDTO;
 import cabapplication.exception.AdminNotFoundException;
@@ -37,18 +35,18 @@ public class IAdminController {
 	}
 
 	@PostMapping("save")
-	public ResponseEntity<AdminDTO> save(@RequestBody AdminDTO admin) throws AdminNotFoundException {
+	public ResponseEntity<AdminDTO> save(@RequestBody AdminDTO admin) throws Throwable {
 		return new ResponseEntity<>(adminservice.save(admin), HttpStatus.OK);
 	}
 
 	@PutMapping("update")
-	public ResponseEntity<AdminDTO> update(@RequestBody AdminDTO adminDto) throws AdminNotFoundException {
+	public ResponseEntity<AdminDTO> update(@RequestBody AdminDTO adminDto) throws Throwable {
 		return new ResponseEntity<>(adminservice.update(adminDto), HttpStatus.OK);
 
 	}
 
 	@DeleteMapping("delete")
-	public ResponseEntity<String> delete(@RequestBody AdminDTO adminDto) throws AdminNotFoundException {
+	public ResponseEntity<String> delete(@RequestBody AdminDTO adminDto) throws Throwable {
 		adminservice.delete(adminDto);
 		return new ResponseEntity<>("Deleted", HttpStatus.OK);
 
@@ -61,8 +59,7 @@ public class IAdminController {
 	}
 
 	@GetMapping("getByCustomerId/{customerId}")
-	public ResponseEntity<List<TripBookingDTO>> getByCustomerId(@PathVariable int customerId)
-			throws CustomerNotFoundException {
+	public ResponseEntity<List<TripBookingDTO>> getByCustomerId(@PathVariable int customerId) throws CustomerNotFoundException {
 		List<TripBookingDTO> trips = adminservice.getByCustomerId(customerId);
 		return new ResponseEntity<>(trips, HttpStatus.OK);
 

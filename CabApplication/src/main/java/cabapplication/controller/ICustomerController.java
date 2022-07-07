@@ -1,7 +1,6 @@
 package cabapplication.controller;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import cabapplication.dto.CustomerDTO;
 import cabapplication.service.ICustomerServiceImpl;
 import cabapplication.exception.CustomerNotFoundException;
@@ -26,19 +24,19 @@ public class ICustomerController {
 	ICustomerServiceImpl customerservice;
 
 	@PostMapping(path = "/save")
-	public ResponseEntity<CustomerDTO> save(@RequestBody CustomerDTO customer) throws CustomerNotFoundException {
+	public ResponseEntity<CustomerDTO> save(@RequestBody CustomerDTO customer) throws Throwable
+	{
 		return new ResponseEntity<>(customerservice.save(customer), HttpStatus.OK);
-
 	}
 
 	@PutMapping(path = "/update")
-	public ResponseEntity<CustomerDTO> update(@RequestBody CustomerDTO customerDto)throws CustomerNotFoundException {
+	public ResponseEntity<CustomerDTO> update(@RequestBody CustomerDTO customerDto) throws Throwable {
 		return new ResponseEntity<>(customerservice.update(customerDto), HttpStatus.OK);
 	}
 
 	@DeleteMapping(path = "/deleteById")
 
-	public ResponseEntity<String> deleteCustomer(@PathVariable int customerId)throws CustomerNotFoundException {
+	public ResponseEntity<String> deleteCustomer(@PathVariable int customerId)throws Throwable {
 		return new ResponseEntity<>(customerservice.delete(customerId), HttpStatus.OK);
 	}
 
@@ -58,7 +56,5 @@ public class ICustomerController {
 	@GetMapping(path = "/validate/{username}/{password}")
 	public ResponseEntity<CustomerDTO> validate(@PathVariable String username, @PathVariable String password)throws CustomerNotFoundException {
 		return new ResponseEntity<>(customerservice.validate(username, password), HttpStatus.OK);
-
 	}
-
 }

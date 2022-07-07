@@ -1,18 +1,16 @@
 package cabapplication.service;
 
 import java.util.List;
-
 import cabapplication.dto.CustomerDTO;
-import cabapplication.entity.Customer;
 import cabapplication.exception.CustomerNotFoundException;
 
 public interface ICustomerService {
 
-	public CustomerDTO save(CustomerDTO customer) throws CustomerNotFoundException;
+	public CustomerDTO save(CustomerDTO customer) throws Throwable;
 		
-	public CustomerDTO update(CustomerDTO customer) throws CustomerNotFoundException;
+	public CustomerDTO update(CustomerDTO customer) throws Throwable;
 
-	public String delete(int customerId) throws CustomerNotFoundException;
+	public String delete(int customerId) throws Throwable;
 
 	public List<CustomerDTO> getAll() throws CustomerNotFoundException;
 
