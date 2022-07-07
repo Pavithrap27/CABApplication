@@ -42,12 +42,15 @@ public class IDriverServiceImpl implements IDriverService
 	@Override
 	public DriverDTO save(DriverDTO driverDto) throws Throwable 
 	{
-		Supplier s1=()->new DriverNotFoundException("Driver not available");
-		int driverId=driverDto.getDriverId();
-		DriverDTO driver=Converter.convertDriverToDTO(driverrepo.findById(driverId).orElseThrow(s1));
-		
+		//Supplier s1=()->new DriverNotFoundException("Driver not available");
+		//int driverId=driverDto.getDriverId();
+		//DriverDTO driver=Converter.convertDriverToDTO(driverrepo.findById(driverId).orElseThrow(s1));
+		if(driverDto!=null)
+		{
 		driverrepo.save(Converter.convertDriverDtoToEntity(driverDto));
 		return driverDto;
+		}
+		throw new DriverNotFoundException("Driver not available");
 		
 	}
 	@Override
@@ -71,7 +74,6 @@ public class IDriverServiceImpl implements IDriverService
 			return Converter.convertDriverToDTO(driverupdated);
 		
 	}
-	@SuppressWarnings({ "unchecked", "unchecked" })
 	@Override
 	public String delete(int driverId) throws Throwable
 	{

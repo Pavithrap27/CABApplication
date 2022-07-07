@@ -28,6 +28,9 @@ public class IAdminServiceImpl implements IAdminService {
 	IAdminRepository adminrepo;
 	@Autowired
 	ITripRepository repo;
+	@Autowired
+	IDriverRepository driverRepo;
+	
 	
 	@Override
 	public List<AdminDTO> getAll() throws AdminNotFoundException {
@@ -62,7 +65,7 @@ public class IAdminServiceImpl implements IAdminService {
 
 	@Override
 	public List<TripBookingDTO> getTripsCabwise() throws CabNotFoundException {
-		List<TripBookingDTO> trips = Converter.convertTripToDto(repo.getTripsCabwise());
+		List<TripBookingDTO> trips = Converter.convertTripToDto(driverRepo.getTripsCabwise());
 		if (trips.isEmpty()) {
 			throw new CabNotFoundException("Cab not found");
 		} else {
