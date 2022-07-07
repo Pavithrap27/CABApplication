@@ -57,7 +57,7 @@ public class IDriverServiceImpl implements IDriverService
 		int id = driver.getDriverId();
 		Supplier s1=()->new DriverNotFoundException("Driver not found");
 		
-		Driver driverupdated = driverrepo.findById(id).orElseThrow();
+		Driver driverupdated = driverrepo.findById(id).orElseThrow(s1);
 		driverupdated.setUsername(driver.getUsername());
 		driverupdated.setPassword(driver.getPassword());
 		driverupdated.setMobileNumber(driver.getMobileNumber());

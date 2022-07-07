@@ -36,9 +36,9 @@ public class ICustomerController {
 		return new ResponseEntity<>(customerservice.update(customerDto), HttpStatus.OK);
 	}
 
-	@DeleteMapping(path = "/deleteById")
+	@DeleteMapping(path = "/delete/{customerId}")
 
-	public ResponseEntity<String> deleteCustomer(@PathVariable int customerId)throws CustomerNotFoundException {
+	public ResponseEntity<String> delete(@PathVariable int customerId)throws CustomerNotFoundException {
 		return new ResponseEntity<>(customerservice.delete(customerId), HttpStatus.OK);
 	}
 
