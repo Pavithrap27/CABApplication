@@ -18,33 +18,34 @@ public class ICustomerServiceImpl implements ICustomerService
 {
 	@Autowired
 	ICustomerRepository customerrepo;
-	@Autowired
-	Converter converter;
 	
 	@Override
 	public List<CustomerDTO> getAll() throws CustomerNotFoundException {
-		List<CustomerDTO> customerDto = converter.convertCustomersToDTO(customerrepo.findAll());
+		List<CustomerDTO> customerDto = Converter.convertCustomersToDTO(customerrepo.findAll());
 		if (customerDto.isEmpty()) {
 			throw new CustomerNotFoundException("No Customer available");
 		} else {
 			return customerDto;
 		}
 	}
+	
+	@Override
 	public CustomerDTO save(CustomerDTO customerDto) throws CustomerNotFoundException {
 		if (customerDto == null) {
 			throw new CustomerNotFoundException("Customer Does not exist");
 		} else {
-			customerrepo.save(converter.convertCustomerToEntity(customerDto));
+			customerrepo.save(Converter.convertCustomerToEntity(customerDto));
 			return customerDto;
 		}
 
 	}
 	
-	public CustomerDTO updateCustomer(CustomerDTO customerDto)throws CustomerNotFoundException {
+	@Override
+	public CustomerDTO update(CustomerDTO customerDto)throws CustomerNotFoundException {
 		if (customerDto == null) {
 			throw new CustomerNotFoundException("No Customer found");
 		} else {
-			Customer customer = converter.convertCustomerToEntity(customerDto);
+			Customer customer = Converter.convertCustomerToEntity(customerDto);
 		int id = customer.getCustomerId();
 		Customer customerUpdated = customerrepo.findById(id).orElseThrow();
 		customerUpdated.setCustomerId(customerUpdated.getCustomerId());
@@ -54,29 +55,38 @@ public class ICustomerServiceImpl implements ICustomerService
 		customerUpdated.setPassword(customer.getPassword());
 		customerUpdated.setUsername(customer.getUsername());
 		customerrepo.save(customerUpdated);
-		return converter.convertCustomerToDto(customerUpdated);
+		return Converter.convertCustomerToDto(customerUpdated);
 		}
 	}
 
-	public String delete(CustomerDTO customerDto)throws CustomerNotFoundException{
+	@Override
+	public String delete(int customerId)throws CustomerNotFoundException{
+		CustomerDTO customerDto = Converter.convertCustomerToDto(customerrepo.findById(customerId).orElseThrow());
 		if (customerDto == null) {
-			throw new CustomerNotFoundException("Customer not found");
+			throw new CustomerNotFoundException("No Customer found");
 		} else {
-			customerrepo.delete(converter.convertCustomerToEntity(customerDto));
+			customerrepo.delete(Converter.convertCustomerToEntity(customerDto));
 			return "Deleted";
 		}
 	}
-	public CustomerDTO viewCustomer(CustomerDTO customerDto)throws CustomerNotFoundException {
+	
+	@Override
+	public CustomerDTO  getById(int customerId)throws CustomerNotFoundException {
+		CustomerDTO customerDto = Converter.convertCustomerToDto(customerrepo.findById(customerId).orElseThrow());
 		if (customerDto == null) {
 			throw new CustomerNotFoundException("Customer not found");
 		} else {
-		return customerrepo.findById(customerId).orElseThrow();
-	}
-	}
-	public CustomerDTO validate(String username, String password) {
-		CustomerDTO customer = customerrepo.validate(username, password);
-
-		return customer;
+		return customerDto;
+		}
 	}
 	
+	@Override
+	public CustomerDTO validate(String username, String password)throws CustomerNotFoundException {
+		CustomerDTO customerDto =Converter.convertCustomerToDto(customerrepo.getByUserNameAndPassword(username, password));
+		if (customerDto == null) {
+			throw new CustomerNotFoundException("Customer not found");
+		} else {
+		return customerDto;
+		}
+	}
 }

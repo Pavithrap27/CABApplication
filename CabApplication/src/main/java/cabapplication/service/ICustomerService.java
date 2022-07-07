@@ -8,9 +8,9 @@ import cabapplication.exception.CustomerNotFoundException;
 
 public interface ICustomerService {
 
-	public CustomerDTO save(Customer customer) throws CustomerNotFoundException;
+	public CustomerDTO save(CustomerDTO customer) throws CustomerNotFoundException;
 		
-	public CustomerDTO update(Customer customer) throws CustomerNotFoundException;
+	public CustomerDTO update(CustomerDTO customer) throws CustomerNotFoundException;
 
 	public String delete(int customerId) throws CustomerNotFoundException;
 
@@ -18,5 +18,5 @@ public interface ICustomerService {
 
 	public CustomerDTO getById(int customerId)throws CustomerNotFoundException;
 
-	public CustomerDTO validateCustomer(String username, String password)throws CustomerNotFoundException;
+	public CustomerDTO validate(String username, String password)throws CustomerNotFoundException;
 }

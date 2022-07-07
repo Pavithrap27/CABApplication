@@ -84,14 +84,14 @@ public class Converter {
 		return trip;
 	}
 	
-	public CustomerDTO convertCustomerToDto(Customer customer)
+	public static CustomerDTO convertCustomerToDto(Customer customer)
 	{
 		CustomerDTO customerto=new CustomerDTO();
 		BeanUtils.copyProperties(customer, customerto);
 		return customerto;
 		
 	}
-	public List<CustomerDTO> convertCustomersToDTO(List<Customer> customers)
+	public static List<CustomerDTO> convertCustomersToDTO(List<Customer> customers)
 	{
 		List<CustomerDTO> listDto =new ArrayList<>();
 		for(Customer customer:customers)
@@ -100,14 +100,14 @@ public class Converter {
 		}
 		return listDto;
 	}
-	public Customer convertCustomerToEntity(CustomerDTO customerDto)
+	public static Customer convertCustomerToEntity(CustomerDTO customerDto)
 	{
 		Customer customer=new Customer();
 		BeanUtils.copyProperties(customerDto, customer);
 		return customer;
 	}
 	
-	public List<Customer> converCustomerstToEntity(List<CustomerDTO> listDto)
+	public static List<Customer> convertCustomerstToEntity(List<CustomerDTO> listDto)
 	{
 
 		List<Customer> list =new ArrayList<>();
