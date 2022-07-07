@@ -24,7 +24,6 @@ public class IDriverServiceImpl implements IDriverService
 
 	@Autowired
 	IDriverRepository driverrepo;
-	Converter converter;
 	
 	String message="Driver not found";
 	@Override
@@ -37,7 +36,7 @@ public class IDriverServiceImpl implements IDriverService
 		} 
 		else {
 			for(Driver driver:drivers) {
-				driverDtoList.add(converter.convertDriverToDTO(driver));
+				driverDtoList.add(Converter.convertDriverToDTO(driver));
 			}
 			return driverDtoList;
 		}
