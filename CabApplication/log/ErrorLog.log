@@ -70,3 +70,7 @@
 07-Jul-2022 15:56:28 INFO - Starting ProtocolHandler ["http-nio-9090"]
 07-Jul-2022 15:56:28 INFO - Tomcat started on port(s): 9090 (http) with context path ''
 07-Jul-2022 15:56:29 INFO - Started CabApplication in 21.035 seconds (JVM running for 24.565)
+07-Jul-2022 16:29:02 INFO - Application shutdown requested.
+07-Jul-2022 16:29:04 INFO - Closing JPA EntityManagerFactory for persistence unit 'default'
+07-Jul-2022 16:29:04 INFO - HikariPool-1 - Shutdown initiated...
+07-Jul-2022 16:29:04 INFO - HikariPool-1 - Shutdown completed.
