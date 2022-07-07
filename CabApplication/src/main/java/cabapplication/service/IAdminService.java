@@ -15,18 +15,15 @@ public interface IAdminService {
 
 	public AdminDTO save(AdminDTO adminDto) throws Throwable;
 
-
 	public AdminDTO update(AdminDTO adminDto) throws Throwable;
 
-	
+	public String delete(int adminId) throws Throwable;
 
-	public String delete(AdminDTO adminDto) throws Throwable;
+	public AdminDTO getById(int adminId) throws Throwable;
 
-	public AdminDTO getById(int adminId) throws AdminNotFoundException;
+	public List<TripBookingDTO> getByCustomerId(int customerId) throws Throwable;
 
-	public List<TripBookingDTO> getByCustomerId(int customerId) throws CustomerNotFoundException;
-
-	public List<TripBookingDTO> getTripsCabwise() throws CabNotFoundException;
+	public List<TripBookingDTO> getTripsCabwise() throws Throwable;
 
 	public List<TripBookingDTO> getTripsDatewise() throws TripNotFoundException;
 

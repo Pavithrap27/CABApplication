@@ -1,13 +1,13 @@
 package cabapplication.service;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cabapplication.dto.CustomerDTO;
 import cabapplication.entity.Customer;
-import cabapplication.exception.AdminNotFoundException;
 import cabapplication.exception.CustomerNotFoundException;
 import cabapplication.repository.ICustomerRepository;
 import cabapplication.utils.Converter;
@@ -60,14 +60,12 @@ public class ICustomerServiceImpl implements ICustomerService
 	}
 
 	@Override
-	public String delete(int customerId)throws CustomerNotFoundException{
-		CustomerDTO customerDto = Converter.convertCustomerToDto(customerrepo.findById(customerId).orElseThrow());
-		if (customerDto == null) {
-			throw new CustomerNotFoundException("No Customer found");
-		} else {
-			customerrepo.delete(Converter.convertCustomerToEntity(customerDto));
+	public String delete(int customerId)throws Throwable
+	{
+		Supplier s1=()->new CustomerNotFoundException("Customer not found");
+		Converter.convertCustomerToDto(customerrepo.findById(customerId).orElseThrow(s1));
+			customerrepo.deleteById(customerId);
 			return "Deleted";
-		}
 	}
 	
 	@Override

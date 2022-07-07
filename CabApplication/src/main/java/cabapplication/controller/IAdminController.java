@@ -45,28 +45,28 @@ public class IAdminController {
 
 	}
 
-	@DeleteMapping("delete")
-	public ResponseEntity<String> delete(@RequestBody AdminDTO adminDto) throws Throwable {
-		adminservice.delete(adminDto);
+	@DeleteMapping("delete/{adminId}")
+	public ResponseEntity<String> delete(@PathVariable int adminId) throws Throwable {
+		adminservice.delete(adminId);
 		return new ResponseEntity<>("Deleted", HttpStatus.OK);
 
 	}
 
 	@GetMapping("getById/{adminId}")
-	public ResponseEntity<AdminDTO> getById(@PathVariable int adminId) throws AdminNotFoundException {
+	public ResponseEntity<AdminDTO> getById(@PathVariable int adminId) throws Throwable {
 		return new ResponseEntity<>(adminservice.getById(adminId), HttpStatus.OK);
 
 	}
 
 	@GetMapping("getByCustomerId/{customerId}")
-	public ResponseEntity<List<TripBookingDTO>> getByCustomerId(@PathVariable int customerId) throws CustomerNotFoundException {
+	public ResponseEntity<List<TripBookingDTO>> getByCustomerId(@PathVariable int customerId) throws Throwable {
 		List<TripBookingDTO> trips = adminservice.getByCustomerId(customerId);
 		return new ResponseEntity<>(trips, HttpStatus.OK);
 
 	}
 
 	@GetMapping("getTripsCabwise")
-	public ResponseEntity<List<TripBookingDTO>> getTripsCabwise() throws CabNotFoundException {
+	public ResponseEntity<List<TripBookingDTO>> getTripsCabwise() throws Throwable {
 		List<TripBookingDTO> trips = adminservice.getTripsCabwise();
 		return new ResponseEntity<>(trips, HttpStatus.OK);
 
