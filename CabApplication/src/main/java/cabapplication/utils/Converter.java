@@ -106,7 +106,7 @@ public class Converter {
 		List<CustomerDTO> listDto =new ArrayList<>();
 		for(Customer customer:customers)
 		{
-			listDto.add((CustomerDTO) convertCustomersToDTO(customers));
+			listDto.add(convertCustomerToDto(customer));
 		}
 		return listDto;
 	}

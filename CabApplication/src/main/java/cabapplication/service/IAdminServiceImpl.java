@@ -32,9 +32,7 @@ public class IAdminServiceImpl implements IAdminService {
 	ICabRepository cabrepo;
 	@Autowired
 	ICustomerRepository customerRepo;
-	@Autowired
-	IDriverRepository driverrepo;
-
+	
 	@Override
 	public List<AdminDTO> getAll() throws AdminNotFoundException {
 		List<AdminDTO> adminDto = Converter.convertToDTO(adminrepo.findAll());

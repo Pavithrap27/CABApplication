@@ -36,25 +36,26 @@ public class ICustomerController {
 		return new ResponseEntity<>(customerservice.update(customerDto), HttpStatus.OK);
 	}
 
-	@DeleteMapping(path = "/deletebyid")
+	@DeleteMapping(path = "/deleteById")
 
 	public ResponseEntity<String> deleteCustomer(@PathVariable int customerId)throws CustomerNotFoundException {
 		return new ResponseEntity<>(customerservice.delete(customerId), HttpStatus.OK);
 	}
 
-	@GetMapping(path = "/getall")
-	public ResponseEntity<List<CustomerDTO>> getAll()throws CustomerNotFoundException {
+	@GetMapping(path = "/getAll")
+	public ResponseEntity<List<CustomerDTO>> getAll()throws CustomerNotFoundException 
+	{
 		return new ResponseEntity<>(customerservice.getAll(), HttpStatus.OK);
-
 	}
 
-	@GetMapping(path = "/getbyid{customerid}")
-	public ResponseEntity<CustomerDTO> getById(@PathVariable int customerId)throws CustomerNotFoundException {
+	@GetMapping(path = "/getById/{customerId}")
+	public ResponseEntity<CustomerDTO> getById(@PathVariable int customerId)throws CustomerNotFoundException 
+	{
 		return new ResponseEntity<>(customerservice.getById(customerId), HttpStatus.OK);
 
 	}
 
-	@GetMapping(path = "/validate")
+	@GetMapping(path = "/validate/{username}/{password}")
 	public ResponseEntity<CustomerDTO> validate(@PathVariable String username, @PathVariable String password)throws CustomerNotFoundException {
 		return new ResponseEntity<>(customerservice.validate(username, password), HttpStatus.OK);
 

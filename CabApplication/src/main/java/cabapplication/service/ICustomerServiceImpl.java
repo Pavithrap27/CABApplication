@@ -71,22 +71,25 @@ public class ICustomerServiceImpl implements ICustomerService
 	}
 	
 	@Override
-	public CustomerDTO  getById(int customerId)throws CustomerNotFoundException {
-		CustomerDTO customerDto = Converter.convertCustomerToDto(customerrepo.findById(customerId).orElseThrow());
-		if (customerDto == null) {
-			throw new CustomerNotFoundException("Customer not found");
-		} else {
-		return customerDto;
+	public CustomerDTO  getById(int customerId)throws CustomerNotFoundException 
+	{
+		if((customerrepo.findById(customerId).orElseThrow())!=null)
+		{
+			return Converter.convertCustomerToDto(customerrepo.findById(customerId).orElseThrow());
 		}
+		
+		throw new CustomerNotFoundException("Customer not found");
+		
 	}
 	
 	@Override
-	public CustomerDTO validate(String username, String password)throws CustomerNotFoundException {
-		CustomerDTO customerDto =Converter.convertCustomerToDto(customerrepo.getByUserNameAndPassword(username, password));
-		if (customerDto == null) {
-			throw new CustomerNotFoundException("Customer not found");
-		} else {
-		return customerDto;
+	public CustomerDTO validate(String username, String password)throws CustomerNotFoundException 
+	{
+		if(customerrepo.getByUsernameAndPassword(username, password)!=null) {
+			
+			 return Converter.convertCustomerToDto(customerrepo.getByUsernameAndPassword(username, password));
 		}
+		
+		throw new CustomerNotFoundException("Customer not found");
 	}
 }
