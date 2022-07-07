@@ -6,9 +6,11 @@ import java.util.List;
 import org.springframework.beans.BeanUtils;
 
 import cabapplication.dto.AdminDTO;
+import cabapplication.dto.CabDTO;
 import cabapplication.dto.DriverDTO;
 import cabapplication.dto.TripBookingDTO;
 import cabapplication.entity.Admin;
+import cabapplication.entity.Cab;
 import cabapplication.entity.Driver;
 import cabapplication.entity.TripBooking;
 
@@ -115,3 +117,6 @@ public class Converter {
 	}
 
 }
+   
+
+	
