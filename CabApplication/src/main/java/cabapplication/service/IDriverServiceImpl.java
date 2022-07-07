@@ -37,7 +37,7 @@ public class IDriverServiceImpl implements IDriverService
 		} 
 		else {
 			for(Driver driver:drivers) {
-				driverDtoList.add(Converter.convertDriverToDTO(driver));
+				driverDtoList.add(converter.convertDriverToDTO(driver));
 			}
 			return driverDtoList;
 		}
@@ -49,7 +49,7 @@ public class IDriverServiceImpl implements IDriverService
 		if (driverDto == null) {
 			throw new DriverNotFoundException(message);
 		} else {
-			driverrepo.save(Converter.convertDriverToEntity(driverDto));
+			driverrepo.save(Converter.convertDriverDtoToEntity(driverDto));
 			return driverDto;
 		}
 	}
@@ -61,7 +61,7 @@ public class IDriverServiceImpl implements IDriverService
 		} 
 		else 
 		{
-			Driver driver=converter.convertDriverToEntity(driverDto);
+			Driver driver=Converter.convertDriverDtoToEntity(driverDto);
 			int id = driver.getDriverId();
 			Driver driverupdated = driverrepo.findById(id).orElseThrow();
 			driverupdated.setUsername(driver.getUsername());
@@ -73,7 +73,7 @@ public class IDriverServiceImpl implements IDriverService
 			driverupdated.setRating(driver.getRating());
 			driverupdated.setAddress(driver.getAddress());
 			driverrepo.save(driverupdated);
-			return converter.convertDriverToDTO(driverupdated);
+			return Converter.convertDriverToDTO(driverupdated);
 		}
 	}
 	@Override

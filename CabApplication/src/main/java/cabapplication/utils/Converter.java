@@ -13,14 +13,15 @@ import cabapplication.entity.Driver;
 import cabapplication.entity.TripBooking;
 
 public class Converter {
-	public AdminDTO convertToDTO(Admin admin)
+	
+	public static AdminDTO convertToDTO(Admin admin)
 	{
 		AdminDTO admindto=new AdminDTO();
 		BeanUtils.copyProperties(admin, admindto);
 		return admindto;
 		
 	}
-	public List<AdminDTO> convertToDTO(List<Admin> list)
+	public static List<AdminDTO> convertToDTO(List<Admin> list)
 	{
 		List<AdminDTO> listDto =new ArrayList<>();
 		for(Admin admin:list)
@@ -30,13 +31,13 @@ public class Converter {
 		}
 		return listDto;
 	}
-	public Admin convertToEntity(AdminDTO adminDto)
+	public static Admin convertToEntity(AdminDTO adminDto)
 	{
 		Admin admin=new Admin();
 		BeanUtils.copyProperties(adminDto, admin);
 		return admin;
 	}
-	public List<Admin> convertToEntity(List<AdminDTO> listDto)
+	public static List<Admin> convertToEntity(List<AdminDTO> listDto)
 	{
 
 		List<Admin> list =new ArrayList<>();
@@ -48,7 +49,7 @@ public class Converter {
 		return list;
 		
 	}
-	public List<TripBookingDTO> convertTripToDto(List<TripBooking> trips)
+	public static List<TripBookingDTO> convertTripToDto(List<TripBooking> trips)
 	{
 
 		List<TripBookingDTO> tripsDto =new ArrayList<>();
@@ -60,20 +61,20 @@ public class Converter {
 		return tripsDto;
 		
 	}
-	public TripBookingDTO convertTripToDto(TripBooking trip)
+	public static TripBookingDTO convertTripToDto(TripBooking trip)
 	{
 		TripBookingDTO tripDto=new TripBookingDTO();
 		BeanUtils.copyProperties(trip,tripDto);
 		return tripDto;
 		
 	}
-	public TripBooking convertTripToEntity(TripBookingDTO tripDto)
+	public static TripBooking convertTripToEntity(TripBookingDTO tripDto)
 	{
 		TripBooking trips=new TripBooking();
 		BeanUtils.copyProperties(tripDto, trips);
 		return trips;
 	}
-	public List<TripBooking> convertTripToEntity(List<TripBookingDTO> tripDto)
+	public static List<TripBooking> convertTripToEntity(List<TripBookingDTO> tripDto)
 	{
 		List<TripBooking> trip=new ArrayList<>();
 		for(TripBookingDTO dto:tripDto)
@@ -84,34 +85,42 @@ public class Converter {
 		return trip;
 	}
 	
-	
 	public static DriverDTO convertDriverToDTO(Driver driver)
 	{
-		DriverDTO driverd=new DriverDTO();
-		driverd.setUsername(driver.getUsername());
-		driverd.setPassword(driver.getPassword());
-		driverd.setAddress(driver.getAddress());
-		driverd.setCab(driver.getCab());
-		driverd.setDriverId(driver.getDriverId());
-		driverd.setEmail(driver.getEmail());
-		driverd.setMobileNumber(driver.getMobileNumber());
-		driverd.setLicenceNo(driver.getLicenceNo());
-		driverd.setRating(driver.getRating());
-		return driverd;
+		DriverDTO driverdto=new DriverDTO();
+		BeanUtils.copyProperties(driver, driverdto);
+		return driverdto;
+		
 	}
-	public static Driver convertDriverToEntity(DriverDTO driverDto)
+	public static List<DriverDTO> convertDriverToDTO(List<Driver> list)
 	{
-		Driver driverd=new Driver();
-		driverd.setUsername(driverDto.getUsername());
-		driverd.setPassword(driverDto.getPassword());
-		driverd.setAddress(driverDto.getAddress());
-		driverd.setCab(driverDto.getCab());
-		driverd.setDriverId(driverDto.getDriverId());
-		driverd.setEmail(driverDto.getEmail());
-		driverd.setMobileNumber(driverDto.getMobileNumber());
-		driverd.setLicenceNo(driverDto.getLicenceNo());
-		driverd.setRating(driverDto.getRating());
-		return driverd;
+		List<DriverDTO> listDto =new ArrayList<>();
+		for(Driver driver:list)
+		{
+			listDto.add(convertDriverToDTO(driver));
+			
+		}
+		return listDto;
 	}
+	public static Driver convertDriverDtoToEntity(DriverDTO driverDto)
+	{
+		Driver driver=new Driver();
+		BeanUtils.copyProperties(driverDto, driver);
+		return driver;
+	}
+	public static List<Driver> convertDriverDtoToEntity(List<DriverDTO> listDto)
+	{
+
+		List<Driver> list =new ArrayList<>();
+		for(DriverDTO driverDto:listDto)
+		{
+			list.add(convertDriverDtoToEntity(driverDto));
+			
+		}
+		return list;
+		
+	}
+
+	
 
 }
