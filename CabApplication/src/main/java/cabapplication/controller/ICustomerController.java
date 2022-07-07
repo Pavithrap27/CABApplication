@@ -14,54 +14,50 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cabapplication.entity.Customer;
+import cabapplication.dto.CustomerDTO;
 import cabapplication.service.ICustomerServiceImpl;
 import cabapplication.exception.CustomerNotFoundException;
-import cabapplication.service.ICustomerService;
 
 @RestController
 @RequestMapping("customer")
 public class ICustomerController {
 
+	@Autowired
 	ICustomerServiceImpl customerservice;
 
-	@GetMapping(path = "/getcustomers")
-	public List<Customer> getcustomers() {
-		return customerservice.viewCustomers();
-	}
-
-	@PostMapping(path = "/insertcustomer")
-	public ResponseEntity<Customer> insertCustomer(@RequestBody Customer customer) {
-		return new ResponseEntity<>(customerservice.insertCustomer(customer), HttpStatus.OK);
+	@PostMapping(path = "/save")
+	public ResponseEntity<CustomerDTO> save(@RequestBody CustomerDTO customer) throws CustomerNotFoundException {
+		return new ResponseEntity<>(customerservice.save(customer), HttpStatus.OK);
 
 	}
 
-	@PutMapping(path = "/updatecustomer")
-	public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer) {
-		return new ResponseEntity<>(customerservice.updateCustomer(customer), HttpStatus.OK);
+	@PutMapping(path = "/update")
+	public ResponseEntity<CustomerDTO> update(@RequestBody CustomerDTO customerDto)throws CustomerNotFoundException {
+		return new ResponseEntity<>(customerservice.update(customerDto), HttpStatus.OK);
 	}
 
-	@DeleteMapping(path = "/customerid")
+	@DeleteMapping(path = "/deleteById")
 
-	public ResponseEntity<String> deleteCustomer(@PathVariable int customerId) {
-		return new ResponseEntity<>(customerservice.deleteCustomer(customerId), HttpStatus.OK);
+	public ResponseEntity<String> deleteCustomer(@PathVariable int customerId)throws CustomerNotFoundException {
+		return new ResponseEntity<>(customerservice.delete(customerId), HttpStatus.OK);
 	}
 
-	@GetMapping(path = "/viewcustomers")
-	public ResponseEntity<List<Customer>> viewCustomers() {
-		return new ResponseEntity<>(customerservice.viewCustomers(), HttpStatus.OK);
+	@GetMapping(path = "/getAll")
+	public ResponseEntity<List<CustomerDTO>> getAll()throws CustomerNotFoundException 
+	{
+		return new ResponseEntity<>(customerservice.getAll(), HttpStatus.OK);
+	}
+
+	@GetMapping(path = "/getById/{customerId}")
+	public ResponseEntity<CustomerDTO> getById(@PathVariable int customerId)throws CustomerNotFoundException 
+	{
+		return new ResponseEntity<>(customerservice.getById(customerId), HttpStatus.OK);
 
 	}
 
-	@GetMapping(path = "/viewcustomer{customerid}")
-	public ResponseEntity<Customer> viewCustomer(@PathVariable int customerId) {
-		return new ResponseEntity<>(customerservice.viewCustomer(customerId), HttpStatus.OK);
-
-	}
-
-	@GetMapping(path = "/validatecustomer")
-	public ResponseEntity<Customer> validateCustomer(@PathVariable String username, @PathVariable String password) {
-		return new ResponseEntity<>(customerservice.validateCustomer(username, password), HttpStatus.OK);
+	@GetMapping(path = "/validate/{username}/{password}")
+	public ResponseEntity<CustomerDTO> validate(@PathVariable String username, @PathVariable String password)throws CustomerNotFoundException {
+		return new ResponseEntity<>(customerservice.validate(username, password), HttpStatus.OK);
 
 	}
 
