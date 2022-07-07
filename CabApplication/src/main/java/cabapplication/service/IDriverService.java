@@ -20,7 +20,9 @@ public interface IDriverService {
 	
 	public List<DriverDTO> viewBestDrivers()throws DriverNotFoundException;
 	
-	public DriverDTO getById(int driverid)throws DriverNotFoundException;
+	
+	public DriverDTO getById(int driverid)throws Throwable;
+
 	
 
 }

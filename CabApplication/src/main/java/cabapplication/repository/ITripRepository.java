@@ -20,8 +20,6 @@ public interface ITripRepository extends JpaRepository<TripBooking, Integer> {
 
 	@Query("Select trips from TripBooking trips ORDER BY fromDateTime ")
 	public List<TripBooking> getTripsDatewise();
-	@Query("Select trips from TripBooking trips ORDER BY carType")
-	public List<TripBooking> getTripsCabwise();
 	@Query("Select trips from TripBooking trips ORDER BY customerId")
 	public List<TripBooking> getTripCustomerwise();
 

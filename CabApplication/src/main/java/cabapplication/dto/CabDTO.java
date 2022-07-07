@@ -3,18 +3,7 @@ package cabapplication.dto;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CabDTO extends AbstractUserDTO {
-
-	public CabDTO() {
-		super();
-
-	}
-
-	public CabDTO(String username, String password, String mobileNumber, String email, String address) {
-		super(username, password, mobileNumber, email, address);
-
-	}
-
+public class CabDTO  {
 	private int cabId;
 	private String carType;
 	private float perKmRate;

@@ -1,6 +1,7 @@
 package cabapplication.service;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,22 +39,17 @@ public  class ITripServiceImpl implements ITripService {
 	}
 
 	public TripBookingDTO save(TripBookingDTO tripBookingDto) throws TripNotFoundException {
-		TripBookingDTO tripDto = Converter
-				.convertTripToDto(triprepo.save(Converter.convertTripToEntity(tripBookingDto)));
-		if (tripDto != null) {
-			return tripDto;
+		if (tripBookingDto.getFromLocation() != null) {
+			return Converter.convertTripToDto(triprepo.save(Converter.convertTripToEntity(tripBookingDto)));
 		}
 		throw new TripNotFoundException("no Trip found");
 	}
 
-	public TripBookingDTO update(TripBookingDTO tripBookingDto) throws TripNotFoundException {
-
-		if (tripBookingDto == null) {
-			throw new TripNotFoundException("Trip not found");
-		} else {
+	public TripBookingDTO update(TripBookingDTO tripBookingDto) throws Throwable {
 			TripBooking trip = Converter.convertTripToEntity(tripBookingDto);
 			int id = trip.getTripBookingId();
-			TripBooking tripBookingupdated = triprepo.findById(id).orElseThrow();
+			Supplier s1=()->new TripNotFoundException("Trip not found");
+			TripBooking tripBookingupdated = triprepo.findById(id).orElseThrow(s1);
 			tripBookingupdated.setDistanceInKm(trip.getDistanceInKm());
 			tripBookingupdated.setCustomerId(trip.getCustomerId());
 			tripBookingupdated.setBill(trip.getBill());
@@ -65,20 +61,17 @@ public  class ITripServiceImpl implements ITripService {
 			return Converter.convertTripToDto(triprepo.save(tripBookingupdated));
 
 		}
-	}
 
-	public String delete(int tripBookingId) throws TripNotFoundException {
-		if (triprepo.findById(tripBookingId).orElseThrow() == null) {
-			throw new TripNotFoundException("Trip not found");
-
-		}
+	public String delete(int tripBookingId) throws Throwable  {
+		Supplier s1=()-> new TripNotFoundException("Trip not found");
+		triprepo.findById(tripBookingId).orElseThrow(s1);
 		triprepo.deleteById(tripBookingId);
 		return "Deleted";
 	}
 
 	public List<TripBookingDTO> getByCustomerId(int customerId) throws CustomerNotFoundException {
 		List<TripBookingDTO> trips = Converter.convertTripToDto(triprepo.getByCustomerId(customerId));
-		if (trips == null) {
+		if (trips.isEmpty()) {
 			throw new CustomerNotFoundException("Customer id not found");
 
 		} else {
@@ -88,22 +81,21 @@ public  class ITripServiceImpl implements ITripService {
 	}
 
 	public double calculateBill(int customerId) throws CustomerNotFoundException {
-		TripBooking trip = triprepo.findByCustomerId(customerId);
+		TripBookingDTO trip = Converter.convertTripToDto(triprepo.findByCustomerId(customerId));
 		if (trip == null) {
 			throw new CustomerNotFoundException("Customer id not found");
 
 		} else {
-			float baseFair = 30;
+			
+			double baseFair = 30.0;
 			double bill;
 
-			if (trip.getDistanceInKm() > 2) {
+			if (trip.getDistanceInKm()> 2) {
 				bill = (trip.getDistanceInKm() * baseFair);
 			} else {
 				bill = baseFair;
 			}
-			trip.setBill(bill);
-			triprepo.save(trip);
-			return trip.getBill();
+			return bill;
 		}
 	}
 }
