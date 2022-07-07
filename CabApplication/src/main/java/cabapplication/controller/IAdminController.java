@@ -27,10 +27,10 @@ import cabapplication.service.IAdminServiceImpl;
 @RequestMapping("admin")
 
 public class IAdminController {
-	
+	@Autowired
 	IAdminServiceImpl adminservice;
 
-	@GetMapping("getAdmin")
+	@GetMapping("getAll")
 	public ResponseEntity<List<AdminDTO>> getAll() throws AdminNotFoundException {
 		List<AdminDTO> admin = adminservice.getAll();
 		return new ResponseEntity<>(admin, HttpStatus.OK);
@@ -43,7 +43,7 @@ public class IAdminController {
 
 	@PutMapping("updateAdmin")
 	public ResponseEntity<AdminDTO> update(@RequestBody AdminDTO adminDto) throws AdminNotFoundException {
-		return new ResponseEntity<>(adminservice.updateAdmin(adminDto), HttpStatus.OK);
+		return new ResponseEntity<>(adminservice.update(adminDto), HttpStatus.OK);
 
 	}
 
@@ -61,9 +61,9 @@ public class IAdminController {
 	}
 
 	@GetMapping("getAllTrips/{customerId}")
-	public ResponseEntity<List<TripBookingDTO>> getByCustomer(@PathVariable int customerId)
+	public ResponseEntity<List<TripBookingDTO>> getByCustomerId(@PathVariable int customerId)
 			throws CustomerNotFoundException {
-		List<TripBookingDTO> trips = adminservice.getAllTrips(customerId);
+		List<TripBookingDTO> trips = adminservice.getByCustomerId(customerId);
 		return new ResponseEntity<>(trips, HttpStatus.OK);
 
 	}
