@@ -28,10 +28,6 @@ public class IAdminServiceImpl implements IAdminService {
 	IAdminRepository adminrepo;
 	@Autowired
 	ITripRepository repo;
-	@Autowired
-	ICabRepository cabrepo;
-	@Autowired
-	ICustomerRepository customerRepo;
 	
 	@Override
 	public List<AdminDTO> getAll() throws AdminNotFoundException {
@@ -125,7 +121,7 @@ public class IAdminServiceImpl implements IAdminService {
 
 	@Override
 	public List<TripBookingDTO> getTripsCustomerwise() throws CustomerNotFoundException {
-		List<TripBookingDTO> trips = Converter.convertTripToDto(customerRepo.getTripCustomerwise());
+		List<TripBookingDTO> trips = Converter.convertTripToDto(repo.getTripCustomerwise());
 		if (trips.isEmpty()) {
 			throw new CustomerNotFoundException("Customer not found");
 		} else {
