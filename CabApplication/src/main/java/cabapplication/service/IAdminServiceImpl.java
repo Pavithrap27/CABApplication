@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import cabapplication.dto.AdminDTO;
 import cabapplication.dto.TripBookingDTO;
 import cabapplication.entity.Admin;
-import cabapplication.entity.TripBooking;
 import cabapplication.exception.AdminNotFoundException;
 import cabapplication.exception.CabNotFoundException;
 import cabapplication.exception.CustomerNotFoundException;
@@ -33,10 +32,8 @@ public class IAdminServiceImpl implements IAdminService {
 	ICustomerRepository customerRepo;
 	@Autowired
 	IDriverRepository driverrepo;
-	
-	
-	
-    @Override
+
+	@Override
 	public List<AdminDTO> getAll() throws AdminNotFoundException {
 		List<AdminDTO> adminDto = Converter.convertToDTO(adminrepo.findAll());
 		if (adminDto.isEmpty()) {
@@ -45,6 +42,7 @@ public class IAdminServiceImpl implements IAdminService {
 			return adminDto;
 		}
 	}
+
 	@Override
 	public AdminDTO getById(int adminId) throws AdminNotFoundException {
 
@@ -55,16 +53,18 @@ public class IAdminServiceImpl implements IAdminService {
 			return Converter.convertToDTO(admin);
 		}
 	}
-   @Override
+
+	@Override
 	public List<TripBookingDTO> getByCustomerId(int customerId) throws CustomerNotFoundException {
-		List<TripBookingDTO> tripsDto =Converter.convertTripToDto(repo.getByCustomerId(customerId));
+		List<TripBookingDTO> tripsDto = Converter.convertTripToDto(repo.getByCustomerId(customerId));
 		if (tripsDto.isEmpty()) {
 			throw new CustomerNotFoundException("No Customer found");
 		} else {
 			return tripsDto;
 		}
 	}
-    @Override
+
+	@Override
 	public List<TripBookingDTO> getTripsCabwise() throws CabNotFoundException {
 		List<TripBookingDTO> trips = Converter.convertTripToDto(repo.getTripsCabwise());
 		if (trips.isEmpty()) {
@@ -73,7 +73,7 @@ public class IAdminServiceImpl implements IAdminService {
 			return trips;
 		}
 	}
-  
+
 	@Override
 	public AdminDTO save(AdminDTO adminDto) throws AdminNotFoundException {
 		if (adminDto == null) {
@@ -122,6 +122,7 @@ public class IAdminServiceImpl implements IAdminService {
 			return trips;
 		}
 	}
+
 	@Override
 	public List<TripBookingDTO> getTripsCustomerwise() throws CustomerNotFoundException {
 		List<TripBookingDTO> trips = Converter.convertTripToDto(customerRepo.getTripCustomerwise());
@@ -131,6 +132,7 @@ public class IAdminServiceImpl implements IAdminService {
 			return trips;
 		}
 	}
+
 	@Override
 	public List<TripBookingDTO> getAllTripsForDays(int customerId, LocalDateTime fromDate, LocalDateTime ToDate)
 			throws CustomerNotFoundException {
