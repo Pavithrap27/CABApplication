@@ -13,7 +13,7 @@ import cabapplication.entity.Driver;
 import cabapplication.entity.TripBooking;
 
 public class Converter {
-	
+
 	public static AdminDTO convertToDTO(Admin admin)
 	{
 		AdminDTO admindto=new AdminDTO();

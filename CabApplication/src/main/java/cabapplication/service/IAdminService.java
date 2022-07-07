@@ -16,11 +16,11 @@ public interface IAdminService {
 
 	public List<AdminDTO> getAll() throws AdminNotFoundException;
 
-	public AdminDTO save(Admin admin) throws AdminNotFoundException;
+	public AdminDTO save(AdminDTO adminDto) throws AdminNotFoundException;
 
-	public AdminDTO update(Admin admin) throws AdminNotFoundException;
+	public AdminDTO update(AdminDTO adminDto) throws AdminNotFoundException;
 
-	public String delete(Admin admin) throws AdminNotFoundException;
+	public String delete(AdminDTO adminDto) throws AdminNotFoundException;
 
 	public AdminDTO getById(int adminId) throws AdminNotFoundException;
 
@@ -31,8 +31,6 @@ public interface IAdminService {
 	public List<TripBookingDTO> getTripsDatewise() throws TripNotFoundException;
 
 	public List<TripBookingDTO> getTripsCustomerwise() throws CustomerNotFoundException;
-
-	public List<TripBooking> getAllTripsForDays() throws TripNotFoundException;
 
 	public List<TripBookingDTO> getAllTripsForDays(int customerId, LocalDateTime fromDate, LocalDateTime ToDate)
 			throws CustomerNotFoundException;
