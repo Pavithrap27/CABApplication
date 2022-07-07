@@ -108,7 +108,7 @@ public class IDriverServiceImpl implements IDriverService
 	}
 	
 	@Override
-	public DriverDTO viewDriver(int driverid) throws DriverNotFoundException 
+	public DriverDTO getById(int driverid) throws DriverNotFoundException 
 	{
 		DriverDTO driverDto=Converter.convertDriverToDTO(driverrepo.findById(driverid).orElseThrow());
 		if(driverDto==null) 
