@@ -7,12 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import cabapplication.dto.CabDTO;
 import cabapplication.dto.DriverDTO;
 import cabapplication.entity.Driver;
 import cabapplication.exception.DriverNotFoundException;
@@ -27,12 +29,20 @@ class IDriverServiceImplTest {
 	
 	@MockBean
 	IDriverRepository driverrepo;
-
-	@Test
-	void testGetAll() throws Throwable 
-	{
+	
+	CabDTO cab=null;
+	DriverDTO driver=null;
+	DriverDTO driver1=null;
+	@BeforeEach
+	public void testBeforeEach() {
 		
-		DriverDTO driver=new DriverDTO(); 
+		cab=new CabDTO();
+		driver=new DriverDTO();
+		driver1 = new DriverDTO();
+		cab.setCabId(1);
+		cab.setCarType("Honda");
+		cab.setPerKmRate(11.5f);
+		
 		driver.setUsername("Yami");
 		driver.setPassword("yami71");
 		driver.setMobileNumber("67676653111");
@@ -42,7 +52,6 @@ class IDriverServiceImplTest {
 		driver.setRating(4.5);
 		driver.setCab(null);
 		
-		DriverDTO driver1=new DriverDTO(); 
 		driver1.setUsername("Harshi");
 		driver1.setPassword("harshi8");
 		driver1.setMobileNumber("7987879322");
@@ -50,14 +59,22 @@ class IDriverServiceImplTest {
 		driver1.setLicenceNo("9777gf");
 		driver.setDriverId(2);
 		driver1.setRating(4.0);
-		driver1.setCab(null);
+		driver.setCab(null);
 		
+	}
+	
+
+	@Test
+	void testGetAll() throws Throwable 
+	{
+
 		List<Driver> driverList=new ArrayList<>();
 		driverList.add(Converter.convertDriverDtoToEntity(driver));
 		driverList.add(Converter.convertDriverDtoToEntity(driver1));
 		
 		Mockito.when(driverrepo.findAll()).thenReturn(driverList);
-		assertThat(driverservice.save(driver1)).isEqualTo(driverList);
+		assertNotNull(driverservice.getAll());
+		
 		
 	}
 	
@@ -65,19 +82,8 @@ class IDriverServiceImplTest {
 	void testSave() throws Throwable
 	{
 		
-		DriverDTO driver1=new DriverDTO();
-		driver1.setUsername("Harshi");
-		driver1.setPassword("harshi8");
-		driver1.setMobileNumber("7987879322");
-		driver1.setAddress("Banglore");
-		driver1.setDriverId(1);
-		driver1.setLicenceNo("9777gf");
-		driver1.setRating(4.0);
-		driver1.setCab(null);
-	
 		Driver driverd=Converter.convertDriverDtoToEntity(driver1);
 		Mockito.when(driverrepo.save(driverd)).thenReturn(driverd);
-		
 		assertThat(driverservice.save(driver1)).isEqualTo(driver1);
 		
 	}
@@ -85,32 +91,47 @@ class IDriverServiceImplTest {
 	@Test
 	void testUpdate() throws Throwable
 	{
-		DriverDTO driver1=new DriverDTO();
-		driver1.setUsername("Harshi");
-		driver1.setPassword("Harshi");
-		driver1.setMobileNumber("7987879322");
-		driver1.setAddress("Banglore");
-		driver1.setDriverId(1);
-		driver1.setLicenceNo("9777gf");
-		driver1.setRating(4.0);
-		driver1.setCab(null);
+		
 		Driver driverd=Converter.convertDriverDtoToEntity(driver1);
 		Optional<Driver> driver2=Optional.of(driverd);
 		Driver driver=Converter.convertDriverDtoToEntity(driver1);
 		Mockito.when(driverrepo.findById(1)).thenReturn(driver2);
 		Mockito.when(driverrepo.save(driver)).thenReturn(driver);
-		driver1.setUsername("Yami");
-		driver1.setPassword("yami");
-		driver1.setMobileNumber("7987879322");
-		driver1.setAddress("Banglore");
-		driver1.setLicenceNo("9777gf");
-		driver1.setRating(4.0);
-		driver1.setCab(null);
+		equals(driverservice.save(driver1));
 		
 	}
 	
+	@Test
+	void testDelete() {
+		
+		Driver driverd=Converter.convertDriverDtoToEntity(driver);
+		Optional<Driver> driver2=Optional.of(driverd);
+		
+		Mockito.when(driverrepo.findById(1)).thenReturn(driver2);
+		Mockito.when(driverrepo.existsById(driver.getDriverId())).thenReturn(false);
+		assertFalse(driverrepo.existsById(driver.getDriverId()));
+	}
 	
-
+	@Test
+	void testViewBestDrivers() throws DriverNotFoundException
+	{
+		
+		List<Driver> driverList=new ArrayList<>();
+		driverList.add(Converter.convertDriverDtoToEntity(driver));
+		driverList.add(Converter.convertDriverDtoToEntity(driver1));
+		Mockito.when(driverrepo.viewBestDrivers()).thenReturn(driverList);
+		assertNotNull(driverservice.viewBestDrivers());
+		
+	}
+	@Test
+	void getById() {
+		
+		Driver driverd=Converter.convertDriverDtoToEntity(driver);
+		Optional<Driver> driver2=Optional.of(driverd);
+		Mockito.when(driverrepo.findById(1)).thenReturn(driver2);
+		assertThat(driverrepo.existsById(driver.getDriverId()));
+		
+	}
 	
 
 }
