@@ -2,8 +2,6 @@ package cabapplication.entity;
 
 
 import javax.persistence.MappedSuperclass;
-import javax.validation.Valid;
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -18,7 +16,6 @@ public abstract class AbstractUser {
 	@NotNull
 	@Email
 	private String email;
-	@Valid
 	private String address;
 
 	protected AbstractUser(String username, String password, String mobileNumber, String email, String address) {

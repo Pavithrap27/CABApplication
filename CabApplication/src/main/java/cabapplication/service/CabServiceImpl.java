@@ -36,7 +36,7 @@ public class CabServiceImpl implements ICabService
 		{
 			if(cabDto.getCarType()!=null)
 			{
-			Converter.convertCabToDTO(cabrepo.save(Converter.convertCabDtoToEntity(cabDto)));
+		      cabrepo.save(Converter.convertCabDtoToEntity(cabDto));
 			return cabDto;
 			}
 			throw new CabNotFoundException("Cab not available");
