@@ -37,7 +37,8 @@ public  class ITripServiceImpl implements ITripService {
 		}
 	}
 
-	public TripBookingDTO save(TripBookingDTO tripBookingDto) throws TripNotFoundException {
+	public TripBookingDTO save(TripBookingDTO tripBookingDto) throws TripNotFoundException 
+	{
 		if (tripBookingDto.getFromLocation() != null) {
 			return Converter.convertTripToDto(triprepo.save(Converter.convertTripToEntity(tripBookingDto)));
 		}

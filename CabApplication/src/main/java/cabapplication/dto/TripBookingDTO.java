@@ -17,7 +17,6 @@ public class TripBookingDTO  {
 	private boolean status;
 	private double distanceInKm;
 	private double bill;
-	private Driver driver;
 
 	public int getTripBookingId() {
 		return tripBookingId;
@@ -89,14 +88,6 @@ public class TripBookingDTO  {
 
 	public void setBill(double bill) {
 		this.bill = bill;
-	}
-
-	public Driver getDriver() {
-		return driver;
-	}
-
-	public void setDriver(Driver driver) {
-		this.driver = driver;
 	}
 
 }
