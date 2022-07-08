@@ -27,7 +27,7 @@ class ICabServiceImplTest {
 	ICabServiceImpl cabservice;
 	
 	@Autowired
-	static Converter converter
+	static Converter converter;
 	
 	@MockBean
 	ICabRepository cabrepo;
