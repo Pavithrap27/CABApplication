@@ -17,6 +17,7 @@ import cabapplication.exception.CabNotFoundException;
 import cabapplication.exception.CustomerNotFoundException;
 import cabapplication.exception.TripNotFoundException;
 import cabapplication.repository.IAdminRepository;
+import cabapplication.repository.ICabRepository;
 import cabapplication.repository.IDriverRepository;
 import cabapplication.repository.ITripRepository;
 import cabapplication.utils.Converter;
@@ -30,6 +31,8 @@ public class IAdminServiceImpl implements IAdminService {
 	ITripRepository repo;
 	@Autowired
 	IDriverRepository driverRepo;
+	@Autowired
+	ICabRepository cabRepo;
 
 	@Override
 	public List<AdminDTO> getAll() throws AdminNotFoundException {
@@ -64,7 +67,7 @@ public class IAdminServiceImpl implements IAdminService {
 
 	@Override
 	public List<TripBookingDTO> getTripsCabwise(String carType) throws CabNotFoundException {
-		List<TripBookingDTO> trips = Converter.convertTripToDto(driverRepo.getTripBookingBycarType(carType));
+		List<TripBookingDTO> trips = Converter.convertTripToDto(driverRepo.getByDriver(cabRepo.getByCarType(carType)));
 		if (trips.isEmpty()) {
 			throw new CabNotFoundException("Cab not found");
 		} else {

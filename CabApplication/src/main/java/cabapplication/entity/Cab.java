@@ -1,5 +1,6 @@
 package cabapplication.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,17 +15,19 @@ public class Cab {
 	private int cabId;
 	@NotNull
 	private String carType;
-	private float perKmRate;
-   @OneToOne
-   @JoinColumn
-	private Driver driver;
 	public Driver getDriver() {
-	return driver;
-}
+		return driver;
+	}
 
-public void setDriver(Driver driver) {
-	this.driver = driver;
-}
+	public void setDriver(Driver driver) {
+		this.driver = driver;
+	}
+
+	private float perKmRate;
+	@OneToOne
+	@JoinColumn
+	private Driver driver;
+  
 
 	public int getCabId() {
 		return cabId;
@@ -52,7 +55,9 @@ public void setDriver(Driver driver) {
 
 	@Override
 	public String toString() {
-		return "Cab [cabId=" + cabId + ", carType=" + carType + ", perKmRate=" + perKmRate + "]";
+		return "Cab [cabId=" + cabId + ", carType=" + carType + ", perKmRate=" + perKmRate + ", driver=" + driver + "]";
 	}
+
+	
 
 }
