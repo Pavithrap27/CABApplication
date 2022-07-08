@@ -29,18 +29,19 @@ public  class TripServiceImpl implements ITripService {
 	}
 
 	public TripBookingDTO getById(int tripBookingId) throws TripNotFoundException {
-		TripBookingDTO trip = Converter.convertTripToDto(triprepo.findById(tripBookingId).orElseThrow());
+		TripBooking trip =triprepo.findById(tripBookingId).orElseThrow();
 		if (trip == null) {
 			throw new TripNotFoundException("No trip found");
 		} else {
-			return trip;
+			return Converter.convertTripToDto(trip);
 		}
 	}
 
 	public TripBookingDTO save(TripBookingDTO tripBookingDto) throws TripNotFoundException 
 	{
 		if (tripBookingDto.getFromLocation() != null) {
-			return Converter.convertTripToDto(triprepo.save(Converter.convertTripToEntity(tripBookingDto)));
+		triprepo.save(Converter.convertTripToEntity(tripBookingDto));
+		return tripBookingDto;
 		}
 		throw new TripNotFoundException("no Trip found");
 	}
@@ -70,22 +71,23 @@ public  class TripServiceImpl implements ITripService {
 	}
 
 	public List<TripBookingDTO> getByCustomerId(int customerId) throws CustomerNotFoundException {
-		List<TripBookingDTO> trips = Converter.convertTripToDto(triprepo.getByCustomerId(customerId));
+		List<TripBooking> trips =triprepo.getByCustomerId(customerId);
 		if (trips.isEmpty()) {
 			throw new CustomerNotFoundException("Customer id not found");
 
 		} else {
 
-			return trips;
+			return  Converter.convertTripToDto(trips);
 		}
 	}
 
 	public double calculateBill(int customerId) throws CustomerNotFoundException {
-		TripBookingDTO trip = Converter.convertTripToDto(triprepo.findByCustomerId(customerId));
+		TripBooking trip =triprepo.findByCustomerId(customerId);
 		if (trip == null) {
 			throw new CustomerNotFoundException("Customer id not found");
 
-		} else {
+		} 
+		else {
 			
 			double baseFair = 30.0;
 			double bill;

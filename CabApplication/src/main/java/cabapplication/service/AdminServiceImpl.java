@@ -24,118 +24,118 @@ import cabapplication.utils.Converter;
 @Service
 public class AdminServiceImpl implements IAdminService {
 
-	@Autowired
-	IAdminRepository adminrepo;
-	@Autowired
-	ITripRepository repo;
-	@Autowired
+		@Autowired
+		IAdminRepository adminrepo;
+		@Autowired
+		ITripRepository repo;
+		@Autowired
 
-	ICustomerRepository customerrepo;
-	@Autowired
-	IDriverRepository driverRepo;
+		ICustomerRepository customerrepo;
+		@Autowired
+		IDriverRepository driverRepo;
 
-	@Override
-	public List<AdminDTO> getAll() throws AdminNotFoundException {
-		List<AdminDTO> adminDto = Converter.convertToDTO(adminrepo.findAll());
-		if (adminDto.isEmpty()) {
-			throw new AdminNotFoundException("No Admin available");
-		} else {
-			return adminDto;
+		@Override
+		public List<AdminDTO> getAll() throws AdminNotFoundException {
+			List<AdminDTO> adminDto = Converter.convertToDTO(adminrepo.findAll());
+			if (adminDto.isEmpty()) {
+				throw new AdminNotFoundException("No Admin available");
+			} else {
+				return adminDto;
+			}
 		}
-	}
 
-	@Override
-	public AdminDTO getById(int adminId) throws Throwable {
-		Supplier s1 = () -> new AdminNotFoundException("Admin not found");
-		return Converter.convertToDTO(adminrepo.findById(adminId).orElseThrow(s1));
-	}
-
-	@Override
-	public List<TripBookingDTO> getByCustomerId(int customerId) throws Throwable {
-		List<TripBookingDTO> list = Converter.convertTripToDto(repo.getByCustomerId(customerId));
-		if (!(list.isEmpty())) {
-			return list;
-		} else {
-			throw new CustomerNotFoundException("Customer does not exist");
+		@Override
+		public AdminDTO getById(int adminId) throws Throwable {
+			Supplier s1 = () -> new AdminNotFoundException("Admin not found");
+			return Converter.convertToDTO(adminrepo.findById(adminId).orElseThrow(s1));
 		}
-	}
 
-	@Override
-	public List<TripBookingDTO> getTripsCabwise(String carType) throws CabNotFoundException {
-		List<TripBookingDTO> trips = Converter.convertTripToDto(driverRepo.getTripBookingBycarType(carType));
-		if (trips.isEmpty()) {
-			throw new CabNotFoundException("Cab not found");
-		} else {
-			return trips;
+		@Override
+		public List<TripBookingDTO> getByCustomerId(int customerId) throws Throwable {
+			List<TripBookingDTO> list = Converter.convertTripToDto(repo.getByCustomerId(customerId));
+			if (!(list.isEmpty())) {
+				return list;
+			} else {
+				throw new CustomerNotFoundException("Customer does not exist");
+			}
 		}
-	}
 
-	@Override
-	public AdminDTO save(AdminDTO adminDto) throws Throwable 
-	{
-		if(adminDto.getUsername()!=null)
-		{
-		adminrepo.save(Converter.convertToEntity(adminDto));
-		return adminDto;
+		@Override
+		public List<TripBookingDTO> getTripsCabwise(String carType) throws CabNotFoundException {
+			List<TripBookingDTO> trips = Converter
+					.convertTripToDto(driverRepo.getByDriver(driverRepo.getByCarType(carType)));
+			if (trips.isEmpty()) {
+				throw new CabNotFoundException("Cab not found");
+			} else {
+				return trips;
+			}
 		}
-	throw new AdminNotFoundException("Admin not available");
 
-	}
+		@Override
+		public AdminDTO save(AdminDTO adminDto) throws Throwable {
+			if (adminDto.getUsername() != null) {
+				adminrepo.save(Converter.convertToEntity(adminDto));
+				return adminDto;
+			}
+			throw new AdminNotFoundException("Admin not available");
 
-	@Override
-	public AdminDTO update(AdminDTO adminDto) throws Throwable {
-		Admin admin = Converter.convertToEntity(adminDto);
-		int id = admin.getAdminId();
-
-		Supplier s1 = () -> new AdminNotFoundException("Admin not found");
-		
-		Admin adminupdated = adminrepo.findById(id).orElseThrow(s1);
-		adminupdated.setEmail(admin.getEmail());
-		adminupdated.setMobileNumber(admin.getMobileNumber());
-		adminupdated.setPassword(admin.getPassword());
-		adminupdated.setUsername(admin.getUsername());
-		adminupdated.setAddress(admin.getAddress());
-		adminrepo.save(adminupdated);
-		return Converter.convertToDTO(adminupdated);
-	}
-
-	@Override
-	public String delete(int adminId) throws Throwable {
-		Supplier s1 = () -> new AdminNotFoundException("Admin not found");
-		Admin admin = adminrepo.findById(adminId).orElseThrow(s1);
-		adminrepo.deleteById(adminId);
-		return "Deleted";
-	}
-
-	@Override
-	public List<TripBookingDTO> getTripsDatewise() throws TripNotFoundException {
-		List<TripBookingDTO> trips = Converter.convertTripToDto(repo.getTripsDatewise());
-		if (trips.isEmpty()) {
-			throw new TripNotFoundException("Customer not found");
-		} else {
-			return trips;
 		}
-	}
 
-	@Override
-	public List<TripBookingDTO> getTripsCustomerwise() throws CustomerNotFoundException {
-		List<TripBookingDTO> trips = Converter.convertTripToDto(repo.getTripCustomerwise());
-		if (trips.isEmpty()) {
-			throw new CustomerNotFoundException("Customer not found");
-		} else {
-			return trips;
+		@Override
+		public AdminDTO update(AdminDTO adminDto) throws Throwable {
+			Admin admin = Converter.convertToEntity(adminDto);
+			int id = admin.getAdminId();
+
+			Supplier s1 = () -> new AdminNotFoundException("Admin not found");
+
+			Admin adminupdated = adminrepo.findById(id).orElseThrow(s1);
+			adminupdated.setEmail(admin.getEmail());
+			adminupdated.setMobileNumber(admin.getMobileNumber());
+			adminupdated.setPassword(admin.getPassword());
+			adminupdated.setUsername(admin.getUsername());
+			adminupdated.setAddress(admin.getAddress());
+			adminrepo.save(adminupdated);
+			return Converter.convertToDTO(adminupdated);
 		}
-	}
 
-	@Override
-	public List<TripBookingDTO> getAllTripsForDays(int customerId, LocalDateTime fromDate, LocalDateTime ToDate)
-			throws CustomerNotFoundException {
-		List<TripBookingDTO> trips = Converter.convertTripToDto(repo.getAllTripsForDays(customerId, fromDate, ToDate));
-		if (trips.isEmpty()) {
-			throw new CustomerNotFoundException("Trip not found");
-		} else {
-			return trips;
+		@Override
+		public String delete(int adminId) throws Throwable {
+			Supplier s1 = () -> new AdminNotFoundException("Admin not found");
+			Admin admin = adminrepo.findById(adminId).orElseThrow(s1);
+			adminrepo.deleteById(adminId);
+			return "Deleted";
 		}
-	}
 
-}
+		@Override
+		public List<TripBookingDTO> getTripsDatewise() throws TripNotFoundException {
+			List<TripBookingDTO> trips = Converter.convertTripToDto(repo.getTripsDatewise());
+			if (trips.isEmpty()) {
+				throw new TripNotFoundException("Customer not found");
+			} else {
+				return trips;
+			}
+		}
+
+		@Override
+		public List<TripBookingDTO> getTripsCustomerwise() throws CustomerNotFoundException {
+			List<TripBookingDTO> trips = Converter.convertTripToDto(repo.getTripCustomerwise());
+			if (trips.isEmpty()) {
+				throw new CustomerNotFoundException("Customer not found");
+			} else {
+				return trips;
+			}
+		}
+
+		@Override
+		public List<TripBookingDTO> getAllTripsForDays(int customerId, LocalDateTime fromDate, LocalDateTime ToDate)
+				throws CustomerNotFoundException {
+			List<TripBookingDTO> trips = Converter
+					.convertTripToDto(repo.getAllTripsForDays(customerId, fromDate, ToDate));
+			if (trips.isEmpty()) {
+				throw new CustomerNotFoundException("Trip not found");
+			} else {
+				return trips;
+			}
+		}
+
+	}
