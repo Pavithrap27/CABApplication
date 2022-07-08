@@ -21,9 +21,9 @@ import cabapplication.exception.DriverNotFoundException;
 import cabapplication.repository.IDriverRepository;
 import cabapplication.utils.Converter;
 @SpringBootTest
-class IDriverServiceImplTest {
+class DriverServiceImplTest {
 	@Autowired
-	IDriverServiceImpl driverservice;
+	DriverServiceImpl driverservice;
 	@Autowired
 	static Converter converter;
 	
@@ -39,6 +39,7 @@ class IDriverServiceImplTest {
 		cab=new CabDTO();
 		driver=new DriverDTO();
 		driver1 = new DriverDTO();
+		
 		cab.setCabId(1);
 		cab.setCarType("Honda");
 		cab.setPerKmRate(11.5f);

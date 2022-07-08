@@ -15,7 +15,7 @@ import cabapplication.utils.Converter;
 
 @Service
 @Transactional
-public class IDriverServiceImpl implements IDriverService
+public class DriverServiceImpl implements IDriverService
 {
 
 	@Autowired

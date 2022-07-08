@@ -16,15 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cabapplication.dto.CabDTO;
 import cabapplication.exception.CabNotFoundException;
-import cabapplication.service.ICabServiceImpl;
+import cabapplication.service.CabServiceImpl;
 
 @RestController
 @RequestMapping("/cab")
 
-public class ICabController {
+public class CabController {
 
 	@Autowired
-	ICabServiceImpl cabservice;
+	CabServiceImpl cabservice;
 
 	@GetMapping("/getAll")
 	public ResponseEntity<List<CabDTO>> getAll() throws CabNotFoundException {

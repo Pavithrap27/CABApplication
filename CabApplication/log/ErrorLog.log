@@ -76,8 +76,6 @@
 07-Jul-2022 16:29:04 INFO - Closing JPA EntityManagerFactory for persistence unit 'default'
 07-Jul-2022 16:29:04 INFO - HikariPool-1 - Shutdown initiated...
 07-Jul-2022 16:29:04 INFO - HikariPool-1 - Shutdown completed.
-=======
-=======
 >>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 07-Jul-2022 14:57:52 INFO - Application shutdown requested.
 07-Jul-2022 14:57:52 INFO - Closing JPA EntityManagerFactory for persistence unit 'default'
@@ -8157,6 +8155,68 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 08-Jul-2022 12:38:21 INFO - HikariPool-1 - Shutdown completed.
 =======
 >>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
+<<<<<<< HEAD
+08-Jul-2022 12:16:57 INFO - Application shutdown requested.
+08-Jul-2022 12:16:57 INFO - Closing JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 12:16:57 INFO - HikariPool-1 - Shutdown initiated...
+08-Jul-2022 12:16:57 INFO - HikariPool-1 - Shutdown completed.
+08-Jul-2022 12:17:02 INFO - HV000001: Hibernate Validator 6.2.3.Final
+08-Jul-2022 12:17:02 INFO - Starting CabApplication using Java 18.0.1 on LIN22004273 with PID 23060 (C:\Users\SHIREV\git\CABApplication\CabApplication\target\classes started by shirev in C:\Users\SHIREV\git\CABApplication\CabApplication)
+08-Jul-2022 12:17:02 INFO - No active profile set, falling back to 1 default profile: "default"
+08-Jul-2022 12:17:03 INFO - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+08-Jul-2022 12:17:03 INFO - Finished Spring Data repository scanning in 57 ms. Found 5 JPA repository interfaces.
+08-Jul-2022 12:17:04 INFO - Tomcat initialized with port(s): 9090 (http)
+08-Jul-2022 12:17:04 INFO - Initializing ProtocolHandler ["http-nio-9090"]
+08-Jul-2022 12:17:04 INFO - Starting service [Tomcat]
+08-Jul-2022 12:17:04 INFO - Starting Servlet engine: [Apache Tomcat/9.0.64]
+08-Jul-2022 12:17:04 INFO - Initializing Spring embedded WebApplicationContext
+08-Jul-2022 12:17:04 INFO - Root WebApplicationContext: initialization completed in 1579 ms
+08-Jul-2022 12:17:04 INFO - HHH000204: Processing PersistenceUnitInfo [name: default]
+08-Jul-2022 12:17:04 INFO - HHH000412: Hibernate ORM core version 5.6.9.Final
+08-Jul-2022 12:17:04 INFO - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+08-Jul-2022 12:17:04 INFO - HikariPool-1 - Starting...
+08-Jul-2022 12:17:05 INFO - HikariPool-1 - Start completed.
+08-Jul-2022 12:17:05 INFO - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+08-Jul-2022 12:17:05 INFO - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+08-Jul-2022 12:17:06 INFO - Initialized JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 12:17:06 WARN - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+08-Jul-2022 12:17:07 INFO - Starting ProtocolHandler ["http-nio-9090"]
+08-Jul-2022 12:17:07 INFO - Tomcat started on port(s): 9090 (http) with context path ''
+08-Jul-2022 12:17:07 INFO - Started CabApplication in 5.37 seconds (JVM running for 6.428)
+08-Jul-2022 12:23:29 INFO - Initializing Spring DispatcherServlet 'dispatcherServlet'
+08-Jul-2022 12:23:29 INFO - Initializing Servlet 'dispatcherServlet'
+08-Jul-2022 12:23:29 INFO - Completed initialization in 2 ms
+08-Jul-2022 13:08:43 INFO - Application shutdown requested.
+08-Jul-2022 13:08:44 INFO - Closing JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 13:08:44 INFO - HikariPool-1 - Shutdown initiated...
+08-Jul-2022 13:08:44 INFO - HikariPool-1 - Shutdown completed.
+08-Jul-2022 13:08:52 INFO - HV000001: Hibernate Validator 6.2.3.Final
+08-Jul-2022 13:08:52 INFO - Starting CabApplication using Java 18.0.1 on LIN22004273 with PID 22552 (C:\Users\SHIREV\git\CABApplication\CabApplication\target\classes started by shirev in C:\Users\SHIREV\git\CABApplication\CabApplication)
+08-Jul-2022 13:08:52 INFO - No active profile set, falling back to 1 default profile: "default"
+08-Jul-2022 13:08:54 INFO - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+08-Jul-2022 13:08:55 INFO - Finished Spring Data repository scanning in 96 ms. Found 5 JPA repository interfaces.
+08-Jul-2022 13:08:56 INFO - Tomcat initialized with port(s): 9090 (http)
+08-Jul-2022 13:08:56 INFO - Initializing ProtocolHandler ["http-nio-9090"]
+08-Jul-2022 13:08:56 INFO - Starting service [Tomcat]
+08-Jul-2022 13:08:56 INFO - Starting Servlet engine: [Apache Tomcat/9.0.64]
+08-Jul-2022 13:08:56 INFO - Initializing Spring embedded WebApplicationContext
+08-Jul-2022 13:08:56 INFO - Root WebApplicationContext: initialization completed in 3359 ms
+08-Jul-2022 13:08:56 INFO - HHH000204: Processing PersistenceUnitInfo [name: default]
+08-Jul-2022 13:08:56 INFO - HHH000412: Hibernate ORM core version 5.6.9.Final
+08-Jul-2022 13:08:57 INFO - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+08-Jul-2022 13:08:57 INFO - HikariPool-1 - Starting...
+08-Jul-2022 13:08:57 INFO - HikariPool-1 - Start completed.
+08-Jul-2022 13:08:58 INFO - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+08-Jul-2022 13:08:59 INFO - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+08-Jul-2022 13:08:59 INFO - Initialized JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 13:09:01 WARN - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+08-Jul-2022 13:09:02 INFO - Starting ProtocolHandler ["http-nio-9090"]
+08-Jul-2022 13:09:02 INFO - Tomcat started on port(s): 9090 (http) with context path ''
+08-Jul-2022 13:09:02 INFO - Started CabApplication in 11.054 seconds (JVM running for 13.669)
+08-Jul-2022 14:24:31 INFO - Initializing Spring DispatcherServlet 'dispatcherServlet'
+08-Jul-2022 14:24:31 INFO - Initializing Servlet 'dispatcherServlet'
+08-Jul-2022 14:24:31 INFO - Completed initialization in 2 ms
+=======
 >>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 08-Jul-2022 14:46:38 INFO - Neither @ContextConfiguration nor @ContextHierarchy found for test class [cabapplication.service.IDriverServiceImplTest], using SpringBootContextLoader
 08-Jul-2022 14:46:38 INFO - Could not detect default resource locations for test class [cabapplication.service.IDriverServiceImplTest]: no resource found for suffixes {-context.xml, Context.groovy}.
@@ -8484,6 +8544,7 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 08-Jul-2022 16:46:32 INFO - HikariPool-1 - Shutdown initiated...
 08-Jul-2022 16:46:32 INFO - HikariPool-1 - Shutdown completed.
 >>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
+<<<<<<< HEAD
 08-Jul-2022 16:56:36 INFO - Neither @ContextConfiguration nor @ContextHierarchy found for test class [cabapplication.service.ITripServiceImplTest], using SpringBootContextLoader
 08-Jul-2022 16:56:36 INFO - Could not detect default resource locations for test class [cabapplication.service.ITripServiceImplTest]: no resource found for suffixes {-context.xml, Context.groovy}.
 08-Jul-2022 16:56:36 INFO - Could not detect default configuration classes for test class [cabapplication.service.ITripServiceImplTest]: ITripServiceImplTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
@@ -8533,3 +8594,327 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 08-Jul-2022 16:57:25 INFO - Closing JPA EntityManagerFactory for persistence unit 'default'
 08-Jul-2022 16:57:25 INFO - HikariPool-1 - Shutdown initiated...
 08-Jul-2022 16:57:25 INFO - HikariPool-1 - Shutdown completed.
+=======
+08-Jul-2022 17:10:09 INFO - Neither @ContextConfiguration nor @ContextHierarchy found for test class [cabapplication.service.DriverServiceImplTest], using SpringBootContextLoader
+08-Jul-2022 17:10:09 INFO - Could not detect default resource locations for test class [cabapplication.service.DriverServiceImplTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+08-Jul-2022 17:10:09 INFO - Could not detect default configuration classes for test class [cabapplication.service.DriverServiceImplTest]: DriverServiceImplTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08-Jul-2022 17:10:10 INFO - Found @SpringBootConfiguration cabapplication.CabApplication for test class cabapplication.service.DriverServiceImplTest
+08-Jul-2022 17:10:10 INFO - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+08-Jul-2022 17:10:10 INFO - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@2c383e33, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@74a195a4, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@76304b46, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@2fa3be26, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@4287d447, org.springframework.test.context.support.DirtiesContextTestExecutionListener@3af37506, org.springframework.test.context.transaction.TransactionalTestExecutionListener@4e6d7365, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7c0da600, org.springframework.test.context.event.EventPublishingTestExecutionListener@d4602a, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@21ae6e73, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@47dd778, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@15515c51, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@36a7abe1, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@64a896b0, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@e044b4a]
+08-Jul-2022 17:10:11 INFO - HV000001: Hibernate Validator 6.2.3.Final
+08-Jul-2022 17:10:11 INFO - Starting DriverServiceImplTest using Java 18.0.1 on LIN22004273 with PID 2172 (started by shirev in C:\Users\SHIREV\git\CABApplication\CabApplication)
+08-Jul-2022 17:10:11 INFO - No active profile set, falling back to 1 default profile: "default"
+08-Jul-2022 17:10:13 INFO - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+08-Jul-2022 17:10:13 INFO - Finished Spring Data repository scanning in 266 ms. Found 5 JPA repository interfaces.
+08-Jul-2022 17:10:16 INFO - HHH000204: Processing PersistenceUnitInfo [name: default]
+08-Jul-2022 17:10:16 INFO - HHH000412: Hibernate ORM core version 5.6.9.Final
+08-Jul-2022 17:10:16 INFO - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+08-Jul-2022 17:10:17 INFO - HikariPool-1 - Starting...
+08-Jul-2022 17:10:17 INFO - HikariPool-1 - Start completed.
+08-Jul-2022 17:10:17 INFO - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+08-Jul-2022 17:10:19 INFO - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+08-Jul-2022 17:10:19 INFO - Initialized JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 17:10:21 WARN - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+08-Jul-2022 17:10:23 INFO - Started DriverServiceImplTest in 13.138 seconds (JVM running for 17.643)
+08-Jul-2022 17:10:23 INFO - Autowired annotation is not supported on static fields: static cabapplication.utils.Converter cabapplication.service.DriverServiceImplTest.converter
+08-Jul-2022 17:10:24 INFO - Closing JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 17:10:24 INFO - HikariPool-1 - Shutdown initiated...
+08-Jul-2022 17:10:24 INFO - HikariPool-1 - Shutdown completed.
+>>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
+08-Jul-2022 17:43:02 INFO - Neither @ContextConfiguration nor @ContextHierarchy found for test class [cabapplication.service.ICabServiceImplTest], using SpringBootContextLoader
+08-Jul-2022 17:43:02 INFO - Could not detect default resource locations for test class [cabapplication.service.ICabServiceImplTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+08-Jul-2022 17:43:02 INFO - Could not detect default configuration classes for test class [cabapplication.service.ICabServiceImplTest]: ICabServiceImplTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08-Jul-2022 17:43:02 INFO - Found @SpringBootConfiguration cabapplication.CabApplication for test class cabapplication.service.ICabServiceImplTest
+08-Jul-2022 17:43:03 INFO - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+08-Jul-2022 17:43:03 INFO - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@4925f4f5, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1ad926d3, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@3a43d133, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@39ce27f2, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@5f2afe62, org.springframework.test.context.support.DirtiesContextTestExecutionListener@c96a4ea, org.springframework.test.context.transaction.TransactionalTestExecutionListener@28782602, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@60c16548, org.springframework.test.context.event.EventPublishingTestExecutionListener@68105edc, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@511816c0, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@38b972d7, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@5339bbad, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@3935e9a8, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@288a4658, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@5b56b654]
+08-Jul-2022 17:43:03 INFO - HV000001: Hibernate Validator 6.2.3.Final
+08-Jul-2022 17:43:03 INFO - Starting ICabServiceImplTest using Java 17.0.2 on DESKTOP-NFUHNE7 with PID 3576 (started by Sindhu in C:\Users\Sindhu\git\CABApplication\CabApplication)
+08-Jul-2022 17:43:03 INFO - No active profile set, falling back to 1 default profile: "default"
+08-Jul-2022 17:43:08 INFO - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+08-Jul-2022 17:43:08 INFO - Finished Spring Data repository scanning in 157 ms. Found 5 JPA repository interfaces.
+08-Jul-2022 17:43:12 INFO - HHH000204: Processing PersistenceUnitInfo [name: default]
+08-Jul-2022 17:43:12 INFO - HHH000412: Hibernate ORM core version 5.6.9.Final
+08-Jul-2022 17:43:12 INFO - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+08-Jul-2022 17:43:13 INFO - HikariPool-1 - Starting...
+08-Jul-2022 17:43:13 INFO - HikariPool-1 - Start completed.
+08-Jul-2022 17:43:14 INFO - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+08-Jul-2022 17:43:16 INFO - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+08-Jul-2022 17:43:16 INFO - Initialized JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 17:43:19 WARN - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+08-Jul-2022 17:43:22 INFO - Started ICabServiceImplTest in 19.563 seconds (JVM running for 23.824)
+08-Jul-2022 17:43:22 INFO - Autowired annotation is not supported on static fields: static cabapplication.utils.Converter cabapplication.service.ICabServiceImplTest.converter
+08-Jul-2022 17:43:23 INFO - Closing JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 17:43:23 INFO - HikariPool-1 - Shutdown initiated...
+08-Jul-2022 17:43:23 INFO - HikariPool-1 - Shutdown completed.
+08-Jul-2022 17:49:18 INFO - Neither @ContextConfiguration nor @ContextHierarchy found for test class [cabapplication.service.ICabServiceImplTest], using SpringBootContextLoader
+08-Jul-2022 17:49:18 INFO - Could not detect default resource locations for test class [cabapplication.service.ICabServiceImplTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+08-Jul-2022 17:49:18 INFO - Could not detect default configuration classes for test class [cabapplication.service.ICabServiceImplTest]: ICabServiceImplTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08-Jul-2022 17:49:18 INFO - Found @SpringBootConfiguration cabapplication.CabApplication for test class cabapplication.service.ICabServiceImplTest
+08-Jul-2022 17:49:18 INFO - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+08-Jul-2022 17:49:18 INFO - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1532c619, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@46044faa, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@1358b28e, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@1a78dacd, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@19f9d595, org.springframework.test.context.support.DirtiesContextTestExecutionListener@7de4a01f, org.springframework.test.context.transaction.TransactionalTestExecutionListener@2bfeb1ef, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@778ca8ef, org.springframework.test.context.event.EventPublishingTestExecutionListener@208e9ef6, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@78b236a0, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@261d8190, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@34448e6c, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@60e9df3c, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@907f2b7, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@435ce306]
+08-Jul-2022 17:49:19 INFO - HV000001: Hibernate Validator 6.2.3.Final
+08-Jul-2022 17:49:19 INFO - Starting ICabServiceImplTest using Java 17.0.2 on DESKTOP-NFUHNE7 with PID 4396 (started by Sindhu in C:\Users\Sindhu\git\CABApplication\CabApplication)
+08-Jul-2022 17:49:19 INFO - No active profile set, falling back to 1 default profile: "default"
+08-Jul-2022 17:49:24 INFO - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+08-Jul-2022 17:49:24 INFO - Finished Spring Data repository scanning in 294 ms. Found 5 JPA repository interfaces.
+08-Jul-2022 17:49:28 INFO - HHH000204: Processing PersistenceUnitInfo [name: default]
+08-Jul-2022 17:49:28 INFO - HHH000412: Hibernate ORM core version 5.6.9.Final
+08-Jul-2022 17:49:28 INFO - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+08-Jul-2022 17:49:29 INFO - HikariPool-1 - Starting...
+08-Jul-2022 17:49:31 INFO - HikariPool-1 - Start completed.
+08-Jul-2022 17:49:31 INFO - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+08-Jul-2022 17:49:34 INFO - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+08-Jul-2022 17:49:34 INFO - Initialized JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 17:49:37 WARN - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+08-Jul-2022 17:49:43 INFO - Started ICabServiceImplTest in 24.865 seconds (JVM running for 30.851)
+08-Jul-2022 17:49:43 INFO - Autowired annotation is not supported on static fields: static cabapplication.utils.Converter cabapplication.service.ICabServiceImplTest.converter
+08-Jul-2022 17:49:44 INFO - Closing JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 17:49:44 INFO - HikariPool-1 - Shutdown initiated...
+08-Jul-2022 17:49:44 INFO - HikariPool-1 - Shutdown completed.
+08-Jul-2022 19:18:33 INFO - Neither @ContextConfiguration nor @ContextHierarchy found for test class [cabapplication.service.ICabServiceImplTest], using SpringBootContextLoader
+08-Jul-2022 19:18:33 INFO - Could not detect default resource locations for test class [cabapplication.service.ICabServiceImplTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+08-Jul-2022 19:18:33 INFO - Could not detect default configuration classes for test class [cabapplication.service.ICabServiceImplTest]: ICabServiceImplTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08-Jul-2022 19:18:34 INFO - Found @SpringBootConfiguration cabapplication.CabApplication for test class cabapplication.service.ICabServiceImplTest
+08-Jul-2022 19:18:34 INFO - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+08-Jul-2022 19:18:34 INFO - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@c96a4ea, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@28782602, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@60c16548, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@68105edc, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@511816c0, org.springframework.test.context.support.DirtiesContextTestExecutionListener@38b972d7, org.springframework.test.context.transaction.TransactionalTestExecutionListener@5339bbad, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3935e9a8, org.springframework.test.context.event.EventPublishingTestExecutionListener@288a4658, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@5b56b654, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@452c8a40, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@534243e4, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@29006752, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@470a9030, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@66d57c1b]
+08-Jul-2022 19:18:34 INFO - HV000001: Hibernate Validator 6.2.3.Final
+08-Jul-2022 19:18:35 INFO - Starting ICabServiceImplTest using Java 17.0.2 on DESKTOP-NFUHNE7 with PID 12212 (started by Sindhu in C:\Users\Sindhu\git\CABApplication\CabApplication)
+08-Jul-2022 19:18:35 INFO - No active profile set, falling back to 1 default profile: "default"
+08-Jul-2022 19:18:37 INFO - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+08-Jul-2022 19:18:37 INFO - Finished Spring Data repository scanning in 142 ms. Found 5 JPA repository interfaces.
+08-Jul-2022 19:18:40 INFO - HHH000204: Processing PersistenceUnitInfo [name: default]
+08-Jul-2022 19:18:40 INFO - HHH000412: Hibernate ORM core version 5.6.9.Final
+08-Jul-2022 19:18:40 INFO - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+08-Jul-2022 19:18:41 INFO - HikariPool-1 - Starting...
+08-Jul-2022 19:18:41 INFO - HikariPool-1 - Start completed.
+08-Jul-2022 19:18:41 INFO - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+08-Jul-2022 19:18:43 INFO - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+08-Jul-2022 19:18:43 INFO - Initialized JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 19:18:45 WARN - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+08-Jul-2022 19:18:48 INFO - Started ICabServiceImplTest in 13.683 seconds (JVM running for 17.403)
+08-Jul-2022 19:18:48 INFO - Autowired annotation is not supported on static fields: static cabapplication.utils.Converter cabapplication.service.ICabServiceImplTest.converter
+08-Jul-2022 19:18:48 INFO - Closing JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 19:18:48 INFO - HikariPool-1 - Shutdown initiated...
+08-Jul-2022 19:18:48 INFO - HikariPool-1 - Shutdown completed.
+08-Jul-2022 19:28:22 INFO - Application shutdown requested.
+08-Jul-2022 19:28:24 INFO - Closing JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 19:28:24 INFO - HikariPool-1 - Shutdown initiated...
+08-Jul-2022 19:28:24 INFO - HikariPool-1 - Shutdown completed.
+08-Jul-2022 19:46:21 INFO - Neither @ContextConfiguration nor @ContextHierarchy found for test class [cabapplication.service.CabServiceImplTest], using SpringBootContextLoader
+08-Jul-2022 19:46:21 INFO - Could not detect default resource locations for test class [cabapplication.service.CabServiceImplTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+08-Jul-2022 19:46:21 INFO - Could not detect default configuration classes for test class [cabapplication.service.CabServiceImplTest]: CabServiceImplTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08-Jul-2022 19:46:22 INFO - Found @SpringBootConfiguration cabapplication.CabApplication for test class cabapplication.service.CabServiceImplTest
+08-Jul-2022 19:46:22 INFO - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+08-Jul-2022 19:46:22 INFO - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@16943e88, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4604b900, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@73d6d0c, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@e36bb2a, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@3961a41a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5a4ed68f, org.springframework.test.context.transaction.TransactionalTestExecutionListener@367795c7, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@d2387c8, org.springframework.test.context.event.EventPublishingTestExecutionListener@3956b302, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@1500e009, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@1fd386c3, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@edf4f36, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@29d334c, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@100f9bbe, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@13e9f2e2]
+08-Jul-2022 19:46:23 INFO - HV000001: Hibernate Validator 6.2.3.Final
+08-Jul-2022 19:46:23 INFO - Starting CabServiceImplTest using Java 17.0.2 on DESKTOP-NFUHNE7 with PID 9980 (started by Sindhu in C:\Users\Sindhu\git\CABApplication\CabApplication)
+08-Jul-2022 19:46:23 INFO - No active profile set, falling back to 1 default profile: "default"
+08-Jul-2022 19:46:28 INFO - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+08-Jul-2022 19:46:28 INFO - Finished Spring Data repository scanning in 296 ms. Found 5 JPA repository interfaces.
+08-Jul-2022 19:46:33 INFO - HHH000204: Processing PersistenceUnitInfo [name: default]
+08-Jul-2022 19:46:33 INFO - HHH000412: Hibernate ORM core version 5.6.9.Final
+08-Jul-2022 19:46:33 INFO - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+08-Jul-2022 19:46:34 INFO - HikariPool-1 - Starting...
+08-Jul-2022 19:46:35 INFO - HikariPool-1 - Start completed.
+08-Jul-2022 19:46:35 INFO - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+08-Jul-2022 19:46:38 INFO - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+08-Jul-2022 19:46:38 INFO - Initialized JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 19:46:42 WARN - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+08-Jul-2022 19:46:47 INFO - Started CabServiceImplTest in 24.852 seconds (JVM running for 31.588)
+08-Jul-2022 19:46:47 INFO - Autowired annotation is not supported on static fields: static cabapplication.utils.Converter cabapplication.service.CabServiceImplTest.converter
+08-Jul-2022 19:46:48 INFO - Closing JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 19:46:48 INFO - HikariPool-1 - Shutdown initiated...
+08-Jul-2022 19:46:48 INFO - HikariPool-1 - Shutdown completed.
+08-Jul-2022 19:48:07 INFO - Neither @ContextConfiguration nor @ContextHierarchy found for test class [cabapplication.service.CabServiceImplTest], using SpringBootContextLoader
+08-Jul-2022 19:48:07 INFO - Could not detect default resource locations for test class [cabapplication.service.CabServiceImplTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+08-Jul-2022 19:48:07 INFO - Could not detect default configuration classes for test class [cabapplication.service.CabServiceImplTest]: CabServiceImplTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08-Jul-2022 19:48:07 INFO - Found @SpringBootConfiguration cabapplication.CabApplication for test class cabapplication.service.CabServiceImplTest
+08-Jul-2022 19:48:07 INFO - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+08-Jul-2022 19:48:07 INFO - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@16943e88, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4604b900, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@73d6d0c, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@e36bb2a, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@3961a41a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5a4ed68f, org.springframework.test.context.transaction.TransactionalTestExecutionListener@367795c7, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@d2387c8, org.springframework.test.context.event.EventPublishingTestExecutionListener@3956b302, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@1500e009, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@1fd386c3, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@edf4f36, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@29d334c, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@100f9bbe, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@13e9f2e2]
+08-Jul-2022 19:48:09 INFO - HV000001: Hibernate Validator 6.2.3.Final
+08-Jul-2022 19:48:09 INFO - Starting CabServiceImplTest using Java 17.0.2 on DESKTOP-NFUHNE7 with PID 14160 (started by Sindhu in C:\Users\Sindhu\git\CABApplication\CabApplication)
+08-Jul-2022 19:48:09 INFO - No active profile set, falling back to 1 default profile: "default"
+08-Jul-2022 19:48:13 INFO - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+08-Jul-2022 19:48:14 INFO - Finished Spring Data repository scanning in 211 ms. Found 5 JPA repository interfaces.
+08-Jul-2022 19:48:19 INFO - HHH000204: Processing PersistenceUnitInfo [name: default]
+08-Jul-2022 19:48:19 INFO - HHH000412: Hibernate ORM core version 5.6.9.Final
+08-Jul-2022 19:48:19 INFO - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+08-Jul-2022 19:48:20 INFO - HikariPool-1 - Starting...
+08-Jul-2022 19:48:21 INFO - HikariPool-1 - Start completed.
+08-Jul-2022 19:48:21 INFO - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+08-Jul-2022 19:48:24 INFO - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+08-Jul-2022 19:48:24 INFO - Initialized JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 19:48:28 WARN - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+08-Jul-2022 19:48:34 INFO - Started CabServiceImplTest in 26.17 seconds (JVM running for 31.817)
+08-Jul-2022 19:48:34 INFO - Autowired annotation is not supported on static fields: static cabapplication.utils.Converter cabapplication.service.CabServiceImplTest.converter
+08-Jul-2022 19:48:36 INFO - Closing JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 19:48:36 INFO - HikariPool-1 - Shutdown initiated...
+08-Jul-2022 19:48:36 INFO - HikariPool-1 - Shutdown completed.
+08-Jul-2022 19:51:41 INFO - Neither @ContextConfiguration nor @ContextHierarchy found for test class [cabapplication.service.CabServiceImplTest], using SpringBootContextLoader
+08-Jul-2022 19:51:41 INFO - Could not detect default resource locations for test class [cabapplication.service.CabServiceImplTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+08-Jul-2022 19:51:41 INFO - Could not detect default configuration classes for test class [cabapplication.service.CabServiceImplTest]: CabServiceImplTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08-Jul-2022 19:51:41 INFO - Found @SpringBootConfiguration cabapplication.CabApplication for test class cabapplication.service.CabServiceImplTest
+08-Jul-2022 19:51:42 INFO - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+08-Jul-2022 19:51:42 INFO - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1b1637e1, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@18151a14, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@64711bf2, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@169da7f2, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@3c1e23ff, org.springframework.test.context.support.DirtiesContextTestExecutionListener@ceb4bd2, org.springframework.test.context.transaction.TransactionalTestExecutionListener@60297f36, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@1bf0f6f6, org.springframework.test.context.event.EventPublishingTestExecutionListener@56bc3fac, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@df4b72, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@2ba45490, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@37ff4054, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@894858, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@7af707e0, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@737edcfa]
+08-Jul-2022 19:51:42 INFO - HV000001: Hibernate Validator 6.2.3.Final
+08-Jul-2022 19:51:43 INFO - Starting CabServiceImplTest using Java 17.0.2 on DESKTOP-NFUHNE7 with PID 7720 (started by Sindhu in C:\Users\Sindhu\git\CABApplication\CabApplication)
+08-Jul-2022 19:51:43 INFO - No active profile set, falling back to 1 default profile: "default"
+08-Jul-2022 19:51:48 INFO - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+08-Jul-2022 19:51:48 INFO - Finished Spring Data repository scanning in 297 ms. Found 5 JPA repository interfaces.
+08-Jul-2022 19:51:55 INFO - HHH000204: Processing PersistenceUnitInfo [name: default]
+08-Jul-2022 19:51:55 INFO - HHH000412: Hibernate ORM core version 5.6.9.Final
+08-Jul-2022 19:51:56 INFO - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+08-Jul-2022 19:51:56 INFO - HikariPool-1 - Starting...
+08-Jul-2022 19:51:58 INFO - HikariPool-1 - Start completed.
+08-Jul-2022 19:51:58 INFO - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+08-Jul-2022 19:52:02 INFO - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+08-Jul-2022 19:52:02 INFO - Initialized JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 19:52:07 WARN - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+08-Jul-2022 19:52:15 INFO - Started CabServiceImplTest in 33.023 seconds (JVM running for 37.565)
+08-Jul-2022 19:52:15 INFO - Autowired annotation is not supported on static fields: static cabapplication.utils.Converter cabapplication.service.CabServiceImplTest.converter
+08-Jul-2022 19:52:16 INFO - Closing JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 19:52:16 INFO - HikariPool-1 - Shutdown initiated...
+08-Jul-2022 19:52:16 INFO - HikariPool-1 - Shutdown completed.
+08-Jul-2022 22:13:42 INFO - Neither @ContextConfiguration nor @ContextHierarchy found for test class [cabapplication.CabApplicationTests], using SpringBootContextLoader
+08-Jul-2022 22:13:42 INFO - Could not detect default resource locations for test class [cabapplication.CabApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+08-Jul-2022 22:13:42 INFO - Could not detect default configuration classes for test class [cabapplication.CabApplicationTests]: CabApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08-Jul-2022 22:13:42 INFO - Found @SpringBootConfiguration cabapplication.CabApplication for test class cabapplication.CabApplicationTests
+08-Jul-2022 22:13:42 INFO - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+08-Jul-2022 22:13:42 INFO - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@45673f68, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@27abb83e, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@69e308c6, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@1a1ed4e5, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@667e34b1, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1c6e0a08, org.springframework.test.context.transaction.TransactionalTestExecutionListener@6dba847b, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@1efdcd5, org.springframework.test.context.event.EventPublishingTestExecutionListener@1623bbe5, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@7af1cd63, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@4351171a, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@3c2772d1, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@37d00a23, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@433e536f, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@89c65d5]
+08-Jul-2022 22:13:43 INFO - HV000001: Hibernate Validator 6.2.3.Final
+08-Jul-2022 22:13:44 INFO - Starting CabApplicationTests using Java 17.0.2 on DESKTOP-NFUHNE7 with PID 12032 (started by Sindhu in C:\Users\Sindhu\git\CABApplication\CabApplication)
+08-Jul-2022 22:13:44 INFO - No active profile set, falling back to 1 default profile: "default"
+08-Jul-2022 22:13:48 INFO - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+08-Jul-2022 22:13:48 INFO - Finished Spring Data repository scanning in 220 ms. Found 5 JPA repository interfaces.
+08-Jul-2022 22:13:51 INFO - HHH000204: Processing PersistenceUnitInfo [name: default]
+08-Jul-2022 22:13:51 INFO - HHH000412: Hibernate ORM core version 5.6.9.Final
+08-Jul-2022 22:13:52 INFO - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+08-Jul-2022 22:13:52 INFO - HikariPool-1 - Starting...
+08-Jul-2022 22:13:54 INFO - HikariPool-1 - Start completed.
+08-Jul-2022 22:13:56 INFO - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+08-Jul-2022 22:14:01 INFO - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+08-Jul-2022 22:14:01 INFO - Initialized JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 22:14:07 WARN - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+08-Jul-2022 22:14:12 INFO - Started CabApplicationTests in 29.563 seconds (JVM running for 35.919)
+08-Jul-2022 22:14:13 INFO - Neither @ContextConfiguration nor @ContextHierarchy found for test class [cabapplication.service.CabServiceImplTest], using SpringBootContextLoader
+08-Jul-2022 22:14:13 INFO - Could not detect default resource locations for test class [cabapplication.service.CabServiceImplTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+08-Jul-2022 22:14:13 INFO - Could not detect default configuration classes for test class [cabapplication.service.CabServiceImplTest]: CabServiceImplTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08-Jul-2022 22:14:13 INFO - Found @SpringBootConfiguration cabapplication.CabApplication for test class cabapplication.service.CabServiceImplTest
+08-Jul-2022 22:14:13 INFO - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+08-Jul-2022 22:14:13 INFO - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@6ee0ef34, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@ab5d5c8, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@41a18b54, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@78854721, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@11759e4a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@354a1239, org.springframework.test.context.transaction.TransactionalTestExecutionListener@78fcc4ef, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@2a12389e, org.springframework.test.context.event.EventPublishingTestExecutionListener@17287458, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@7296675e, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@6cd31e5f, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@57be0d93, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@3e02988, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@420d123d, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@36d8ddc5]
+08-Jul-2022 22:14:13 INFO - Starting CabServiceImplTest using Java 17.0.2 on DESKTOP-NFUHNE7 with PID 12032 (started by Sindhu in C:\Users\Sindhu\git\CABApplication\CabApplication)
+08-Jul-2022 22:14:13 INFO - No active profile set, falling back to 1 default profile: "default"
+08-Jul-2022 22:14:15 INFO - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+08-Jul-2022 22:14:15 INFO - Finished Spring Data repository scanning in 96 ms. Found 5 JPA repository interfaces.
+08-Jul-2022 22:14:16 INFO - HHH000204: Processing PersistenceUnitInfo [name: default]
+08-Jul-2022 22:14:16 INFO - HikariPool-2 - Starting...
+08-Jul-2022 22:14:16 INFO - HikariPool-2 - Start completed.
+08-Jul-2022 22:14:16 INFO - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+08-Jul-2022 22:14:17 INFO - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+08-Jul-2022 22:14:17 INFO - Initialized JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 22:14:19 WARN - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+08-Jul-2022 22:14:22 INFO - Started CabServiceImplTest in 9.38 seconds (JVM running for 46.252)
+08-Jul-2022 22:14:22 INFO - Autowired annotation is not supported on static fields: static cabapplication.utils.Converter cabapplication.service.CabServiceImplTest.converter
+08-Jul-2022 22:14:24 INFO - Neither @ContextConfiguration nor @ContextHierarchy found for test class [cabapplication.service.DriverServiceImplTest], using SpringBootContextLoader
+08-Jul-2022 22:14:24 INFO - Could not detect default resource locations for test class [cabapplication.service.DriverServiceImplTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+08-Jul-2022 22:14:24 INFO - Could not detect default configuration classes for test class [cabapplication.service.DriverServiceImplTest]: DriverServiceImplTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08-Jul-2022 22:14:24 INFO - Found @SpringBootConfiguration cabapplication.CabApplication for test class cabapplication.service.DriverServiceImplTest
+08-Jul-2022 22:14:24 INFO - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+08-Jul-2022 22:14:24 INFO - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@2acf3108, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@62765e11, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@3d73f2a1, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@5a59f3d9, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@9cdceeb, org.springframework.test.context.support.DirtiesContextTestExecutionListener@591b8f15, org.springframework.test.context.transaction.TransactionalTestExecutionListener@7b5f886d, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6e0d7be4, org.springframework.test.context.event.EventPublishingTestExecutionListener@9504a58, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@c360f40, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@badf24b, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@efa6a81, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@573e38c, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@3983b06d, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@5d5822bc]
+08-Jul-2022 22:14:24 INFO - Starting DriverServiceImplTest using Java 17.0.2 on DESKTOP-NFUHNE7 with PID 12032 (started by Sindhu in C:\Users\Sindhu\git\CABApplication\CabApplication)
+08-Jul-2022 22:14:24 INFO - No active profile set, falling back to 1 default profile: "default"
+08-Jul-2022 22:14:26 INFO - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+08-Jul-2022 22:14:27 INFO - Finished Spring Data repository scanning in 181 ms. Found 5 JPA repository interfaces.
+08-Jul-2022 22:14:28 INFO - HHH000204: Processing PersistenceUnitInfo [name: default]
+08-Jul-2022 22:14:28 INFO - HikariPool-3 - Starting...
+08-Jul-2022 22:14:28 INFO - HikariPool-3 - Start completed.
+08-Jul-2022 22:14:28 INFO - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+08-Jul-2022 22:14:29 INFO - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+08-Jul-2022 22:14:29 INFO - Initialized JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 22:14:30 WARN - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+08-Jul-2022 22:14:33 INFO - Started DriverServiceImplTest in 8.233 seconds (JVM running for 56.323)
+08-Jul-2022 22:14:33 INFO - Autowired annotation is not supported on static fields: static cabapplication.utils.Converter cabapplication.service.DriverServiceImplTest.converter
+08-Jul-2022 22:14:33 INFO - Closing JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 22:14:33 INFO - HikariPool-1 - Shutdown initiated...
+08-Jul-2022 22:14:33 INFO - HikariPool-1 - Shutdown completed.
+08-Jul-2022 22:14:33 INFO - Closing JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 22:14:33 INFO - HikariPool-2 - Shutdown initiated...
+08-Jul-2022 22:14:33 INFO - HikariPool-2 - Shutdown completed.
+08-Jul-2022 22:14:33 INFO - Closing JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 22:14:33 INFO - HikariPool-3 - Shutdown initiated...
+08-Jul-2022 22:14:33 INFO - HikariPool-3 - Shutdown completed.
+08-Jul-2022 22:14:59 INFO - Neither @ContextConfiguration nor @ContextHierarchy found for test class [cabapplication.service.CabServiceImplTest], using SpringBootContextLoader
+08-Jul-2022 22:14:59 INFO - Could not detect default resource locations for test class [cabapplication.service.CabServiceImplTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+08-Jul-2022 22:14:59 INFO - Could not detect default configuration classes for test class [cabapplication.service.CabServiceImplTest]: CabServiceImplTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08-Jul-2022 22:14:59 INFO - Found @SpringBootConfiguration cabapplication.CabApplication for test class cabapplication.service.CabServiceImplTest
+08-Jul-2022 22:14:59 INFO - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+08-Jul-2022 22:15:00 INFO - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@16943e88, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4604b900, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@73d6d0c, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@e36bb2a, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@3961a41a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5a4ed68f, org.springframework.test.context.transaction.TransactionalTestExecutionListener@367795c7, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@d2387c8, org.springframework.test.context.event.EventPublishingTestExecutionListener@3956b302, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@1500e009, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@1fd386c3, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@edf4f36, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@29d334c, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@100f9bbe, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@13e9f2e2]
+08-Jul-2022 22:15:01 INFO - HV000001: Hibernate Validator 6.2.3.Final
+08-Jul-2022 22:15:01 INFO - Starting CabServiceImplTest using Java 17.0.2 on DESKTOP-NFUHNE7 with PID 12444 (started by Sindhu in C:\Users\Sindhu\git\CABApplication\CabApplication)
+08-Jul-2022 22:15:01 INFO - No active profile set, falling back to 1 default profile: "default"
+08-Jul-2022 22:15:06 INFO - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+08-Jul-2022 22:15:06 INFO - Finished Spring Data repository scanning in 295 ms. Found 5 JPA repository interfaces.
+08-Jul-2022 22:15:12 INFO - HHH000204: Processing PersistenceUnitInfo [name: default]
+08-Jul-2022 22:15:12 INFO - HHH000412: Hibernate ORM core version 5.6.9.Final
+08-Jul-2022 22:15:12 INFO - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+08-Jul-2022 22:15:13 INFO - HikariPool-1 - Starting...
+08-Jul-2022 22:15:13 INFO - HikariPool-1 - Start completed.
+08-Jul-2022 22:15:14 INFO - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+08-Jul-2022 22:15:17 INFO - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+08-Jul-2022 22:15:17 INFO - Initialized JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 22:15:21 WARN - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+08-Jul-2022 22:15:27 INFO - Started CabServiceImplTest in 27.169 seconds (JVM running for 33.43)
+08-Jul-2022 22:15:27 INFO - Autowired annotation is not supported on static fields: static cabapplication.utils.Converter cabapplication.service.CabServiceImplTest.converter
+08-Jul-2022 22:15:28 INFO - Closing JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 22:15:28 INFO - HikariPool-1 - Shutdown initiated...
+08-Jul-2022 22:15:28 INFO - HikariPool-1 - Shutdown completed.
+08-Jul-2022 22:18:32 INFO - Neither @ContextConfiguration nor @ContextHierarchy found for test class [cabapplication.service.CabServiceImplTest], using SpringBootContextLoader
+08-Jul-2022 22:18:32 INFO - Could not detect default resource locations for test class [cabapplication.service.CabServiceImplTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+08-Jul-2022 22:18:32 INFO - Could not detect default configuration classes for test class [cabapplication.service.CabServiceImplTest]: CabServiceImplTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08-Jul-2022 22:18:33 INFO - Found @SpringBootConfiguration cabapplication.CabApplication for test class cabapplication.service.CabServiceImplTest
+08-Jul-2022 22:18:33 INFO - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+08-Jul-2022 22:18:33 INFO - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@e044b4a, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@11a82d0f, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@1adb7478, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@3ae66c85, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@16943e88, org.springframework.test.context.support.DirtiesContextTestExecutionListener@4604b900, org.springframework.test.context.transaction.TransactionalTestExecutionListener@73d6d0c, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@e36bb2a, org.springframework.test.context.event.EventPublishingTestExecutionListener@3961a41a, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@5a4ed68f, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@367795c7, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@d2387c8, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@3956b302, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@1500e009, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@1fd386c3]
+08-Jul-2022 22:18:35 INFO - HV000001: Hibernate Validator 6.2.3.Final
+08-Jul-2022 22:18:35 INFO - Starting CabServiceImplTest using Java 17.0.2 on DESKTOP-NFUHNE7 with PID 18212 (started by Sindhu in C:\Users\Sindhu\git\CABApplication\CabApplication)
+08-Jul-2022 22:18:35 INFO - No active profile set, falling back to 1 default profile: "default"
+08-Jul-2022 22:18:39 INFO - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+08-Jul-2022 22:18:40 INFO - Finished Spring Data repository scanning in 225 ms. Found 5 JPA repository interfaces.
+08-Jul-2022 22:18:44 INFO - HHH000204: Processing PersistenceUnitInfo [name: default]
+08-Jul-2022 22:18:45 INFO - HHH000412: Hibernate ORM core version 5.6.9.Final
+08-Jul-2022 22:18:45 INFO - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+08-Jul-2022 22:18:45 INFO - HikariPool-1 - Starting...
+08-Jul-2022 22:18:46 INFO - HikariPool-1 - Start completed.
+08-Jul-2022 22:18:46 INFO - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+08-Jul-2022 22:18:49 INFO - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+08-Jul-2022 22:18:49 INFO - Initialized JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 22:18:52 WARN - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+08-Jul-2022 22:19:00 INFO - Started CabServiceImplTest in 26.733 seconds (JVM running for 32.354)
+08-Jul-2022 22:19:00 INFO - Autowired annotation is not supported on static fields: static cabapplication.utils.Converter cabapplication.service.CabServiceImplTest.converter
+08-Jul-2022 22:19:01 INFO - Closing JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 22:19:01 INFO - HikariPool-1 - Shutdown initiated...
+08-Jul-2022 22:19:01 INFO - HikariPool-1 - Shutdown completed.
+08-Jul-2022 22:19:15 INFO - Neither @ContextConfiguration nor @ContextHierarchy found for test class [cabapplication.service.CabServiceImplTest], using SpringBootContextLoader
+08-Jul-2022 22:19:15 INFO - Could not detect default resource locations for test class [cabapplication.service.CabServiceImplTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+08-Jul-2022 22:19:15 INFO - Could not detect default configuration classes for test class [cabapplication.service.CabServiceImplTest]: CabServiceImplTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08-Jul-2022 22:19:16 INFO - Found @SpringBootConfiguration cabapplication.CabApplication for test class cabapplication.service.CabServiceImplTest
+08-Jul-2022 22:19:17 INFO - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+08-Jul-2022 22:19:17 INFO - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@c96a4ea, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@28782602, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@60c16548, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@68105edc, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@511816c0, org.springframework.test.context.support.DirtiesContextTestExecutionListener@38b972d7, org.springframework.test.context.transaction.TransactionalTestExecutionListener@5339bbad, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3935e9a8, org.springframework.test.context.event.EventPublishingTestExecutionListener@288a4658, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@5b56b654, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@452c8a40, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@534243e4, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@29006752, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@470a9030, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@66d57c1b]
+08-Jul-2022 22:19:17 INFO - HV000001: Hibernate Validator 6.2.3.Final
+08-Jul-2022 22:19:18 INFO - Starting CabServiceImplTest using Java 17.0.2 on DESKTOP-NFUHNE7 with PID 11884 (started by Sindhu in C:\Users\Sindhu\git\CABApplication\CabApplication)
+08-Jul-2022 22:19:18 INFO - No active profile set, falling back to 1 default profile: "default"
+08-Jul-2022 22:19:23 INFO - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+08-Jul-2022 22:19:23 INFO - Finished Spring Data repository scanning in 254 ms. Found 5 JPA repository interfaces.
+08-Jul-2022 22:19:29 INFO - HHH000204: Processing PersistenceUnitInfo [name: default]
+08-Jul-2022 22:19:29 INFO - HHH000412: Hibernate ORM core version 5.6.9.Final
+08-Jul-2022 22:19:29 INFO - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+08-Jul-2022 22:19:29 INFO - HikariPool-1 - Starting...
+08-Jul-2022 22:19:30 INFO - HikariPool-1 - Start completed.
+08-Jul-2022 22:19:31 INFO - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+08-Jul-2022 22:19:34 INFO - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+08-Jul-2022 22:19:34 INFO - Initialized JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 22:19:38 WARN - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+08-Jul-2022 22:19:45 INFO - Started CabServiceImplTest in 28.387 seconds (JVM running for 34.631)
+08-Jul-2022 22:19:45 INFO - Autowired annotation is not supported on static fields: static cabapplication.utils.Converter cabapplication.service.CabServiceImplTest.converter
+08-Jul-2022 22:19:46 INFO - Closing JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 22:19:46 INFO - HikariPool-1 - Shutdown initiated...
+08-Jul-2022 22:19:46 INFO - HikariPool-1 - Shutdown completed.

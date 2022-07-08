@@ -15,7 +15,7 @@ import cabapplication.utils.Converter;
 
 @Service
 @Transactional
-public class ICabServiceImpl implements ICabService
+public class CabServiceImpl implements ICabService
 {
 
 	@Autowired
@@ -36,7 +36,7 @@ public class ICabServiceImpl implements ICabService
 		{
 			if(cabDto.getCarType()!=null)
 			{
-			Converter.convertCabToDTO(cabrepo.save(Converter.convertCabDtoToEntity(cabDto)));
+		      cabrepo.save(Converter.convertCabDtoToEntity(cabDto));
 			return cabDto;
 			}
 			throw new CabNotFoundException("Cab not available");

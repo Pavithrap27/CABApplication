@@ -14,7 +14,7 @@ import cabapplication.repository.ITripRepository;
 import cabapplication.utils.Converter;
 
 @Service
-public  class ITripServiceImpl implements ITripService {
+public  class TripServiceImpl implements ITripService {
 	@Autowired
     ITripRepository triprepo;
  
