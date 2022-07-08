@@ -1,13 +1,13 @@
 package cabapplication.service;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cabapplication.dto.CustomerDTO;
 import cabapplication.entity.Customer;
-import cabapplication.exception.AdminNotFoundException;
 import cabapplication.exception.CustomerNotFoundException;
 import cabapplication.repository.ICustomerRepository;
 import cabapplication.utils.Converter;
@@ -21,7 +21,7 @@ public class ICustomerServiceImpl implements ICustomerService
 	
 	@Override
 	public List<CustomerDTO> getAll() throws CustomerNotFoundException {
-		List<CustomerDTO> customerDto = Converter.convertCustomersToDTO(customerrepo.findAll());
+		List<CustomerDTO> customerDto = Converter.convertCustomerToDto(customerrepo.findAll());
 		if (customerDto.isEmpty()) {
 			throw new CustomerNotFoundException("No Customer available");
 		} else {
@@ -30,22 +30,23 @@ public class ICustomerServiceImpl implements ICustomerService
 	}
 	
 	@Override
-	public CustomerDTO save(CustomerDTO customerDto) throws CustomerNotFoundException {
-		if (customerDto == null) {
-			throw new CustomerNotFoundException("Customer Does not exist");
-		} else {
-			customerrepo.save(Converter.convertCustomerToEntity(customerDto));
+	public CustomerDTO save(CustomerDTO customerDto) throws Throwable 
+	{
+		if(customerDto.getUsername()!=null)
+		{
+			customerrepo.save(Converter.convertCustomerDtoToEntity(customerDto));
 			return customerDto;
 		}
-
+		throw new CustomerNotFoundException("Customer not available");
 	}
 	
 	@Override
-	public CustomerDTO update(CustomerDTO customerDto)throws CustomerNotFoundException {
-		if (customerDto == null) {
-			throw new CustomerNotFoundException("No Customer found");
-		} else {
-			Customer customer = Converter.convertCustomerToEntity(customerDto);
+	public CustomerDTO update(CustomerDTO customerDto)throws CustomerNotFoundException 
+	{
+		if(customerDto == null) {
+			throw new CustomerNotFoundException("Customer not found");
+		}else {
+		Customer customer = Converter.convertCustomerDtoToEntity(customerDto);
 		int id = customer.getCustomerId();
 		Customer customerUpdated = customerrepo.findById(id).orElseThrow();
 		customerUpdated.setCustomerId(customerUpdated.getCustomerId());
@@ -55,41 +56,34 @@ public class ICustomerServiceImpl implements ICustomerService
 		customerUpdated.setPassword(customer.getPassword());
 		customerUpdated.setUsername(customer.getUsername());
 		customerrepo.save(customerUpdated);
-		return Converter.convertCustomerToDto(customerUpdated);
+		return customerDto;
 		}
 	}
 
 	@Override
-	public String delete(int customerId)throws CustomerNotFoundException{
-		CustomerDTO customerDto = Converter.convertCustomerToDto(customerrepo.findById(customerId).orElseThrow());
-		if (customerDto == null) {
-			throw new CustomerNotFoundException("No Customer found");
-		} else {
-			customerrepo.delete(Converter.convertCustomerToEntity(customerDto));
+	public String delete(int customerId)throws Throwable
+	{
+		Supplier s1=()->new CustomerNotFoundException("Customer not found");
+		Converter.convertCustomerToDto(customerrepo.findById(customerId).orElseThrow(s1));
+			customerrepo.deleteById(customerId);
 			return "Deleted";
-		}
 	}
 	
 	@Override
-	public CustomerDTO  getById(int customerId)throws CustomerNotFoundException 
+	public CustomerDTO  getById(int customerId)throws Throwable 
 	{
-		if((customerrepo.findById(customerId).orElseThrow())!=null)
-		{
-			return Converter.convertCustomerToDto(customerrepo.findById(customerId).orElseThrow());
-		}
-		
-		throw new CustomerNotFoundException("Customer not found");
+		Supplier s1=()->new CustomerNotFoundException("Customer not found");
+		return Converter.convertCustomerToDto(customerrepo.findById(customerId).orElseThrow(s1));
 		
 	}
 	
 	@Override
-	public CustomerDTO validate(String username, String password)throws CustomerNotFoundException 
-	{
-		if(customerrepo.getByUsernameAndPassword(username, password)!=null) {
-			
-			 return Converter.convertCustomerToDto(customerrepo.getByUsernameAndPassword(username, password));
-		}
-		
-		throw new CustomerNotFoundException("Customer not found");
+	public CustomerDTO validate(String username, String password)throws Throwable {
+	if(customerrepo.getByUsernameAndPassword(username, password)!=null) {
+
+        return Converter.convertCustomerToDto(customerrepo.getByUsernameAndPassword(username, password));
+   }
+
+   throw new CustomerNotFoundException("Customer not found");
 	}
 }
