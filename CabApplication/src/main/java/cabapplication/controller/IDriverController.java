@@ -60,7 +60,7 @@ public class IDriverController {
 	}
 
 	@GetMapping(path = "/getById/{driverid}")
-	public ResponseEntity<DriverDTO> getById(@PathVariable int driverid) throws DriverNotFoundException 
+	public ResponseEntity<DriverDTO> getById(@PathVariable int driverid) throws Throwable 
 	{
 		return new ResponseEntity<>(driverservice.getById(driverid),HttpStatus.OK);
 	}

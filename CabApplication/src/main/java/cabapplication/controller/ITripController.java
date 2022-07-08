@@ -22,7 +22,7 @@ import cabapplication.service.ITripServiceImpl;
 @RestController
 @RequestMapping("tripbooking")
 public class ITripController {
-	
+	@Autowired
 	ITripServiceImpl tripservice;
 
 	@GetMapping("getAll")
@@ -43,12 +43,12 @@ public class ITripController {
 	}
 
 	@PutMapping("update")
-	public ResponseEntity<TripBookingDTO> update(@RequestBody TripBookingDTO tripDto) throws TripNotFoundException {
+	public ResponseEntity<TripBookingDTO> update(@RequestBody TripBookingDTO tripDto) throws Throwable {
 		 return new ResponseEntity<>(tripservice.update(tripDto), HttpStatus.OK);
 	}
 
 	@DeleteMapping("deleteById/{tripBookingId}")
-	public ResponseEntity<String> delete(@PathVariable int tripBookingId) throws TripNotFoundException {
+	public ResponseEntity<String> delete(@PathVariable int tripBookingId) throws Throwable  {
 		tripservice.delete(tripBookingId);
 		return  new ResponseEntity<>("Deleted", HttpStatus.OK);
 		
@@ -63,8 +63,8 @@ public class ITripController {
 	}
 
 	@GetMapping("calculateBill/{customerId}")
-	public ResponseEntity<Double> calculateBill(int customerId) throws CustomerNotFoundException
+	public ResponseEntity<Double> calculateBill(@PathVariable int customerId) throws CustomerNotFoundException
 	{
-		return new ResponseEntity<>(tripservice.calculateBill(customerId), HttpStatus.OK);
+		return new ResponseEntity<> (tripservice.calculateBill(customerId),HttpStatus.OK);
 	}
 }

@@ -7,18 +7,7 @@ import org.springframework.stereotype.Component;
 import cabapplication.entity.Driver;
 
 @Component
-public class TripBookingDTO extends AbstractUserDTO {
-
-	public TripBookingDTO() {
-		super();
-
-	}
-
-	public TripBookingDTO(String username, String password, String mobileNumber, String email, String address) {
-		super(username, password, mobileNumber, email, address);
-
-	}
-
+public class TripBookingDTO  {
 	private int tripBookingId;
 	private int customerId;
 	private String fromLocation;
