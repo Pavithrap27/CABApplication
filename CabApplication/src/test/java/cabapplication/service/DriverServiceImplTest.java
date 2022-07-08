@@ -39,6 +39,7 @@ class DriverServiceImplTest {
 		cab=new CabDTO();
 		driver=new DriverDTO();
 		driver1 = new DriverDTO();
+		
 		cab.setCabId(1);
 		cab.setCarType("Honda");
 		cab.setPerKmRate(11.5f);
