@@ -23,7 +23,7 @@ import cabapplication.utils.Converter;
 @SpringBootTest
 class IDriverServiceImplTest {
 	@Autowired
-	IDriverServiceImpl driverservice;
+	DriverServiceImpl driverservice;
 	@Autowired
 	static Converter converter;
 	
