@@ -2,6 +2,7 @@ package cabapplication.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,15 +10,13 @@ import org.springframework.stereotype.Service;
 
 import cabapplication.dto.AdminDTO;
 import cabapplication.dto.TripBookingDTO;
-import cabapplication.entity.Admin;
-import cabapplication.entity.Driver;
-import cabapplication.entity.TripBooking;
 import cabapplication.exception.AdminNotFoundException;
 import cabapplication.exception.CabNotFoundException;
 import cabapplication.exception.CustomerNotFoundException;
 import cabapplication.exception.TripNotFoundException;
 import cabapplication.repository.IAdminRepository;
 import cabapplication.repository.ICabRepository;
+import cabapplication.repository.ICustomerRepository;
 import cabapplication.repository.IDriverRepository;
 import cabapplication.repository.ITripRepository;
 import cabapplication.utils.Converter;
@@ -29,6 +28,9 @@ public class IAdminServiceImpl implements IAdminService {
 	IAdminRepository adminrepo;
 	@Autowired
 	ITripRepository repo;
+	@Autowired
+
+	ICustomerRepository customerrepo;
 	@Autowired
 	IDriverRepository driverRepo;
 	@Autowired
@@ -45,23 +47,18 @@ public class IAdminServiceImpl implements IAdminService {
 	}
 
 	@Override
-	public AdminDTO getById(int adminId) throws AdminNotFoundException {
-
-		Admin admin = adminrepo.findById(adminId).orElseThrow();
-		if (admin == null) {
-			throw new AdminNotFoundException("Admin not found");
-		} else {
-			return Converter.convertToDTO(admin);
-		}
+	public AdminDTO getById(int adminId) throws Throwable {
+		Supplier s1 = () -> new AdminNotFoundException("Admin not found");
+		return Converter.convertToDTO(adminrepo.findById(adminId).orElseThrow(s1));
 	}
 
 	@Override
-	public List<TripBookingDTO> getByCustomerId(int customerId) throws CustomerNotFoundException {
-		List<TripBookingDTO> tripsDto = Converter.convertTripToDto(repo.getByCustomerId(customerId));
-		if (tripsDto.isEmpty()) {
-			throw new CustomerNotFoundException("No Customer found");
+	public List<TripBookingDTO> getByCustomerId(int customerId) throws Throwable {
+		List<TripBookingDTO> list = Converter.convertTripToDto(repo.getByCustomerId(customerId));
+		if (!(list.isEmpty())) {
+			return list;
 		} else {
-			return tripsDto;
+			throw new CustomerNotFoundException("Customer does not exist");
 		}
 	}
 
@@ -76,42 +73,40 @@ public class IAdminServiceImpl implements IAdminService {
 	}
 
 	@Override
-	public AdminDTO save(AdminDTO adminDto) throws AdminNotFoundException {
-		if (adminDto == null) {
-			throw new AdminNotFoundException("Admin Does not exist");
-		} else {
-			adminrepo.save(Converter.convertToEntity(adminDto));
-			return adminDto;
+	public AdminDTO save(AdminDTO adminDto) throws Throwable 
+	{
+		if(adminDto.getUsername()!=null)
+		{
+		adminrepo.save(Converter.convertToEntity(adminDto));
+		return adminDto;
 		}
+	throw new AdminNotFoundException("Admin not available");
 
 	}
 
 	@Override
-	public AdminDTO update(AdminDTO adminDto) throws AdminNotFoundException {
-		if (adminDto == null) {
-			throw new AdminNotFoundException("No Admin found");
-		} else {
-			Admin admin = Converter.convertToEntity(adminDto);
-			int index = admin.getAdminId();
-			Admin adminupdated = adminrepo.findById(index).orElseThrow();
-			adminupdated.setEmail(admin.getEmail());
-			adminupdated.setMobileNumber(admin.getMobileNumber());
-			adminupdated.setPassword(admin.getPassword());
-			adminupdated.setUsername(admin.getUsername());
-			adminupdated.setAddress(admin.getAddress());
-			adminrepo.save(adminupdated);
-			return Converter.convertToDTO(adminupdated);
-		}
+	public AdminDTO update(AdminDTO adminDto) throws Throwable {
+		Admin admin = Converter.convertToEntity(adminDto);
+		int id = admin.getAdminId();
+
+		Supplier s1 = () -> new AdminNotFoundException("Admin not found");
+		
+		Admin adminupdated = adminrepo.findById(id).orElseThrow(s1);
+		adminupdated.setEmail(admin.getEmail());
+		adminupdated.setMobileNumber(admin.getMobileNumber());
+		adminupdated.setPassword(admin.getPassword());
+		adminupdated.setUsername(admin.getUsername());
+		adminupdated.setAddress(admin.getAddress());
+		adminrepo.save(adminupdated);
+		return Converter.convertToDTO(adminupdated);
 	}
 
 	@Override
-	public String delete(AdminDTO adminDto) throws AdminNotFoundException {
-		if (adminDto == null) {
-			throw new AdminNotFoundException("Admin not found");
-		} else {
-			adminrepo.delete(Converter.convertToEntity(adminDto));
-			return "Deleted";
-		}
+	public String delete(int adminId) throws Throwable {
+		Supplier s1 = () -> new AdminNotFoundException("Admin not found");
+		Admin admin = adminrepo.findById(adminId).orElseThrow(s1);
+		adminrepo.deleteById(adminId);
+		return "Deleted";
 	}
 
 	@Override

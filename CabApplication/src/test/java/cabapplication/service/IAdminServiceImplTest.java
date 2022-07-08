@@ -31,6 +31,7 @@ class IAdminServiceImplTest {
 	
 
 	@Test
+
 	void testGetAll() throws AdminNotFoundException  {
 		Admin admin=new Admin();
 		admin.setAdminId(1);

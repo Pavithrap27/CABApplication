@@ -15,10 +15,9 @@ import cabapplication.utils.Converter;
 
 @Service
 public  class ITripServiceImpl implements ITripService {
-    @Autowired
-	ITripRepository triprepo;
-	
-
+	@Autowired
+    ITripRepository triprepo;
+ 
 	public List<TripBookingDTO> getAll() throws TripNotFoundException {
 
 		List<TripBookingDTO> trips = Converter.convertTripToDto(triprepo.findAll());
