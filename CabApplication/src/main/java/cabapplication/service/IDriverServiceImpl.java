@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import cabapplication.dto.DriverDTO;
 import cabapplication.entity.Driver;
-import cabapplication.exception.CustomerNotFoundException;
 import cabapplication.exception.DriverNotFoundException;
 import cabapplication.repository.IDriverRepository;
 import cabapplication.utils.Converter;
