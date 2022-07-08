@@ -3,16 +3,12 @@ package cabapplication.service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cabapplication.dto.AdminDTO;
 import cabapplication.dto.TripBookingDTO;
 import cabapplication.entity.Admin;
-import cabapplication.entity.Driver;
-import cabapplication.entity.TripBooking;
 import cabapplication.exception.AdminNotFoundException;
 import cabapplication.exception.CabNotFoundException;
 import cabapplication.exception.CustomerNotFoundException;
@@ -26,7 +22,7 @@ import cabapplication.repository.ITripRepository;
 import cabapplication.utils.Converter;
 
 @Service
-public class IAdminServiceImpl implements IAdminService {
+public class AdminServiceImpl implements IAdminService {
 
 	@Autowired
 	IAdminRepository adminrepo;

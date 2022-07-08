@@ -17,13 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
 import cabapplication.dto.TripBookingDTO;
 import cabapplication.exception.CustomerNotFoundException;
 import cabapplication.exception.TripNotFoundException;
-import cabapplication.service.ITripServiceImpl;
+import cabapplication.service.TripServiceImpl;
 
 @RestController
 @RequestMapping("tripbooking")
-public class ITripController {
+public class TripController {
 	@Autowired
-	ITripServiceImpl tripservice;
+	TripServiceImpl tripservice;
 
 	@GetMapping("getAll")
 	public ResponseEntity<List<TripBookingDTO>> getAll() throws TripNotFoundException{

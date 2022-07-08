@@ -24,15 +24,15 @@ import cabapplication.exception.AdminNotFoundException;
 import cabapplication.exception.CabNotFoundException;
 import cabapplication.exception.CustomerNotFoundException;
 import cabapplication.exception.TripNotFoundException;
-import cabapplication.service.IAdminServiceImpl;
+import cabapplication.service.AdminServiceImpl;
 
 @RestController
 @RequestMapping("admin")
 
-public class IAdminController {
-	Log logger=LogFactory.getLog(IAdminController.class);
+public class AdminController {
+	Log logger=LogFactory.getLog(AdminController.class);
 	@Autowired
-	IAdminServiceImpl adminservice;
+	AdminServiceImpl adminservice;
 
 	@GetMapping("getAll")
 	public ResponseEntity<List<AdminDTO>> getAll() throws AdminNotFoundException {

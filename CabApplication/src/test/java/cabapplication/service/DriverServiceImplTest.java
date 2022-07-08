@@ -1,8 +1,6 @@
 package cabapplication.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -15,13 +13,12 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import cabapplication.dto.DriverDTO;
 import cabapplication.entity.Driver;
-import cabapplication.exception.DriverNotFoundException;
 import cabapplication.repository.IDriverRepository;
 import cabapplication.utils.Converter;
 @SpringBootTest
-class IDriverServiceImplTest {
+class DriverServiceImplTest {
 	@Autowired
-	IDriverServiceImpl driverservice;
+	DriverServiceImpl driverservice;
 	@Autowired
 	static Converter converter;
 	
