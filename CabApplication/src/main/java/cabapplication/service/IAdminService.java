@@ -23,12 +23,12 @@ public interface IAdminService {
 
 	public List<TripBookingDTO> getByCustomerId(int customerId) throws Throwable;
 
-	public List<TripBookingDTO> getTripsCabwise() throws Throwable;
-
 	public List<TripBookingDTO> getTripsDatewise() throws TripNotFoundException;
 
 	public List<TripBookingDTO> getTripsCustomerwise() throws CustomerNotFoundException;
 
 	public List<TripBookingDTO> getAllTripsForDays(int customerId, LocalDateTime fromDate, LocalDateTime ToDate)
 			throws CustomerNotFoundException;
+
+	public List<TripBookingDTO> getTripsCabwise(String carType) throws CabNotFoundException;
 }

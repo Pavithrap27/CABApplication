@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import cabapplication.dto.AdminDTO;
 import cabapplication.dto.TripBookingDTO;
 import cabapplication.exception.AdminNotFoundException;
+import cabapplication.exception.CabNotFoundException;
 import cabapplication.exception.CustomerNotFoundException;
 import cabapplication.exception.TripNotFoundException;
 import cabapplication.service.IAdminServiceImpl;
@@ -70,11 +71,11 @@ public class IAdminController {
 
 	}
 
-	@GetMapping("getTripsCabwise")
-	public ResponseEntity<List<TripBookingDTO>> getTripsCabwise() throws Throwable {
-		List<TripBookingDTO> trips = adminservice.getTripsCabwise();
-		return new ResponseEntity<>(trips, HttpStatus.OK);
 
+	
+	@GetMapping("getTripsCabwise/{carType}")
+	public ResponseEntity<List<TripBookingDTO>> getTripsCabwise(@PathVariable String carType) throws CabNotFoundException {
+		return new ResponseEntity<>(adminservice.getTripsCabwise(carType), HttpStatus.OK);
 	}
 
 	@GetMapping("getTripsDatewise")

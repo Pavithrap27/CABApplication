@@ -3,16 +3,29 @@ package cabapplication.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Cab {
 	@Id
 	@GeneratedValue
 	private int cabId;
+	@NotNull
 	private String carType;
 	private float perKmRate;
-   
-	
+   @OneToOne
+   @JoinColumn
+	private Driver driver;
+	public Driver getDriver() {
+	return driver;
+}
+
+public void setDriver(Driver driver) {
+	this.driver = driver;
+}
+
 	public int getCabId() {
 		return cabId;
 	}

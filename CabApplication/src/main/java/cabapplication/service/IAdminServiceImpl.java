@@ -3,6 +3,7 @@ package cabapplication.service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,12 +11,16 @@ import org.springframework.stereotype.Service;
 import cabapplication.dto.AdminDTO;
 import cabapplication.dto.TripBookingDTO;
 import cabapplication.entity.Admin;
+import cabapplication.entity.Driver;
+import cabapplication.entity.TripBooking;
 import cabapplication.exception.AdminNotFoundException;
 import cabapplication.exception.CabNotFoundException;
 import cabapplication.exception.CustomerNotFoundException;
 import cabapplication.exception.TripNotFoundException;
 import cabapplication.repository.IAdminRepository;
+
 import cabapplication.repository.ICustomerRepository;
+
 import cabapplication.repository.IDriverRepository;
 import cabapplication.repository.ITripRepository;
 import cabapplication.utils.Converter;
@@ -60,9 +65,8 @@ public class IAdminServiceImpl implements IAdminService {
 	}
 
 	@Override
-
-	public List<TripBookingDTO> getTripsCabwise() throws CabNotFoundException {
-		List<TripBookingDTO> trips = Converter.convertTripToDto(driverRepo.getTripsCabwise());
+	public List<TripBookingDTO> getTripsCabwise(String carType) throws CabNotFoundException {
+		List<TripBookingDTO> trips = Converter.convertTripToDto(driverRepo.getTripBookingBycarType(carType));
 		if (trips.isEmpty()) {
 			throw new CabNotFoundException("Cab not found");
 		} else {
