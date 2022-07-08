@@ -63,7 +63,6 @@ class CustomerServiceImplTest {
 		List<Customer> list = Converter.convertCustomerDtoToEntity(customer);
 		Mockito.when(customerrepo.findAll()).thenReturn(list);
 		assertNotNull(customerService.getAll());
-		
 	}
 	@Test
 	void testSave() throws Throwable

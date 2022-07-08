@@ -25,17 +25,13 @@ public class DriverServiceImpl implements IDriverService
 	@Override
 	public List<DriverDTO> getAll() throws DriverNotFoundException
 	{
-		List<DriverDTO> driverDtoList=new ArrayList<>();
-		Iterable<Driver> drivers=driverrepo.findAll();
-		if (drivers==null) {
+		List<Driver> driverList=driverrepo.findAll();
+		if (driverList.isEmpty()) {
 			throw new DriverNotFoundException(message);
 		} 
 		else {
-			for(Driver driver:drivers) {
-				driverDtoList.add(Converter.convertDriverToDTO(driver));
+				return Converter.convertDriverToDTO(driverList);
 			}
-			return driverDtoList;
-		}
 		
 	}
 	
@@ -44,8 +40,8 @@ public class DriverServiceImpl implements IDriverService
 	{
 		if(driverDto.getUsername()!=null)
 		{
-		driverrepo.save(Converter.convertDriverDtoToEntity(driverDto));
-		return driverDto;
+			driverrepo.save(Converter.convertDriverDtoToEntity(driverDto));
+			return driverDto;
 		}
 		throw new DriverNotFoundException("Driver not available");
 		
