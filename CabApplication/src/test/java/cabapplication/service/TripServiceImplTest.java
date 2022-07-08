@@ -2,143 +2,126 @@ package cabapplication.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.verify;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
- 
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import cabapplication.entity.Cab;
-import cabapplication.entity.Customer;
-import cabapplication.entity.Driver;
+import cabapplication.dto.TripBookingDTO;
 import cabapplication.entity.TripBooking;
+import cabapplication.exception.CustomerNotFoundException;
 import cabapplication.exception.TripNotFoundException;
 import cabapplication.repository.ITripRepository;
+import cabapplication.utils.Converter;
 
 @SpringBootTest
 class TripServiceImplTest {
-
 	@Autowired
-	ITripServiceImpl iTripServiceImpl;
-	
+	TripServiceImpl tripService;
+	@Autowired
+	static Converter converter;
+
 	@MockBean
-	ITripRepository triprepo;
+	ITripRepository tripRepo;
 
-	@Test
-	void testgetAll() throws TripNotFoundException {
-		TripBooking trip1= new TripBooking();
-		trip1.setTripBookingId(1);
-		trip1.setCustomerId(1);
-		trip1.setFromLocation("Delhi");
-		trip1.setToLocation("Goa");
-		trip1.getFromDateTime();
-		trip1.getToDateTime();
-		trip1.isStatus();
-		trip1.getDistanceInKm();
-		trip1.getBill();
-		
-		TripBooking trip2= new TripBooking();
-		trip2.setTripBookingId(2);
-		trip2.setCustomerId(2);
-		trip2.setFromLocation("Bnagalore");
-		trip2.setToLocation("hyderabad");
-		trip2.getFromDateTime();
-		trip2.getToDateTime();
-		trip2.isStatus();
-		trip2.getDistanceInKm();
-		trip2.getBill();
-		
-		List<TripBooking> tripBookingList = new ArrayList<>();
-		tripBookingList.add(trip1);
-		tripBookingList.add(trip2);
-		
-		Mockito.when(triprepo.findAll()).thenReturn(tripBookingList);	
-		assertThat(iTripServiceImpl.getAll()).isEqualTo(tripBookingList);
+	TripBookingDTO tripDto1 = null;
+	TripBookingDTO tripDto2 = null;
+
+	@BeforeEach
+	public void testBeforeEach() {
+		tripDto1 = new TripBookingDTO();
+		tripDto1.setTripBookingId(1);
+		tripDto1.setBill(100);
+		tripDto1.setCustomerId(1);
+		tripDto1.setDistanceInKm(90);
+		tripDto1.setFromLocation("banaglore");
+		tripDto1.setStatus(true);
+		tripDto1.setToLocation("goa");
+		tripDto1.setFromDateTime(LocalDateTime.now());
+		tripDto1.setToDateTime(LocalDateTime.of(2022, 02, 01, 05, 04));
+
+		tripDto2 = new TripBookingDTO();
+		tripDto2.setTripBookingId(2);
+		tripDto2.setBill(90);
+		tripDto2.setCustomerId(2);
+		tripDto2.setDistanceInKm(80);
+		tripDto2.setFromLocation("mymbai");
+		tripDto2.setStatus(true);
+		tripDto2.setToLocation("goa");
+		tripDto2.setFromDateTime(LocalDateTime.of(2022, 03, 01, 05, 04));
+		tripDto2.setToDateTime(LocalDateTime.of(2022, 05, 01, 05, 04));
 	}
 
 	@Test
-	void testSave() {
-		LocalDateTime fromdate=LocalDateTime.of(2022,02,01,05,04);
-		LocalDateTime todate=LocalDateTime.of(2022,02,05,01,02);
-		Cab cab= new Cab();
-		Driver driver = new Driver();
-		Customer customer = new Customer();
-		TripBooking tb =new TripBooking();
-		Mockito.when(triprepo.save(tb)).thenReturn(tb);	
-		//assertThat(iTripServiceImpl.save()).isEqualTo(tb);
-		
+	void testGetAll() throws TripNotFoundException {
+		List<TripBookingDTO> tripBooking = new ArrayList<>();
+		tripBooking.add(tripDto1);
+		tripBooking.add(tripDto2);
+		List<TripBooking> list = Converter.convertTripToEntity(tripBooking);
+		Mockito.when(tripRepo.findAll()).thenReturn(list);
+		assertNotNull(tripService.getAll());
 	}
-	
+
 	@Test
-	void testUpdate() {
-			  LocalDateTime fromdate=LocalDateTime.of(2017,01,25,10,30); 
-			  LocalDateTime todate=LocalDateTime.of(2017,01,25,12,30); 
-			  Cab cab= new Cab();
-			  Driver driver = new Driver();
-			  Customer customer = new Customer();
-			  TripBooking tripBooking= new TripBooking();
-			  TripBooking newtripBooking= new TripBooking();
-			  triprepo.save(tripBooking);
-			  //(triprepo.findById(101)).willReturn(Optional.of(newtripBooking));
-			  List<TripBooking> tripbookingList = triprepo.findAll();
-			  for(int i=0; i<tripbookingList.size(); i++) {
-				  if(tripbookingList.get(i).getTripBookingId() == newtripBooking.getTripBookingId()) {
-					  assertEquals(newtripBooking, tripbookingList.get(i));
-				  }
-			  }
+	void testGetById() throws TripNotFoundException {
+		TripBooking trips = Converter.convertTripToEntity(tripDto1);
+		Optional<TripBooking> optional = Optional.of(trips);
+		Mockito.when(tripRepo.findById(1)).thenReturn(optional);
+		assertThat(tripRepo.existsById(trips.getCustomerId()));
+
 	}
-				 
+
+	@Test
+	void testSave() throws TripNotFoundException {
+		TripBooking trips = Converter.convertTripToEntity(tripDto1);
+		Mockito.when(tripRepo.save(trips)).thenReturn(trips);
+		assertThat(tripService.save(tripDto1)).isEqualTo(tripDto1);
+
+	}
+
+	@Test
+	void testUpdate() throws Throwable {
+		TripBooking tripBooking = Converter.convertTripToEntity(tripDto1);
+		Optional<TripBooking> optional = Optional.of(tripBooking);
+		Mockito.when(tripRepo.findById(1)).thenReturn(optional);
+		Mockito.when(tripRepo.save(tripBooking)).thenReturn(tripBooking);
+		assertNotNull(tripService.update(tripDto1));
+	}
+
 	@Test
 	void testDelete() {
-			  LocalDateTime fromdate=LocalDateTime.of(2017,01,25,10,30); 
-			  LocalDateTime todate=LocalDateTime.of(2017,01,25,12,30); 
-			  Cab cab= new Cab();
-			  Driver driver = new Driver();
-			  Customer customer = new Customer();
-			  TripBooking tripBooking= new TripBooking();
-			  tripBooking.setTripBookingId(101);
-			  Mockito.when(triprepo.findById(tripBooking.getTripBookingId())).thenReturn(Optional.of(tripBooking));
-			  //tripBooking.delete(tripBooking.getTripBookingId());
-			  verify(triprepo).deleteById(tripBooking.getTripBookingId());
+		TripBooking tripBooking = Converter.convertTripToEntity(tripDto1);
+		Optional<TripBooking> optional = Optional.of(tripBooking);
+
+		Mockito.when(tripRepo.findById(1)).thenReturn(optional);
+		Mockito.when(tripRepo.existsById(tripBooking.getTripBookingId())).thenReturn(false);
+		assertFalse(tripRepo.existsById(tripBooking.getTripBookingId()));
 	}
 
-
 	@Test
-	void testgetByCustomerId() {
-			  LocalDateTime fromdate=LocalDateTime.of(2017,01,25,10,30); 
-			  LocalDateTime todate=LocalDateTime.of(2017,01,25,12,30); 
-			  Cab cab= new Cab();
-			  Driver driver = new Driver();
-			  Customer customer = new Customer();
-			  TripBooking tripBooking= new TripBooking();
-			  List<TripBooking> tripBookingList= new ArrayList<TripBooking>();
-			  tripBookingList.add(tripBooking);
-			  Mockito.when(triprepo.findAll()).thenReturn(tripBookingList);
-			  tripBooking.setCustomerId((tripBookingList.get(0).getTripBookingId()));
-			  verify(triprepo).findAll();
-				
-		}
+	void testGetByCustomerId() throws CustomerNotFoundException {
 
-	@Test
-	void testcalculateBill() {
-		LocalDateTime fromdate=LocalDateTime.of(2017,01,25,10,30);
-		LocalDateTime todate=LocalDateTime.of(2017,01,25,12,30);
-		Cab cab= new Cab();
-		Driver driver = new Driver();
-		Customer customer = new Customer();
-		TripBooking tripBooking= new TripBooking();
-		List<TripBooking> tripBookingList= new ArrayList<TripBooking>();
-		tripBookingList.add(tripBooking);
-		Mockito.when(triprepo.findAll()).thenReturn(tripBookingList);
-		//tripBooking.calculateBill(tripBookingList.get(0).getCustomer().getCustomerId());
-		verify(triprepo).findAll();
+		List<TripBookingDTO> tripBooking = new ArrayList<>();
+		tripBooking.add(tripDto1);
+		List<TripBooking> list = Converter.convertTripToEntity(tripBooking);
+		Mockito.when(tripRepo.getByCustomerId(1)).thenReturn(list);
+		equals(tripService.getByCustomerId(1));
 	}
+
+	@Test
+	void testCalculateBill() throws CustomerNotFoundException {
+		double bill = tripDto1.getDistanceInKm() * 30.0;
+		TripBooking tripBooking = Converter.convertTripToEntity(tripDto1);
+		Mockito.when(tripRepo.findByCustomerId(1)).thenReturn(tripBooking);
+		assertThat(tripService.calculateBill(1)).isEqualTo(bill);
+	}
+
 }
-

@@ -1,5 +1,7 @@
 package cabapplication.dto;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import cabapplication.entity.Cab;
@@ -18,8 +20,18 @@ public class DriverDTO extends AbstractUserDTO {
 
 	private int driverId;
 	private String licenceNo;
-	private Cab cab;
+	private CabDTO cab;
 	private double rating;
+	private List<TripBookingDTO> trips;
+
+	
+	public List<TripBookingDTO> getTrips() {
+		return trips;
+	}
+
+	public void setTrips(List<TripBookingDTO> trips) {
+		this.trips = trips;
+	}
 
 	public int getDriverId() {
 		return driverId;
@@ -37,11 +49,13 @@ public class DriverDTO extends AbstractUserDTO {
 		this.licenceNo = licenceNo;
 	}
 
-	public Cab getCab() {
+	
+
+	public CabDTO getCab() {
 		return cab;
 	}
 
-	public void setCab(Cab cab) {
+	public void setCab(CabDTO cab) {
 		this.cab = cab;
 	}
 
