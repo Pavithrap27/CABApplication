@@ -5,13 +5,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import cabapplication.dto.CustomerDTO;
+import cabapplication.dto.DriverDTO;
 import cabapplication.entity.Customer;
 import cabapplication.repository.ICustomerRepository;
 import cabapplication.utils.Converter;
@@ -27,10 +30,14 @@ class CustomerServiceImplTest {
 	@MockBean
 	ICustomerRepository customerrepo;
 
-	@Test
-	void testGetAll() throws Throwable {
+	CustomerDTO customer=null;
+	
+	@BeforeEach
+	public void testBeforeEach() {
 		
-		CustomerDTO customer=new CustomerDTO(); 
+		customer=new CustomerDTO();
+		
+		
 		customer.setUsername("Siri");
 		customer.setPassword("siri123");
 		customer.setMobileNumber("9901296413");
@@ -38,31 +45,42 @@ class CustomerServiceImplTest {
 		customer.setCustomerId(25);
 		customer.setEmail("siri666@gmail.com");
 		
-		CustomerDTO customer1=new CustomerDTO(); 
-		customer1.setUsername("Deeksha");
-		customer1.setPassword("dee123");
-		customer1.setMobileNumber("9876544322");
-		customer1.setAddress("Chennai");
-		customer1.setCustomerId(26);
-		customer1.setEmail("dee123@gmail.com");
-
+		customer.setUsername("Deeksha");
+		customer.setPassword("dee123");
+		customer.setMobileNumber("9876544322");
+		customer.setAddress("Chennai");
+		customer.setCustomerId(26);
+		customer.setEmail("dee123@gmail.com");
+		
+	}
+	@Test
+	void testGetAll() throws Throwable {
+		
 		List<Customer> customerList=new ArrayList<>();
 		customerList.add(Converter.convertCustomerDtoToEntity(customer));
-		customerList.add(Converter.convertCustomerDtoToEntity(customer1));
+		
 		
 		Mockito.when(customerrepo.findAll()).thenReturn(customerList);
-		assertThat(customerservice.save(customer1)).isEqualTo(customerList);
+		assertThat(customerservice.getAll());
 		
 	}
 
 	@Test
-	void testSave() {
-		fail("Not yet implemented");
+	void testSave() throws Throwable
+	{
+		Customer customerc=Converter.convertCustomerDtoToEntity(customer);
+		Mockito.when(customerrepo.save(customerc)).thenReturn(customerc);
+		assertThat(customerservice.save(customer)).isEqualTo(customer);
 	}
 
 	@Test
-	void testUpdate() {
-		fail("Not yet implemented");
+	void testUpdate() throws Throwable
+	{
+		Customer customer=Converter.convertCustomerDtoToEntity(customer);
+		Optional<Customer> customer=Optional.of(customer);
+		Customer customer1=Converter.convertCustomerDtoToEntity(customerc);
+		Mockito.when(customerrepo.findById(25)).thenReturn(customer);
+		
 	}
 
 	@Test
