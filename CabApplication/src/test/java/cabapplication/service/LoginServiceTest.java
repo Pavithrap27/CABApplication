@@ -39,14 +39,14 @@ class LoginServiceTest {
 		customer.setPassword("poorna123");
 
 		Mockito.when(customerRepo.getByUsernameAndPassword("poorna", "poorna123")).thenReturn(customer);
-		assertThat(loginService.getCredentials("customer", "poorna", "poorna123")).isEqualTo(" Login");
+		assertThat(loginService.getCredentials("customer", "poorna", "poorna123")).isEqualTo("Login");
 
 		Driver driver = new Driver();
 		driver.setUsername("akash");
 		driver.setPassword("akash123");
 
 		Mockito.when(driverRepo.getByUsernameAndPassword("akash", "akash123")).thenReturn(driver);
-		assertThat(loginService.getCredentials("driver", "akash", "akash123")).isEqualTo(" Login");
+		assertThat(loginService.getCredentials("driver", "akash", "akash123")).isEqualTo("Login");
 
 	}
 }
