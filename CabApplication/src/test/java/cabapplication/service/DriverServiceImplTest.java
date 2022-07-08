@@ -21,7 +21,7 @@ import cabapplication.exception.DriverNotFoundException;
 import cabapplication.repository.IDriverRepository;
 import cabapplication.utils.Converter;
 @SpringBootTest
-class IDriverServiceImplTest {
+class DriverServiceImplTest {
 	@Autowired
 	DriverServiceImpl driverservice;
 	@Autowired
@@ -50,7 +50,7 @@ class IDriverServiceImplTest {
 		driver.setDriverId(1);
 		driver.setLicenceNo("23d34d");
 		driver.setRating(4.5);
-		driver.setCab(null);
+		driver.setCab(cab);
 		
 		driver1.setUsername("Harshi");
 		driver1.setPassword("harshi8");
@@ -59,7 +59,7 @@ class IDriverServiceImplTest {
 		driver1.setLicenceNo("9777gf");
 		driver.setDriverId(2);
 		driver1.setRating(4.0);
-		driver.setCab(null);
+		driver.setCab(cab);
 		
 	}
 	
