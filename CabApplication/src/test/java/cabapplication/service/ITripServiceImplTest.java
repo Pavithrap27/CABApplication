@@ -15,12 +15,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import cabapplication.dto.TripBookingDTO;
 import cabapplication.entity.Cab;
 import cabapplication.entity.Customer;
 import cabapplication.entity.Driver;
 import cabapplication.entity.TripBooking;
 import cabapplication.exception.TripNotFoundException;
-import cabapplication.repository.ITripRepository;
+import cabapplication.repository.ITripRepository;import cabapplication.utils.Converter;
 
 @SpringBootTest
 class ITripServiceImplTest {
@@ -59,8 +60,34 @@ class ITripServiceImplTest {
 		tripBookingList.add(trip1);
 		tripBookingList.add(trip2);
 		
+		TripBookingDTO tripDto1= new TripBookingDTO();
+		tripDto1.setTripBookingId(1);
+		tripDto1.setCustomerId(1);
+		tripDto1.setFromLocation("Delhi");
+		tripDto1.setToLocation("Goa");
+		tripDto1.getFromDateTime();
+		tripDto1.getToDateTime();
+		tripDto1.isStatus();
+		tripDto1.getDistanceInKm();
+		tripDto1.getBill();
+		
+		TripBookingDTO tripDto2= new TripBookingDTO();
+		tripDto2.setTripBookingId(2);
+		tripDto2.setCustomerId(2);
+		tripDto2.setFromLocation("Bnagalore");
+		tripDto2.setToLocation("hyderabad");
+		tripDto2.getFromDateTime();
+		tripDto2.getToDateTime();
+		tripDto2.isStatus();
+		tripDto2.getDistanceInKm();
+		tripDto2.getBill();
+		
+		List<TripBookingDTO> tripBookingListDto = new ArrayList<>();
+		tripBookingListDto.add(tripDto1);
+		tripBookingListDto.add(tripDto2);
+		
 		Mockito.when(triprepo.findAll()).thenReturn(tripBookingList);	
-		assertThat(iTripServiceImpl.getAll()).isEqualTo(tripBookingList);
+		assertThat(iTripServiceImpl.getAll()).isEqualTo(Converter.convertTripToDto(tripBookingList));
 	}
 
 	@Test

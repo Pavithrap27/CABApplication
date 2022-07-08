@@ -15,20 +15,8 @@ public class Cab {
 	private int cabId;
 	@NotNull
 	private String carType;
-	public Driver getDriver() {
-		return driver;
-	}
-
-	public void setDriver(Driver driver) {
-		this.driver = driver;
-	}
 
 	private float perKmRate;
-	@OneToOne
-	@JoinColumn
-	private Driver driver;
-  
-
 	public int getCabId() {
 		return cabId;
 	}
@@ -55,8 +43,10 @@ public class Cab {
 
 	@Override
 	public String toString() {
-		return "Cab [cabId=" + cabId + ", carType=" + carType + ", perKmRate=" + perKmRate + ", driver=" + driver + "]";
+		return "Cab [cabId=" + cabId + ", carType=" + carType + ", perKmRate=" + perKmRate + "]";
 	}
+
+	
 
 	
 

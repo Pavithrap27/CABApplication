@@ -14,9 +14,4 @@ public interface ICabRepository extends JpaRepository<Cab, Integer> {
 
 	@Query("select COUNT(cab) from Cab cab where carType=?1 ")
 	public int countCabsOfType(String carType);
-
-	
-	@Query("Select driver from Driver driver where cab.carType=?1")
-    public Driver getByCarType(String carType); 
-
 }

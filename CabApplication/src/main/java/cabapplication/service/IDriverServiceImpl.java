@@ -53,22 +53,25 @@ public class IDriverServiceImpl implements IDriverService
 	@Override
 	public DriverDTO update(DriverDTO driverDto) throws Throwable
 	{
+		
 		Driver driver=Converter.convertDriverDtoToEntity(driverDto);
 		int id = driver.getDriverId();
 		Supplier s1=()->new DriverNotFoundException("Driver not found");
-			Driver driverupdated = driverrepo.findById(id).orElseThrow(s1);
-			driverupdated.setUsername(driver.getUsername());
-			driverupdated.setPassword(driver.getPassword());
-			driverupdated.setMobileNumber(driver.getMobileNumber());
-			driverupdated.setEmail(driver.getEmail());
-			driverupdated.setLicenceNo(driver.getLicenceNo());
-			driverupdated.setCab(driver.getCab());
-			driverupdated.setRating(driver.getRating());
-			driverupdated.setAddress(driver.getAddress());
-			driverrepo.save(driverupdated);
-			return Converter.convertDriverToDTO(driverupdated);
 		
+		Driver driverupdated = driverrepo.findById(id).orElseThrow(s1);
+		driverupdated.setUsername(driver.getUsername());
+		driverupdated.setPassword(driver.getPassword());
+		driverupdated.setMobileNumber(driver.getMobileNumber());
+		driverupdated.setEmail(driver.getEmail());
+		driverupdated.setLicenceNo(driver.getLicenceNo());
+		driverupdated.setCab(driver.getCab());
+		driverupdated.setRating(driver.getRating());
+		driverupdated.setAddress(driver.getAddress());
+		driverrepo.save(driverupdated);
+		return Converter.convertDriverToDTO(driverupdated);
+
 	}
+
 	@Override
 	public String delete(int driverId) throws Throwable
 	{
@@ -77,8 +80,7 @@ public class IDriverServiceImpl implements IDriverService
 		 Converter.convertDriverToDTO(driverrepo.findById(driverId).orElseThrow(s1));
 		
 		driverrepo.deleteById(driverId);
-		return "Deleted";
-		
+		return "Deleted";	
 		
 	}
 	
@@ -102,10 +104,10 @@ public class IDriverServiceImpl implements IDriverService
 	@Override
 	public DriverDTO getById(int driverid) throws Throwable 
 	{
+		
 		Supplier s1=()->new DriverNotFoundException("driver not found");
 		return Converter.convertDriverToDTO(driverrepo.findById(driverid).orElseThrow(s1));
 		
 	}
 
-	
 }

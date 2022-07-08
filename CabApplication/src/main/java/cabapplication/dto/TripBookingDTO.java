@@ -17,7 +17,7 @@ public class TripBookingDTO  {
 	private boolean status;
 	private double distanceInKm;
 	private double bill;
-	
+
 	public int getTripBookingId() {
 		return tripBookingId;
 	}
@@ -89,4 +89,5 @@ public class TripBookingDTO  {
 	public void setBill(double bill) {
 		this.bill = bill;
 	}
+
 }

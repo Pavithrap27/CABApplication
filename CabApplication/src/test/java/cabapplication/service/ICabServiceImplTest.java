@@ -2,7 +2,6 @@ package cabapplication.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.verify;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +23,7 @@ import cabapplication.utils.Converter;
 class ICabServiceImplTest {
 
 	@Autowired
-	ICabServiceImpl iCabServiceImpl;
+	ICabServiceImpl iCabService;
 	
 	@MockBean
 	ICabRepository cabrepo;
@@ -45,21 +44,40 @@ class ICabServiceImplTest {
 		cabList.add(cab1);
 		cabList.add(cab2);
 		
+		CabDTO cabDto=new CabDTO();
+		cabDto.setCabId(1);
+		cabDto.setCarType("Honda");
+		cabDto.setPerKmRate(16);
+		
+		CabDTO cabDto2=new CabDTO();
+		cabDto2.setCabId(2);
+		cabDto2.setCarType("bmw");
+		cabDto2.setPerKmRate(25);
+		
+		List<CabDTO> cabListDto = new ArrayList<>();
+		cabListDto.add(cabDto);
+		cabListDto.add(cabDto2);
+		
+		
+		
 		Mockito.when(cabrepo.findAll()).thenReturn(cabList);	
-		assertThat(iCabServiceImpl.getAll()).isEqualTo(cabList);
+		assertNotNull(iCabService.getAll());
 		
 	}
 	@Test
 	void testsave() throws Throwable {
-		CabDTO cab1=new CabDTO();
-		
+		Cab cab1=new Cab();
 		cab1.setCabId(1);
 		cab1.setCarType("Honda");
 		cab1.setPerKmRate(16);
-		Cab cab=Converter.convertCabDtoToEntity(cab1);
+		CabDTO cabDto=new CabDTO();
+		cabDto.setCabId(1);
+		cabDto.setCarType("Honda");
+		cabDto.setPerKmRate(16);
 		
-		Mockito.when(cabrepo.save(cab)).thenReturn(cab);
-		assertThat(iCabServiceImpl.save(cab1)).isEqualTo(cab1);
+
+		Mockito.when(cabrepo.save(cab1)).thenReturn(cab1);
+		assertThatiCabService.save(cabDto))cab1.isEquals;
 		}
 	
 	@Test
@@ -69,27 +87,26 @@ class ICabServiceImplTest {
 		cab1.setCabId(1);
 		cab1.setCarType("Honda");
 		cab1.setPerKmRate(16);
-		Optional<Cab> cab2=Optional.of(cab1)
+		Optional<Cab> cab2=Optional.of(cab1);
 
-     	Mockito.when(cabrepo.findById(cab1.getCabId())).thenReturn(cab1);
+     	Mockito.when(cabrepo.findById(1)).thenReturn(cab2);
 		
 		Mockito.when(cabrepo.save(cab1)).thenReturn(cab1);
 		cab1.setCarType("Audi");
 		cab1.setPerKmRate(30);
 		
-		assertThat(iCabServiceImpl.update(cab1)).isEqualTo(cab1);
+		assertThat(iCabService.update(Converter.convertCabToDTO(cab1))).isEqualTo(cab1);
 			
 	}
 	@Test
 	void testDelete() {
-		 CabDTO cab1=new CabDTO();
+		 Cab cab1=new Cab();
 		cab1.setCabId(1);
 		cab1.setCarType("Honda");
 		cab1.setPerKmRate(16);
-		Optional<CabDTO> cab2=Optional.of(cab1);
-		Cab cab=Converter.convertCabDtoToEntity(cab1);
+		Optional<Cab> cab2=Optional.of(cab1);
 		
-		Mockito.when(cabrepo.findById(cab1)).thenReturn(cab2);
+		Mockito.when(cabrepo.findById(1)).thenReturn(cab2);
 		
 		Mockito.when(cabrepo.existsById(cab1.getCabId())).thenReturn(false);
 		assertFalse(cabrepo.existsById(cab1.getCabId()));
