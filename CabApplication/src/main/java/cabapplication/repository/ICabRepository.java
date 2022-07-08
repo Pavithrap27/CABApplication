@@ -4,9 +4,8 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-
-import cabapplication.dto.CabDTO;
 import cabapplication.entity.Cab;
+import cabapplication.entity.Driver;
 
 public interface ICabRepository extends JpaRepository<Cab, Integer> {
 
@@ -15,7 +14,4 @@ public interface ICabRepository extends JpaRepository<Cab, Integer> {
 
 	@Query("select COUNT(cab) from Cab cab where carType=?1 ")
 	public int countCabsOfType(String carType);
-
-
-	
 }

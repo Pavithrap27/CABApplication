@@ -66,6 +66,7 @@ class AdminServiceImplTest {
 		
 	}
 	@Test
+
 	void testGetAll() throws AdminNotFoundException {
 		
 		List<Admin> adminList=new ArrayList<>();

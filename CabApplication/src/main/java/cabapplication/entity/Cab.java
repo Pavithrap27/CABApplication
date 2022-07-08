@@ -1,5 +1,6 @@
 package cabapplication.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,10 +15,8 @@ public class Cab {
 	private int cabId;
 	@NotNull
 	private String carType;
-	private float perKmRate;
-   
-	
 
+	private float perKmRate;
 	public int getCabId() {
 		return cabId;
 	}
@@ -46,5 +45,9 @@ public class Cab {
 	public String toString() {
 		return "Cab [cabId=" + cabId + ", carType=" + carType + ", perKmRate=" + perKmRate + "]";
 	}
+
+	
+
+	
 
 }

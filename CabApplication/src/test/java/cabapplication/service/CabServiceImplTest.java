@@ -24,6 +24,7 @@ import cabapplication.utils.Converter;
 class CabServiceImplTest {
 
 	@Autowired
+
 	CabServiceImpl iCabServiceImpl;
 	
 	@MockBean

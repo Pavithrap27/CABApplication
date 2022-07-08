@@ -16,7 +16,6 @@ public class LoginController {
 	@GetMapping("getCredentials/{role}/{username}/{password}")
 	public String getCredentials(@PathVariable String role, @PathVariable String username, @PathVariable String password)throws Exception 
 	{
-		
 		return login.getCredentials(role, username, password);
 	}
 }
