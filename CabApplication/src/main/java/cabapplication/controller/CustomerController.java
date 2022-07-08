@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import cabapplication.dto.CustomerDTO;
-import cabapplication.service.ICustomerServiceImpl;
+import cabapplication.service.CustomerServiceImpl;
 import cabapplication.exception.CustomerNotFoundException;
 
 @RestController
 @RequestMapping("customer")
-public class ICustomerController {
+public class CustomerController {
 
 	@Autowired
-	ICustomerServiceImpl customerservice;
+	CustomerServiceImpl customerservice;
 
 	@PostMapping(path = "/save")
 	public ResponseEntity<CustomerDTO> save(@RequestBody CustomerDTO customer) throws Throwable

@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import cabapplication.dto.DriverDTO;
 import cabapplication.exception.DriverNotFoundException;
-import cabapplication.service.IDriverServiceImpl;
+import cabapplication.service.DriverServiceImpl;
 
 @RestController
 @RequestMapping("driver")
-public class IDriverController {
+public class DriverController {
 
 	@Autowired
-	IDriverServiceImpl driverservice;
+	DriverServiceImpl driverservice;
 
 	@GetMapping("/getAll")
 	public ResponseEntity<List<DriverDTO>> getAll() throws DriverNotFoundException 

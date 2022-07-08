@@ -20,7 +20,7 @@ public class DriverDTO extends AbstractUserDTO {
 
 	private int driverId;
 	private String licenceNo;
-	private Cab cab;
+	private CabDTO cab;
 	private double rating;
 	private List<TripBookingDTO> trips;
 
@@ -49,11 +49,13 @@ public class DriverDTO extends AbstractUserDTO {
 		this.licenceNo = licenceNo;
 	}
 
-	public Cab getCab() {
+	
+
+	public CabDTO getCab() {
 		return cab;
 	}
 
-	public void setCab(Cab cab) {
+	public void setCab(CabDTO cab) {
 		this.cab = cab;
 	}
 

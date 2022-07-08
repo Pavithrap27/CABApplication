@@ -4,10 +4,25 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class ICustomerServiceImplTest {
+class AdminServiceImplTest {
 
 	@Test
 	void testGetAll() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetById() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetByCustomerId() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetTripsCabwise() {
 		fail("Not yet implemented");
 	}
 
@@ -27,12 +42,17 @@ class ICustomerServiceImplTest {
 	}
 
 	@Test
-	void testGetById() {
+	void testGetTripsDatewise() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	void testValidate() {
+	void testGetTripsCustomerwise() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetAllTripsForDays() {
 		fail("Not yet implemented");
 	}
 
