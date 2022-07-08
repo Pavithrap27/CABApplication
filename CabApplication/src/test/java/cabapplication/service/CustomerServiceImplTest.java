@@ -76,10 +76,7 @@ class CustomerServiceImplTest {
 	@Test
 	void testUpdate() throws Throwable
 	{
-		Customer customer=Converter.convertCustomerDtoToEntity(customer);
-		Optional<Customer> customer=Optional.of(customer);
-		Customer customer1=Converter.convertCustomerDtoToEntity(customerc);
-		Mockito.when(customerrepo.findById(25)).thenReturn(customer);
+		
 		
 	}
 

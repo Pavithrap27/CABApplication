@@ -8417,3 +8417,4 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 08-Jul-2022 17:10:24 INFO - Closing JPA EntityManagerFactory for persistence unit 'default'
 08-Jul-2022 17:10:24 INFO - HikariPool-1 - Shutdown initiated...
 08-Jul-2022 17:10:24 INFO - HikariPool-1 - Shutdown completed.
+08-Jul-2022 19:34:18 WARN - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=45m15s415ms369µs300ns).
