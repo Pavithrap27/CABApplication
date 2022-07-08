@@ -106,8 +106,10 @@ class IDriverServiceImplTest {
 		driver1.setLicenceNo("9777gf");
 		driver1.setRating(4.0);
 		driver1.setCab(null);
-		assertThat(driverservice.update(driver1)).isEqualTo(driver1);
+		
 	}
+	
+	
 
 	
 
