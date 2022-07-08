@@ -1990,3 +1990,7 @@ Caused by: org.hibernate.hql.internal.ast.QuerySyntaxException: Invalid path: 'c
 07-Jul-2022 23:25:09 INFO - Initializing Spring DispatcherServlet 'dispatcherServlet'
 07-Jul-2022 23:25:09 INFO - Initializing Servlet 'dispatcherServlet'
 07-Jul-2022 23:25:09 INFO - Completed initialization in 2 ms
+07-Jul-2022 23:29:03 INFO - Application shutdown requested.
+07-Jul-2022 23:29:03 INFO - Closing JPA EntityManagerFactory for persistence unit 'default'
+07-Jul-2022 23:29:03 INFO - HikariPool-1 - Shutdown initiated...
+07-Jul-2022 23:29:03 INFO - HikariPool-1 - Shutdown completed.
