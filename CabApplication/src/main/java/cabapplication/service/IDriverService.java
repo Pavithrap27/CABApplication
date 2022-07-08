@@ -8,7 +8,8 @@ import cabapplication.dto.DriverDTO;
 import cabapplication.entity.Driver;
 import cabapplication.exception.DriverNotFoundException;
 
-public interface IDriverService {
+public interface IDriverService 
+{
 	
 	public List<DriverDTO> getAll() throws DriverNotFoundException;
 	
@@ -20,9 +21,6 @@ public interface IDriverService {
 	
 	public List<DriverDTO> viewBestDrivers()throws DriverNotFoundException;
 	
-	
 	public DriverDTO getById(int driverid)throws Throwable;
-
-	
 
 }

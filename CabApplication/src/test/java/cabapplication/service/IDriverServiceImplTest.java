@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -21,12 +22,15 @@ import cabapplication.utils.Converter;
 class IDriverServiceImplTest {
 	@Autowired
 	IDriverServiceImpl driverservice;
+	@Autowired
+	static Converter converter;
 	
 	@MockBean
 	IDriverRepository driverrepo;
 
 	@Test
-	void testGetAll() throws DriverNotFoundException {
+	void testGetAll() throws Throwable 
+	{
 		
 		DriverDTO driver=new DriverDTO(); 
 		driver.setUsername("Yami");
@@ -53,29 +57,56 @@ class IDriverServiceImplTest {
 		driverList.add(Converter.convertDriverDtoToEntity(driver1));
 		
 		Mockito.when(driverrepo.findAll()).thenReturn(driverList);
-		
-		assertThat(driverservice.getAll());
+		assertThat(driverservice.save(driver1)).isEqualTo(driverList);
 		
 	}
 	
 	@Test
-	void testSave()
+	void testSave() throws Throwable
 	{
-		DriverDTO driver=new DriverDTO();
-		driver.setUsername("Harshi");
-		driver.setPassword("harshi8");
-		driver.setMobileNumber("7987879322");
-		driver.setAddress("Banglore");
-		driver.setDriverId(1);
-		driver.setLicenceNo("9777gf");
-		driver.setRating(4.0);
-		driver.setCab(null);
 		
-		//Driver driver2=
-		//Mockito.when(driverrepo.save(driver)).thenReturn(driver);
+		DriverDTO driver1=new DriverDTO();
+		driver1.setUsername("Harshi");
+		driver1.setPassword("harshi8");
+		driver1.setMobileNumber("7987879322");
+		driver1.setAddress("Banglore");
+		driver1.setDriverId(1);
+		driver1.setLicenceNo("9777gf");
+		driver1.setRating(4.0);
+		driver1.setCab(null);
+	
+		Driver driverd=Converter.convertDriverDtoToEntity(driver1);
+		Mockito.when(driverrepo.save(driverd)).thenReturn(driverd);
 		
-		//assertThat(driverservice.save(driver)).isEqualTo(driver);
+		assertThat(driverservice.save(driver1)).isEqualTo(driver1);
 		
+	}
+	
+	@Test
+	void testUpdate() throws Throwable
+	{
+		DriverDTO driver1=new DriverDTO();
+		driver1.setUsername("Harshi");
+		driver1.setPassword("Harshi");
+		driver1.setMobileNumber("7987879322");
+		driver1.setAddress("Banglore");
+		driver1.setDriverId(1);
+		driver1.setLicenceNo("9777gf");
+		driver1.setRating(4.0);
+		driver1.setCab(null);
+		Driver driverd=Converter.convertDriverDtoToEntity(driver1);
+		Optional<Driver> driver2=Optional.of(driverd);
+		Driver driver=Converter.convertDriverDtoToEntity(driver1);
+		Mockito.when(driverrepo.findById(1)).thenReturn(driver2);
+		Mockito.when(driverrepo.save(driver)).thenReturn(driver);
+		driver1.setUsername("Yami");
+		driver1.setPassword("yami");
+		driver1.setMobileNumber("7987879322");
+		driver1.setAddress("Banglore");
+		driver1.setLicenceNo("9777gf");
+		driver1.setRating(4.0);
+		driver1.setCab(null);
+		assertThat(driverservice.update(driver1)).isEqualTo(driver1);
 	}
 
 	

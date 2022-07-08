@@ -15,16 +15,8 @@ public class Cab {
 	@NotNull
 	private String carType;
 	private float perKmRate;
-   @OneToOne
-   @JoinColumn
-	private Driver driver;
-	public Driver getDriver() {
-	return driver;
-}
-
-public void setDriver(Driver driver) {
-	this.driver = driver;
-}
+   
+	
 
 	public int getCabId() {
 		return cabId;

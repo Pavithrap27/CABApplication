@@ -53,6 +53,7 @@ public class IDriverServiceImpl implements IDriverService
 	@Override
 	public DriverDTO update(DriverDTO driverDto) throws Throwable
 	{
+		
 		Driver driver=Converter.convertDriverDtoToEntity(driverDto);
 		int id = driver.getDriverId();
 		Supplier s1=()->new DriverNotFoundException("Driver not found");
@@ -79,8 +80,7 @@ public class IDriverServiceImpl implements IDriverService
 		 Converter.convertDriverToDTO(driverrepo.findById(driverId).orElseThrow(s1));
 		
 		driverrepo.deleteById(driverId);
-		return "Deleted";
-		
+		return "Deleted";	
 		
 	}
 	
@@ -110,5 +110,4 @@ public class IDriverServiceImpl implements IDriverService
 		
 	}
 
-	
 }
