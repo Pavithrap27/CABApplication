@@ -24,7 +24,7 @@ import cabapplication.utils.Converter;
 class CabServiceImplTest {
 
 	@Autowired
-	ICabServiceImpl iCabServiceImpl;
+	CabServiceImpl CabServiceImpl;
 	
 	@MockBean
 	ICabRepository cabrepo;
@@ -46,7 +46,7 @@ class CabServiceImplTest {
 		cabList.add(cab2);
 		
 		Mockito.when(cabrepo.findAll()).thenReturn(cabList);	
-		assertThat(iCabServiceImpl.getAll()).isEqualTo(cabList);
+		assertThat(CabServiceImpl.getAll()).isEqualTo(cabList);
 		
 	}
 	@Test
@@ -59,7 +59,7 @@ class CabServiceImplTest {
 		Cab cab=Converter.convertCabDtoToEntity(cab1);
 		
 		Mockito.when(cabrepo.save(cab)).thenReturn(cab);
-		assertThat(iCabServiceImpl.save(cab1)).isEqualTo(cab1);
+		assertThat(CabServiceImpl.save(cab1)).isEqualTo(cab1);
 		}
 	
 	@Test

@@ -99,7 +99,7 @@ public class Converter {
 		return customerdto;
 		
 	}
-	public static List<CustomerDTO> convertCustomerToDto(List<Customer> customers)
+	public static List<CustomerDTO> convertCustomersToDto(List<Customer> customers)
 	{
 		List<CustomerDTO> listDto =new ArrayList<>();
 		for(Customer customer:customers)
@@ -121,7 +121,7 @@ public class Converter {
 		List<Customer> customer =new ArrayList<>();
 		for(CustomerDTO dto:customerDto)
 		{
-			customer.add((Customer) convertCustomerDtoToEntity(customerDto));
+			customer.add((convertCustomerDtoToEntity(dto)));
 		}
 		return customer;
 	}

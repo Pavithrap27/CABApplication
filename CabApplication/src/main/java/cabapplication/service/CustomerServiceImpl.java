@@ -21,11 +21,11 @@ public class CustomerServiceImpl implements ICustomerService
 	
 	@Override
 	public List<CustomerDTO> getAll() throws CustomerNotFoundException {
-		List<CustomerDTO> customerDto = Converter.convertCustomerToDto(customerrepo.findAll());
-		if (customerDto.isEmpty()) {
+		List<Customer> customer = customerrepo.findAll();
+		if (customer.isEmpty()) {
 			throw new CustomerNotFoundException("No Customer available");
 		} else {
-			return customerDto;
+			return Converter.convertCustomersToDto(customer);
 		}
 	}
 	
