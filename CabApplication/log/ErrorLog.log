@@ -6692,3 +6692,33 @@ Caused by: org.springframework.data.mapping.PropertyReferenceException: No prope
 07-Jul-2022 21:49:25 INFO - Tomcat started on port(s): 9090 (http) with context path ''
 07-Jul-2022 21:49:25 INFO - Started CabApplication in 5.726 seconds (JVM running for 6.924)
 >>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
+08-Jul-2022 10:35:21 INFO - Application shutdown requested.
+08-Jul-2022 10:35:21 INFO - Closing JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 10:35:21 INFO - HikariPool-1 - Shutdown initiated...
+08-Jul-2022 10:35:21 INFO - HikariPool-1 - Shutdown completed.
+08-Jul-2022 10:35:24 INFO - HV000001: Hibernate Validator 6.2.3.Final
+08-Jul-2022 10:35:24 INFO - Starting CabApplication using Java 18.0.1 on LIN22004273 with PID 20232 (C:\Users\SHIREV\git\CABApplication\CabApplication\target\classes started by shirev in C:\Users\SHIREV\git\CABApplication\CabApplication)
+08-Jul-2022 10:35:24 INFO - No active profile set, falling back to 1 default profile: "default"
+08-Jul-2022 10:35:25 INFO - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+08-Jul-2022 10:35:25 INFO - Finished Spring Data repository scanning in 92 ms. Found 5 JPA repository interfaces.
+08-Jul-2022 10:35:26 INFO - Tomcat initialized with port(s): 9090 (http)
+08-Jul-2022 10:35:26 INFO - Initializing ProtocolHandler ["http-nio-9090"]
+08-Jul-2022 10:35:26 INFO - Starting service [Tomcat]
+08-Jul-2022 10:35:26 INFO - Starting Servlet engine: [Apache Tomcat/9.0.64]
+08-Jul-2022 10:35:26 INFO - Initializing Spring embedded WebApplicationContext
+08-Jul-2022 10:35:26 INFO - Root WebApplicationContext: initialization completed in 2089 ms
+08-Jul-2022 10:35:26 INFO - HHH000204: Processing PersistenceUnitInfo [name: default]
+08-Jul-2022 10:35:26 INFO - HHH000412: Hibernate ORM core version 5.6.9.Final
+08-Jul-2022 10:35:26 INFO - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+08-Jul-2022 10:35:26 INFO - HikariPool-1 - Starting...
+08-Jul-2022 10:35:27 INFO - HikariPool-1 - Start completed.
+08-Jul-2022 10:35:27 INFO - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+08-Jul-2022 10:35:28 INFO - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+08-Jul-2022 10:35:28 INFO - Initialized JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 10:35:29 WARN - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+08-Jul-2022 10:35:29 INFO - Starting ProtocolHandler ["http-nio-9090"]
+08-Jul-2022 10:35:29 INFO - Tomcat started on port(s): 9090 (http) with context path ''
+08-Jul-2022 10:35:29 INFO - Started CabApplication in 5.793 seconds (JVM running for 6.841)
+08-Jul-2022 10:45:21 INFO - Initializing Spring DispatcherServlet 'dispatcherServlet'
+08-Jul-2022 10:45:21 INFO - Initializing Servlet 'dispatcherServlet'
+08-Jul-2022 10:45:21 INFO - Completed initialization in 2 ms
