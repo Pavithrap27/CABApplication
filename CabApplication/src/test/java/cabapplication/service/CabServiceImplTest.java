@@ -21,7 +21,7 @@ import cabapplication.repository.ICabRepository;
 import cabapplication.utils.Converter;
 
 @SpringBootTest
-class ICabServiceImplTest {
+class CabServiceImplTest {
 
 	@Autowired
 	ICabServiceImpl iCabServiceImpl;

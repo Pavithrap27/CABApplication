@@ -23,7 +23,7 @@ import cabapplication.exception.TripNotFoundException;
 import cabapplication.repository.ITripRepository;
 
 @SpringBootTest
-class ITripServiceImplTest {
+class TripServiceImplTest {
 
 	@Autowired
 	ITripServiceImpl iTripServiceImpl;
