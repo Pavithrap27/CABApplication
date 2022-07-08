@@ -15,7 +15,7 @@ import cabapplication.utils.Converter;
 
 @Service
 @Transactional
-public class ICabServiceImpl implements ICabService
+public class CabServiceImpl implements ICabService
 {
 
 	@Autowired

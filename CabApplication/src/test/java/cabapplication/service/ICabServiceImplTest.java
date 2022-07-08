@@ -24,7 +24,7 @@ import cabapplication.utils.Converter;
 class ICabServiceImplTest {
 
 	@Autowired
-	ICabServiceImpl iCabServiceImpl;
+	CabServiceImpl iCabServiceImpl;
 	
 	@MockBean
 	ICabRepository cabrepo;

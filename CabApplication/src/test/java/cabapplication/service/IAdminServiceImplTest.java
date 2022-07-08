@@ -11,7 +11,7 @@ import cabapplication.repository.IAdminRepository;
 class IAdminServiceImplTest {
 	
 	@Autowired
-	IAdminServiceImpl adminservice;
+	AdminServiceImpl adminservice;
 	@Autowired
 	IAdminRepository adminrepo;
 	

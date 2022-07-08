@@ -26,7 +26,7 @@ import cabapplication.repository.ITripRepository;
 class ITripServiceImplTest {
 
 	@Autowired
-	ITripServiceImpl iTripServiceImpl;
+	TripServiceImpl iTripServiceImpl;
 	
 	@MockBean
 	ITripRepository triprepo;

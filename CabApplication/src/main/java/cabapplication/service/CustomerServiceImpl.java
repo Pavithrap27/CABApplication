@@ -14,7 +14,7 @@ import cabapplication.utils.Converter;
 
 
 @Service
-public class ICustomerServiceImpl implements ICustomerService
+public class CustomerServiceImpl implements ICustomerService
 {
 	@Autowired
 	ICustomerRepository customerrepo;
