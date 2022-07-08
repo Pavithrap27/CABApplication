@@ -24,7 +24,10 @@ import cabapplication.utils.Converter;
 class ICabServiceImplTest {
 
 	@Autowired
-	ICabServiceImpl iCabServiceImpl;
+	ICabServiceImpl cabservice;
+	
+	@Autowired
+	static Converter converter
 	
 	@MockBean
 	ICabRepository cabrepo;
@@ -71,13 +74,21 @@ class ICabServiceImplTest {
 		cab1.setPerKmRate(16);
 		Optional<Cab> cab2=Optional.of(cab1);
 
+<<<<<<< HEAD
      //	Mockito.when(cabrepo.findById(cab1.getCabId())).thenReturn(cab1);
+=======
+     	//Mockito.when(cabrepo.findById(cab1.getCabId())).thenReturn(cab1);
+>>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 		
 		Mockito.when(cabrepo.save(cab1)).thenReturn(cab1);
 		cab1.setCarType("Audi");
 		cab1.setPerKmRate(30);
 		
+<<<<<<< HEAD
 	//	assertThat(iCabServiceImpl.update(cab1)).isEqualTo(cab1);
+=======
+		//assertThat(iCabServiceImpl.update(cab1)).isEqualTo(cab1);
+>>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 			
 	}
 	@Test
@@ -89,7 +100,11 @@ class ICabServiceImplTest {
 		Optional<CabDTO> cab2=Optional.of(cab1);
 		Cab cab=Converter.convertCabDtoToEntity(cab1);
 		
+<<<<<<< HEAD
 	//	Mockito.when(cabrepo.findById(cab1)).thenReturn(cab2);
+=======
+		//Mockito.when(cabrepo.findById(cab1)).thenReturn(cab2);
+>>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 		
 		Mockito.when(cabrepo.existsById(cab1.getCabId())).thenReturn(false);
 		assertFalse(cabrepo.existsById(cab1.getCabId()));

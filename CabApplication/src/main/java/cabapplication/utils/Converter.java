@@ -94,12 +94,12 @@ public class Converter {
 
 	public static CustomerDTO convertCustomerToDto(Customer customer)
 	{
-		CustomerDTO customerto=new CustomerDTO();
-		BeanUtils.copyProperties(customer, customerto);
-		return customerto;
+		CustomerDTO customerdto=new CustomerDTO();
+		BeanUtils.copyProperties(customer, customerdto);
+		return customerdto;
 		
 	}
-	public static List<CustomerDTO> convertCustomersToDTO(List<Customer> customers)
+	public static List<CustomerDTO> convertCustomerToDto(List<Customer> customers)
 	{
 		List<CustomerDTO> listDto =new ArrayList<>();
 		for(Customer customer:customers)
@@ -108,23 +108,22 @@ public class Converter {
 		}
 		return listDto;
 	}
-	public static Customer convertCustomerToEntity(CustomerDTO customerDto)
+	public static Customer convertCustomerDtoToEntity(CustomerDTO customerDto)
 	{
 		Customer customer=new Customer();
 		BeanUtils.copyProperties(customerDto, customer);
 		return customer;
 	}
 	
-	public static List<Customer> convertCustomerstToEntity(List<CustomerDTO> listDto)
+	public static List<Customer> convertCustomerDtoToEntity(List<CustomerDTO> customerDto)
 	{
 
-		List<Customer> list =new ArrayList<>();
-		for(CustomerDTO customerDto:listDto)
+		List<Customer> customer =new ArrayList<>();
+		for(CustomerDTO dto:customerDto)
 		{
-			list.add(convertCustomerToEntity(customerDto));
-			
+			customer.add((Customer) convertCustomerDtoToEntity(customerDto));
 		}
-		return list;
+		return customer;
 	}
 
 	public static DriverDTO convertDriverToDTO(Driver driver)

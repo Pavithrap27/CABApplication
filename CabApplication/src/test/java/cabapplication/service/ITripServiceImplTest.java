@@ -86,7 +86,11 @@ class ITripServiceImplTest {
 			  TripBooking tripBooking= new TripBooking();
 			  TripBooking newtripBooking= new TripBooking();
 			  triprepo.save(tripBooking);
+<<<<<<< HEAD
 			//  given(triprepo.findById(101)).willReturn(Optional.of(newtripBooking));
+=======
+			  //(triprepo.findById(101)).willReturn(Optional.of(newtripBooking));
+>>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 			  List<TripBooking> tripbookingList = triprepo.findAll();
 			  for(int i=0; i<tripbookingList.size(); i++) {
 				  if(tripbookingList.get(i).getTripBookingId() == newtripBooking.getTripBookingId()) {
@@ -105,7 +109,11 @@ class ITripServiceImplTest {
 			  TripBooking tripBooking= new TripBooking();
 			  tripBooking.setTripBookingId(101);
 			  Mockito.when(triprepo.findById(tripBooking.getTripBookingId())).thenReturn(Optional.of(tripBooking));
+<<<<<<< HEAD
 			//  tripBooking.delete(tripBooking.getTripBookingId());
+=======
+			  //tripBooking.delete(tripBooking.getTripBookingId());
+>>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 			  verify(triprepo).deleteById(tripBooking.getTripBookingId());
 	}
 
@@ -121,7 +129,11 @@ class ITripServiceImplTest {
 			  List<TripBooking> tripBookingList= new ArrayList<TripBooking>();
 			  tripBookingList.add(tripBooking);
 			  Mockito.when(triprepo.findAll()).thenReturn(tripBookingList);
+<<<<<<< HEAD
 			 // tripBooking.getByCustomerId((tripBookingList.get(0).getTripBookingId());
+=======
+			  tripBooking.setCustomerId((tripBookingList.get(0).getTripBookingId()));
+>>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 			  verify(triprepo).findAll();
 				
 		}
@@ -137,7 +149,11 @@ class ITripServiceImplTest {
 		List<TripBooking> tripBookingList= new ArrayList<TripBooking>();
 		tripBookingList.add(tripBooking);
 		Mockito.when(triprepo.findAll()).thenReturn(tripBookingList);
+<<<<<<< HEAD
 	//	tripBooking.calculateBill(tripBookingList.get(0).getCustomer().getCustomerId());
+=======
+		//tripBooking.calculateBill(tripBookingList.get(0).getCustomer().getCustomerId());
+>>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 		verify(triprepo).findAll();
 	}
 }
