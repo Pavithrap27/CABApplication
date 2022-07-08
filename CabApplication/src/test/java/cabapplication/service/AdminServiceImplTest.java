@@ -8,7 +8,8 @@ class AdminServiceImplTest {
 
 	@Test
 	void testGetAll() {
-		fail("Not yet implemented");
+		
+		
 	}
 
 	@Test
