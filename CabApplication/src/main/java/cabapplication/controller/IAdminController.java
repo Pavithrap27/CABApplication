@@ -71,10 +71,9 @@ public class IAdminController {
 
 	}
 
-	@GetMapping("getTripsCabwise")
-	public ResponseEntity<List<TripBookingDTO>> getTripsCabwise() throws CabNotFoundException {
-		List<TripBookingDTO> trips = adminservice.getTripsCabwise();
-		return new ResponseEntity<>(trips, HttpStatus.OK);
+	@GetMapping("getTripsCabwise/{carType}")
+	public ResponseEntity<List<TripBookingDTO>> getTripsCabwise(@PathVariable String carType) throws CabNotFoundException {
+		return new ResponseEntity<>(adminservice.getTripsCabwise(carType), HttpStatus.OK);
 
 	}
 
