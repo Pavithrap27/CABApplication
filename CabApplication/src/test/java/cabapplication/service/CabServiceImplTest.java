@@ -26,6 +26,7 @@ class CabServiceImplTest {
 
 	@Autowired
 	CabServiceImpl cabservice;
+
 	
 	@MockBean
 	ICabRepository cabrepo;
@@ -55,8 +56,7 @@ class CabServiceImplTest {
 		cabList.add(Converter.convertCabDtoToEntity(cab2));
 		
 		Mockito.when(cabrepo.findAll()).thenReturn(cabList);	
-		assertNotNull(cabservice.getAll());
-		
+		assertNotNull(cabservice.getAll());		
 	}
 	@Test
 	void testsave() throws Throwable
@@ -65,10 +65,8 @@ class CabServiceImplTest {
 		Cab c=Converter.convertCabDtoToEntity(cab1);
 		Mockito.when(cabrepo.save(c)).thenReturn(c);
 		assertThat(cabservice.save(cab1)).isEqualTo(cab1);
-		
 	}
 	
-	@SuppressWarnings("unlikely-arg-type")
 	@Test
 	void testupdate() throws Throwable 
 	{
@@ -79,7 +77,6 @@ class CabServiceImplTest {
 		Mockito.when(cabrepo.save(c1)).thenReturn(c1);
 		equals(cabservice.update(cab1));
 	}
-	
 	@Test
 	void testDelete() 
 	{

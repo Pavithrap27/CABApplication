@@ -72,7 +72,6 @@ class DriverServiceImplTest {
 		List<Driver> driverList=new ArrayList<>();
 		driverList.add(Converter.convertDriverDtoToEntity(driver));
 		driverList.add(Converter.convertDriverDtoToEntity(driver1));
-		
 		Mockito.when(driverrepo.findAll()).thenReturn(driverList);
 		assertNotNull(driverservice.getAll());
 		
