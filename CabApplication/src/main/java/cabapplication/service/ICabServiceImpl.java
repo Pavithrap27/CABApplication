@@ -1,6 +1,5 @@
 package cabapplication.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -18,6 +17,7 @@ import cabapplication.utils.Converter;
 @Transactional
 public class ICabServiceImpl implements ICabService
 {
+
 	@Autowired
 	ICabRepository cabrepo;
 
@@ -25,14 +25,13 @@ public class ICabServiceImpl implements ICabService
 	public List<CabDTO> getAll() throws CabNotFoundException {
 		if (cabrepo.findAll()!= null) 
 		{
-			
 			return Converter.convertCabToDTO(cabrepo.findAll());
-		} 
+		}
 		throw new CabNotFoundException("cab not found");
-		
 	}
 
-		@Override
+
+     	@Override
 		public CabDTO save(CabDTO cabDto) throws Throwable
 		{
 			if(cabDto.getCarType()!=null)
@@ -50,18 +49,17 @@ public class ICabServiceImpl implements ICabService
 			int id = cab.getCabId();
 			Supplier s1=()->new CabNotFoundException("no Cab found");
                Cab cabupdated=cabrepo.findById(id).orElseThrow(s1);
-				cabupdated.setCabId(cab.getCabId());
-				cabupdated.setCarType(cab.getCarType());
-				cabupdated.setPerKmRate(cab.getPerKmRate());
-				cabrepo.save(cabupdated);
-				return Converter.convertCabToDTO(cabupdated);
-		}
+               cabupdated.setCabId(cab.getCabId());
+               cabupdated.setCarType(cab.getCarType());
+               cabupdated.setPerKmRate(cab.getPerKmRate());
+               cabrepo.save(cabupdated);
+               return Converter.convertCabToDTO(cabupdated);}
 		
 		@Override
 		public String delete(int cabId) throws Throwable
 		{
 			Supplier s1=()->new CabNotFoundException("Cab not found");
-		   cabrepo.findById(cabId).orElseThrow(s1);
+		    cabrepo.findById(cabId).orElseThrow(s1);
 			cabrepo.deleteById(cabId);
 			return "Deleted";
 		}
@@ -78,6 +76,7 @@ public class ICabServiceImpl implements ICabService
 
 	@Override
 	public int countCabsOfType(String carType) throws CabNotFoundException {
+
 		if(cabrepo.countCabsOfType(carType)==0)
 		{
 			throw new CabNotFoundException("No carType found");
@@ -86,4 +85,6 @@ public class ICabServiceImpl implements ICabService
 			return cabrepo.countCabsOfType(carType);
 		}
 	}
-	}
+
+}
+	

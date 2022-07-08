@@ -57,3 +57,4 @@ public class ICabController {
 		return new ResponseEntity<>(cabservice.countCabsOfType(carType), HttpStatus.OK);
 	}
 }
+
