@@ -25,4 +25,9 @@ public class CustomerDTO extends AbstractUserDTO {
 		this.customerId = customerId;
 	}
 
+	@Override
+	public String toString() {
+		return "CustomerDTO [customerId=" + customerId + "]";
+	}
+
 }

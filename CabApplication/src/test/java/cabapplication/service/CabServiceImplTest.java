@@ -27,85 +27,84 @@ class CabServiceImplTest {
 	@Autowired
 	CabServiceImpl cabservice;
 
-	
 	@MockBean
 	ICabRepository cabrepo;
-	
-	CabDTO cab1=null;
-	CabDTO cab2=null;
+
+	CabDTO cab1 = null;
+	CabDTO cab2 = null;
+
 	@BeforeEach
 	public void testBeforeEach() {
-		cab1=new CabDTO();
-		cab2=new CabDTO();
-		
+		cab1 = new CabDTO();
+		cab2 = new CabDTO();
+
 		cab1.setCabId(1);
 		cab1.setCarType("Honda");
 		cab1.setPerKmRate(11.5f);
-		
+
 		cab2.setCabId(2);
 		cab2.setCarType("bmw");
 		cab2.setPerKmRate(25.5f);
 	}
 
 	@Test
-	void testgetAll() throws Throwable 
-	{
-		
+	void testgetAll() throws Throwable {
+
 		List<Cab> cabList = new ArrayList<>();
 		cabList.add(Converter.convertCabDtoToEntity(cab1));
 		cabList.add(Converter.convertCabDtoToEntity(cab2));
-		
-		Mockito.when(cabrepo.findAll()).thenReturn(cabList);	
-		assertNotNull(cabservice.getAll());		
+
+		Mockito.when(cabrepo.findAll()).thenReturn(cabList);
+		assertNotNull(cabservice.getAll());
 	}
+
 	@Test
-	void testsave() throws Throwable
-	{
-		
-		Cab c=Converter.convertCabDtoToEntity(cab1);
+	void testsave() throws Throwable {
+
+		Cab c = Converter.convertCabDtoToEntity(cab1);
 		Mockito.when(cabrepo.save(c)).thenReturn(c);
 		assertThat(cabservice.save(cab1)).isEqualTo(cab1);
 	}
-	
+
 	@Test
-	void testupdate() throws Throwable 
-	{
-		Cab c=Converter.convertCabDtoToEntity(cab1);
-		Optional<Cab> cab2=Optional.of(c);
-		Cab c1=Converter.convertCabDtoToEntity(cab1);
-		Mockito.when(cabrepo.findById(1)).thenReturn(cab2);
-		Mockito.when(cabrepo.save(c1)).thenReturn(c1);
-		equals(cabservice.update(cab1));
-	}
-	@Test
-	void testDelete() 
-	{
-		Cab c=Converter.convertCabDtoToEntity(cab1);
-		Optional<Cab> cab2=Optional.of(c);
+	void testupdate() throws Throwable {
+		Cab c = Converter.convertCabDtoToEntity(cab1);
+		Optional<Cab> cabOptional = Optional.of(c);
+		Mockito.when(cabrepo.findById(1)).thenReturn(cabOptional);
+		Mockito.when(cabrepo.save(c)).thenReturn(c);
+		cab1.setCarType("bmw");
+		cab1.setPerKmRate(12.5f);
+		assertThat(cabservice.save(cab1)).isEqualTo(cab1);
 		
+	}
+
+	@Test
+	void testDelete() {
+		Cab c = Converter.convertCabDtoToEntity(cab1);
+		Optional<Cab> cab2 = Optional.of(c);
+
 		Mockito.when(cabrepo.findById(1)).thenReturn(cab2);
 		Mockito.when(cabrepo.existsById(cab1.getCabId())).thenReturn(false);
 		assertFalse(cabrepo.existsById(cab1.getCabId()));
 	}
-	
+
 	@Test
-	void testviewCabsOfType() throws CabNotFoundException
-	{
-		
-		List<Cab> cabList=new ArrayList<>();
+	void testviewCabsOfType() throws CabNotFoundException {
+
+		List<Cab> cabList = new ArrayList<>();
 		cabList.add(Converter.convertCabDtoToEntity(cab1));
 		cabList.add(Converter.convertCabDtoToEntity(cab2));
 		Mockito.when(cabrepo.viewCabsOfType(null)).thenReturn(cabList);
 		assertNotNull(cabservice.viewCabsOfType(null));
 	}
-	
+
 	@Test
 	void countCabsOfType() {
-		
-		Cab c=Converter.convertCabDtoToEntity(cab1);
-		Optional<Cab> cab2=Optional.of(c);
+
+		Cab c = Converter.convertCabDtoToEntity(cab1);
+		Optional<Cab> cab2 = Optional.of(c);
 		Mockito.when(cabrepo.findById(1)).thenReturn(cab2);
 		assertThat(cabrepo.existsById(cab1.getCabId()));
-		
+
 	}
 }

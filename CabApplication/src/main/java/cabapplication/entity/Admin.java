@@ -32,4 +32,9 @@ public class Admin extends AbstractUser {
 		this.adminId = adminId;
 	}
 
+	@Override
+	public String toString() {
+		return "Admin [adminId=" + adminId + "]";
+	}
+   
 }
