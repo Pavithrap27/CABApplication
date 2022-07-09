@@ -59,17 +59,6 @@ public class AdminServiceImpl implements IAdminService {
 		}
 
 		@Override
-		public List<TripBookingDTO> getTripsCabwise(String carType) throws CabNotFoundException {
-			List<TripBookingDTO> trips = Converter
-					.convertTripToDto(driverRepo.getByDriver(driverRepo.getByCarType(carType)));
-			if (trips.isEmpty()) {
-				throw new CabNotFoundException("Cab not found");
-			} else {
-				return trips;
-			}
-		}
-
-		@Override
 		public AdminDTO save(AdminDTO adminDto) throws Throwable {
 			if (adminDto.getUsername() != null) {
 				adminrepo.save(Converter.convertToEntity(adminDto));

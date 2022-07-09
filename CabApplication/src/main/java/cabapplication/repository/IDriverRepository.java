@@ -12,10 +12,6 @@ public interface IDriverRepository extends JpaRepository<Driver,Integer> {
 	
 	public Driver getByUsernameAndPassword(String username, String password);
 
-	@Query("select trip from TripBooking trip where driver=?1")
-	public List<TripBooking> getByDriver(Driver driver);
-	@Query("Select driver from Driver driver where cab.carType=?1")
-    public Driver getByCarType(String carType); 
 
 
 

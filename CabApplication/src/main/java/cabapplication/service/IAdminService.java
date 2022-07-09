@@ -29,6 +29,4 @@ public interface IAdminService {
 
 	public List<TripBookingDTO> getAllTripsForDays(int customerId, LocalDateTime fromDate, LocalDateTime ToDate)
 			throws CustomerNotFoundException;
-
-	public List<TripBookingDTO> getTripsCabwise(String carType) throws CabNotFoundException;
 }
