@@ -5,7 +5,6 @@ import java.util.function.Supplier;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import cabapplication.dto.CustomerDTO;
 import cabapplication.entity.Customer;
 import cabapplication.exception.CustomerNotFoundException;
@@ -63,7 +62,7 @@ public class CustomerServiceImpl implements ICustomerService
 	@Override
 	public String delete(int customerId)throws Throwable
 	{
-		Supplier s1=()->new CustomerNotFoundException("Customer not found");
+		Supplier<CustomerNotFoundException> s1=()->new CustomerNotFoundException("Customer not found");
 		Converter.convertCustomerToDto(customerrepo.findById(customerId).orElseThrow(s1));
 			customerrepo.deleteById(customerId);
 			return "Deleted";
@@ -72,7 +71,7 @@ public class CustomerServiceImpl implements ICustomerService
 	@Override
 	public CustomerDTO  getById(int customerId)throws Throwable 
 	{
-		Supplier s1=()->new CustomerNotFoundException("Customer not found");
+		Supplier<CustomerNotFoundException> s1=()->new CustomerNotFoundException("Customer not found");
 		return Converter.convertCustomerToDto(customerrepo.findById(customerId).orElseThrow(s1));
 		
 	}

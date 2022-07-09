@@ -33,10 +33,11 @@ public class AdminController {
 	Log logger=LogFactory.getLog(AdminController.class);
 	@Autowired
 	AdminServiceImpl adminservice;
-
+   
+	/*                                          */
 	@GetMapping("getAll")
-	public ResponseEntity<List<AdminDTO>> getAll() throws AdminNotFoundException {
-		List<AdminDTO> admin = adminservice.getAll();
+	public ResponseEntity<List<AdminDTO>> getAll() throws AdminNotFoundException { 
+		List<AdminDTO> admin = adminservice.getAll();        
 		return new ResponseEntity<>(admin, HttpStatus.OK);
 	}
 
