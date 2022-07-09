@@ -20824,3 +20824,7 @@ Caused by: java.lang.Error: Unresolved compilation problems:
 08-Jul-2022 22:41:22 INFO - Closing JPA EntityManagerFactory for persistence unit 'default'
 08-Jul-2022 22:41:22 INFO - HikariPool-1 - Shutdown initiated...
 08-Jul-2022 22:41:22 INFO - HikariPool-1 - Shutdown completed.
+08-Jul-2022 22:54:52 INFO - Application shutdown requested.
+08-Jul-2022 22:54:52 INFO - Closing JPA EntityManagerFactory for persistence unit 'default'
+08-Jul-2022 22:54:52 INFO - HikariPool-1 - Shutdown initiated...
+08-Jul-2022 22:54:52 INFO - HikariPool-1 - Shutdown completed.
