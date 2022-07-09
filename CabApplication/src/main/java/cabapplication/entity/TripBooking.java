@@ -7,11 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "tripbooking")
@@ -37,6 +34,7 @@ public class TripBooking {
 	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
 	}
+
 	public int getTripBookingId() {
 		return tripBookingId;
 	}
@@ -107,7 +105,5 @@ public class TripBooking {
 				+ fromLocation + ", toLocation=" + toLocation + ", fromDateTime=" + fromDateTime + ", toDateTime="
 				+ toDateTime + ", status=" + status + ", distanceInKm=" + distanceInKm + ", bill=" + bill + "]";
 	}
-
-	
 
 }

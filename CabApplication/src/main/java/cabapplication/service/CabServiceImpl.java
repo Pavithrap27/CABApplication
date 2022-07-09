@@ -43,11 +43,11 @@ public class CabServiceImpl implements ICabService
 		}
 		
 		@Override
-		public CabDTO update(CabDTO cabDto) throws Throwable
+		public CabDTO update(CabDTO cabDto) throws CabNotFoundException
 		{
 			Cab cab=Converter.convertCabDtoToEntity(cabDto);
 			int id = cab.getCabId();
-			Supplier s1=()->new CabNotFoundException("no Cab found");
+			Supplier<CabNotFoundException> s1=()->new CabNotFoundException("no Cab found");
                Cab cabupdated=cabrepo.findById(id).orElseThrow(s1);
                cabupdated.setCabId(cab.getCabId());
                cabupdated.setCarType(cab.getCarType());
@@ -58,7 +58,7 @@ public class CabServiceImpl implements ICabService
 		@Override
 		public String delete(int cabId) throws Throwable
 		{
-			Supplier s1=()->new CabNotFoundException("Cab not found");
+			Supplier<CabNotFoundException> s1=()->new CabNotFoundException("Cab not found");
 		    cabrepo.findById(cabId).orElseThrow(s1);
 			cabrepo.deleteById(cabId);
 			return "Deleted";

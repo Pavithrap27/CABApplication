@@ -21,7 +21,7 @@ public class DriverServiceImpl implements IDriverService
 	@Autowired
 	IDriverRepository driverrepo;
 	
-	String message="Driver not found";
+	public String message="Driver not found";
 	@Override
 	public List<DriverDTO> getAll() throws DriverNotFoundException
 	{
@@ -36,7 +36,7 @@ public class DriverServiceImpl implements IDriverService
 	}
 	
 	@Override
-	public DriverDTO save(DriverDTO driverDto) throws Throwable 
+	public DriverDTO save(DriverDTO driverDto) throws DriverNotFoundException
 	{
 		if(driverDto.getUsername()!=null)
 		{
@@ -47,12 +47,12 @@ public class DriverServiceImpl implements IDriverService
 		
 	}
 	@Override
-	public DriverDTO update(DriverDTO driverDto) throws Throwable
+	public DriverDTO update(DriverDTO driverDto) throws DriverNotFoundException
 	{
 		
 		Driver driver=Converter.convertDriverDtoToEntity(driverDto);
         int id = driver.getDriverId();
-        Supplier s1=()->new DriverNotFoundException("Driver not found");
+        Supplier<DriverNotFoundException> s1=()->new DriverNotFoundException("Driver not found");
 
         Driver driverupdated = driverrepo.findById(id).orElseThrow(s1);
         driverupdated.setUsername(driver.getUsername());
@@ -68,11 +68,11 @@ public class DriverServiceImpl implements IDriverService
 		}
 
 	@Override
-	public String delete(int driverId) throws Throwable
+	public String delete(int driverId) throws DriverNotFoundException
 	{
-		Supplier s1=()->new DriverNotFoundException("Driver not found");
+		Supplier<DriverNotFoundException> s1=()->new DriverNotFoundException("Driver not found");
 		
-		 Converter.convertDriverToDTO(driverrepo.findById(driverId).orElseThrow(s1));
+		driverrepo.findById(driverId).orElseThrow(s1);
 		
 		driverrepo.deleteById(driverId);
 		return "Deleted";
@@ -81,7 +81,6 @@ public class DriverServiceImpl implements IDriverService
 	@Override
 	public List<DriverDTO> viewBestDrivers()  throws DriverNotFoundException
 	{
-		List<DriverDTO> driverDtoList=new ArrayList<>();
 		List<Driver> drivers=driverrepo.viewBestDrivers();
 		if (drivers.isEmpty()) {
 			throw new DriverNotFoundException(message);
@@ -93,10 +92,10 @@ public class DriverServiceImpl implements IDriverService
 	}
 	
 	@Override
-	public DriverDTO getById(int driverid) throws Throwable 
+	public DriverDTO getById(int driverid) throws DriverNotFoundException 
 	{
 		
-		Supplier s1=()->new DriverNotFoundException("driver not found");
+		Supplier<DriverNotFoundException> s1=()->new DriverNotFoundException("driver not found");
 		return Converter.convertDriverToDTO(driverrepo.findById(driverid).orElseThrow(s1));
 		
 	}

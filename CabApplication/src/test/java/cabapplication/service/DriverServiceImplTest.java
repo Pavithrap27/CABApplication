@@ -139,7 +139,7 @@ class DriverServiceImplTest {
 		Driver driverd = Converter.convertDriverDtoToEntity(driver);
 		Optional<Driver> driver2 = Optional.of(driverd);
 		Mockito.when(driverrepo.findById(1)).thenReturn(driver2);
-		assertThat(driverrepo.existsById(driver.getDriverId()));
+		assertThat(driverrepo.existsById(driver.getDriverId())).isFalse();
 
 	}
 

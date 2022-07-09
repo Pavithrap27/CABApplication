@@ -46,11 +46,12 @@ public  class TripServiceImpl implements ITripService {
 		throw new TripNotFoundException("no Trip found");
 	}
 
-	public TripBookingDTO update(TripBookingDTO tripBookingDto) throws Throwable {
+	public TripBookingDTO update(TripBookingDTO tripBookingDto) throws TripNotFoundException {
 			TripBooking trip = Converter.convertTripToEntity(tripBookingDto);
 			int id = trip.getTripBookingId();
-			Supplier<?> s1=()->new TripNotFoundException("Trip not found");
-			TripBooking tripBookingupdated = triprepo.findById(id).orElseThrow();
+			
+			Supplier<TripNotFoundException> s1=()->new TripNotFoundException("Trip not found");
+			TripBooking tripBookingupdated = triprepo.findById(id).orElseThrow(s1);
 			tripBookingupdated.setDistanceInKm(trip.getDistanceInKm());
 			tripBookingupdated.setCustomerId(trip.getCustomerId());
 			tripBookingupdated.setBill(trip.getBill());
@@ -62,8 +63,8 @@ public  class TripServiceImpl implements ITripService {
 
 		}
 
-	public String delete(int tripBookingId) throws Throwable  {
-		Supplier s1=()-> new TripNotFoundException("Trip not found");
+	public String delete(int tripBookingId) throws TripNotFoundException  {
+		Supplier<TripNotFoundException> s1=()-> new TripNotFoundException("Trip not found");
 		triprepo.findById(tripBookingId).orElseThrow(s1);
 		triprepo.deleteById(tripBookingId);
 		return "Deleted";

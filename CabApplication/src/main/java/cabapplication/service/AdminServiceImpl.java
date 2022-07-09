@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.function.Supplier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import cabapplication.dto.AdminDTO;
 import cabapplication.dto.TripBookingDTO;
 import cabapplication.entity.Admin;
@@ -14,7 +13,6 @@ import cabapplication.exception.CabNotFoundException;
 import cabapplication.exception.CustomerNotFoundException;
 import cabapplication.exception.TripNotFoundException;
 import cabapplication.repository.IAdminRepository;
-
 import cabapplication.repository.ICustomerRepository;
 
 import cabapplication.repository.IDriverRepository;
@@ -46,7 +44,7 @@ public class AdminServiceImpl implements IAdminService {
 
 		@Override
 		public AdminDTO getById(int adminId) throws Throwable {
-			Supplier s1 = () -> new AdminNotFoundException("Admin not found");
+			Supplier<AdminNotFoundException> s1 = () -> new AdminNotFoundException("Admin not found");
 			return Converter.convertToDTO(adminrepo.findById(adminId).orElseThrow(s1));
 		}
 
@@ -57,17 +55,6 @@ public class AdminServiceImpl implements IAdminService {
 				return list;
 			} else {
 				throw new CustomerNotFoundException("Customer does not exist");
-			}
-		}
-
-		@Override
-		public List<TripBookingDTO> getTripsCabwise(String carType) throws CabNotFoundException {
-			List<TripBookingDTO> trips = Converter
-					.convertTripToDto(driverRepo.getByDriver(driverRepo.getByCarType(carType)));
-			if (trips.isEmpty()) {
-				throw new CabNotFoundException("Cab not found");
-			} else {
-				return trips;
 			}
 		}
 
@@ -86,7 +73,7 @@ public class AdminServiceImpl implements IAdminService {
 			Admin admin = Converter.convertToEntity(adminDto);
 			int id = admin.getAdminId();
 
-			Supplier s1 = () -> new AdminNotFoundException("Admin not found");
+			Supplier<AdminNotFoundException> s1 = () -> new AdminNotFoundException("Admin not found");
 
 			Admin adminupdated = adminrepo.findById(id).orElseThrow(s1);
 			adminupdated.setEmail(admin.getEmail());
@@ -100,8 +87,8 @@ public class AdminServiceImpl implements IAdminService {
 
 		@Override
 		public String delete(int adminId) throws Throwable {
-			Supplier s1 = () -> new AdminNotFoundException("Admin not found");
-			Admin admin = adminrepo.findById(adminId).orElseThrow(s1);
+			Supplier<AdminNotFoundException> s1 = () -> new AdminNotFoundException("Admin not found");
+			adminrepo.findById(adminId).orElseThrow(s1);
 			adminrepo.deleteById(adminId);
 			return "Deleted";
 		}

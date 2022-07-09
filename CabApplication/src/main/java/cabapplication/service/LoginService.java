@@ -18,23 +18,24 @@ public class LoginService {
 	ICustomerRepository customerRepo;
 	@Autowired
 	IDriverRepository driverRepo;
+	private String msg="Login";
 
 	public String getCredentials(String role, String username, String password) throws Exception {
 		if (role.equalsIgnoreCase("admin")) {
 			if (adminRepo.getByUsernameAndPassword(username, password) != null) {
-				return "Login";
+				return msg;
 			}
 			throw new AdminNotFoundException("Admin not found");
 		} else if (role.equalsIgnoreCase("Driver")) {
 			if (driverRepo.getByUsernameAndPassword(username, password) != null) {
-				return "Login";
+				return msg;
 
 			}
 			throw new DriverNotFoundException("Driver Not Found");
 
 		} else if (role.equalsIgnoreCase("customer")) {
 			if (customerRepo.getByUsernameAndPassword(username, password) != null) {
-				return "Login";
+				return msg;
 			}
 			throw new CustomerNotFoundException("Customer Not Found");
 		}

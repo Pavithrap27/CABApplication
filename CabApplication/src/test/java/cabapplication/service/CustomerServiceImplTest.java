@@ -102,8 +102,9 @@ class CustomerServiceImplTest {
 	void testGetById() throws CustomerNotFoundException {
 		Customer customer = Converter.convertCustomerDtoToEntity(customerDto1);
 		Optional<Customer> optional = Optional.of(customer);
+
 		Mockito.when(customerRepo.findById(1)).thenReturn(optional);
-		assertThat(customerRepo.existsById(customer.getCustomerId()));
+		assertThat(customerRepo.existsById(customer.getCustomerId())).isFalse();
 	}
 
 	@Test

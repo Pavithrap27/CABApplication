@@ -15,9 +15,9 @@ public interface ITripService {
 
 	public TripBookingDTO getById(int tripBookingId) throws TripNotFoundException;
 
-	public TripBookingDTO update(TripBookingDTO tripBookingDto) throws Throwable;
+	public TripBookingDTO update(TripBookingDTO tripBookingDto) throws TripNotFoundException;
 
-	public String delete(int tripBookingId) throws Throwable ;
+	public String delete(int tripBookingId) throws TripNotFoundException ;
 
 	public List<TripBookingDTO> getByCustomerId(int customerId) throws CustomerNotFoundException;
 
