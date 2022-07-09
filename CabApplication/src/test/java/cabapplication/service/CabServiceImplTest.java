@@ -69,11 +69,13 @@ class CabServiceImplTest {
 	@Test
 	void testupdate() throws Throwable {
 		Cab c = Converter.convertCabDtoToEntity(cab1);
-		Optional<Cab> cab2 = Optional.of(c);
-		Cab c1 = Converter.convertCabDtoToEntity(cab1);
-		Mockito.when(cabrepo.findById(1)).thenReturn(cab2);
-		Mockito.when(cabrepo.save(c1)).thenReturn(c1);
-		equals(cabservice.update(cab1));
+		Optional<Cab> cabOptional = Optional.of(c);
+		Mockito.when(cabrepo.findById(1)).thenReturn(cabOptional);
+		Mockito.when(cabrepo.save(c)).thenReturn(c);
+		cab1.setCarType("bmw");
+		cab1.setPerKmRate(12.5f);
+		assertThat(cabservice.save(cab1)).isEqualTo(cab1);
+		
 	}
 
 	@Test

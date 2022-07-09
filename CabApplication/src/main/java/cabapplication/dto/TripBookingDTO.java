@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class TripBookingDTO  {
+
+
 	private int tripBookingId;
 	private int customerId;
 	private String fromLocation;
@@ -89,5 +91,10 @@ public class TripBookingDTO  {
 	public void setBill(double bill) {
 		this.bill = bill;
 	}
-
+	@Override
+	public String toString() {
+		return "TripBookingDTO [tripBookingId=" + tripBookingId + ", customerId=" + customerId + ", fromLocation="
+				+ fromLocation + ", toLocation=" + toLocation + ", fromDateTime=" + fromDateTime + ", toDateTime="
+				+ toDateTime + ", status=" + status + ", distanceInKm=" + distanceInKm + ", bill=" + bill + "]";
+	}
 }

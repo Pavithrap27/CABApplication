@@ -87,10 +87,7 @@ public class DriverServiceImpl implements IDriverService
 			throw new DriverNotFoundException(message);
 		} 
 		else {
-			for(Driver driver:drivers) {
-				driverDtoList.add(Converter.convertDriverToDTO(driver));
-			}
-			return driverDtoList;
+			return Converter.convertDriverToDTO(drivers);
 		}
 		
 	}

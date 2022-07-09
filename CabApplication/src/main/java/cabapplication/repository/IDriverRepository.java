@@ -11,6 +11,7 @@ import cabapplication.entity.TripBooking;
 public interface IDriverRepository extends JpaRepository<Driver,Integer> {
 	@Query("Select d from Driver d where rating>=4.5")
 	public List<Driver> viewBestDrivers();
+	
 	public Driver getByUsernameAndPassword(String username, String password);
 
 	@Query("select trip from TripBooking trip where driver=?1")

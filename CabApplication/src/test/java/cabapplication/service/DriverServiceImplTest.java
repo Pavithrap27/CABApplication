@@ -52,7 +52,7 @@ class DriverServiceImplTest {
 		driver.setAddress("Hyderabad");
 		driver.setDriverId(1);
 		driver.setLicenceNo("23d34d");
-		driver.setRating(4.5);
+		driver.setRating(4.7);
 		driver.setCab(cab);
 
 		driver1.setUsername("Harshi");
@@ -61,8 +61,9 @@ class DriverServiceImplTest {
 		driver1.setAddress("Banglore");
 		driver1.setLicenceNo("9777gf");
 		driver.setDriverId(2);
-		driver1.setRating(4.0);
+		driver1.setRating(7.0);
 		driver.setCab(cab);
+		
 
 	}
 
@@ -89,12 +90,24 @@ class DriverServiceImplTest {
 	@Test
 	void testUpdate() throws Throwable {
 
-		Driver driverd = Converter.convertDriverDtoToEntity(driver1);
+		Driver driverd = Converter.convertDriverDtoToEntity(driver);
 		Optional<Driver> driver2 = Optional.of(driverd);
-		Driver driver = Converter.convertDriverDtoToEntity(driver1);
 		Mockito.when(driverrepo.findById(1)).thenReturn(driver2);
-		Mockito.when(driverrepo.save(driver)).thenReturn(driver);
-		equals(driverservice.save(driver1));
+		Mockito.when(driverrepo.save(driverd)).thenReturn(driverd);
+		
+		cab.setCabId(2);
+		cab.setCarType("bmw");
+		cab.setPerKmRate(12.5f);
+
+		driver.setUsername("pavi");
+		driver.setPassword("pavi71");
+		driver.setMobileNumber("67676653111");
+		driver.setAddress("Hyderabad");
+		driver.setLicenceNo("23d34d");
+		driver.setRating(4.5);
+		driver.setCab(cab);
+		assertThat(driverservice.save(driver)).isEqualTo(driver);
+		
 
 	}
 
@@ -111,10 +124,10 @@ class DriverServiceImplTest {
 
 	@Test
 	void testViewBestDrivers() throws DriverNotFoundException {
-
-		List<Driver> driverList = new ArrayList<>();
-		driverList.add(Converter.convertDriverDtoToEntity(driver));
-		driverList.add(Converter.convertDriverDtoToEntity(driver1));
+		List<DriverDTO> list=new ArrayList<>();
+		list.add(driver);
+		list.add(driver1);
+		List<Driver> driverList = Converter.convertDriverDtoToEntity(list);
 		Mockito.when(driverrepo.viewBestDrivers()).thenReturn(driverList);
 		assertNotNull(driverservice.viewBestDrivers());
 

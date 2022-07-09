@@ -117,7 +117,7 @@ class AdminServiceImplTest {
 		tripBooking.add(tripDto2);
 		List<TripBooking> list = Converter.convertTripToEntity(tripBooking);
 		Mockito.when(tripRepo.getByCustomerId(1)).thenReturn(list);
-		equals(tripService.getByCustomerId(1));
+		assertNotNull(tripService.getByCustomerId(1));
 
 	}
 
@@ -133,11 +133,16 @@ class AdminServiceImplTest {
 	@Test
 	void testUpdate() throws Throwable {
 
-		Admin admind = Converter.convertToEntity(admin1);
+		Admin admind = Converter.convertToEntity(admin);
 		Optional<Admin> admin2 = Optional.of(admind);
 		Mockito.when(adminRepo.findById(1)).thenReturn(admin2);
 		Mockito.when(adminRepo.save(admind)).thenReturn(admind);
-		equals(adminService.save(admin1));
+		admin.setUsername("pavi");
+		admin.setPassword("pavi71");
+		admin.setMobileNumber("67676653111");
+		admin.setAddress("banaglore");
+		admin.setEmail("pavi@gmail.com");
+		assertThat(adminService.save(admin)).isEqualTo(admin);
 
 	}
 
@@ -175,10 +180,11 @@ class AdminServiceImplTest {
 	@Test
 	void testGetAllTripsForDays() throws CustomerNotFoundException {
 		List<TripBookingDTO> tripBooking = new ArrayList<>();
-		tripBooking.add(tripDto1);
+		tripBooking.add(tripDto2);
 		List<TripBooking> list = Converter.convertTripToEntity(tripBooking);
-		Mockito.when(tripRepo.getAllTripsForDays(1,LocalDateTime.now(),LocalDateTime.of(2022, 02, 01, 05, 04))).thenReturn(list);
-		assertNotNull(adminService.getAllTripsForDays(1,LocalDateTime.now(),LocalDateTime.of(2022, 02, 01, 05, 04)));
+		Mockito.when(tripRepo.getAllTripsForDays(2, LocalDateTime.of(2022, 03, 01, 05, 04),
+				LocalDateTime.of(2022, 05, 01, 05, 04))).thenReturn(list);
+		assertNotNull(adminService.getAllTripsForDays(2, LocalDateTime.of(2022, 03, 01, 05, 04),
+				LocalDateTime.of(2022, 05, 01, 05, 04)));
 	}
-
 }

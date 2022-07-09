@@ -66,6 +66,7 @@ class CustomerServiceImplTest {
 		Customer customer = Converter.convertCustomerDtoToEntity(customerDto1);
 		Mockito.when(customerRepo.save(customer)).thenReturn(customer);
 		assertThat(customerService.save(customerDto1)).isEqualTo(customerDto1);
+
 	}
 
 
@@ -74,9 +75,15 @@ class CustomerServiceImplTest {
 	void testUpdate() throws Throwable {
 		Customer customer = Converter.convertCustomerDtoToEntity(customerDto1);
 		Optional<Customer> optional = Optional.of(customer);
+
 		Mockito.when(customerRepo.findById(1)).thenReturn(optional);
 		Mockito.when(customerRepo.save(customer)).thenReturn(customer);
-		assertNotNull(customerService.update(customerDto1));
+		customerDto1.setUsername("sindhu");
+		customerDto1.setPassword("sindhu123");
+		customerDto1.setMobileNumber("9901296413");
+		customerDto1.setAddress("davangere");
+		customerDto1.setEmail("sindhu666@gmail.com");
+		assertThat(customerService.save(customerDto1)).isEqualTo(customerDto1);
 	}
 
 	@Test
