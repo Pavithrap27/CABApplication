@@ -1,6 +1,8 @@
 package cabapplication.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
+import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -27,9 +29,7 @@ import cabapplication.utils.Converter;
 class TripServiceImplTest {
 	@Autowired
 	TripServiceImpl tripService;
-	@Autowired
-	static Converter converter;
-
+	
 	@MockBean
 	ITripRepository tripRepo;
 
@@ -126,4 +126,3 @@ class TripServiceImplTest {
 	}
 
 }
-
