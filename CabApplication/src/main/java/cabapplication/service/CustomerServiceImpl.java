@@ -29,7 +29,7 @@ public class CustomerServiceImpl implements ICustomerService
 	}
 		
 	@Override
-	public CustomerDTO save(CustomerDTO customerDto) throws Throwable 
+	public CustomerDTO save(CustomerDTO customerDto) throws CustomerNotFoundException 
 	{
 		if(customerDto.getUsername()!=null)
 		{
@@ -60,7 +60,7 @@ public class CustomerServiceImpl implements ICustomerService
 	}
 
 	@Override
-	public String delete(int customerId)throws Throwable
+	public String delete(int customerId)throws CustomerNotFoundException
 	{
 		Supplier<CustomerNotFoundException> s1=()->new CustomerNotFoundException("Customer not found");
 		Converter.convertCustomerToDto(customerrepo.findById(customerId).orElseThrow(s1));
@@ -69,7 +69,7 @@ public class CustomerServiceImpl implements ICustomerService
 	}
 	
 	@Override
-	public CustomerDTO  getById(int customerId)throws Throwable 
+	public CustomerDTO  getById(int customerId)throws CustomerNotFoundException 
 	{
 		Supplier<CustomerNotFoundException> s1=()->new CustomerNotFoundException("Customer not found");
 		return Converter.convertCustomerToDto(customerrepo.findById(customerId).orElseThrow(s1));
@@ -77,7 +77,7 @@ public class CustomerServiceImpl implements ICustomerService
 	}
 	
 	@Override
-	public CustomerDTO validate(String username, String password)throws Throwable {
+	public CustomerDTO validate(String username, String password)throws CustomerNotFoundException {
 	if(customerrepo.getByUsernameAndPassword(username, password)!=null) {
 
         return Converter.convertCustomerToDto(customerrepo.getByUsernameAndPassword(username, password));

@@ -9,14 +9,14 @@ public interface IDriverService
 	
 	public List<DriverDTO> getAll() throws DriverNotFoundException;
 	
-	public DriverDTO save(DriverDTO driverDto)throws Throwable;
+	public DriverDTO save(DriverDTO driverDto)throws DriverNotFoundException;
 	
-	public DriverDTO update(DriverDTO driver)throws Throwable;
+	public DriverDTO update(DriverDTO driver)throws DriverNotFoundException;
 	
-	public String delete(int driverId)throws Throwable;
+	public String delete(int driverId)throws DriverNotFoundException;
 	
 	public List<DriverDTO> viewBestDrivers()throws DriverNotFoundException;
 	
-	public DriverDTO getById(int driverid)throws Throwable;
+	public DriverDTO getById(int driverid)throws DriverNotFoundException;
 
 }

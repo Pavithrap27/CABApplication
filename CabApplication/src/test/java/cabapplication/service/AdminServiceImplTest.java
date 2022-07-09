@@ -106,7 +106,7 @@ class AdminServiceImplTest {
 		Admin admind = Converter.convertToEntity(admin);
 		Optional<Admin> driver2 = Optional.of(admind);
 		Mockito.when(adminRepo.findById(1)).thenReturn(driver2);
-		assertThat(adminRepo.existsById(admin.getAdminId()));
+		assertThat(adminRepo.existsById(admin.getAdminId())).isFalse();
 
 	}
 

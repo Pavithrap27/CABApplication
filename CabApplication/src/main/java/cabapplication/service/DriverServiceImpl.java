@@ -36,7 +36,7 @@ public class DriverServiceImpl implements IDriverService
 	}
 	
 	@Override
-	public DriverDTO save(DriverDTO driverDto) throws Throwable 
+	public DriverDTO save(DriverDTO driverDto) throws DriverNotFoundException
 	{
 		if(driverDto.getUsername()!=null)
 		{
@@ -47,7 +47,7 @@ public class DriverServiceImpl implements IDriverService
 		
 	}
 	@Override
-	public DriverDTO update(DriverDTO driverDto) throws Throwable
+	public DriverDTO update(DriverDTO driverDto) throws DriverNotFoundException
 	{
 		
 		Driver driver=Converter.convertDriverDtoToEntity(driverDto);
@@ -68,7 +68,7 @@ public class DriverServiceImpl implements IDriverService
 		}
 
 	@Override
-	public String delete(int driverId) throws Throwable
+	public String delete(int driverId) throws DriverNotFoundException
 	{
 		Supplier<DriverNotFoundException> s1=()->new DriverNotFoundException("Driver not found");
 		
@@ -92,7 +92,7 @@ public class DriverServiceImpl implements IDriverService
 	}
 	
 	@Override
-	public DriverDTO getById(int driverid) throws Throwable 
+	public DriverDTO getById(int driverid) throws DriverNotFoundException 
 	{
 		
 		Supplier<DriverNotFoundException> s1=()->new DriverNotFoundException("driver not found");

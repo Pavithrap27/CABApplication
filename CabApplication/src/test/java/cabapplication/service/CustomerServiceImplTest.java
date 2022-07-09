@@ -101,7 +101,7 @@ class CustomerServiceImplTest {
 		Customer customer = Converter.convertCustomerDtoToEntity(customerDto1);
 		Optional<Customer> optional = Optional.of(customer);
 		Mockito.when(customerrepo.findById(1)).thenReturn(optional);
-		assertThat(customerrepo.existsById(customer.getCustomerId()));
+		assertThat(customerrepo.existsById(customer.getCustomerId())).isFalse();
 	}
 
 	@Test

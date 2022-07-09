@@ -90,12 +90,11 @@ class CabServiceImplTest {
 
 	@Test
 	void testviewCabsOfType() throws CabNotFoundException {
-
-		List<Cab> cabList = new ArrayList<>();
-		cabList.add(Converter.convertCabDtoToEntity(cab1));
-		cabList.add(Converter.convertCabDtoToEntity(cab2));
-		Mockito.when(cabrepo.viewCabsOfType(null)).thenReturn(cabList);
-		assertNotNull(cabservice.viewCabsOfType(null));
+        List<CabDTO> list=new ArrayList<>();
+        list.add(cab1);
+		List<Cab> cabList =Converter.convertCabDtoToEntity(list);
+		Mockito.when(cabrepo.viewCabsOfType("Honda")).thenReturn(cabList);
+		assertNotNull(cabservice.viewCabsOfType("Honda"));
 	}
 
 	@Test
@@ -104,7 +103,7 @@ class CabServiceImplTest {
 		Cab c = Converter.convertCabDtoToEntity(cab1);
 		Optional<Cab> cab2 = Optional.of(c);
 		Mockito.when(cabrepo.findById(1)).thenReturn(cab2);
-		assertThat(cabrepo.existsById(cab1.getCabId()));
+		assertThat(cabrepo.existsById(cab1.getCabId())).isFalse();
 
 	}
 }

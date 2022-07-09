@@ -6,15 +6,15 @@ import cabapplication.exception.CustomerNotFoundException;
 
 public interface ICustomerService {
 
-	public CustomerDTO save(CustomerDTO customer) throws Throwable;
+	public CustomerDTO save(CustomerDTO customer) throws CustomerNotFoundException;
 		
-	public CustomerDTO update(CustomerDTO customer) throws Throwable;
+	public CustomerDTO update(CustomerDTO customer) throws CustomerNotFoundException;
 
-	public String delete(int customerId) throws Throwable;
+	public String delete(int customerId) throws CustomerNotFoundException;
 
 	public List<CustomerDTO> getAll() throws CustomerNotFoundException;
 
-	public CustomerDTO getById(int customerId)throws Throwable;
+	public CustomerDTO getById(int customerId)throws CustomerNotFoundException;
 
-	public CustomerDTO validate(String username, String password)throws Throwable;
+	public CustomerDTO validate(String username, String password)throws CustomerNotFoundException;
 }

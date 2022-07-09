@@ -78,7 +78,7 @@ class TripServiceImplTest {
 		TripBooking trips = Converter.convertTripToEntity(tripDto1);
 		Optional<TripBooking> optional = Optional.of(trips);
 		Mockito.when(tripRepo.findById(1)).thenReturn(optional);
-		assertThat(tripRepo.existsById(trips.getCustomerId()));
+		assertThat(tripRepo.existsById(trips.getCustomerId())).isFalse();
 
 	}
 
