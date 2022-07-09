@@ -48,12 +48,18 @@ public class DriverDTO extends AbstractUserDTO {
 		this.cab = cab;
 	}
 
+
 	public double getRating() {
 		return rating;
 	}
 
 	public void setRating(double rating) {
 		this.rating = rating;
+	}
+	@Override
+	public String toString() {
+		return "DriverDTO [driverId=" + driverId + ", licenceNo=" + licenceNo + ", cab=" + cab + ", rating=" + rating
+				+ "]";
 	}
 
 	

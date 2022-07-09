@@ -23,4 +23,8 @@ public class AdminDTO extends AbstractUserDTO {
 		this.adminId = adminId;
 	}
 
+	@Override
+	public String toString() {
+		return "AdminDTO [adminId=" + adminId + "]";
+	}
 }

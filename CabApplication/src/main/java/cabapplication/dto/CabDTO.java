@@ -3,11 +3,10 @@ package cabapplication.dto;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CabDTO  {
+public class CabDTO {
 	private int cabId;
 	private String carType;
 	private float perKmRate;
-	
 
 	public int getCabId() {
 		return cabId;
@@ -31,6 +30,11 @@ public class CabDTO  {
 
 	public void setPerKmRate(float perKmRate) {
 		this.perKmRate = perKmRate;
+	}
+
+	@Override
+	public String toString() {
+		return "CabDTO [cabId=" + cabId + ", carType=" + carType + ", perKmRate=" + perKmRate + "]";
 	}
 
 }

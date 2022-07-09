@@ -12,6 +12,8 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
+import cabapplication.dto.CabDTO;
+
 @Entity
 public class Driver extends AbstractUser {
 

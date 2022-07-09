@@ -96,7 +96,15 @@ class TripServiceImplTest {
 		Optional<TripBooking> optional = Optional.of(tripBooking);
 		Mockito.when(tripRepo.findById(1)).thenReturn(optional);
 		Mockito.when(tripRepo.save(tripBooking)).thenReturn(tripBooking);
-		assertNotNull(tripService.update(tripDto1));
+		tripDto1.setBill(90);
+		tripDto1.setCustomerId(3);
+		tripDto1.setDistanceInKm(100);
+		tripDto1.setFromLocation("hyderbad");
+		tripDto1.setStatus(true);
+		tripDto1.setToLocation("goa");
+		tripDto1.setFromDateTime(LocalDateTime.now());
+		tripDto1.setToDateTime(LocalDateTime.of(2022, 02, 01, 05, 04));
+		assertThat(tripService.save(tripDto1)).isEqualTo(tripDto1);
 	}
 
 	@Test
@@ -114,7 +122,10 @@ class TripServiceImplTest {
 
 		List<TripBookingDTO> tripBooking = new ArrayList<>();
 		tripBooking.add(tripDto1);
-		List<TripBooking> list = Converter.convertTripToEntity(tripBooking);
+		tripBooking.add(tripDto2);
+		List<TripBookingDTO> trips = new ArrayList<>();
+		trips.add(tripDto1);
+		List<TripBooking> list = Converter.convertTripToEntity(trips);
 		Mockito.when(tripRepo.getByCustomerId(1)).thenReturn(list);
 		assertNotNull(tripService.getByCustomerId(1));
 	}
