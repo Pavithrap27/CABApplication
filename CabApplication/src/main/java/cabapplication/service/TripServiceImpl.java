@@ -29,12 +29,10 @@ public  class TripServiceImpl implements ITripService {
 	}
 
 	public TripBookingDTO getById(int tripBookingId) throws TripNotFoundException {
-		TripBooking trip =triprepo.findById(tripBookingId).orElseThrow();
-		if (trip == null) {
-			throw new TripNotFoundException("No trip found");
-		} else {
+		Supplier<TripNotFoundException> s1=()->new TripNotFoundException("No trip found");
+		TripBooking trip =triprepo.findById(tripBookingId).orElseThrow(s1);
 			return Converter.convertTripToDto(trip);
-		}
+		
 	}
 
 	public TripBookingDTO save(TripBookingDTO tripBookingDto) throws TripNotFoundException 
