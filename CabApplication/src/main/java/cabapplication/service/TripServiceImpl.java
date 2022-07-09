@@ -49,7 +49,7 @@ public  class TripServiceImpl implements ITripService {
 	public TripBookingDTO update(TripBookingDTO tripBookingDto) throws Throwable {
 			TripBooking trip = Converter.convertTripToEntity(tripBookingDto);
 			int id = trip.getTripBookingId();
-			Supplier s1=()->new TripNotFoundException("Trip not found");
+			Supplier<TripNotFoundException> s1=()->new TripNotFoundException("Trip not found");
 			TripBooking tripBookingupdated = triprepo.findById(id).orElseThrow(s1);
 			tripBookingupdated.setDistanceInKm(trip.getDistanceInKm());
 			tripBookingupdated.setCustomerId(trip.getCustomerId());
@@ -63,7 +63,7 @@ public  class TripServiceImpl implements ITripService {
 		}
 
 	public String delete(int tripBookingId) throws Throwable  {
-		Supplier s1=()-> new TripNotFoundException("Trip not found");
+		Supplier<TripNotFoundException> s1=()-> new TripNotFoundException("Trip not found");
 		triprepo.findById(tripBookingId).orElseThrow(s1);
 		triprepo.deleteById(tripBookingId);
 		return "Deleted";
