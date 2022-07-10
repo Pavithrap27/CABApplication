@@ -19,17 +19,14 @@ import cabapplication.entity.Customer;
 import cabapplication.exception.CustomerNotFoundException;
 import cabapplication.repository.ICustomerRepository;
 import cabapplication.utils.Converter;
-
 @SpringBootTest
 class CustomerServiceImplTest {
 
 	@Autowired
 	CustomerServiceImpl customerService;
-	@Autowired
-	static Converter converter;
 
 	@MockBean
-	ICustomerRepository customerrepo;
+	ICustomerRepository customerRepo;
 
 	CustomerDTO customerDto1 = null;
 	CustomerDTO customerDto2 = null;
@@ -54,30 +51,33 @@ class CustomerServiceImplTest {
 		customerDto2.setEmail("dee123@gmail.com");
 	}
 
-	@Test
+
 	void testGetAll() throws CustomerNotFoundException {
 		List<CustomerDTO> customer = new ArrayList<>();
 		customer.add(customerDto1);
 		customer.add(customerDto2);
 		List<Customer> list = Converter.convertCustomerDtoToEntity(customer);
-		Mockito.when(customerrepo.findAll()).thenReturn(list);
+		Mockito.when(customerRepo.findAll()).thenReturn(list);
 		assertNotNull(customerService.getAll());
 	}
 
 	@Test
 	void testSave() throws Throwable {
 		Customer customer = Converter.convertCustomerDtoToEntity(customerDto1);
-		Mockito.when(customerrepo.save(customer)).thenReturn(customer);
+		Mockito.when(customerRepo.save(customer)).thenReturn(customer);
 		assertThat(customerService.save(customerDto1)).isEqualTo(customerDto1);
-         
+
 	}
 
+
 	@Test
+	
 	void testUpdate() throws Throwable {
 		Customer customer = Converter.convertCustomerDtoToEntity(customerDto1);
 		Optional<Customer> optional = Optional.of(customer);
-		Mockito.when(customerrepo.findById(1)).thenReturn(optional);
-		Mockito.when(customerrepo.save(customer)).thenReturn(customer);
+
+		Mockito.when(customerRepo.findById(1)).thenReturn(optional);
+		Mockito.when(customerRepo.save(customer)).thenReturn(customer);
 		customerDto1.setUsername("sindhu");
 		customerDto1.setPassword("sindhu123");
 		customerDto1.setMobileNumber("9901296413");
@@ -88,27 +88,31 @@ class CustomerServiceImplTest {
 
 	@Test
 	void testDelete() {
+		
 		Customer customer = Converter.convertCustomerDtoToEntity(customerDto1);
 		Optional<Customer> optional = Optional.of(customer);
 
-		Mockito.when(customerrepo.findById(1)).thenReturn(optional);
-		Mockito.when(customerrepo.existsById(customer.getCustomerId())).thenReturn(false);
-		assertFalse(customerrepo.existsById(customer.getCustomerId()));
+		Mockito.when(customerRepo.findById(1)).thenReturn(optional);
+		Mockito.when(customerRepo.existsById(customer.getCustomerId())).thenReturn(false);
+		assertFalse(customerRepo.existsById(customer.getCustomerId()));
+
 	}
 
 	@Test
 	void testGetById() throws CustomerNotFoundException {
 		Customer customer = Converter.convertCustomerDtoToEntity(customerDto1);
 		Optional<Customer> optional = Optional.of(customer);
-		Mockito.when(customerrepo.findById(1)).thenReturn(optional);
-		assertThat(customerrepo.existsById(customer.getCustomerId())).isFalse();
+
+		Mockito.when(customerRepo.findById(1)).thenReturn(optional);
+		assertThat(customerRepo.existsById(customer.getCustomerId())).isFalse();
 	}
 
 	@Test
 	void testValidate() throws Throwable {
 		Customer customer = Converter.convertCustomerDtoToEntity(customerDto1);
 
-		Mockito.when(customerrepo.getByUsernameAndPassword("Siri", "siri123")).thenReturn(customer);
+		Mockito.when(customerRepo.getByUsernameAndPassword("Siri", "siri123")).thenReturn(customer);
 		assertThat(customerService.validate("Siri", "siri123").equals(customerDto1));
 	}
+
 }

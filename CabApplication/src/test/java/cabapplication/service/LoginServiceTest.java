@@ -22,6 +22,8 @@ class LoginServiceTest {
 	IAdminRepository adminRepo;
 	@MockBean
 	ICustomerRepository customerRepo;
+
+
 	@MockBean
 	IDriverRepository driverRepo;
 
@@ -30,7 +32,6 @@ class LoginServiceTest {
 		Admin admin = new Admin();
 		admin.setUsername("pavithra");
 		admin.setPassword("pavi123");
-
 		Mockito.when(adminRepo.getByUsernameAndPassword("pavithra", "pavi123")).thenReturn(admin);
 		assertThat(loginService.getCredentials("admin", "pavithra", "pavi123")).isEqualTo("Login");
 

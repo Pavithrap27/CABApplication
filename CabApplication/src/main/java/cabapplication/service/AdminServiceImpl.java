@@ -114,7 +114,7 @@ public class AdminServiceImpl implements IAdminService {
 		}
 
 		@Override
-		public List<TripBookingDTO> getAllTripsForDays(int customerId, LocalDateTime fromDate, LocalDateTime toDate)
+		public List<TripBookingDTO> getAllTripsForDays(int customerId,  LocalDateTime  fromDate,  LocalDateTime  toDate)
 				throws CustomerNotFoundException {
 			List<TripBookingDTO> trips = Converter.convertTripToDto(repo.getAllTripsForDays(customerId, fromDate, toDate));
 			if (trips.isEmpty()) {

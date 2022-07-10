@@ -103,9 +103,9 @@ public class AdminController {
 	 /* Retrieve elements according to the customer id,from date ,to date as an input*/
 	@GetMapping("getAllTripsForDays/{customerId}/{fromDate}/{toDate}")
 	public ResponseEntity<List<TripBookingDTO>> getAllTripsForDays(@PathVariable int customerId,
-			@PathVariable LocalDateTime fromDate, @PathVariable LocalDateTime toDate) throws CustomerNotFoundException {
+			@PathVariable  String  fromDate, @PathVariable String toDate) throws CustomerNotFoundException {
 		logger.info("getting elements for days ");
-		List<TripBookingDTO> trips = adminservice.getAllTripsForDays(customerId, fromDate, toDate);
+		List<TripBookingDTO> trips = adminservice.getAllTripsForDays(customerId, LocalDateTime.parse(fromDate),LocalDateTime.parse( toDate));
 		return new ResponseEntity<>(trips, HttpStatus.OK);
 
 	}

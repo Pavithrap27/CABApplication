@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,12 +27,9 @@ import cabapplication.utils.Converter;
 
 @SpringBootTest
 class TripServiceImplTest {
-
 	@Autowired
 	TripServiceImpl tripService;
-	@Autowired
-	static Converter converter;
-
+	
 	@MockBean
 	ITripRepository tripRepo;
 
@@ -127,7 +125,7 @@ class TripServiceImplTest {
 		trips.add(tripDto1);
 		List<TripBooking> list = Converter.convertTripToEntity(trips);
 		Mockito.when(tripRepo.getByCustomerId(1)).thenReturn(list);
-		assertNotNull(tripService.getByCustomerId(1));
+		equals(tripService.getByCustomerId(1));
 	}
 
 	@Test
@@ -137,4 +135,5 @@ class TripServiceImplTest {
 		Mockito.when(tripRepo.findByCustomerId(1)).thenReturn(tripBooking);
 		assertThat(tripService.calculateBill(1)).isEqualTo(bill);
 	}
+
 }

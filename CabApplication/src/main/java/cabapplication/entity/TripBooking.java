@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "tripbooking")
@@ -17,7 +18,9 @@ public class TripBooking {
 	@GeneratedValue
 	private int tripBookingId;
 	private int customerId;
+	@NotBlank
 	private String fromLocation;
+	@NotBlank
 	private String toLocation;
 	private LocalDateTime fromDateTime;
 	private LocalDateTime toDateTime;

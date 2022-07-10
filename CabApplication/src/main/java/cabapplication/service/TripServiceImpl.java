@@ -47,6 +47,7 @@ public  class TripServiceImpl implements ITripService {
 	public TripBookingDTO update(TripBookingDTO tripBookingDto) throws TripNotFoundException {
 			TripBooking trip = Converter.convertTripToEntity(tripBookingDto);
 			int id = trip.getTripBookingId();
+			
 			Supplier<TripNotFoundException> s1=()->new TripNotFoundException("Trip not found");
 			TripBooking tripBookingupdated = triprepo.findById(id).orElseThrow(s1);
 			tripBookingupdated.setDistanceInKm(trip.getDistanceInKm());

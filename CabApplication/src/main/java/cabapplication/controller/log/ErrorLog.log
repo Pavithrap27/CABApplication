@@ -2031,6 +2031,9 @@ Caused by: org.hibernate.hql.internal.ast.QuerySyntaxException: Invalid path: 'c
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
+>>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
+=======
+<<<<<<< HEAD
 07-Jul-2022 19:25:35 INFO - HV000001: Hibernate Validator 6.2.3.Final
 07-Jul-2022 19:25:35 INFO - Starting CabApplication using Java 18.0.1 on lin80024582 with PID 23240 (C:\Users\VSARASWA\git\CABApplication\CabApplication\target\classes started by vsaraswa in C:\Users\VSARASWA\git\CABApplication\CabApplication)
 07-Jul-2022 19:25:35 INFO - No active profile set, falling back to 1 default profile: "default"
@@ -7139,6 +7142,8 @@ Caused by: org.springframework.data.mapping.PropertyReferenceException: No prope
 07-Jul-2022 21:49:25 INFO - Started CabApplication in 5.726 seconds (JVM running for 6.924)
 >>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
 =======
 =======
 <<<<<<< HEAD
@@ -12384,6 +12389,7 @@ Caused by: org.springframework.data.mapping.PropertyReferenceException: No prope
 >>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 <<<<<<< HEAD
 >>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
+>>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 08-Jul-2022 10:35:21 INFO - Application shutdown requested.
 08-Jul-2022 10:35:21 INFO - Closing JPA EntityManagerFactory for persistence unit 'default'
 08-Jul-2022 10:35:21 INFO - HikariPool-1 - Shutdown initiated...
@@ -12415,6 +12421,9 @@ Caused by: org.springframework.data.mapping.PropertyReferenceException: No prope
 08-Jul-2022 10:45:21 INFO - Initializing Servlet 'dispatcherServlet'
 08-Jul-2022 10:45:21 INFO - Completed initialization in 2 ms
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 =======
 <<<<<<< HEAD
 07-Jul-2022 23:03:50 INFO - Application shutdown requested.
@@ -13176,6 +13185,8 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 08-Jul-2022 11:21:18 INFO - Completed initialization in 259 ms
 >>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 >>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
+<<<<<<< HEAD
+=======
 =======
 =======
 <<<<<<< HEAD
@@ -14533,6 +14544,7 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 08-Jul-2022 11:21:18 INFO - Initializing Spring DispatcherServlet 'dispatcherServlet'
 08-Jul-2022 11:21:18 INFO - Initializing Servlet 'dispatcherServlet'
 08-Jul-2022 11:21:18 INFO - Completed initialization in 259 ms
+>>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 >>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 >>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git
 >>>>>>> branch 'master' of https://github.com/Pavithrap27/CABApplication.git

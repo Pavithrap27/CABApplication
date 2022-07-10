@@ -25,14 +25,6 @@ public class Driver extends AbstractUser {
 		super(username, password, mobileNumber, email, address);
 	}
 
-	public List<TripBooking> getTrips() {
-		return trips;
-	}
-
-	public void setTrips(List<TripBooking> trips) {
-		this.trips = trips;
-	}
-
 	@Id
 	@GeneratedValue
 	private int driverId;
@@ -76,6 +68,13 @@ public class Driver extends AbstractUser {
 
 	public void setRating(double rating) {
 		this.rating = rating;
+	}
+	public List<TripBooking> getTrips() {
+		return trips;
+	}
+
+	public void setTrips(List<TripBooking> trips) {
+		this.trips = trips;
 	}
 
 	@Override

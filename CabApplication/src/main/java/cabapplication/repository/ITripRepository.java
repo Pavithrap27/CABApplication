@@ -14,7 +14,7 @@ public interface ITripRepository extends JpaRepository<TripBooking, Integer> {
 	public TripBooking findByCustomerId(int customerId);
 	
 	@Query("Select trips from TripBooking trips where customerId=?1 AND fromDateTime=?2 AND toDateTime=?3")
-	public List<TripBooking> getAllTripsForDays(int customerId, LocalDateTime fromDate, LocalDateTime toDate);
+	public List<TripBooking> getAllTripsForDays(int customerId,  LocalDateTime  fromDate,  LocalDateTime  toDate);
 
 	@Query("Select trips from TripBooking trips ORDER BY fromDateTime ")
 	public List<TripBooking> getTripsDatewise();

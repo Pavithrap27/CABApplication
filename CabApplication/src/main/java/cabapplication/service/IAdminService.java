@@ -27,6 +27,8 @@ public interface IAdminService {
 
 	public List<TripBookingDTO> getTripsCustomerwise() throws CustomerNotFoundException;
 
-	public List<TripBookingDTO> getAllTripsForDays(int customerId, LocalDateTime fromDate, LocalDateTime ToDate)
+	public List<TripBookingDTO> getAllTripsForDays(int customerId, LocalDateTime fromDate,  LocalDateTime  ToDate)
 			throws CustomerNotFoundException;
+
+	
 }
