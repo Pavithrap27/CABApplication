@@ -9,9 +9,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class TripBookingDTO  {
 
-
-	private int tripBookingId;
-	private int customerId;
 	private String fromLocation;
 	private String toLocation;
 	private LocalDateTime fromDateTime;
@@ -19,7 +16,8 @@ public class TripBookingDTO  {
 	private boolean status;
 	private double distanceInKm;
 	private double bill;
-
+    private int tripBookingId;
+	
 	public int getTripBookingId() {
 		return tripBookingId;
 	}
@@ -36,6 +34,9 @@ public class TripBookingDTO  {
 		this.customerId = customerId;
 	}
 
+	private int customerId;
+	
+	
 	public String getFromLocation() {
 		return fromLocation;
 	}
@@ -91,10 +92,17 @@ public class TripBookingDTO  {
 	public void setBill(double bill) {
 		this.bill = bill;
 	}
+
 	@Override
 	public String toString() {
-		return "TripBookingDTO [tripBookingId=" + tripBookingId + ", customerId=" + customerId + ", fromLocation="
-				+ fromLocation + ", toLocation=" + toLocation + ", fromDateTime=" + fromDateTime + ", toDateTime="
-				+ toDateTime + ", status=" + status + ", distanceInKm=" + distanceInKm + ", bill=" + bill + "]";
+		return "TripBookingDTO [fromLocation=" + fromLocation + ", toLocation=" + toLocation + ", fromDateTime="
+				+ fromDateTime + ", toDateTime=" + toDateTime + ", status=" + status + ", distanceInKm=" + distanceInKm
+				+ ", bill=" + bill + ", tripBookingId=" + tripBookingId + ", customerId=" + customerId + "]";
 	}
+
+	
+	
+
+	
+	
 }

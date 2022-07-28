@@ -4,17 +4,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CabDTO {
-	private int cabId;
+	
 	private String carType;
 	private float perKmRate;
 
-	public int getCabId() {
-		return cabId;
-	}
-
-	public void setCabId(int cabId) {
-		this.cabId = cabId;
-	}
+	private int cabId;
 
 	public String getCarType() {
 		return carType;
@@ -32,9 +26,19 @@ public class CabDTO {
 		this.perKmRate = perKmRate;
 	}
 
+	public int getCabId() {
+		return cabId;
+	}
+
+	public void setCabId(int cabId) {
+		this.cabId = cabId;
+	}
+
 	@Override
 	public String toString() {
-		return "CabDTO [cabId=" + cabId + ", carType=" + carType + ", perKmRate=" + perKmRate + "]";
+		return "CabDTO [carType=" + carType + ", perKmRate=" + perKmRate + ", cabId=" + cabId + "]";
 	}
+
+	
 
 }

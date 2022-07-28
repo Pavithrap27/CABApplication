@@ -1,15 +1,19 @@
 package cabapplication.entity;
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(name="cab")
 public class Cab {
 	@Id
 	@GeneratedValue
+	@Column(name="cabid")
 	private int cabId;
 	@NotNull
 	private String carType;

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import cabapplication.dto.AdminDTO;
 import cabapplication.dto.TripBookingDTO;
 import cabapplication.exception.CustomerNotFoundException;
 import cabapplication.exception.TripNotFoundException;
@@ -22,4 +23,5 @@ public interface ITripService {
 	public List<TripBookingDTO> getByCustomerId(int customerId) throws CustomerNotFoundException;
 
 	public double calculateBill(int customerId) throws CustomerNotFoundException;
+	public TripBookingDTO save(TripBookingDTO tripBookingDto) throws TripNotFoundException ;
 }

@@ -2,6 +2,11 @@ package cabapplication.dto;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
 import org.springframework.stereotype.Component;
 
 
@@ -17,14 +22,26 @@ public class DriverDTO extends AbstractUserDTO {
 		super(username, password, mobileNumber, email, address);
 
 	}
-
 	private int driverId;
+	public int getDriverId() {
+		return driverId;
+	}
+
+	public void setDriverId(int driverId) {
+		this.driverId = driverId;
+	}
 	private String licenceNo;
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(referencedColumnName = "cabId")
 	private CabDTO cab;
 	private double rating;
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn
 	private List<TripBookingDTO> trips;
-
 	
+	
+
+
 	public List<TripBookingDTO> getTrips() {
 		return trips;
 	}
@@ -33,13 +50,6 @@ public class DriverDTO extends AbstractUserDTO {
 		this.trips = trips;
 	}
 
-	public int getDriverId() {
-		return driverId;
-	}
-
-	public void setDriverId(int driverId) {
-		this.driverId = driverId;
-	}
 
 	public String getLicenceNo() {
 		return licenceNo;
@@ -65,11 +75,13 @@ public class DriverDTO extends AbstractUserDTO {
 	public void setRating(double rating) {
 		this.rating = rating;
 	}
+
 	@Override
 	public String toString() {
 		return "DriverDTO [driverId=" + driverId + ", licenceNo=" + licenceNo + ", cab=" + cab + ", rating=" + rating
-				+ "]";
+				+ ", trips=" + trips + "]";
 	}
 
+	
 	
 }

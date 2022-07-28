@@ -1,6 +1,6 @@
 package cabapplication.service;
 
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -14,7 +14,6 @@ import cabapplication.repository.IDriverRepository;
 import cabapplication.utils.Converter;
 
 @Service
-@Transactional
 public class DriverServiceImpl implements IDriverService
 {
 
@@ -63,6 +62,7 @@ public class DriverServiceImpl implements IDriverService
         driverupdated.setCab(driver.getCab());
         driverupdated.setRating(driver.getRating());
         driverupdated.setAddress(driver.getAddress());
+        driverupdated.setTrips(driver.getTrips());
         driverrepo.save(driverupdated);
         return Converter.convertDriverToDTO(driverupdated);
 		}

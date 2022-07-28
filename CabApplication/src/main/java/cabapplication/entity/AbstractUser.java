@@ -10,15 +10,15 @@ import javax.validation.constraints.NotNull;
 
 @MappedSuperclass
 public abstract class AbstractUser {
-    @NotNull
+    //@NotNull
 	private String username;
 	private String password;
-	@Min(10)
+	//@Min(10)
 	private String mobileNumber;
-	@NotNull
-	@Email
+	//@NotNull
+	
 	private String email;
-	@Valid
+	//@NotNull
 	private String address;
 
 	protected AbstractUser(String username, String password, String mobileNumber, String email, String address) {

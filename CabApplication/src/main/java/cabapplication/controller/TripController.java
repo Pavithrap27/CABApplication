@@ -19,14 +19,14 @@ import org.springframework.web.bind.annotation.RestController;
 import cabapplication.dto.TripBookingDTO;
 import cabapplication.exception.CustomerNotFoundException;
 import cabapplication.exception.TripNotFoundException;
-import cabapplication.service.TripServiceImpl;
+import cabapplication.service.ITripService;
 
 @RestController
 @RequestMapping("tripbooking")
 public class TripController {
 	Log logger = LogFactory.getLog(TripController.class);
 	@Autowired
-	TripServiceImpl tripservice;
+	ITripService tripservice;
     
 	/* Retrieve all the elements */
 	@GetMapping("getAll")

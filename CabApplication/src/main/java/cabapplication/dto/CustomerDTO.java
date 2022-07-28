@@ -14,7 +14,6 @@ public class CustomerDTO extends AbstractUserDTO {
 		super(username, password, mobileNumber, email, address);
 
 	}
-
 	private int customerId;
 
 	public int getCustomerId() {
@@ -27,7 +26,6 @@ public class CustomerDTO extends AbstractUserDTO {
 
 	@Override
 	public String toString() {
-		return "CustomerDTO [customerId=" + customerId + "]";
+		return "Customer [customerId=" + customerId + "]";
 	}
-
 }

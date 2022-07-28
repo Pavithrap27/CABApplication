@@ -6,6 +6,7 @@ import java.util.function.Supplier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cabapplication.dto.AdminDTO;
 import cabapplication.dto.TripBookingDTO;
 import cabapplication.entity.TripBooking;
 import cabapplication.exception.CustomerNotFoundException;
@@ -57,6 +58,7 @@ public  class TripServiceImpl implements ITripService {
 			tripBookingupdated.setFromLocation(trip.getFromLocation());
 			tripBookingupdated.setToLocation(trip.getToLocation());
 			tripBookingupdated.setToDateTime(trip.getToDateTime());
+			
 			return Converter.convertTripToDto(triprepo.save(tripBookingupdated));
 
 		}
@@ -98,4 +100,5 @@ public  class TripServiceImpl implements ITripService {
 			return bill;
 		}
 	}
+
 }

@@ -27,7 +27,6 @@ public class AdminServiceImpl implements IAdminService {
 		@Autowired
 		ITripRepository repo;
 		@Autowired
-
 		ICustomerRepository customerrepo;
 		@Autowired
 		IDriverRepository driverRepo;
@@ -51,11 +50,13 @@ public class AdminServiceImpl implements IAdminService {
 		@Override
 		public List<TripBookingDTO> getByCustomerId(int customerId) throws Throwable {
 			List<TripBookingDTO> list = Converter.convertTripToDto(repo.getByCustomerId(customerId));
-			if (!(list.isEmpty())) {
-				return list;
-			} else {
+			if ((list.isEmpty())) {
 				throw new CustomerNotFoundException("Customer does not exist");
 			}
+				return list;
+			
+			
+			
 		}
 
 		@Override
